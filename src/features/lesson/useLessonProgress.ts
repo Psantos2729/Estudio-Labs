@@ -27,6 +27,8 @@ export function useMarkLessonRead() {
       if (error) throw error;
     },
     onSuccess: () => qc.invalidateQueries({ queryKey: ['lessons_read'] }),
+    // alert y no un aviso en la página: al guardar ya navegamos a la siguiente lección.
+    onError: (e) => alert(`No se pudo guardar tu avance en esta lección: ${e.message}`),
   });
   return (lessonId: string) => {
     if (supabase && userId) mutation.mutate(lessonId);
