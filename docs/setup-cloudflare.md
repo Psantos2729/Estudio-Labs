@@ -15,9 +15,10 @@ de cada paso es la misma.
 
 ## Paso 1. Entrar a Workers & Pages
 
-1. Entra a <https://dash.cloudflare.com> con tu cuenta.
-2. En el menú de la izquierda, abre **Compute (Workers)** → **Workers & Pages**.
-   En algunas cuentas aparece directamente como **Workers & Pages**.
+1. Con tu sesión iniciada, abre el enlace directo
+   <https://dash.cloudflare.com/?to=/:account/workers-and-pages> (si pregunta, elige tu cuenta).
+2. Si prefieres buscarlo: el menú izquierdo lo guarda dentro de **Compute** o **Build**,
+   o escribe **Pages** en la búsqueda de arriba (`Ctrl + K`).
 3. Pulsa el botón azul **Create** (o **Create application**).
 
 ## Paso 2. Elegir Pages (no Workers)
@@ -26,7 +27,7 @@ Cloudflare muestra primero la opción de crear un *Worker*. Nosotros queremos **
 
 1. Busca la pestaña **Pages** arriba, o el enlace al final que dice
    *"Looking to deploy Pages? Get started"*.
-2. Elige **Import an existing Git repository** → **Get started**.
+2. Elige **Connect to Git** (o **Import an existing Git repository**) → **GitHub**.
 
 ## Paso 3. Conectar GitHub
 
