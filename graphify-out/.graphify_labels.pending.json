@@ -1,5 +1,5 @@
 {
-  "0": "devDependencies",
+  "0": "Variables y tipos",
   "1": "AuthProvider.tsx",
   "2": "steps",
   "3": "masteryView.ts",
@@ -16,11 +16,11 @@
   "14": "check.ts",
   "15": "ADR-001: React + Vite + TypeScript en Cloudflare Pages",
   "16": "scripts",
-  "17": "dependencies",
-  "18": "package.json",
+  "17": "package.json",
+  "18": "Leer datos con input",
   "19": "adr/README.md",
   "20": "supabase.ts",
-  "21": "vite",
+  "21": "Mostrar resultados con f-strings",
   "22": "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker",
   "23": "ADR-003: Supabase como base de datos y autenticación",
   "24": "ADR-004: El navegador enseña, el servidor certifica",
@@ -28,5 +28,6 @@
   "26": "ADR-007: Modo invitado sin Supabase",
   "27": "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz",
   "28": "ADR-009: ReactBits con carga diferida y movimiento reducido",
-  "29": "ADR-010: Ningún archivo de más de 250 líneas"
+  "29": "ADR-010: Ningún archivo de más de 250 líneas",
+  "30": "Operadores aritméticos"
 }

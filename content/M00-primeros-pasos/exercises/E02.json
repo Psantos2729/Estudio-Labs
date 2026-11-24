@@ -1,0 +1,37 @@
+{
+  "id": "M00-E02",
+  "title": "Área de un rectángulo",
+  "statement": "Lee la **base** y la **altura** de un rectángulo (números enteros, una por línea) e imprime su área con el formato `Área: <área>`.\n\nEjemplo: con base `4` y altura `3` imprime `Área: 12`.",
+  "starter": "base = input()\naltura = input()\n",
+  "predict": [
+    {
+      "question": "Si `base = input()` y la persona escribe `4`, ¿qué imprime `print(base * 3)`?",
+      "options": [
+        "12",
+        "444",
+        "Un error"
+      ],
+      "answer": 1,
+      "why": "`input()` devuelve texto: `base` vale `\"4\"`. Multiplicar un texto por 3 lo repite 3 veces. Por eso hay que convertir con `int()` antes de hacer cuentas."
+    }
+  ],
+  "hints": [
+    "Lo que devuelve `input()` es texto. ¿Qué función lo convierte en entero?",
+    "Convierte al leer: `base = int(input())`. Haz lo mismo con la altura.",
+    "Al final: `print(f\"Área: {base * altura}\")`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n3\n",
+      "stdout": "Área: 12\n"
+    },
+    {
+      "stdin": "10\n10\n",
+      "stdout": "Área: 100\n"
+    },
+    {
+      "stdin": "7\n0\n",
+      "stdout": "Área: 0\n"
+    }
+  ]
+}

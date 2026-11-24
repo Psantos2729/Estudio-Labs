@@ -1,0 +1,41 @@
+{
+  "id": "M00-E05",
+  "title": "Promedio de tres notas",
+  "statement": "Lee tres calificaciones (pueden tener decimales, una por línea) e imprime su promedio **con dos decimales**, con el formato `Promedio: <p>`.\n\nEjemplo: con `8`, `9` y `10` imprime `Promedio: 9.00`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "Si `a = 8`, `b = 9` y `c = 10`, ¿qué imprime `print(a + b + c / 3)`?",
+      "options": [
+        "9.0",
+        "20.333333333333332",
+        "27"
+      ],
+      "answer": 1,
+      "why": "La división va antes que la suma: Python calcula `c / 3` (3.33…) y luego suma 8 + 9. Para promediar hay que agrupar la suma con paréntesis: `(a + b + c) / 3`."
+    }
+  ],
+  "hints": [
+    "Necesitas tres `input()`, cada uno convertido con `float()`.",
+    "Suma las tres notas **entre paréntesis** antes de dividir entre 3.",
+    "Dos decimales: `print(f\"Promedio: {promedio:.2f}\")`."
+  ],
+  "tests": [
+    {
+      "stdin": "8\n9\n10\n",
+      "stdout": "Promedio: 9.00\n"
+    },
+    {
+      "stdin": "7.5\n8\n6\n",
+      "stdout": "Promedio: 7.17\n"
+    },
+    {
+      "stdin": "10\n10\n9\n",
+      "stdout": "Promedio: 9.67\n"
+    },
+    {
+      "stdin": "0\n0\n0\n",
+      "stdout": "Promedio: 0.00\n"
+    }
+  ]
+}

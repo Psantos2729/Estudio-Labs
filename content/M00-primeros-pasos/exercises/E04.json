@@ -1,0 +1,55 @@
+{
+  "id": "M00-E04",
+  "title": "Segundos a horas, minutos y segundos",
+  "statement": "Lee una cantidad de **segundos** (entero, 0 o más) e imprime cuántas horas, minutos y segundos son, con el formato `<h> h <m> min <s> s`.\n\nEjemplo: con `3725` imprime `1 h 2 min 5 s`.",
+  "starter": "total = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Cuánto vale `3725 // 3600`?",
+      "options": [
+        "1",
+        "1.03",
+        "125"
+      ],
+      "answer": 0,
+      "why": "`//` es la división entera: 3600 cabe **una** vez completa en 3725, así que da 1. La parte que sobra se obtiene con `%`."
+    },
+    {
+      "question": "¿Cuánto vale `3725 % 3600`?",
+      "options": [
+        "1",
+        "125",
+        "0"
+      ],
+      "answer": 1,
+      "why": "`%` da el residuo: 3725 − 3600 = 125. Esos 125 segundos son los que todavía hay que repartir en minutos y segundos."
+    }
+  ],
+  "hints": [
+    "Una hora tiene 3600 segundos. ¿Cuántas horas completas caben? Usa `//`.",
+    "Lo que sobra después de quitar las horas es `total % 3600`. De eso, los minutos son `// 60`.",
+    "Los segundos sueltos son `total % 60`."
+  ],
+  "tests": [
+    {
+      "stdin": "3725\n",
+      "stdout": "1 h 2 min 5 s\n"
+    },
+    {
+      "stdin": "59\n",
+      "stdout": "0 h 0 min 59 s\n"
+    },
+    {
+      "stdin": "3600\n",
+      "stdout": "1 h 0 min 0 s\n"
+    },
+    {
+      "stdin": "86399\n",
+      "stdout": "23 h 59 min 59 s\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "0 h 0 min 0 s\n"
+    }
+  ]
+}
