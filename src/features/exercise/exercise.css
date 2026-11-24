@@ -1,0 +1,30 @@
+/* Pantalla de ejercicio (diseño D1) */
+.stepper { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; font-size: 12px; }
+.stepper li { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--muted); }
+.stepper .stepper__now { border-color: var(--green); color: var(--text); }
+.stepper .stepper__done { border-color: var(--line-strong); }
+.stepper__back { background: none; border: 0; color: var(--green); font: inherit; cursor: pointer; padding: 0; }
+
+.predict { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin: 0; display: grid; gap: 6px; }
+.predict legend { padding: 0 6px; }
+.predict__option { display: flex; gap: 8px; align-items: center; min-height: 32px; cursor: pointer; }
+
+.field { display: grid; gap: 4px; }
+.field__text { width: 100%; resize: vertical; }
+
+.editor { border: 1px solid var(--line-strong); border-radius: var(--radius); overflow: hidden; min-height: 180px; }
+.editor .cm-editor { min-height: 180px; font-size: 14px; }
+.editor .cm-scroller { font-family: var(--mono); }
+
+.hints { display: grid; gap: 6px; justify-items: start; }
+.hints__item { background: var(--bg-code); border-left: 2px solid var(--amber); padding: 6px 10px; }
+
+.tests { display: grid; gap: 8px; }
+.tests__case { border: 1px solid var(--line); border-radius: var(--radius); padding: 8px 12px; }
+.tests__case--ok summary { color: var(--green); }
+.tests__case--bad { border-color: var(--red); }
+.tests__case--bad summary { color: var(--red); }
+.tests__grid { display: grid; grid-template-columns: 80px 1fr; gap: 4px 12px; margin-top: 8px; }
+.tests__grid pre { margin: 0; white-space: pre-wrap; background: var(--bg-code); padding: 4px 8px; border-radius: 4px; }
+.predict code { background: var(--bg-code); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+.lesson .panel > .btn { align-self: flex-start; }

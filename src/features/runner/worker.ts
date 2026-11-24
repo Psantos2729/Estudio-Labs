@@ -9,6 +9,6 @@ ready.then(
   (err) => self.postMessage({ ready: false, error: `No se pudo cargar Python: ${String(err)}` }),
 );
 
-self.onmessage = async (e: MessageEvent<{ code: string; stdin: string }>) => {
-  self.postMessage(await execute(await ready, e.data.code, e.data.stdin));
+self.onmessage = async (e: MessageEvent<{ code: string; stdin: string; quietPrompts: boolean }>) => {
+  self.postMessage(await execute(await ready, e.data.code, e.data.stdin, e.data.quietPrompts));
 };

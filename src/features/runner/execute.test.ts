@@ -18,6 +18,13 @@ describe('execute', () => {
     expect(r).toEqual({ stdout: 'Hola, Ana!\n' });
   });
 
+  it('con quietPrompts, input("...") no imprime el mensaje', async () => {
+    const code = 'n = input("Nombre: ")\nprint(n)';
+    expect((await execute(py, code, 'Ana\n')).stdout).toBe('Nombre: Ana\n');
+    expect((await execute(py, code, 'Ana\n', true)).stdout).toBe('Ana\n');
+    expect((await execute(py, 'input()', '', true)).error).toMatch(/EOFError/);
+  });
+
   it('no comparte variables entre corridas', async () => {
     await execute(py, 'x = 1', '');
     expect((await execute(py, 'print(x)', '')).error).toMatch(/NameError/);
