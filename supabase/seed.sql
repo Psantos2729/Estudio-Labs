@@ -18,3 +18,6 @@ on conflict (id) do update set
   position = excluded.position, slug = excluded.slug, title = excluded.title,
   summary = excluded.summary, prerequisites = excluded.prerequisites,
   pass_score = excluded.pass_score, review_days = excluded.review_days;
+
+-- Da a las cuentas existentes las filas de los módulos que falten (migración 007).
+select public.fill_missing_mastery();

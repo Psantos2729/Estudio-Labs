@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "tools/seed-catalog.mjs": {
-    "mtime": 1795553868.6129954,
-    "seen": 1795555747.754916,
-    "ast_hash": "a3631620d9288a396db9767e7a12abbb",
+    "mtime": 1795563490.0294895,
+    "seen": 1795563519.325402,
+    "ast_hash": "a34e9e0d3c9656fa7548e5e23bda1a1a",
     "semantic_hash": ""
   },
   "tools/test-db.sh": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "docs/setup.md": {
-    "mtime": 1795562302.5858984,
-    "seen": 1795562335.7540905,
-    "ast_hash": "693621acc9ccdfe857874b6117190171",
+    "mtime": 1795563518.2503593,
+    "seen": 1795563519.3254392,
+    "ast_hash": "75d86c976888f590c6822a00020ab903",
     "semantic_hash": ""
   },
   "content/M00-primeros-pasos/exercises/E01.json": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "src/features/lesson/useLessonProgress.ts": {
-    "mtime": 1795562302.5633466,
-    "seen": 1795562335.7539635,
-    "ast_hash": "186de4582904bcb1b9198f8a61127785",
+    "mtime": 1795563321.993719,
+    "seen": 1795563519.3253498,
+    "ast_hash": "79b95ec11605bfb8b4ed9485f9a782d4",
     "semantic_hash": ""
   },
   "supabase/migrations/20261124000006_lesson_progress.sql": {
@@ -753,6 +753,18 @@
     "mtime": 1795562274.6120312,
     "seen": 1795562335.7540379,
     "ast_hash": "a3b6289ace0b4f4493de0f851caca386",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261124000007_fill_mastery.sql": {
+    "mtime": 1795563490.0107226,
+    "seen": 1795563519.3253896,
+    "ast_hash": "71af244f57f11fdd0d890e2b4c9ffbe6",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_fill_mastery.sql": {
+    "mtime": 1795563497.7878432,
+    "seen": 1795563519.3253927,
+    "ast_hash": "4f2fb0dcfeafdfec554c1da7185c3adc",
     "semantic_hash": ""
   },
   "package-lock.json": {

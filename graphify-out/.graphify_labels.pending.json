@@ -20,12 +20,13 @@
   "18": "Leer datos con input",
   "19": "rls_practice.sql",
   "20": "Porcentajes y descuentos",
-  "21": "masteryView.ts",
+  "21": "line-limit.test.mjs",
   "22": "Tomar decisiones con if y else",
   "23": "Más de dos caminos con elif",
   "24": "Combinar condiciones: and, or, not",
   "25": "División entera (//) y residuo (%)",
   "26": "rls_lessons.sql",
   "27": "Mostrar resultados con f-strings",
+  "28": "rls_fill_mastery.sql",
   "30": "Operadores aritméticos"
 }
