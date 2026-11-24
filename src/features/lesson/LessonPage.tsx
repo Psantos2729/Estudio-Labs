@@ -8,12 +8,14 @@ import { warmUp } from '@/features/runner/runner';
 import { splitBlocks } from './blocks';
 import { RunnableCode } from './RunnableCode';
 import { ProgressBar } from '@/ui/primitives/ProgressBar';
+import { useMarkLessonRead } from './useLessonProgress';
 import './lesson.css';
 
 export function LessonPage() {
   const { lessonId = '' } = useParams();
   const lesson = getLesson(lessonId);
   const { views, isLoading } = useModuleViews();
+  const markRead = useMarkLessonRead();
   const open = views.find((v) => v.module.id === lesson?.moduleId)?.open ?? false;
   const blocks = useMemo(() => (lesson ? splitBlocks(lesson.body) : []), [lesson]);
   const hasCode = blocks.some((b) => b.kind === 'python');
@@ -51,7 +53,10 @@ export function LessonPage() {
       </article>
       <nav className="lesson__nav">
         {prev ? <Link to={`/leccion/${prev.id}`}>← {prev.title}</Link> : <span />}
-        {next ? <Link to={`/leccion/${next.id}`}>{next.title} →</Link> : <Link to="/mapa">volver al mapa →</Link>}
+        {/* Llegar al final y avanzar cuenta como lección leída. */}
+        <Link to={next ? `/leccion/${next.id}` : '/'} onClick={() => markRead(lesson.id)}>
+          {next ? `${next.title} →` : 'Terminé las lecciones →'}
+        </Link>
       </nav>
     </main>
   );

@@ -48,7 +48,7 @@ export function useSavePractice(exerciseId: string) {
   });
 }
 
-/** Resumen de toda la práctica del usuario: qué ejercicios intentó, cuáles resolvió y cuántos intentos lleva. */
+/** Resumen de toda la práctica del usuario: qué ejercicios resolvió y cuántos intentos lleva. */
 export function usePracticeSummary() {
   const userId = useAuth().session?.user.id;
   const query = useQuery({
@@ -63,7 +63,6 @@ export function usePracticeSummary() {
   });
   const rows = query.data ?? [];
   return {
-    attempted: new Set(rows.map((r) => r.exercise_id)),
     passed: new Set(rows.filter((r) => r.tests_passed === r.tests_total).map((r) => r.exercise_id)),
     attempts: rows.length,
     isLoading: Boolean(userId) && query.isLoading,
