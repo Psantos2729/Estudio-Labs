@@ -35,7 +35,8 @@ export function LessonPage() {
       <Link to="/" className="small">← mapa</Link>
       <span className="ok small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}</span>
       <h1 className="display">{lesson.title}</h1>
-      <article className="prose">
+      {/* key: al cambiar de lección, los ejemplos empiezan de cero (sin código ni salida de la anterior) */}
+      <article className="prose" key={lesson.id}>
         {blocks.map((b, k) => (
           <Fragment key={k}>
             {b.kind === 'python' ? (

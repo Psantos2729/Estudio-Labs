@@ -16,7 +16,7 @@
   "14": "check.ts",
   "15": "adr/README.md",
   "16": "scripts",
-  "17": "package.json",
+  "17": "dependencies",
   "18": "Leer datos con input",
   "19": "rls_practice.sql",
   "20": "Porcentajes y descuentos",
@@ -24,5 +24,9 @@
   "22": "Tomar decisiones con if y else",
   "23": "Más de dos caminos con elif",
   "24": "Combinar condiciones: and, or, not",
+  "25": "devDependencies",
+  "26": "package.json",
+  "27": "eslint.config.js",
+  "28": "vite",
   "30": "Operadores aritméticos"
 }
