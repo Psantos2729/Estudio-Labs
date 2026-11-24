@@ -61,18 +61,5 @@ Supabase pausa el proyecto tras 7 días sin actividad. Si pasa, entra al panel y
 
 ## 2. Cloudflare Pages (publicar la web)
 
-1. En <https://dash.cloudflare.com> ve a **Workers & Pages → Create → Pages →
-   Connect to Git** y elige el repo `Psantos2729/Estudio-Labs`.
-2. Configuración de build:
-   - *Production branch*: `main`
-   - *Framework preset*: `None` (o `Vite`)
-   - *Build command*: `npm run build`
-   - *Build output directory*: `dist`
-3. **Environment variables** (para *Production* y *Preview*):
-   - `NODE_VERSION` = `22`
-   - `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` con los valores del paso 1.4
-4. Pulsa **Save and Deploy**. Tu sitio quedará en `https://<nombre>.pages.dev`.
-5. Vuelve a Supabase (paso 1.3) y pon esa dirección como *Site URL*.
-
-Cada PR genera una vista previa propia; cada merge a `main` publica la versión final.
-Los archivos `public/_headers` y `public/_redirects` ya configuran seguridad y rutas.
+La guía detallada, paso a paso y con lo que verás en cada pantalla, está en
+[setup-cloudflare.md](setup-cloudflare.md).
