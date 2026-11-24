@@ -96,9 +96,9 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1795553868.61039,
-    "seen": 1795555747.7548687,
-    "ast_hash": "46e72bca16c9d222ef2f4d9eab51cff6",
+    "mtime": 1795556452.7094185,
+    "seen": 1795556582.2691236,
+    "ast_hash": "b1ff583df51f97c656452ee0e8216b5a",
     "semantic_hash": ""
   },
   "src/app/App.tsx": {
@@ -210,8 +210,8 @@
     "semantic_hash": ""
   },
   "src/main.tsx": {
-    "mtime": 1795553868.6126947,
-    "seen": 1795555747.754901,
+    "mtime": 1795556549.834714,
+    "seen": 1795556582.2691772,
     "ast_hash": "0acb6d74d3cc274458c96ed80f73f14a",
     "semantic_hash": ""
   },
@@ -270,9 +270,9 @@
     "semantic_hash": ""
   },
   "vite.config.ts": {
-    "mtime": 1795553868.6129954,
-    "seen": 1795555747.754919,
-    "ast_hash": "05336da3494c7c0a4af09f304a448598",
+    "mtime": 1795556547.7071419,
+    "seen": 1795556582.269256,
+    "ast_hash": "13b7df19a804f70d8f7ed79d53f86188",
     "semantic_hash": ""
   },
   "README.md": {
@@ -366,9 +366,9 @@
     "semantic_hash": ""
   },
   "docs/adr/002-pyodide-worker.md": {
-    "mtime": 1795553868.6100059,
-    "seen": 1795555747.7549253,
-    "ast_hash": "c5ef2a117fcaa954570f23d0e3d9855f",
+    "mtime": 1795556571.4574256,
+    "seen": 1795556582.2692697,
+    "ast_hash": "df35375e066a9adefd99817fbb14cc78",
     "semantic_hash": ""
   },
   "docs/adr/003-supabase.md": {
@@ -467,10 +467,40 @@
     "ast_hash": "0ebce3cd32bfcdfc5a6d52ece399cc61",
     "semantic_hash": ""
   },
+  "src/features/runner/check.ts": {
+    "mtime": 1795556478.35763,
+    "seen": 1795556582.2691624,
+    "ast_hash": "f9b06ad8db5ad8bcd9794dde38e331f1",
+    "semantic_hash": ""
+  },
+  "src/features/runner/execute.test.ts": {
+    "mtime": 1795556494.3326933,
+    "seen": 1795556582.2691643,
+    "ast_hash": "635c0b1ce5b6aaaa16a35f622425fc75",
+    "semantic_hash": ""
+  },
+  "src/features/runner/execute.ts": {
+    "mtime": 1795556465.6287107,
+    "seen": 1795556582.2691658,
+    "ast_hash": "34aa67499a75041af866d145fdb53522",
+    "semantic_hash": ""
+  },
+  "src/features/runner/runner.ts": {
+    "mtime": 1795556478.3558612,
+    "seen": 1795556582.2691672,
+    "ast_hash": "c208150f8893ec371b714dcd5bc47974",
+    "semantic_hash": ""
+  },
+  "src/features/runner/worker.ts": {
+    "mtime": 1795556478.34942,
+    "seen": 1795556582.2691689,
+    "ast_hash": "69add246aee7195f1d456154cb4074a3",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
-    "mtime": 1795553895.092179,
-    "seen": 1795555747.7549412,
-    "ast_hash": "6f7ef40f8412a78e6646a8c8edd50b28",
+    "mtime": 1795556452.7774186,
+    "seen": 1795556582.2692978,
+    "ast_hash": "e0bab91a1113101ac9f319edc7c94df9",
     "semantic_hash": ""
   }
 }
