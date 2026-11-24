@@ -1,7 +1,7 @@
 # Graph Report - estudio-labs  (2026-11-24)
 
 ## Corpus Check
-- 128 files · ~21,836 words
+- 128 files · ~21,911 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 11 file(s) not represented in the graph (top: .css 5, (none) 3, .example 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c7d994ed`
+- Built from commit: `518b051a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -53,8 +53,8 @@
 4. `displayId()` - 14 edges
 5. `HomePage()` - 14 edges
 6. `Button()` - 13 edges
-7. `ExerciseDef` - 12 edges
-8. `LessonPage()` - 12 edges
+7. `LessonPage()` - 12 edges
+8. `ExerciseDef` - 12 edges
 9. `useModuleViews()` - 12 edges
 10. `Publicar pylab en Cloudflare` - 12 edges
 
@@ -63,12 +63,12 @@
   docs/adr/005-contenido-archivos.md → src/content/types.ts
 - `Consecuencias` --references--> `validateExercise()`  [INFERRED]
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
-- `Props` --references--> `ExerciseDef`  [EXTRACTED]
-  src/features/exercise/ExerciseFlow.tsx → src/content/types.ts
-- `ExerciseFlow()` --calls--> `exercisesOf()`  [EXTRACTED]
-  src/features/exercise/ExerciseFlow.tsx → src/content/lessons.ts
-- `ExercisePage()` --calls--> `ExerciseFlow()`  [EXTRACTED]
-  src/features/exercise/ExercisePage.tsx → src/features/exercise/ExerciseFlow.tsx
+- `App()` --calls--> `LessonPage()`  [EXTRACTED]
+  src/app/App.tsx → src/features/lesson/LessonPage.tsx
+- `LessonPage()` --calls--> `lessonsOf()`  [EXTRACTED]
+  src/features/lesson/LessonPage.tsx → src/content/lessons.ts
+- `LessonPage()` --calls--> `displayId()`  [EXTRACTED]
+  src/features/lesson/LessonPage.tsx → src/content/types.ts
 
 ## Import Cycles
 - None detected.
@@ -184,7 +184,7 @@ Cohesion: 0.33
 Nodes (4): vite@^6.4.6, @vitejs/plugin-react@^4.7.0, vite, @vitejs/plugin-react
 
 ## Knowledge Gaps
-- **5 isolated node(s):** `ADR-0002`, `ADR-0008`, `ADR-0006`, `ADR-0006`, `ADR-0005`
+- **5 isolated node(s):** `ADR-0002`, `ADR-0005`, `ADR-0008`, `ADR-0006`, `ADR-0006`
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 256 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -193,7 +193,7 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `ExerciseDef` connect `HomePage.tsx` to `App.tsx`?**
   _High betweenness centrality (0.173) - this node is a cross-community bridge._
-- **What connects `ADR-0002`, `ADR-0008`, `ADR-0006` to the rest of the system?**
+- **What connects `ADR-0002`, `ADR-0005`, `ADR-0008` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.06980433632998413 - nodes in this community are weakly interconnected._
