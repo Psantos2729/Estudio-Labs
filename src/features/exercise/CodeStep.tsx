@@ -7,8 +7,14 @@ import { CodeEditor } from './CodeEditor';
 import { TestResults } from './TestResults';
 
 /** Pasos 4 y 5: escribir el código, correrlo con entrada propia y pasar las pruebas públicas. */
-export function CodeStep({ exercise }: { exercise: ExerciseDef }) {
-  const [code, setCode] = useState(exercise.starter);
+interface Props {
+  exercise: ExerciseDef;
+  initialCode: string;
+  onTested: (code: string, results: TestResult[]) => void;
+}
+
+export function CodeStep({ exercise, initialCode, onTested }: Props) {
+  const [code, setCode] = useState(initialCode);
   const [stdin, setStdin] = useState(exercise.tests[0]?.stdin ?? '');
   const [busy, setBusy] = useState(false);
   const [run, setRun] = useState<RunResult | null>(null);
@@ -23,14 +29,18 @@ export function CodeStep({ exercise }: { exercise: ExerciseDef }) {
 
   return (
     <section className="panel">
-      <CodeEditor initial={exercise.starter} onChange={setCode} />
+      <CodeEditor initial={initialCode} onChange={setCode} />
       <label className="field">
         <span className="muted small">entrada para Correr (una línea por cada input())</span>
         <textarea className="input field__text" rows={2} value={stdin} onChange={(e) => setStdin(e.target.value)} />
       </label>
       <div className="runnable__bar">
         <Button variant="ghost" disabled={busy} onClick={() => busyWhile(async () => setRun(await runPython(code, stdin)))}>▶ Correr</Button>
-        <Button disabled={busy} onClick={() => busyWhile(async () => setResults(await runTests(code, exercise.tests)))}>Probar ({exercise.tests.length} pruebas)</Button>
+        <Button disabled={busy} onClick={() => busyWhile(async () => {
+              const r = await runTests(code, exercise.tests);
+              setResults(r);
+              onTested(code, r);
+            })}>Probar ({exercise.tests.length} pruebas)</Button>
         {busy && <span className="muted small">corriendo…</span>}
       </div>
       {run && (

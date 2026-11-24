@@ -20,7 +20,10 @@ En el panel, abre **SQL Editor** y ejecuta, **en este orden**, el contenido de c
 2. `supabase/migrations/20261124000002_profiles.sql`
 3. `supabase/migrations/20261124000003_module_mastery.sql`
 4. `supabase/migrations/20261124000004_new_user.sql`
-5. `supabase/seed.sql` (carga los 13 módulos)
+5. `supabase/migrations/20261124000005_practice.sql` (fase 2: intentos de práctica)
+6. `supabase/seed.sql` (carga los 13 módulos)
+
+Si ya tenías las tablas de la fase 1, solo ejecuta el archivo nuevo (el 5).
 
 No ejecutes nada de `supabase/tests/`: esos archivos solo sirven para probar en local.
 
