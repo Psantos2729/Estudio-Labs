@@ -1,10 +1,16 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { Button } from '@/ui/primitives/Button';
 
 export function Layout() {
   const { session, signOut } = useAuth();
   const email = session?.user.email;
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // cada pantalla nueva empieza arriba
+  }, [pathname]);
 
   return (
     <div className="shell">

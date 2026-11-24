@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
-    "mtime": 1795553868.6123064,
-    "seen": 1795555747.7548711,
-    "ast_hash": "09a81043ac044d34cd0dcb5f07715d5f",
+    "mtime": 1795561458.4106176,
+    "seen": 1795561482.4578545,
+    "ast_hash": "56f55399e5075995bb846c4d2e46fb61",
     "semantic_hash": ""
   },
   "src/app/Providers.tsx": {
@@ -498,9 +498,9 @@
     "semantic_hash": ""
   },
   "src/features/lesson/LessonPage.tsx": {
-    "mtime": 1795557447.475418,
-    "seen": 1795557570.0753462,
-    "ast_hash": "e83bdc65fdce11d6ed8fad89b191b7a8",
+    "mtime": 1795561318.42473,
+    "seen": 1795561482.4578817,
+    "ast_hash": "3516c9cf0b5a70c84fc0c38d9ada21c1",
     "semantic_hash": ""
   },
   "src/features/lesson/RunnableCode.tsx": {
