@@ -32,6 +32,9 @@ export function Layout() {
         </div>
       </header>
       <Outlet />
+      <footer className="footer muted small">
+        <NavLink to="/privacidad">privacidad</NavLink>
+      </footer>
     </div>
   );
 }

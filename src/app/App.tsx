@@ -3,6 +3,7 @@ import { Providers } from './Providers';
 import { Layout } from './Layout';
 import { MapPage } from '@/features/map/MapPage';
 import { LoginPage } from '@/features/auth/LoginPage';
+import { PrivacyPage } from '@/features/legal/PrivacyPage';
 
 export function App() {
   return (
@@ -12,6 +13,7 @@ export function App() {
           <Route element={<Layout />}>
             <Route index element={<MapPage />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="privacidad" element={<PrivacyPage />} />
             <Route path="*" element={<p className="center muted">404 · esa ruta no existe</p>} />
           </Route>
         </Routes>
