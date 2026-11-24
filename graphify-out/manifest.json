@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "docs/setup.md": {
-    "mtime": 1795553868.6100059,
-    "seen": 1795555747.7549393,
-    "ast_hash": "87f777af7364c06443bb3964c1b7c61d",
+    "mtime": 1795560812.521635,
+    "seen": 1795560819.656876,
+    "ast_hash": "836decf974c1e89a2228a4af1e3ac4f3",
     "semantic_hash": ""
   },
   "content/M00-primeros-pasos/exercises/E01.json": {
@@ -528,15 +528,15 @@
     "semantic_hash": ""
   },
   "src/features/exercise/CodeStep.tsx": {
-    "mtime": 1795560266.2232368,
-    "seen": 1795560466.4122105,
-    "ast_hash": "671bfea7193ee461ca21ebc8187a6526",
+    "mtime": 1795560812.521635,
+    "seen": 1795560819.6567929,
+    "ast_hash": "ecf51f6c53f33712644ec3ad49ae5835",
     "semantic_hash": ""
   },
   "src/features/exercise/ExercisePage.tsx": {
-    "mtime": 1795560254.2315376,
-    "seen": 1795560466.4122114,
-    "ast_hash": "e48868ec6fea77e0abb0011e925e9c7c",
+    "mtime": 1795560812.521635,
+    "seen": 1795560819.6567965,
+    "ast_hash": "1d19a3f9fd213d5792df6e911874a878",
     "semantic_hash": ""
   },
   "src/features/exercise/TestResults.tsx": {
@@ -603,6 +603,30 @@
     "mtime": 1795560557.8017116,
     "seen": 1795560638.7711475,
     "ast_hash": "499e303072708b36e63cbc62bc5c7214",
+    "semantic_hash": ""
+  },
+  "src/features/exercise/ExerciseFlow.tsx": {
+    "mtime": 1795560812.5270293,
+    "seen": 1795560819.6567945,
+    "ast_hash": "d28c613b408805f052a9430b89111989",
+    "semantic_hash": ""
+  },
+  "src/features/exercise/usePractice.ts": {
+    "mtime": 1795560812.5270293,
+    "seen": 1795560819.6568027,
+    "ast_hash": "3c50b60842f2c10c359da1aba4e0e406",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261124000005_practice.sql": {
+    "mtime": 1795560812.5270293,
+    "seen": 1795560819.6568394,
+    "ast_hash": "e372ba18f99110df8e05765beba9520c",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_practice.sql": {
+    "mtime": 1795560812.5270293,
+    "seen": 1795560819.656843,
+    "ast_hash": "37f241ef11690f86851fa70c1a49f93a",
     "semantic_hash": ""
   },
   "package-lock.json": {
