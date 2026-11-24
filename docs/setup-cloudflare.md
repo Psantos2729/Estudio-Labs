@@ -1,7 +1,7 @@
-# Publicar pylab en Cloudflare Pages
+# Publicar pylab en Cloudflare
 
-Cloudflare Pages toma el código de GitHub, ejecuta `npm run build` y publica la carpeta `dist`
-en una dirección `https://<nombre>.pages.dev`. Es gratis y se actualiza solo con cada cambio.
+Cloudflare toma el código de GitHub, ejecuta `npm run build` y publica la carpeta `dist`
+en una dirección `https://estudio-labs.<tu-subdominio>.workers.dev`. Es gratis y se actualiza solo con cada cambio.
 
 Los nombres de los botones pueden variar un poco porque Cloudflare cambia su panel; la idea
 de cada paso es la misma.
@@ -21,40 +21,33 @@ de cada paso es la misma.
    o escribe **Pages** en la búsqueda de arriba (`Ctrl + K`).
 3. Pulsa el botón azul **Create** (o **Create application**).
 
-## Paso 2. Elegir Pages (no Workers)
+## Paso 2. Crear la aplicación desde GitHub
 
-Cloudflare muestra primero la opción de crear un *Worker*. Nosotros queremos **Pages**:
+Cloudflare ahora publica sitios como este con **Workers** (archivos estáticos). El repo ya trae
+`wrangler.jsonc`, que le dice a Cloudflare que publique la carpeta `dist`.
 
-1. Busca la pestaña **Pages** arriba, o el enlace al final que dice
-   *"Looking to deploy Pages? Get started"*.
-2. Elige **Connect to Git** (o **Import an existing Git repository**) → **GitHub**.
+1. Pulsa **Create application** y elige **Import a repository** (o **Connect GitHub**).
+2. GitHub te pide instalar la app **Cloudflare Workers and Pages**: elige tu cuenta `Psantos2729`,
+   marca **Only select repositories** → `Estudio-Labs` y pulsa **Install & Authorize**.
+3. De vuelta en Cloudflare, selecciona `Psantos2729/Estudio-Labs`.
 
-## Paso 3. Conectar GitHub
-
-1. Pulsa **Connect GitHub**. Se abre una ventana de GitHub.
-2. GitHub te pide instalar la app **Cloudflare Workers and Pages**. Elige tu cuenta `Psantos2729`.
-3. En *Repository access* elige **Only select repositories** y marca `Estudio-Labs`.
-   (Así Cloudflare no ve tus otros repos.)
-4. Pulsa **Install & Authorize**. Vuelves a Cloudflare.
-5. Selecciona `Psantos2729/Estudio-Labs` en la lista y pulsa **Begin setup**.
-
-## Paso 4. Configurar la compilación
-
-Llena la pantalla *Set up builds and deployments* exactamente así:
+## Paso 3. Configurar el proyecto
 
 | Campo | Valor | Para qué sirve |
 | --- | --- | --- |
-| Project name | `estudio-labs` | Define la dirección: `estudio-labs.pages.dev` (si está ocupado, elige otro) |
-| Production branch | `main` | La rama que se publica como versión oficial |
-| Framework preset | `React (Vite)` (o `None`) | Solo rellena los campos de abajo |
-| Build command | `npm run build` | Revisa tipos y compila la app |
-| Build output directory | `dist` | Carpeta que Vite genera y Cloudflare publica |
-| Root directory | (vacío) | El proyecto está en la raíz del repo |
+| Project name | `estudio-labs` | **Debe ser igual** al `name` de `wrangler.jsonc`; da la dirección `estudio-labs.<tu-subdominio>.workers.dev` |
+| Build command | `npm run build` | Revisa tipos y compila la app en `dist` |
+| Deploy command | `npx wrangler deploy` (el que trae) | Sube `dist` a Cloudflare |
+| Preview command | `npx wrangler versions upload` o el que trae | Versiones de prueba para otras ramas |
+| Enable Preview builds | activado | Cada rama o PR tiene su vista previa |
+| Protect with Cloudflare Access | desactivado | La web debe ser pública |
 
-## Paso 5. Variables de entorno
+## Paso 4. Variables de compilación
 
-En la misma pantalla, abre **Environment variables (advanced)** y pulsa **Add variable**
-tres veces:
+Abre **Advanced settings** (abajo, antes de *Deploy*):
+
+1. *Root directory*: vacío. *Production branch* (si aparece): `main`.
+2. En **Build variables** (no en *Variables and Secrets* de ejecución) agrega:
 
 | Variable | Valor |
 | --- | --- |
@@ -62,40 +55,40 @@ tres veces:
 | `VITE_SUPABASE_URL` | tu *Project URL*, por ejemplo `https://abcd1234.supabase.co` |
 | `VITE_SUPABASE_ANON_KEY` | tu llave *anon public* (empieza con `eyJ`) |
 
-Notas:
+Van en *Build variables* porque Vite las mete en la app **al compilar**. Escribe los nombres
+exactos, sin comillas. **Nunca** pongas aquí la llave `service_role`.
 
-- Escribe los nombres exactos, en mayúsculas. Si falta el prefijo `VITE_`, la app no los ve.
-- No pongas comillas ni espacios alrededor de los valores.
-- **Nunca** pongas aquí la llave `service_role` de Supabase.
+## Paso 5. Publicar
 
-## Paso 6. Publicar
-
-1. Pulsa **Save and Deploy**.
-2. Verás el registro de la compilación. Tarda 1 o 2 minutos. Al final debe decir *Success*.
-3. Pulsa **Continue to project** y abre la dirección `https://estudio-labs.pages.dev`.
+1. Pulsa **Deploy**. Verás el registro: tarda 1 o 2 minutos y debe terminar en *Success*.
+2. Abre la dirección que te muestra (`https://estudio-labs.<tu-subdominio>.workers.dev`).
    Deberías ver el mapa de módulos con el tema oscuro.
+
+## Paso 6. (Opcional) Si tu panel sí muestra Pages
+
+Si en *Create application* ves una pestaña **Pages** → **Connect to Git**, también sirve:
+build `npm run build`, output `dist`, y las mismas tres variables. La dirección será `*.pages.dev`.
 
 ## Paso 7. Avisarle a Supabase tu dirección
 
 Sin esto, el enlace mágico del correo te mandaría a `localhost`.
 
 1. En Supabase: **Authentication → URL Configuration**.
-2. *Site URL*: `https://estudio-labs.pages.dev`
-3. *Redirect URLs*: agrega `https://estudio-labs.pages.dev/**` y `https://*.estudio-labs.pages.dev/**`
+2. *Site URL*: la dirección del paso 5
+3. *Redirect URLs*: agrega `https://estudio-labs.<tu-subdominio>.workers.dev/**` y `https://*-estudio-labs.<tu-subdominio>.workers.dev/**`
    (la segunda cubre las vistas previas de cada PR).
 
 ## Revisar que todo funciona
 
 - Abre la web, pulsa **entrar**, escribe tu correo y abre el enlace que te llega.
   Arriba a la derecha debe aparecer tu correo en lugar de *invitado*.
-- Si cambias una variable de entorno después, ve a **Settings → Variables and Secrets**, guárdala
+- Si cambias una variable de entorno después, ve a **Settings → Build → Build variables**, guárdala
   y luego en **Deployments** pulsa **Retry deployment**: las variables se leen al compilar.
 
 ## Cómo se actualiza
 
 - Cada merge a `main` publica una nueva versión automáticamente.
-- Cada PR obtiene su propia dirección de vista previa (`https://<rama>.estudio-labs.pages.dev`);
-  Cloudflare la deja como comentario o check en el PR.
+- Cada PR obtiene su propia vista previa; Cloudflare la deja como comentario o check en el PR.
 
 ## Si algo falla
 
@@ -105,4 +98,5 @@ Sin esto, el enlace mágico del correo te mandaría a `localhost`.
 | La página sale en blanco | Output directory mal escrito | Debe ser `dist`, en **Settings → Build** |
 | Dice "Supabase no está configurado" | Variables con nombre incorrecto o puestas después de compilar | Corrige los nombres y pulsa **Retry deployment** |
 | El enlace del correo abre `localhost` | Falta el paso 7 | Configura *Site URL* en Supabase |
-| Al recargar una página sale 404 | Falta `_redirects` | Ya viene en `public/_redirects`; revisa que el build use `dist` |
+| Falla con "name mismatch" | El nombre del proyecto no es `estudio-labs` | Usa `estudio-labs` o cambia `name` en `wrangler.jsonc` |
+| Al recargar una página sale 404 | Falta el modo SPA | `wrangler.jsonc` ya trae `not_found_handling: single-page-application` |

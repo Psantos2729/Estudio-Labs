@@ -1,0 +1,11 @@
+// Publicación en Cloudflare Workers con archivos estáticos (ver docs/setup-cloudflare.md).
+// El nombre debe coincidir con el nombre del Worker en el panel de Cloudflare.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "estudio-labs",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}
