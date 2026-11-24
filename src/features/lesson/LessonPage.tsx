@@ -7,6 +7,7 @@ import { useModuleViews } from '@/features/map/useMastery';
 import { warmUp } from '@/features/runner/runner';
 import { splitBlocks } from './blocks';
 import { RunnableCode } from './RunnableCode';
+import { ProgressBar } from '@/ui/primitives/ProgressBar';
 import './lesson.css';
 
 export function LessonPage() {
@@ -33,10 +34,10 @@ export function LessonPage() {
   return (
     <main className="lesson">
       <Link to="/" className="small">← mapa</Link>
-      <span className="ok small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}</span>
+      <span className="accent small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}</span>
+      <ProgressBar value={i + 1} max={siblings.length} label="Avance en las lecciones del módulo" />
       <h1 className="display">{lesson.title}</h1>
-      {/* key: al cambiar de lección, los ejemplos empiezan de cero (sin código ni salida de la anterior) */}
-      <article className="prose" key={lesson.id}>
+      <article className="prose">
         {blocks.map((b, k) => (
           <Fragment key={k}>
             {b.kind === 'python' ? (

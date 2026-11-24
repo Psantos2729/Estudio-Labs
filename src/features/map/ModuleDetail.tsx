@@ -20,7 +20,7 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
   return (
     <main className="detail">
       <header className="detail__head">
-        <span className="ok small">módulo {view.label} · {displayId(m.id)}</span>
+        <span className="accent small">módulo {view.label} · {displayId(m.id)}</span>
         <h1 className="display">{m.title}</h1>
         <p className="muted">{m.summary}</p>
       </header>

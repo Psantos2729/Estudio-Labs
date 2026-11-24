@@ -18,17 +18,7 @@ print(7 % 2)
 
 `/` **siempre** da `float`, incluso `6 / 2` da `3.0`. `//` se queda con la parte entera y `%` con lo que sobra.
 
-## Para qué sirven // y %
-
-Piensa en repartir 125 minutos en horas:
-
-```python
-minutos = 125
-print(minutos // 60, "horas")
-print(minutos % 60, "minutos")
-```
-
-`125 // 60` es `2` (caben 2 horas completas) y `125 % 60` es `5` (sobran 5 minutos). Este truco aparece en muchísimos ejercicios: dígitos de un número, cambio de monedas, conversiones de tiempo.
+`//` y `%` son tan importantes que tienen su propia lección: la siguiente.
 
 ## Orden de las operaciones
 

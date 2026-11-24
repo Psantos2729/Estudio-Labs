@@ -28,7 +28,7 @@ export function ExercisePage() {
   return (
     <main className="lesson">
       <Link to="/" className="small">← mapa</Link>
-      <span className="ok small">{displayId(moduleId)} · ejercicio{exercise.pdf ? ` · PDF C5 #${exercise.pdf}` : ''}</span>
+      <span className="accent small">{displayId(moduleId)} · ejercicio{exercise.pdf ? ` · PDF C5 #${exercise.pdf}` : ''}</span>
       <h1 className="display">{exercise.title}</h1>
       <ExerciseFlow key={exercise.id} exercise={exercise} saved={last.attempt} canSave={last.canSave} />
     </main>
