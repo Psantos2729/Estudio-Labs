@@ -6,14 +6,28 @@ export interface RunResult {
   timedOut?: boolean;
 }
 
-/** Corre `code` en un espacio de nombres nuevo; `stdin` alimenta input(), una línea por llamada. */
-export async function execute(py: PyodideAPI, code: string, stdin: string): Promise<RunResult> {
+// input() sin mostrar el mensaje: al calificar no importa si el estudiante escribió "Nombre: " o nada.
+const QUIET_INPUT = `
+def input(prompt=''):
+    import sys
+    line = sys.stdin.readline()
+    if not line:
+        raise EOFError('EOF when reading a line')
+    return line.rstrip('\\n')
+input`;
+
+/**
+ * Corre `code` en un espacio de nombres nuevo; `stdin` alimenta input(), una línea por llamada.
+ * Con `quietPrompts`, los mensajes de input("...") no salen en stdout (así se califican las pruebas).
+ */
+export async function execute(py: PyodideAPI, code: string, stdin: string, quietPrompts = false): Promise<RunResult> {
   let stdout = '';
   const lines = stdin.split('\n');
   if (lines.at(-1) === '') lines.pop();
   py.setStdout({ write: (buf) => ((stdout += new TextDecoder().decode(buf)), buf.length) });
   py.setStdin({ stdin: () => lines.shift() }); // undefined = fin de entrada → EOFError
   const globals = py.globals.get('dict')();
+  if (quietPrompts) globals.set('input', py.runPython(QUIET_INPUT, { globals }));
   try {
     await py.runPythonAsync(code, { globals, filename: 'programa.py' });
     return { stdout };

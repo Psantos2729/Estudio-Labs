@@ -32,7 +32,11 @@ export function warmUp(): void {
  * Corre Python en el worker, una ejecución a la vez. El límite cuenta desde que Python ya cargó;
  * si se pasa (bucle infinito), mata el worker y el siguiente se crea al volver a correr.
  */
-export function runPython(code: string, stdin = '', limitMs = TIME_LIMIT_MS): Promise<RunResult> {
+export function runPython(
+  code: string,
+  stdin = '',
+  { limitMs = TIME_LIMIT_MS, quietPrompts = false } = {},
+): Promise<RunResult> {
   const run = queue.then(async (): Promise<RunResult> => {
     const { w, ready } = load();
     const loadError = await ready;
@@ -47,7 +51,7 @@ export function runPython(code: string, stdin = '', limitMs = TIME_LIMIT_MS): Pr
         clearTimeout(timer);
         resolve(e.data);
       };
-      w.postMessage({ code, stdin });
+      w.postMessage({ code, stdin, quietPrompts });
     });
   });
   queue = run.catch(() => undefined);

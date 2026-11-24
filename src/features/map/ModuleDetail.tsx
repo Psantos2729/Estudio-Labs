@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { displayId } from '@/content/types';
-import { lessonsOf } from '@/content/lessons';
+import { exercisesOf, lessonsOf } from '@/content/lessons';
 import type { ModuleView } from './masteryView';
 
 const STEPS = [
@@ -14,6 +14,7 @@ const STEPS = [
 export function ModuleDetail({ view }: { view: ModuleView }) {
   const { module: m } = view;
   const lessons = lessonsOf(m.id);
+  const exercises = exercisesOf(m.id);
   const labs = m.pdfExercises.length > 0 ? m.pdfExercises.join(', ') : 'sin labs del PDF';
 
   return (
@@ -42,6 +43,17 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
           <ol className="plain">
             {lessons.map((l, i) => (
               <li key={l.id}><Link to={`/leccion/${l.id}`}>{i + 1}. {l.title}</Link></li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {view.open && exercises.length > 0 && (
+        <section className="panel" aria-label="Práctica guiada">
+          <p className="small">práctica guiada</p>
+          <ol className="plain">
+            {exercises.map((e, i) => (
+              <li key={e.id}><Link to={`/ejercicio/${e.id}`}>{i + 1}. {e.title}</Link></li>
             ))}
           </ol>
         </section>

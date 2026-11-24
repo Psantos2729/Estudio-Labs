@@ -13,11 +13,11 @@ export function sameOutput(actual: string, expected: string): boolean {
   return norm(actual) === norm(expected);
 }
 
-/** Corre el código contra cada prueba pública, en orden. */
+/** Corre el código contra cada prueba pública, en orden. Los mensajes de input("...") no cuentan. */
 export async function runTests(code: string, tests: TestCase[]): Promise<TestResult[]> {
   const results: TestResult[] = [];
   for (const test of tests) {
-    const run = await runPython(code, test.stdin);
+    const run = await runPython(code, test.stdin, { quietPrompts: true });
     results.push({ test, run, passed: !run.error && sameOutput(run.stdout, test.stdout) });
   }
   return results;
