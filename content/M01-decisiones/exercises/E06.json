@@ -1,0 +1,50 @@
+{
+  "id": "M01-E06",
+  "title": "Salario semanal con horas extra",
+  "pdf": 12,
+  "statement": "Un obrero cobra **Q20 por hora** si trabaja 40 horas o menos. Si trabaja más de 40, cobra Q20 por cada una de las primeras 40 horas y **Q25 por cada hora extra**.\n\nLee las horas trabajadas (entero) e imprime `Salario: Q<salario>`.\n\nEjemplo: con `45` imprime `Salario: Q925`.",
+  "starter": "horas = int(input())\n",
+  "predict": [
+    {
+      "question": "Con 45 horas, ¿cuál es el salario?",
+      "options": [
+        "Q1125 (45 × 25)",
+        "Q925 (40 × 20 + 5 × 25)",
+        "Q900 (45 × 20)"
+      ],
+      "answer": 1,
+      "why": "Solo las horas **después** de la 40 se pagan a Q25. Las primeras 40 siguen a Q20: 800 + 125 = 925. Pagar todas a Q25 es el error más común de este ejercicio."
+    }
+  ],
+  "hints": [
+    "Hay dos casos: 40 horas o menos, y más de 40.",
+    "Las horas extra son `horas - 40`.",
+    "Salario con extras = 40 × 20 + (horas − 40) × 25."
+  ],
+  "tests": [
+    {
+      "stdin": "45\n",
+      "stdout": "Salario: Q925\n"
+    },
+    {
+      "stdin": "40\n",
+      "stdout": "Salario: Q800\n"
+    },
+    {
+      "stdin": "41\n",
+      "stdout": "Salario: Q825\n"
+    },
+    {
+      "stdin": "10\n",
+      "stdout": "Salario: Q200\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Salario: Q0\n"
+    },
+    {
+      "stdin": "60\n",
+      "stdout": "Salario: Q1300\n"
+    }
+  ]
+}

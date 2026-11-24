@@ -1,0 +1,55 @@
+{
+  "id": "M01-E05",
+  "title": "Juego de tres preguntas",
+  "pdf": 11,
+  "statement": "Haz un juego de preguntas que se responden `Si` o `No`. Gana quien responda bien las tres. **Si alguien falla una, ya no se hace la siguiente** y el juego termina.\n\nLas preguntas, en orden, y su respuesta correcta para este ejercicio:\n\n1. ¿Los Mayas son de Guatemala? → `Si`\n2. ¿La independencia de Guatemala fue en el año 1821? → `Si`\n3. ¿El equipo de fútbol de Antigua juega en la liga Mayor? → `Si`\n\nUsa `input(\"pregunta\")` para hacer cada pregunta (el texto de la pregunta no se califica). Acepta `Si`, `si`, `SI` o `Sí`. Si falla, imprime `Incorrecto. Fin del juego.`; si acierta las tres, imprime `¡Ganaste!`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "Con `r = \"No\"`, ¿qué da `r == \"Si\" or \"si\"`?",
+      "options": [
+        "False",
+        "\"si\" (cuenta como verdadero)",
+        "Un error"
+      ],
+      "answer": 1,
+      "why": "Python lo lee como `(r == \"Si\") or \"si\"`. La primera parte es `False`, así que el resultado es `\"si\"`, que cuenta como verdadero: ¡el `if` siempre entraría! Cada lado del `or` debe ser una comparación completa: `r == \"Si\" or r == \"si\"`."
+    },
+    {
+      "question": "Si la persona falla la primera pregunta, ¿cuántas veces debe ejecutarse `input()` en total?",
+      "options": [
+        "1",
+        "3"
+      ],
+      "answer": 0,
+      "why": "El juego termina al primer error, así que la segunda pregunta nunca se hace. Las pruebas lo revisan: si tu programa pide más respuestas de las que hay, falla con `EOFError`."
+    }
+  ],
+  "hints": [
+    "Cada pregunta solo se hace si la anterior fue correcta: piensa en `if` dentro de `if`, o en una cadena de `elif`.",
+    "Para aceptar varias formas de \"sí\": `respuesta.strip().lower() in [\"si\", \"sí\"]`.",
+    "Estructura posible: `if` falla la 1 → mensaje; `elif` falla la 2 → mensaje; `elif` falla la 3 → mensaje; `else` → ¡Ganaste!"
+  ],
+  "tests": [
+    {
+      "stdin": "Si\nSi\nSi\n",
+      "stdout": "¡Ganaste!\n"
+    },
+    {
+      "stdin": "No\n",
+      "stdout": "Incorrecto. Fin del juego.\n"
+    },
+    {
+      "stdin": "si\nNo\n",
+      "stdout": "Incorrecto. Fin del juego.\n"
+    },
+    {
+      "stdin": "SI\nSí\nno\n",
+      "stdout": "Incorrecto. Fin del juego.\n"
+    },
+    {
+      "stdin": "Sí\nsi\nSi\n",
+      "stdout": "¡Ganaste!\n"
+    }
+  ]
+}

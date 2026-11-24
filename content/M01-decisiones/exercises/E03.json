@@ -1,0 +1,51 @@
+{
+  "id": "M01-E03",
+  "title": "Descuento según la clave",
+  "pdf": 7,
+  "statement": "Lee, en este orden, el **nombre** de un artículo, su **clave** y su **precio original**. Si la clave es `01` el descuento es del 10 %; si es `02`, del 20 % (solo existen esas dos claves).\n\nImprime exactamente cuatro líneas:\n\n```\nArtículo: <nombre>\nClave: <clave>\nPrecio original: <precio con 2 decimales>\nPrecio con descuento: <precio final con 2 decimales>\n```",
+  "starter": "nombre = input()\nclave = input()\nprecio = float(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `print(int(\"01\") == 1)`?",
+      "options": [
+        "True",
+        "False",
+        "Un error"
+      ],
+      "answer": 0,
+      "why": "`int(\"01\")` convierte el texto a número y el cero de la izquierda desaparece: queda 1. Pero si guardas la clave como número, ya no podrás imprimirla como `01`. Por eso conviene dejarla como texto y comparar `clave == \"01\"`."
+    },
+    {
+      "question": "Si `clave = input()` y la persona escribe `01`, ¿qué da `clave == 1`?",
+      "options": [
+        "True",
+        "False"
+      ],
+      "answer": 1,
+      "why": "`input()` devuelve el texto `\"01\"`, y un texto nunca es igual a un número. Compara texto con texto: `clave == \"01\"`."
+    }
+  ],
+  "hints": [
+    "Deja la clave como texto (sin `int()`) para poder imprimirla con su cero.",
+    "Decide el porcentaje con `if clave == \"01\":` … `else:`.",
+    "Precio final = precio − precio × porcentaje / 100. Usa `:.2f` en los dos precios."
+  ],
+  "tests": [
+    {
+      "stdin": "Mouse\n01\n150\n",
+      "stdout": "Artículo: Mouse\nClave: 01\nPrecio original: 150.00\nPrecio con descuento: 135.00\n"
+    },
+    {
+      "stdin": "Teclado\n02\n300\n",
+      "stdout": "Artículo: Teclado\nClave: 02\nPrecio original: 300.00\nPrecio con descuento: 240.00\n"
+    },
+    {
+      "stdin": "Monitor LED\n01\n1299.99\n",
+      "stdout": "Artículo: Monitor LED\nClave: 01\nPrecio original: 1299.99\nPrecio con descuento: 1169.99\n"
+    },
+    {
+      "stdin": "Cable\n02\n12.5\n",
+      "stdout": "Artículo: Cable\nClave: 02\nPrecio original: 12.50\nPrecio con descuento: 10.00\n"
+    }
+  ]
+}
