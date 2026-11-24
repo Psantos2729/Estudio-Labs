@@ -17,7 +17,7 @@ Para guardar progreso, conecta Supabase siguiendo [docs/setup.md](docs/setup.md)
 
 | Fase | Contenido | Estado |
 | --- | --- | --- |
-| 1 | Base: proyecto, regla de 250 líneas, esquema y login, mapa de módulos | en revisión |
+| 1 | Base: proyecto, regla de 250 líneas, esquema y login, mapa de módulos | terminada |
 | 2 | Lecciones y editor con Python (Pyodide) | pendiente |
 | 3 | Examen de dominio calificado por el servidor | pendiente |
 | 4 | Repasos, historial y ReactBits | pendiente |
@@ -26,4 +26,5 @@ Para guardar progreso, conecta Supabase siguiendo [docs/setup.md](docs/setup.md)
 
 - [Reglas del proyecto](CLAUDE.md)
 - [Decisiones de arquitectura](docs/adr/README.md)
-- [Conectar Supabase y Cloudflare](docs/setup.md)
+- [Conectar Supabase y publicar](docs/setup.md)
+- [Continuar el trabajo en otra sesión](docs/CONTINUAR.md)
