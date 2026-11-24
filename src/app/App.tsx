@@ -7,7 +7,7 @@ import { LoginPage } from '@/features/auth/LoginPage';
 export function App() {
   return (
     <Providers>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<MapPage />} />
