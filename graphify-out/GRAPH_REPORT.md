@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-24)
 
 ## Corpus Check
-- 82 files · ~11,554 words
+- 86 files · ~12,173 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 8 file(s) not represented in the graph (top: (none) 3, .css 2, .example 1)
+- Unclassified: 9 file(s) not represented in the graph (top: (none) 3, .css 3, .example 1)
 
 ## Summary
-- 416 nodes · 599 edges · 27 communities (25 shown, 2 thin omitted)
+- 428 nodes · 650 edges · 18 communities (16 shown, 2 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.95)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `fa312f20`
+- Built from commit: `3260d71b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,55 +30,46 @@
 - Continuar pylab en otra sesión
 - steps
 - check.ts
-- ADR-001: React + Vite + TypeScript en Cloudflare Pages
-- scripts
 - adr/README.md
-- ADR-002: Python en el navegador con Pyodide dentro de un Web Worker
+- scripts
 - lessons.ts
-- ADR-003: Supabase como base de datos y autenticación
-- ADR-004: El navegador enseña, el servidor certifica
-- ADR-006: Desbloqueo por dominio con 85% y repasos espaciados
-- ADR-007: Modo invitado sin Supabase
-- ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz
-- ADR-009: ReactBits con carga diferida y movimiento reducido
-- ADR-010: Ningún archivo de más de 250 líneas
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
 2. `Publicar pylab en Cloudflare` - 12 edges
 3. `scripts` - 11 edges
-4. `Continuar pylab en otra sesión` - 10 edges
-5. `MapPage()` - 9 edges
-6. `react` - 8 edges
-7. `vitest` - 8 edges
-8. `displayId()` - 8 edges
-9. `App()` - 7 edges
-10. `ModuleDef` - 7 edges
+4. `react` - 10 edges
+5. `displayId()` - 10 edges
+6. `LessonPage()` - 10 edges
+7. `Continuar pylab en otra sesión` - 10 edges
+8. `vitest` - 9 edges
+9. `MapPage()` - 9 edges
+10. `App()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Consecuencias` --references--> `ExerciseDef`  [INFERRED]
   docs/adr/005-contenido-archivos.md → src/content/types.ts
 - `Consecuencias` --references--> `validateExercise()`  [INFERRED]
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
-- `App()` --calls--> `PrivacyPage()`  [EXTRACTED]
-  src/app/App.tsx → src/features/legal/PrivacyPage.tsx
+- `App()` --calls--> `LessonPage()`  [EXTRACTED]
+  src/app/App.tsx → src/features/lesson/LessonPage.tsx
 - `App()` --calls--> `MapPage()`  [EXTRACTED]
   src/app/App.tsx → src/features/map/MapPage.tsx
-- `ModuleView` --references--> `ModuleDef`  [EXTRACTED]
-  src/features/map/masteryView.ts → src/content/types.ts
+- `ModuleDetail()` --calls--> `lessonsOf()`  [EXTRACTED]
+  src/features/map/ModuleDetail.tsx → src/content/lessons.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (27 total, 2 thin omitted)
+## Communities (18 total, 2 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.06
-Nodes (41): dependencies, pyodide@314.0.7, react@^19.3.1, react-dom@^19.3.1, react-router-dom@^7.18.7, @tanstack/react-query@^5.108.4, zustand@^5.1.0, devDependencies (+33 more)
+Nodes (45): dependencies, marked@18.2.0, pyodide@314.0.7, react@^19.3.1, react-dom@^19.3.1, react-router-dom@^7.18.7, @tanstack/react-query@^5.108.4, zustand@^5.1.0 (+37 more)
 
 ### Community 1 - "AuthProvider.tsx"
-Cohesion: 0.12
-Nodes (21): @supabase/supabase-js@^2.119.2, react, react-router-dom, @supabase/supabase-js, App(), Layout(), Providers(), AuthContext (+13 more)
+Cohesion: 0.10
+Nodes (24): @supabase/supabase-js@^2.119.2, react, react-router-dom, @supabase/supabase-js, App(), Layout(), Providers(), AuthContext (+16 more)
 
 ### Community 2 - "steps"
 Cohesion: 0.08
@@ -86,7 +77,7 @@ Nodes (28): runs-on, services, steps, DATABASE_URL, POSTGRES_DB, POSTGRES_PASSWO
 
 ### Community 3 - "masteryView.ts"
 Cohesion: 0.10
-Nodes (26): ADR-0008, files, MODULES, displayId(), PrivacyPage(), GateCard(), MapPage(), MapState (+18 more)
+Nodes (30): ADR-0005, ADR-0008, files, MODULES, modules, root, BossChallenge, displayId() (+22 more)
 
 ### Community 4 - "Publicar pylab en Cloudflare"
 Cohesion: 0.07
@@ -121,56 +112,20 @@ Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
 ### Community 14 - "check.ts"
-Cohesion: 0.16
-Nodes (16): ADR-0002, pyodide, TestCase, runTests(), sameOutput(), TestResult, cleanTraceback(), execute() (+8 more)
+Cohesion: 0.11
+Nodes (23): ADR-0002, pyodide, getLesson(), lessonsOf(), TestCase, Block, splitBlocks(), LessonPage() (+15 more)
 
-### Community 15 - "ADR-001: React + Vite + TypeScript en Cloudflare Pages"
-Cohesion: 0.40
-Nodes (4): ADR-001: React + Vite + TypeScript en Cloudflare Pages, Consecuencias, Contexto, Decisión
+### Community 15 - "adr/README.md"
+Cohesion: 0.04
+Nodes (37): ADR-001: React + Vite + TypeScript en Cloudflare Pages, Consecuencias, Contexto, Decisión, ADR-002: Python en el navegador con Pyodide dentro de un Web Worker, Consecuencias, Contexto, Decisión (+29 more)
 
 ### Community 16 - "scripts"
 Cohesion: 0.18
 Nodes (11): scripts, build, check-lines, dev, lint, prepare, preview, seed (+3 more)
 
-### Community 17 - "adr/README.md"
-Cohesion: 0.33
-Nodes (4): ADR-005: Contenido como archivos en `content/`, Contexto, Decisión, Decisiones de arquitectura (ADR)
-
-### Community 18 - "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker"
-Cohesion: 0.40
-Nodes (4): ADR-002: Python en el navegador con Pyodide dentro de un Web Worker, Consecuencias, Contexto, Decisión
-
 ### Community 19 - "lessons.ts"
-Cohesion: 0.11
-Nodes (19): ADR-0005, Consecuencias, vitest@^3.2.7, vitest, exerciseFiles, EXERCISES, lessonFiles, LESSONS (+11 more)
-
-### Community 20 - "ADR-003: Supabase como base de datos y autenticación"
-Cohesion: 0.40
-Nodes (4): ADR-003: Supabase como base de datos y autenticación, Consecuencias, Contexto, Decisión
-
-### Community 21 - "ADR-004: El navegador enseña, el servidor certifica"
-Cohesion: 0.40
-Nodes (4): ADR-004: El navegador enseña, el servidor certifica, Consecuencias, Contexto, Decisión
-
-### Community 22 - "ADR-006: Desbloqueo por dominio con 85% y repasos espaciados"
-Cohesion: 0.40
-Nodes (4): ADR-006: Desbloqueo por dominio con 85% y repasos espaciados, Consecuencias, Contexto, Decisión
-
-### Community 23 - "ADR-007: Modo invitado sin Supabase"
-Cohesion: 0.40
-Nodes (4): ADR-007: Modo invitado sin Supabase, Consecuencias, Contexto, Decisión
-
-### Community 24 - "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz"
-Cohesion: 0.40
-Nodes (4): ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz, Consecuencias, Contexto, Decisión
-
-### Community 25 - "ADR-009: ReactBits con carga diferida y movimiento reducido"
-Cohesion: 0.40
-Nodes (4): ADR-009: ReactBits con carga diferida y movimiento reducido, Consecuencias, Contexto, Decisión
-
-### Community 26 - "ADR-010: Ningún archivo de más de 250 líneas"
-Cohesion: 0.40
-Nodes (4): ADR-010: Ningún archivo de más de 250 líneas, Consecuencias, Contexto, Decisión
+Cohesion: 0.13
+Nodes (13): ADR-005: Contenido como archivos en `content/`, Consecuencias, Contexto, Decisión, exerciseFiles, EXERCISES, lessonFiles, LESSONS (+5 more)
 
 ## Knowledge Gaps
 - **5 isolated node(s):** `ADR-0005`, `ADR-0008`, `ADR-0006`, `ADR-0002`, `ADR-0006`
@@ -180,17 +135,17 @@ Nodes (4): ADR-010: Ningún archivo de más de 250 líneas, Consecuencias, Conte
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ADR-005: Contenido como archivos en `content/`` connect `adr/README.md` to `lessons.ts`?**
-  _High betweenness centrality (0.242) - this node is a cross-community bridge._
+- **Why does `ExerciseDef` connect `lessons.ts` to `masteryView.ts`?**
+  _High betweenness centrality (0.187) - this node is a cross-community bridge._
 - **What connects `ADR-0005`, `ADR-0008`, `ADR-0006` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.06464646464646465 - nodes in this community are weakly interconnected._
-- **Why does `Consecuencias` connect `lessons.ts` to `adr/README.md`?**
-  _High betweenness centrality (0.241) - this node is a cross-community bridge._
+  _Cohesion score 0.05952380952380952 - nodes in this community are weakly interconnected._
 - **Should `AuthProvider.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.11586452762923351 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.10384615384615385 - nodes in this community are weakly interconnected._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
 - **Should `masteryView.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.1039136302294197 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09830866807610994 - nodes in this community are weakly interconnected._
+- **Should `Publicar pylab en Cloudflare` be split into smaller, more focused modules?**
+  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._

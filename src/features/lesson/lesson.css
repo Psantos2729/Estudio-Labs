@@ -1,0 +1,19 @@
+/* Pantalla de lección */
+.lesson { width: min(760px, 100%); margin: 0 auto; padding: 24px 16px 48px; display: flex; flex-direction: column; gap: 12px; }
+.lesson__nav { display: flex; justify-content: space-between; gap: 16px; border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
+
+.prose { display: flex; flex-direction: column; gap: 12px; font-size: 15px; }
+.prose h2 { font-family: var(--display); font-size: 20px; margin: 16px 0 0; }
+.prose p, .prose ul, .prose ol { margin: 0 0 8px; }
+.prose code { background: var(--bg-code); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
+.prose pre { background: var(--bg-code); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; overflow-x: auto; }
+.prose pre code { border: 0; padding: 0; }
+
+.runnable { border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--bg-code); overflow: hidden; }
+.runnable__code {
+  display: block; width: 100%; resize: vertical; border: 0; padding: 12px;
+  background: transparent; color: var(--text); font: 14px/1.6 var(--mono);
+}
+.runnable__bar { display: flex; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); }
+.runnable__out { margin: 0; padding: 12px; border-top: 1px solid var(--line); white-space: pre-wrap; color: var(--green); }
+.runnable__err { color: var(--red); }
