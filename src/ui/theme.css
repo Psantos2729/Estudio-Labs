@@ -1,0 +1,123 @@
+/* Tema "Terminal nocturna" (propuesta gráfica 1). */
+:root {
+  --bg: #0b0f14;
+  --bg-raised: #0f141a;
+  --bg-code: #0d1117;
+  --line: #21262d;
+  --line-strong: #30363d;
+  --text: #e6edf3;
+  --muted: #8b98a5;
+  --locked: #7d8590;
+  --green: #3fb950;
+  --green-hi: #56d364;
+  --amber: #d29922;
+  --red: #f85149;
+  --purple: #c297ff;
+  --radius: 8px;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body { margin: 0; min-height: 100%; }
+
+body {
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(139, 152, 165, 0.12) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+a { color: var(--green); text-decoration: none; }
+a:hover { color: var(--green-hi); }
+
+:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+p { margin: 0; }
+
+.display { font-family: var(--display); font-weight: 700; letter-spacing: -0.5px; margin: 0; font-size: 32px; line-height: 1.15; }
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.ok { color: var(--green); }
+.warn { color: var(--amber); }
+.strong { font-weight: 700; }
+.center { text-align: center; padding: 64px 16px; }
+
+.plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+
+.panel {
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.panel--warn { border-color: var(--amber); }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font: 700 13px var(--mono);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn--primary { background: var(--green); color: var(--bg); }
+.btn--primary:hover { background: var(--green-hi); color: var(--bg); }
+.btn--ghost { background: transparent; color: var(--text); border-color: var(--line-strong); }
+.btn--ghost:hover { border-color: var(--muted); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.input {
+  background: var(--bg-code);
+  border: 1px solid var(--line-strong);
+  color: var(--text);
+  border-radius: 6px;
+  padding: 10px;
+  min-height: 44px;
+  font: 14px var(--mono);
+}
+
+/* Estructura general */
+.shell { min-height: 100vh; display: flex; flex-direction: column; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(11, 15, 20, 0.92);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.brand { font-family: var(--display); font-weight: 700; font-size: 20px; color: var(--text); }
+.topbar__nav { display: flex; gap: 18px; font-size: 13px; }
+.topbar__nav a.active { color: var(--text); text-decoration: underline; text-underline-offset: 6px; }
+.topbar__user { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+
+/* Login */
+.login { flex: 1; display: grid; place-items: center; padding: 32px 16px; }
+.login__card { width: min(440px, 100%); gap: 16px; }
+.login__form { display: flex; flex-direction: column; gap: 8px; }
+
+@media (max-width: 640px) {
+  .topbar { gap: 12px; padding: 10px 16px; flex-wrap: wrap; }
+  .topbar__user .small { display: none; }
+  .display { font-size: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

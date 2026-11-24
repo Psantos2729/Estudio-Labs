@@ -1,0 +1,41 @@
+{
+  "id": "M08",
+  "slug": "archivos-de-texto",
+  "position": 8,
+  "title": "Archivos de texto",
+  "summary": "Leer y escribir archivos secuenciales, analizar línea por línea.",
+  "prerequisites": [
+    "M07"
+  ],
+  "concepts": [
+    "open y with",
+    "leer línea por línea",
+    "escribir archivos",
+    "contar y clasificar caracteres",
+    "expresiones regulares básicas"
+  ],
+  "pdfExercises": [
+    21,
+    22,
+    23,
+    24,
+    25,
+    26
+  ],
+  "realTasks": [
+    "Archivos2_21.py",
+    "Práctica_Examen_2-1.py",
+    "Tarea_4_Progra_2-1.py"
+  ],
+  "boss": {
+    "title": "Archivo de números a romanos",
+    "source": "PDF C5 #26"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

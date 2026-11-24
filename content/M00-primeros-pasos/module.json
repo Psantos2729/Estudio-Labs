@@ -1,0 +1,28 @@
+{
+  "id": "M00",
+  "slug": "primeros-pasos",
+  "position": 0,
+  "title": "Primeros pasos",
+  "summary": "Qué es un programa, variables, tipos, entrada y salida, operadores aritméticos.",
+  "prerequisites": [],
+  "concepts": [
+    "variables",
+    "tipos int/float/str",
+    "input y print",
+    "operadores",
+    "f-strings"
+  ],
+  "pdfExercises": [],
+  "realTasks": [],
+  "boss": {
+    "title": "Calculadora de promedio con entrada validada",
+    "source": "propio"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

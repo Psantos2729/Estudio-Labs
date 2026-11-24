@@ -1,0 +1,34 @@
+{
+  "id": "M12",
+  "slug": "datos-con-pandas",
+  "position": 12,
+  "title": "Datos con pandas",
+  "summary": "Series, DataFrame, filtros y estadísticas sobre archivos CSV.",
+  "prerequisites": [
+    "M11"
+  ],
+  "concepts": [
+    "numpy básico",
+    "Series",
+    "DataFrame",
+    "filtros booleanos",
+    "read_csv y estadísticas"
+  ],
+  "pdfExercises": [],
+  "realTasks": [
+    "DataFrame.py",
+    "Tarea4csv.py",
+    "Prueba_Bellaquita_1.py"
+  ],
+  "boss": {
+    "title": "Análisis de pacientes de Hospital.txt",
+    "source": "Tarea4csv.py"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

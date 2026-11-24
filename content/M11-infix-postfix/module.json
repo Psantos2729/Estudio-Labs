@@ -1,0 +1,32 @@
+{
+  "id": "M11",
+  "slug": "infix-postfix",
+  "position": 11,
+  "title": "Infix y postfix",
+  "summary": "Convertir y evaluar expresiones con jerarquía de operadores.",
+  "prerequisites": [
+    "M10"
+  ],
+  "concepts": [
+    "jerarquía de operadores",
+    "infix a postfix",
+    "evaluar postfix",
+    "casos especiales"
+  ],
+  "pdfExercises": [],
+  "realTasks": [
+    "infix_a_postfix.py",
+    "Final_2-3.py"
+  ],
+  "boss": {
+    "title": "Calculadora infix completa",
+    "source": "infix_a_postfix.py + Final_2-3.py"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "M09",
+  "slug": "registros-binarios",
+  "position": 9,
+  "title": "Registros y archivos binarios",
+  "summary": "Registros de tamaño fijo, acceso directo y rutinas de ingreso, consulta y modificación.",
+  "prerequisites": [
+    "M08"
+  ],
+  "concepts": [
+    "registros con struct",
+    "archivos binarios",
+    "acceso directo por número de registro",
+    "alta, consulta y modificación"
+  ],
+  "pdfExercises": [
+    27,
+    28,
+    29
+  ],
+  "realTasks": [],
+  "boss": {
+    "title": "Planilla de empleados con IGSS",
+    "source": "PDF C5 #28"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

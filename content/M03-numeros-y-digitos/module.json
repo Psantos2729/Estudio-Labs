@@ -1,0 +1,34 @@
+{
+  "id": "M03",
+  "slug": "numeros-y-digitos",
+  "position": 3,
+  "title": "Números y dígitos",
+  "summary": "División entera, módulo, descomponer números y cambiar de base.",
+  "prerequisites": [
+    "M02"
+  ],
+  "concepts": [
+    "// y %",
+    "descomponer en dígitos",
+    "binario y decimal",
+    "fechas y edades"
+  ],
+  "pdfExercises": [
+    9,
+    14,
+    16,
+    17
+  ],
+  "realTasks": [],
+  "boss": {
+    "title": "Desglose en billetes de quetzales",
+    "source": "PDF C5 #14"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

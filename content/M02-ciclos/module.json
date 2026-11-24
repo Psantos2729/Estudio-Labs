@@ -1,0 +1,38 @@
+{
+  "id": "M02",
+  "slug": "ciclos",
+  "position": 2,
+  "title": "Ciclos",
+  "summary": "Ciclos for y while, acumuladores, contadores y simulaciones.",
+  "prerequisites": [
+    "M01"
+  ],
+  "concepts": [
+    "for y range",
+    "while",
+    "acumuladores y contadores",
+    "break y continue",
+    "ciclos anidados"
+  ],
+  "pdfExercises": [
+    2,
+    3,
+    4,
+    5,
+    10,
+    15,
+    19
+  ],
+  "realTasks": [],
+  "boss": {
+    "title": "Reloj digital de 0:00:00 a 23:59:59",
+    "source": "PDF C5 #10"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

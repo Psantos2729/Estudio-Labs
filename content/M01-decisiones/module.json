@@ -1,0 +1,37 @@
+{
+  "id": "M01",
+  "slug": "decisiones",
+  "position": 1,
+  "title": "Decisiones",
+  "summary": "Condicionales if/elif/else, operadores lógicos y porcentajes.",
+  "prerequisites": [
+    "M00"
+  ],
+  "concepts": [
+    "if / elif / else",
+    "comparaciones",
+    "and / or / not",
+    "porcentajes"
+  ],
+  "pdfExercises": [
+    1,
+    6,
+    7,
+    8,
+    11,
+    12,
+    13
+  ],
+  "realTasks": [],
+  "boss": {
+    "title": "Salario semanal con horas extra",
+    "source": "PDF C5 #12"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

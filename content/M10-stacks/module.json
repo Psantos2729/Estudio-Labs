@@ -1,0 +1,34 @@
+{
+  "id": "M10",
+  "slug": "stacks",
+  "position": 10,
+  "title": "Stacks",
+  "summary": "La pila como estructura: push, pop, top, empty y sus usos.",
+  "prerequisites": [
+    "M09"
+  ],
+  "concepts": [
+    "clases",
+    "push, pop, top, empty",
+    "overflow y underflow",
+    "símbolos balanceados"
+  ],
+  "pdfExercises": [
+    32
+  ],
+  "realTasks": [
+    "libstack.py",
+    "Parentesis.py"
+  ],
+  "boss": {
+    "title": "Validador de expresiones con 4 tipos de símbolos",
+    "source": "Parentesis.py"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

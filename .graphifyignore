@@ -1,0 +1,12 @@
+# Nunca indexar soluciones ni secretos
+private/
+.env
+.env.local
+# Ruido
+node_modules/
+dist/
+coverage/
+graphify-out/
+supabase/.temp/
+package-lock.json
+supabase/seed.sql

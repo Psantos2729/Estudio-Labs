@@ -1,0 +1,41 @@
+{
+  "id": "M06",
+  "slug": "ordenar-y-buscar",
+  "position": 6,
+  "title": "Ordenamiento y búsqueda",
+  "summary": "Selección, burbuja, inserción, conteo y búsqueda binaria, con medición de costo.",
+  "prerequisites": [
+    "M05"
+  ],
+  "concepts": [
+    "selección",
+    "burbuja y burbuja mejorada",
+    "inserción",
+    "counting sort",
+    "búsqueda binaria",
+    "comparaciones e intercambios"
+  ],
+  "pdfExercises": [
+    30,
+    33,
+    35,
+    36,
+    37
+  ],
+  "realTasks": [
+    "Ordenar_Selección.py",
+    "OrdenarBurbuja.py",
+    "Sort_De_Inserción.py"
+  ],
+  "boss": {
+    "title": "Burbuja normal vs mejorada",
+    "source": "PDF C5 #37"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "0": "package.json",
+  "1": "AuthProvider.tsx",
+  "2": "steps",
+  "3": "masteryView.ts",
+  "4": "mapStore.ts",
+  "5": "compilerOptions",
+  "6": "line-limit.test.mjs",
+  "7": "scripts",
+  "8": "lint",
+  "9": "public.handle_new_user",
+  "10": "test-db.sh",
+  "11": "README.md",
+  "12": "rls_phase1.sql"
+}

@@ -1,0 +1,45 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Regla de 250 líneas
+        run: npm run check-lines
+      - name: Nada de soluciones en el repositorio público
+        run: |
+          if git ls-files | grep -E '(^|/)(solution\.py|private/)'; then
+            echo "Hay soluciones o archivos privados en el repo público"; exit 1
+          fi
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  database:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: estudio
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready --health-interval 5s --health-timeout 5s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Migraciones y pruebas de RLS
+        env:
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/estudio
+        run: bash tools/test-db.sh
