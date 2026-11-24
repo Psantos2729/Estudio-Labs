@@ -26,7 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => data.subscription.unsubscribe();
   }, []);
 
-  const redirectTo = `${window.location.origin}/`;
+  const redirectTo = `${window.location.origin}${import.meta.env.BASE_URL}`;
 
   const value: AuthState = {
     session,

@@ -39,4 +39,4 @@ Durante desarrollo puedes dejar `graphify watch .` corriendo. Lo que se excluye 
 - `src/features/`: una carpeta por funcionalidad (auth, map, …)
 - `src/ui/`: tema, primitivas y componentes de ReactBits
 - `supabase/migrations/`: esquema; `supabase/tests/`: pruebas SQL
-- `docs/adr/`: decisiones de arquitectura; `docs/setup.md` y `docs/setup-cloudflare.md`: cómo conectar Supabase y Cloudflare
+- `docs/adr/`: decisiones de arquitectura; `docs/setup*.md`: cómo conectar Supabase y publicar (GitHub Pages o Cloudflare)

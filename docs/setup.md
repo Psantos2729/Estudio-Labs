@@ -59,7 +59,7 @@ La llave *anon* es pública por diseño: la seguridad la dan las reglas RLS.
 Supabase pausa el proyecto tras 7 días sin actividad. Si pasa, entra al panel y pulsa
 **Restore**; los datos no se pierden.
 
-## 2. Cloudflare Pages (publicar la web)
+## 2. Publicar la web
 
-La guía detallada, paso a paso y con lo que verás en cada pantalla, está en
-[setup-cloudflare.md](setup-cloudflare.md).
+- **Recomendado:** GitHub Pages, todo dentro de GitHub → [setup-github-pages.md](setup-github-pages.md)
+- **Alternativa:** Cloudflare Workers → [setup-cloudflare.md](setup-cloudflare.md)
