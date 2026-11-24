@@ -33,7 +33,10 @@ jobs:
           VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
       # GitHub Pages no sabe de rutas de React: 404.html devuelve la app en cualquier ruta.
-      - run: cp dist/index.html dist/404.html
+      # privacidad/index.html responde 200 (Google revisa esa URL al publicar la app de OAuth).
+      - run: |
+          cp dist/index.html dist/404.html
+          mkdir -p dist/privacidad && cp dist/index.html dist/privacidad/index.html
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
