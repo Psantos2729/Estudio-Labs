@@ -37,7 +37,10 @@ export function Layout() {
           )}
         </div>
       </header>
-      <Outlet />
+      {/* key: cada ruta monta su pantalla de cero (sin estado de la anterior) y entra animada */}
+      <div className="page" key={pathname}>
+        <Outlet />
+      </div>
       <footer className="footer muted small">
         <NavLink to="/privacidad">privacidad</NavLink>
       </footer>

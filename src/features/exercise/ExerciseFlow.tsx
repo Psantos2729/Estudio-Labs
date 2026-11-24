@@ -5,6 +5,7 @@ import { UnderstandStep } from './UnderstandStep';
 import { TextStep, type Field } from './TextStep';
 import { CodeStep } from './CodeStep';
 import { useSavePractice, type Attempt } from './usePractice';
+import { ProgressBar } from '@/ui/primitives/ProgressBar';
 
 const STEPS = ['entender', 'analizar', 'pseudocódigo', 'código y pruebas'];
 
@@ -36,6 +37,7 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
 
   return (
     <>
+      <ProgressBar value={step} max={STEPS.length} label="Pasos completados del ejercicio" />
       <ol className="stepper" aria-label="Pasos del ejercicio">
         {STEPS.map((s, i) => (
           <li key={s} className={i === step ? 'stepper__now' : i < step ? 'stepper__done' : ''}>
@@ -47,10 +49,12 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
           </li>
         ))}
       </ol>
-      {step === 0 && <UnderstandStep exercise={exercise} onDone={() => setStep(1)} />}
-      {step === 1 && <TextStep fields={ANALYSIS} values={notes} onChange={note} next="Al pseudocódigo" onDone={() => setStep(2)} />}
-      {step === 2 && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
-      {step === 3 && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
+      <div className="step-panel" key={step}>
+        {step === 0 && <UnderstandStep exercise={exercise} onDone={() => setStep(1)} />}
+        {step === 1 && <TextStep fields={ANALYSIS} values={notes} onChange={note} next="Al pseudocódigo" onDone={() => setStep(2)} />}
+        {step === 2 && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
+        {step === 3 && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
+      </div>
       <p className="muted small" aria-live="polite">
         {!canSave && 'Modo invitado: tu trabajo no se guarda. Entra para guardarlo.'}
         {save.isPending && 'guardando…'}
