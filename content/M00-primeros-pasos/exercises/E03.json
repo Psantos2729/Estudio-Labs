@@ -1,0 +1,51 @@
+{
+  "id": "M00-E03",
+  "title": "Celsius a Fahrenheit",
+  "statement": "Lee una temperatura en grados Celsius (puede tener decimales) e imprímela en Fahrenheit **con un decimal**, con el formato `<f> °F`.\n\nLa fórmula es `F = C × 9 / 5 + 32`.\n\nEjemplo: con `25` imprime `77.0 °F`.",
+  "starter": "c = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `print(f\"{36.66:.1f}\")`?",
+      "options": [
+        "36.6",
+        "36.7",
+        "36.66"
+      ],
+      "answer": 1,
+      "why": "`:.1f` deja un decimal **redondeando**: 36.66 está más cerca de 36.7 que de 36.6."
+    },
+    {
+      "question": "¿Qué tipo de dato da `float(\"25\")`?",
+      "options": [
+        "int",
+        "float",
+        "str"
+      ],
+      "answer": 1,
+      "why": "`float()` siempre devuelve un número con decimales: `float(\"25\")` es `25.0`. Con temperaturas conviene `float` porque pueden traer decimales, como `36.5`."
+    }
+  ],
+  "hints": [
+    "La temperatura puede tener decimales: usa `float()`, no `int()`.",
+    "Calcula `f = c * 9 / 5 + 32`. La multiplicación y la división van antes que la suma.",
+    "Para un decimal: `print(f\"{f:.1f} °F\")`."
+  ],
+  "tests": [
+    {
+      "stdin": "25\n",
+      "stdout": "77.0 °F\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "32.0 °F\n"
+    },
+    {
+      "stdin": "-40\n",
+      "stdout": "-40.0 °F\n"
+    },
+    {
+      "stdin": "36.6\n",
+      "stdout": "97.9 °F\n"
+    }
+  ]
+}

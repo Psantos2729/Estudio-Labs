@@ -557,6 +557,54 @@
     "ast_hash": "b28866ce0603bc3a820f3f71c2097069",
     "semantic_hash": ""
   },
+  "content/M00-primeros-pasos/exercises/E02.json": {
+    "mtime": 1795560579.3333514,
+    "seen": 1795560638.7710452,
+    "ast_hash": "fe5380a6c17dba6c4209a7058baf3267",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/exercises/E03.json": {
+    "mtime": 1795560579.414268,
+    "seen": 1795560638.771047,
+    "ast_hash": "40d201f12309a735c1fc81a6614c6026",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/exercises/E04.json": {
+    "mtime": 1795560579.5138204,
+    "seen": 1795560638.7710485,
+    "ast_hash": "6977aef5928e49a19e51e6e9c91be1bd",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/exercises/E05.json": {
+    "mtime": 1795560579.5663638,
+    "seen": 1795560638.7710495,
+    "ast_hash": "5f656756e8332f35ccb64659dea8ed7e",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/lessons/02-variables-y-tipos.md": {
+    "mtime": 1795560557.7973728,
+    "seen": 1795560638.7711446,
+    "ast_hash": "6f279596baf582d5e307528e7ecbfc37",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/lessons/03-entrada-con-input.md": {
+    "mtime": 1795560557.7989004,
+    "seen": 1795560638.7711458,
+    "ast_hash": "b78458c7d63564113e8fa57a591501ef",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/lessons/04-operadores.md": {
+    "mtime": 1795560557.8003109,
+    "seen": 1795560638.7711468,
+    "ast_hash": "3ee1280c55b59d4a2d9c87ef899e03eb",
+    "semantic_hash": ""
+  },
+  "content/M00-primeros-pasos/lessons/05-f-strings.md": {
+    "mtime": 1795560557.8017116,
+    "seen": 1795560638.7711475,
+    "ast_hash": "499e303072708b36e63cbc62bc5c7214",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
     "mtime": 1795560266.798997,
     "seen": 1795560466.412281,
