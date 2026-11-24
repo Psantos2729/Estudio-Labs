@@ -39,23 +39,27 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
         </ol>
       </section>
 
-      {view.open && lessons.length > 0 && (
+      {lessons.length > 0 && (
         <section className="panel" aria-label="Lecciones">
-          <p className="small">lecciones</p>
+          <p className="small">lecciones{!view.open && ' · vista previa: se abren al dominar el módulo anterior'}</p>
           <ol className="plain">
             {lessons.map((l, i) => (
-              <li key={l.id}><Link to={`/leccion/${l.id}`}>{read.has(l.id) ? '✓' : `${i + 1}.`} {l.title}</Link></li>
+              <li key={l.id}>{view.open
+                ? <Link to={`/leccion/${l.id}`}>{read.has(l.id) ? '✓' : `${i + 1}.`} {l.title}</Link>
+                : <span className="muted">{i + 1}. {l.title}</span>}</li>
             ))}
           </ol>
         </section>
       )}
 
-      {view.open && exercises.length > 0 && (
+      {exercises.length > 0 && (
         <section className="panel" aria-label="Práctica guiada">
           <p className="small">práctica guiada</p>
           <ol className="plain">
             {exercises.map((e, i) => (
-              <li key={e.id}><Link to={`/ejercicio/${e.id}`}>{i + 1}. {e.title}</Link></li>
+              <li key={e.id}>{view.open
+                ? <Link to={`/ejercicio/${e.id}`}>{i + 1}. {e.title}</Link>
+                : <span className="muted">{i + 1}. {e.title}</span>}</li>
             ))}
           </ol>
         </section>
