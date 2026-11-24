@@ -41,12 +41,12 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
 
       {lessons.length > 0 && (
         <section className="panel" aria-label="Lecciones">
-          <p className="small">lecciones{!view.open && ' · vista previa: se abren al dominar el módulo anterior'}</p>
+          <p className="small">lecciones{!view.open && ' · puedes leerlas ya, pero no cuentan para tu avance'}</p>
           <ol className="plain">
             {lessons.map((l, i) => (
               <li key={l.id}>{view.open
                 ? <Link to={`/leccion/${l.id}`}>{read.has(l.id) ? '✓' : `${i + 1}.`} {l.title}</Link>
-                : <span className="muted">{i + 1}. {l.title}</span>}</li>
+                : <>{i + 1}. {l.title} <Link to={`/leccion/${l.id}?libre`} className="small">desbloquear lección</Link></>}</li>
             ))}
           </ol>
         </section>

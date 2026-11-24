@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useMemo } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { marked } from 'marked';
 import { getLesson, lessonsOf } from '@/content/lessons';
 import { displayId } from '@/content/types';
@@ -16,7 +16,11 @@ export function LessonPage() {
   const lesson = getLesson(lessonId);
   const { views, isLoading } = useModuleViews();
   const markRead = useMarkLessonRead();
-  const open = views.find((v) => v.module.id === lesson?.moduleId)?.open ?? false;
+  const moduleOpen = views.find((v) => v.module.id === lesson?.moduleId)?.open ?? false;
+  // "desbloquear lección" en el mapa: se puede leer, pero no cuenta como progreso (el servidor lo rechazaría).
+  const free = useSearchParams()[0].has('libre');
+  const open = moduleOpen || free;
+  const q = moduleOpen ? '' : '?libre';
   const blocks = useMemo(() => (lesson ? splitBlocks(lesson.body) : []), [lesson]);
   const hasCode = blocks.some((b) => b.kind === 'python');
 
@@ -36,7 +40,7 @@ export function LessonPage() {
   return (
     <main className="lesson">
       <Link to="/mapa" className="small">← mapa</Link>
-      <span className="accent small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}</span>
+      <span className="accent small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}{!moduleOpen && ' · desbloqueada (no cuenta para tu avance)'}</span>
       <ProgressBar value={i + 1} max={siblings.length} label="Avance en las lecciones del módulo" />
       <h1 className="display">{lesson.title}</h1>
       <article className="prose">
@@ -52,9 +56,9 @@ export function LessonPage() {
         ))}
       </article>
       <nav className="lesson__nav">
-        {prev ? <Link to={`/leccion/${prev.id}`}>← {prev.title}</Link> : <span />}
+        {prev ? <Link to={`/leccion/${prev.id}${q}`}>← {prev.title}</Link> : <span />}
         {/* Llegar al final y avanzar cuenta como lección leída. */}
-        <Link to={next ? `/leccion/${next.id}` : '/'} onClick={() => markRead(lesson.id)}>
+        <Link to={next ? `/leccion/${next.id}${q}` : '/'} onClick={() => moduleOpen && markRead(lesson.id)}>
           {next ? `${next.title} →` : 'Terminé las lecciones →'}
         </Link>
       </nav>
