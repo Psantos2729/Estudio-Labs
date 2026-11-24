@@ -629,6 +629,72 @@
     "ast_hash": "37f241ef11690f86851fa70c1a49f93a",
     "semantic_hash": ""
   },
+  "content/M01-decisiones/exercises/E01.json": {
+    "mtime": 1795560966.3912964,
+    "seen": 1795560973.7939892,
+    "ast_hash": "5878a85da73e7ff4831a9b76ec806d95",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/exercises/E02.json": {
+    "mtime": 1795560966.3935995,
+    "seen": 1795560973.793992,
+    "ast_hash": "f54f26e20e64a733eb9ff7622e02d371",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/exercises/E03.json": {
+    "mtime": 1795560966.3935995,
+    "seen": 1795560973.7939932,
+    "ast_hash": "7957804af23d40fb027eb9f207dd0845",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/exercises/E04.json": {
+    "mtime": 1795560966.3935995,
+    "seen": 1795560973.7939944,
+    "ast_hash": "fded847478c607eac76404951e598980",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/exercises/E05.json": {
+    "mtime": 1795560966.3937514,
+    "seen": 1795560973.7939963,
+    "ast_hash": "e0e5f662c06a415da492e92af0745a8a",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/exercises/E06.json": {
+    "mtime": 1795560966.3937514,
+    "seen": 1795560973.7939975,
+    "ast_hash": "3ea3e3159424240ca47a7ae07dd8941b",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/exercises/E07.json": {
+    "mtime": 1795560966.3937514,
+    "seen": 1795560973.793999,
+    "ast_hash": "3fc68be3fea545151ac7944f96ce9ad4",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/lessons/01-if-else.md": {
+    "mtime": 1795560966.3937514,
+    "seen": 1795560973.7941282,
+    "ast_hash": "373162dbe334c5645ef61f22a9cac2f0",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/lessons/02-elif.md": {
+    "mtime": 1795560966.394052,
+    "seen": 1795560973.7941294,
+    "ast_hash": "231c0a9c0f0a2600e5874817a7a64029",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/lessons/03-and-or-not.md": {
+    "mtime": 1795560966.394052,
+    "seen": 1795560973.7941308,
+    "ast_hash": "8f4a7159735c404d6b2508a1144be8eb",
+    "semantic_hash": ""
+  },
+  "content/M01-decisiones/lessons/04-porcentajes.md": {
+    "mtime": 1795560966.394052,
+    "seen": 1795560973.794132,
+    "ast_hash": "ed93ff54dac0781b7d038f8a4da9e306",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
     "mtime": 1795560266.798997,
     "seen": 1795560466.412281,

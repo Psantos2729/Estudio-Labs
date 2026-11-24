@@ -1,0 +1,58 @@
+{
+  "id": "M01-E07",
+  "title": "Descuento en la matrícula por promedio",
+  "pdf": 13,
+  "statement": "Una universidad premia el buen rendimiento:\n\n- Promedio de **8.5 o más**: 30 % de descuento en la matrícula.\n- Promedio **mayor o igual a 7 pero menor que 8.5**: 10 % de descuento.\n- Promedio **mayor que 5.5 y menor que 7**: sin descuento.\n\nLee el costo de la matrícula y el promedio (ambos con decimales) e imprime `Total a pagar: <total>` con dos decimales.\n\n**Ojo, errata del PDF:** el enunciado original no dice qué pasa con promedios de 5.5 o menos. Para este ejercicio, esos estudiantes pagan la matrícula completa (sin descuento).",
+  "starter": "",
+  "predict": [
+    {
+      "question": "Si el primer `if` es `promedio >= 7` y el segundo `elif promedio >= 8.5`, ¿qué descuento recibe un 9.0?",
+      "options": [
+        "30 %",
+        "10 %"
+      ],
+      "answer": 1,
+      "why": "El 9.0 cumple la primera condición (`>= 7`) y Python ya no revisa las demás. Con rangos de \"mayor o igual\", empieza por el más alto: primero `>= 8.5`, luego `>= 7`."
+    },
+    {
+      "question": "¿Qué descuento le toca a un promedio de exactamente 8.5?",
+      "options": [
+        "30 %",
+        "10 %"
+      ],
+      "answer": 0,
+      "why": "\"8.5 o más\" incluye el 8.5: la condición es `promedio >= 8.5`."
+    }
+  ],
+  "hints": [
+    "Ordena los rangos del más alto al más bajo.",
+    "`if promedio >= 8.5` → 30; `elif promedio >= 7` → 10; `else` → 0.",
+    "Total = matrícula − matrícula × descuento / 100, con `:.2f`."
+  ],
+  "tests": [
+    {
+      "stdin": "1000\n9\n",
+      "stdout": "Total a pagar: 700.00\n"
+    },
+    {
+      "stdin": "1000\n8.5\n",
+      "stdout": "Total a pagar: 700.00\n"
+    },
+    {
+      "stdin": "1000\n7\n",
+      "stdout": "Total a pagar: 900.00\n"
+    },
+    {
+      "stdin": "1500\n8.49\n",
+      "stdout": "Total a pagar: 1350.00\n"
+    },
+    {
+      "stdin": "1200\n6.9\n",
+      "stdout": "Total a pagar: 1200.00\n"
+    },
+    {
+      "stdin": "800\n4\n",
+      "stdout": "Total a pagar: 800.00\n"
+    }
+  ]
+}

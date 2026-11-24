@@ -1,0 +1,56 @@
+{
+  "id": "M01-E01",
+  "title": "Multiplicar, restar o sumar",
+  "pdf": 1,
+  "statement": "Lee dos números enteros, uno por línea.\n\n- Si son **iguales**, multiplícalos.\n- Si el **primero es mayor** que el segundo, réstalos (primero − segundo).\n- En cualquier otro caso, súmalos.\n\nImprime `Resultado: <r>`.\n\nEjemplo: con `7` y `3` imprime `Resultado: 4`.",
+  "starter": "a = int(input())\nb = int(input())\n",
+  "predict": [
+    {
+      "question": "Con `a = 2` y `b = 5`, ¿qué caso aplica?",
+      "options": [
+        "Multiplicar",
+        "Restar",
+        "Sumar"
+      ],
+      "answer": 2,
+      "why": "No son iguales y el primero (2) **no** es mayor que el segundo (5), así que cae en \"cualquier otro caso\": se suman."
+    },
+    {
+      "question": "¿Qué hace `a = b` dentro de un `if`, por ejemplo `if a = b:`?",
+      "options": [
+        "Compara a con b",
+        "Es un error de sintaxis",
+        "Guarda b en a y sigue"
+      ],
+      "answer": 1,
+      "why": "Un solo `=` guarda valores; para comparar se usa `==`. Python no deja guardar dentro de un `if` y marca `SyntaxError`."
+    }
+  ],
+  "hints": [
+    "Hay tres casos que no se pueden dar a la vez: usa `if`, `elif` y `else`.",
+    "Primero revisa si son iguales (`a == b`), después si `a > b`.",
+    "Guarda el resultado de cada caso en la misma variable `r` y haz un solo `print` al final."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n3\n",
+      "stdout": "Resultado: 4\n"
+    },
+    {
+      "stdin": "4\n4\n",
+      "stdout": "Resultado: 16\n"
+    },
+    {
+      "stdin": "2\n5\n",
+      "stdout": "Resultado: 7\n"
+    },
+    {
+      "stdin": "-3\n-3\n",
+      "stdout": "Resultado: 9\n"
+    },
+    {
+      "stdin": "0\n9\n",
+      "stdout": "Resultado: 9\n"
+    }
+  ]
+}

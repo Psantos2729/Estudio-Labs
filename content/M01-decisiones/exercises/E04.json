@@ -1,0 +1,45 @@
+{
+  "id": "M01-E04",
+  "title": "Compra de camisas",
+  "pdf": 8,
+  "statement": "Lee la **cantidad** de camisas (entero) y el **precio** de cada una. Si se compran **tres o más**, se descuenta el 20 % del total; si son menos de tres, el 10 %.\n\nImprime `Total a pagar: <total>` con dos decimales.\n\nEjemplo: 3 camisas de 100 → `Total a pagar: 240.00`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Qué descuento le toca a quien compra exactamente 3 camisas?",
+      "options": [
+        "10 %",
+        "20 %"
+      ],
+      "answer": 1,
+      "why": "\"Tres o más\" incluye el 3. En Python eso es `cantidad >= 3`. Si escribieras `cantidad > 3`, quien compra justo 3 recibiría el descuento equivocado: por eso los bordes siempre se prueban."
+    }
+  ],
+  "hints": [
+    "Calcula primero el total sin descuento: cantidad × precio.",
+    "La condición es `cantidad >= 3` (tres **o más**).",
+    "Pagar con 20 % de descuento es pagar el 80 %: `total * 0.80`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n100\n",
+      "stdout": "Total a pagar: 240.00\n"
+    },
+    {
+      "stdin": "2\n100\n",
+      "stdout": "Total a pagar: 180.00\n"
+    },
+    {
+      "stdin": "1\n75.5\n",
+      "stdout": "Total a pagar: 67.95\n"
+    },
+    {
+      "stdin": "10\n49.99\n",
+      "stdout": "Total a pagar: 399.92\n"
+    },
+    {
+      "stdin": "0\n100\n",
+      "stdout": "Total a pagar: 0.00\n"
+    }
+  ]
+}

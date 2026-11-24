@@ -1,0 +1,52 @@
+{
+  "id": "M01-E02",
+  "title": "Calificación final de Computación",
+  "pdf": 6,
+  "statement": "La calificación final se compone de:\n\n- **55 %** del promedio de tres calificaciones parciales.\n- **30 %** de la calificación del examen final.\n- **15 %** de la calificación de un trabajo final.\n\nLee, una por línea, las tres notas parciales, la del examen y la del trabajo (pueden tener decimales). Imprime `Calificación final: <c>` con dos decimales.\n\nEjemplo: con `80`, `90`, `100`, `70` y `100` imprime `Calificación final: 85.50`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Cuánto es el 30 % de 90?",
+      "options": [
+        "30",
+        "27",
+        "60"
+      ],
+      "answer": 1,
+      "why": "El 30 % de 90 es `90 * 30 / 100`, o sea `90 * 0.30` = 27."
+    },
+    {
+      "question": "Si los tres parciales son 80, 90 y 100, ¿qué valor se multiplica por 0.55?",
+      "options": [
+        "270",
+        "90",
+        "100"
+      ],
+      "answer": 1,
+      "why": "El 55 % se aplica al **promedio** de los parciales, no a su suma: (80 + 90 + 100) / 3 = 90."
+    }
+  ],
+  "hints": [
+    "Son cinco datos: necesitas cinco `input()` convertidos con `float()`.",
+    "Calcula primero el promedio de los parciales, con paréntesis: `(p1 + p2 + p3) / 3`.",
+    "Final = promedio × 0.55 + examen × 0.30 + trabajo × 0.15. Muéstralo con `:.2f`."
+  ],
+  "tests": [
+    {
+      "stdin": "80\n90\n100\n70\n100\n",
+      "stdout": "Calificación final: 85.50\n"
+    },
+    {
+      "stdin": "100\n100\n100\n100\n100\n",
+      "stdout": "Calificación final: 100.00\n"
+    },
+    {
+      "stdin": "60\n75.5\n80\n65\n90\n",
+      "stdout": "Calificación final: 72.51\n"
+    },
+    {
+      "stdin": "0\n0\n0\n0\n0\n",
+      "stdout": "Calificación final: 0.00\n"
+    }
+  ]
+}
