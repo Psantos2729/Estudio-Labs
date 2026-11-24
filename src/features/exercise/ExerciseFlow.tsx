@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { exercisesOf } from '@/content/lessons';
 import type { ExerciseDef } from '@/content/types';
 import type { TestResult } from '@/features/runner/check';
 import { UnderstandStep } from './UnderstandStep';
@@ -29,15 +31,19 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
   const [notes, setNotes] = useState<Record<string, string>>(saved?.notes ?? {});
   const note = (k: string, v: string) => setNotes({ ...notes, [k]: v });
   const save = useSavePractice(exercise.id);
+  const [passed, setPassed] = useState(false);
+  const siblings = exercisesOf(exercise.id.slice(0, 3));
+  const next = siblings[siblings.findIndex((e) => e.id === exercise.id) + 1];
 
   const onTested = (code: string, results: TestResult[]) => {
+    setPassed(results.every((r) => r.passed));
     if (!canSave) return;
     save.mutate({ code, notes, tests_passed: results.filter((r) => r.passed).length, tests_total: results.length });
   };
 
   return (
     <>
-      <ProgressBar value={step} max={STEPS.length} label="Pasos completados del ejercicio" />
+      <ProgressBar value={passed ? STEPS.length : step} max={STEPS.length} label="Pasos completados del ejercicio" />
       <ol className="stepper" aria-label="Pasos del ejercicio">
         {STEPS.map((s, i) => (
           <li key={s} className={i === step ? 'stepper__now' : i < step ? 'stepper__done' : ''}>
@@ -55,6 +61,11 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
         {step === 2 && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
         {step === 3 && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
       </div>
+      {passed && (
+        <Link className="btn btn--primary" to={next ? `/ejercicio/${next.id}` : '/'}>
+          {next ? `Continuar: ${next.title} →` : 'Terminé los ejercicios →'}
+        </Link>
+      )}
       <p className="muted small" aria-live="polite">
         {!canSave && 'Modo invitado: tu trabajo no se guarda. Entra para guardarlo.'}
         {save.isPending && 'guardando…'}

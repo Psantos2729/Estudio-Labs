@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "tools/seed-catalog.mjs": {
-    "mtime": 1795553868.6129954,
-    "seen": 1795555747.754916,
-    "ast_hash": "a3631620d9288a396db9767e7a12abbb",
+    "mtime": 1795563490.0294895,
+    "seen": 1795563519.325402,
+    "ast_hash": "a34e9e0d3c9656fa7548e5e23bda1a1a",
     "semantic_hash": ""
   },
   "tools/test-db.sh": {
@@ -312,9 +312,9 @@
     "semantic_hash": ""
   },
   "supabase/tests/auth_stub.sql": {
-    "mtime": 1795553868.612865,
-    "seen": 1795555747.7549098,
-    "ast_hash": "b5774a642accc6b112aa8a1eed14710a",
+    "mtime": 1795563856.604035,
+    "seen": 1795564260.0749412,
+    "ast_hash": "2c279e54d5874774618b18551a238d22",
     "semantic_hash": ""
   },
   "supabase/tests/rls_phase1.sql": {
@@ -438,9 +438,9 @@
     "semantic_hash": ""
   },
   "docs/setup.md": {
-    "mtime": 1795562302.5858984,
-    "seen": 1795562335.7540905,
-    "ast_hash": "693621acc9ccdfe857874b6117190171",
+    "mtime": 1795563865.8517954,
+    "seen": 1795564260.074984,
+    "ast_hash": "a5abb438763dcf70da56cc9e36ecc7a8",
     "semantic_hash": ""
   },
   "content/M00-primeros-pasos/exercises/E01.json": {
@@ -600,9 +600,9 @@
     "semantic_hash": ""
   },
   "src/features/exercise/ExerciseFlow.tsx": {
-    "mtime": 1795561697.646471,
-    "seen": 1795561753.6913798,
-    "ast_hash": "5b5d40fb5da9b52e9c9e7c6710fbc344",
+    "mtime": 1795564252.40236,
+    "seen": 1795564260.074882,
+    "ast_hash": "26c401b1d8dc68286b1625a10f606410",
     "semantic_hash": ""
   },
   "src/features/exercise/usePractice.ts": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "src/features/lesson/useLessonProgress.ts": {
-    "mtime": 1795562302.5633466,
-    "seen": 1795562335.7539635,
-    "ast_hash": "186de4582904bcb1b9198f8a61127785",
+    "mtime": 1795563321.993719,
+    "seen": 1795563519.3253498,
+    "ast_hash": "79b95ec11605bfb8b4ed9485f9a782d4",
     "semantic_hash": ""
   },
   "supabase/migrations/20261124000006_lesson_progress.sql": {
@@ -753,6 +753,24 @@
     "mtime": 1795562274.6120312,
     "seen": 1795562335.7540379,
     "ast_hash": "a3b6289ace0b4f4493de0f851caca386",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261124000007_fill_mastery.sql": {
+    "mtime": 1795563490.0107226,
+    "seen": 1795563519.3253896,
+    "ast_hash": "71af244f57f11fdd0d890e2b4c9ffbe6",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_fill_mastery.sql": {
+    "mtime": 1795563497.7878432,
+    "seen": 1795563519.3253927,
+    "ast_hash": "4f2fb0dcfeafdfec554c1da7185c3adc",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261124000008_read_grants.sql": {
+    "mtime": 1795563856.6021922,
+    "seen": 1795564260.0749395,
+    "ast_hash": "97926217e2bef290fbe2c999d1a6b5ac",
     "semantic_hash": ""
   },
   "package-lock.json": {

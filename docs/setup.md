@@ -22,9 +22,11 @@ En el panel, abre **SQL Editor** y ejecuta, **en este orden**, el contenido de c
 4. `supabase/migrations/20261124000004_new_user.sql`
 5. `supabase/migrations/20261124000005_practice.sql` (fase 2: intentos de práctica)
 6. `supabase/migrations/20261124000006_lesson_progress.sql` (fase 2: lecciones leídas)
-7. `supabase/seed.sql` (carga los 13 módulos)
+7. `supabase/migrations/20261124000007_fill_mastery.sql` (da módulos a cuentas creadas antes del seed)
+8. `supabase/migrations/20261124000008_read_grants.sql` (permiso de lectura para la página)
+9. `supabase/seed.sql` (carga los 13 módulos)
 
-Si ya tenías las tablas de la fase 1, solo ejecuta los archivos nuevos (5 y 6).
+Si ya tenías las tablas de la fase 1, solo ejecuta los archivos nuevos (5 a 8).
 
 No ejecutes nada de `supabase/tests/`: esos archivos solo sirven para probar en local.
 
