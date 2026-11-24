@@ -13,3 +13,6 @@ Cada módulo es una carpeta con `module.json` (y luego lecciones y ejercicios). 
 ## Consecuencias
 
 Las soluciones y casos ocultos van en `private/`, que nunca se sube (el repo es público).
+
+Formato (fase 2): `lessons/NN-nombre.md` empieza con `# Título`; `exercises/ENN.json` sigue `ExerciseDef`
+(`src/content/types.ts`) y lo valida `validateExercise`. Solo pruebas públicas; las ocultas van a la base.
