@@ -19,7 +19,8 @@ export function Layout() {
           pylab<span className="ok">_</span>
         </NavLink>
         <nav className="topbar__nav" aria-label="Principal">
-          <NavLink to="/">mapa</NavLink>
+          <NavLink to="/" end>inicio</NavLink>
+          <NavLink to="/mapa">mapa</NavLink>
           <span className="muted" title="Disponible en la fase 4">repaso</span>
           <span className="muted" title="Disponible en la fase 4">historial</span>
         </nav>

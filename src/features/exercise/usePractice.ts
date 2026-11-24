@@ -47,3 +47,24 @@ export function useSavePractice(exerciseId: string) {
     onSuccess: () => qc.invalidateQueries({ queryKey: ['practice'] }),
   });
 }
+
+/** Resumen de toda la práctica del usuario: qué ejercicios resolvió y cuántos intentos lleva. */
+export function usePracticeSummary() {
+  const userId = useAuth().session?.user.id;
+  const query = useQuery({
+    queryKey: ['practice', userId, 'summary'],
+    enabled: Boolean(supabase && userId),
+    queryFn: async () => {
+      // shortcut: trae todos los intentos; si algún día son miles, resumirlos con una vista en la base.
+      const { data, error } = await supabase!.from('practice_attempts').select('exercise_id, tests_passed, tests_total');
+      if (error) throw error;
+      return data as { exercise_id: string; tests_passed: number; tests_total: number }[];
+    },
+  });
+  const rows = query.data ?? [];
+  return {
+    passed: new Set(rows.filter((r) => r.tests_passed === r.tests_total).map((r) => r.exercise_id)),
+    attempts: rows.length,
+    isLoading: Boolean(userId) && query.isLoading,
+  };
+}
