@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-24)
 
 ## Corpus Check
-- 127 files · ~21,718 words
+- 128 files · ~21,836 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 11 file(s) not represented in the graph (top: .css 5, (none) 3, .example 1)
 
 ## Summary
-- 559 nodes · 926 edges · 30 communities (24 shown, 6 thin omitted)
+- 560 nodes · 930 edges · 34 communities (27 shown, 7 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 2 edges (avg confidence: 0.95)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bee69772`
+- Built from commit: `c7d994ed`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -22,14 +22,14 @@
 - HomePage.tsx
 - Publicar pylab en Cloudflare
 - compilerOptions
-- line-limit.test.mjs
+- App.tsx
 - ¿Qué es un programa?
 - lint
 - public.handle_new_user
 - test-db.sh
 - Continuar pylab en otra sesión
 - steps
-- check.ts
+- execute.test.ts
 - adr/README.md
 - scripts
 - package.json
@@ -41,7 +41,10 @@
 - Combinar condiciones: and, or, not
 - División entera (//) y residuo (%)
 - Mostrar resultados con f-strings
+- dependencies
 - Operadores aritméticos
+- eslint.config.js
+- vite
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 17 edges
@@ -60,33 +63,33 @@
   docs/adr/005-contenido-archivos.md → src/content/types.ts
 - `Consecuencias` --references--> `validateExercise()`  [INFERRED]
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
-- `run()` --calls--> `runPython()`  [EXTRACTED]
-  src/features/lesson/RunnableCode.tsx → src/features/runner/runner.ts
-- `useMarkLessonRead()` --calls--> `useAuth()`  [EXTRACTED]
-  src/features/lesson/useLessonProgress.ts → src/features/auth/AuthProvider.tsx
 - `Props` --references--> `ExerciseDef`  [EXTRACTED]
   src/features/exercise/ExerciseFlow.tsx → src/content/types.ts
+- `ExerciseFlow()` --calls--> `exercisesOf()`  [EXTRACTED]
+  src/features/exercise/ExerciseFlow.tsx → src/content/lessons.ts
+- `ExercisePage()` --calls--> `ExerciseFlow()`  [EXTRACTED]
+  src/features/exercise/ExercisePage.tsx → src/features/exercise/ExerciseFlow.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (30 total, 6 thin omitted)
+## Communities (34 total, 7 thin omitted)
 
 ### Community 0 - "Variables y tipos"
 Cohesion: 0.40
 Nodes (4): El orden importa, Los tres tipos del módulo, Nombres de variables, Variables y tipos
 
 ### Community 1 - "App.tsx"
-Cohesion: 0.08
-Nodes (36): marked@18.2.0, marked, react, react-router-dom, App(), Layout(), Providers(), getLesson() (+28 more)
+Cohesion: 0.07
+Nodes (40): marked@18.2.0, marked, react, Layout(), getLesson(), TestCase, CodeEditor(), Props (+32 more)
 
 ### Community 2 - "steps"
 Cohesion: 0.08
 Nodes (28): runs-on, services, steps, DATABASE_URL, POSTGRES_DB, POSTGRES_PASSWORD, jobs, database (+20 more)
 
 ### Community 3 - "HomePage.tsx"
-Cohesion: 0.07
-Nodes (46): ADR-0008, @supabase/supabase-js, @tanstack/react-query, exerciseFiles, EXERCISES, exercisesOf(), getExercise(), lessonFiles (+38 more)
+Cohesion: 0.05
+Nodes (60): ADR-0005, ADR-0008, ADR-005: Contenido como archivos en `content/`, Consecuencias, Contexto, Decisión, zustand@^5.1.0, vitest@^3.2.7 (+52 more)
 
 ### Community 4 - "Publicar pylab en Cloudflare"
 Cohesion: 0.07
@@ -96,9 +99,9 @@ Nodes (26): 1.1 Crear el proyecto, 1.2 Crear las tablas, 1.3 Activar el inicio d
 Cohesion: 0.11
 Nodes (18): compilerOptions, baseUrl, isolatedModules, jsx, lib, module, moduleResolution, noEmit (+10 more)
 
-### Community 6 - "line-limit.test.mjs"
-Cohesion: 0.08
-Nodes (25): ADR-0005, ADR-005: Contenido como archivos en `content/`, Consecuencias, Contexto, Decisión, vitest@^3.2.7, vitest, root (+17 more)
+### Community 6 - "App.tsx"
+Cohesion: 0.10
+Nodes (25): @tanstack/react-query@^5.108.4, react-router-dom, @supabase/supabase-js, @tanstack/react-query, App(), Providers(), getExercise(), AuthContext (+17 more)
 
 ### Community 7 - "¿Qué es un programa?"
 Cohesion: 0.50
@@ -120,9 +123,9 @@ Nodes (22): Comandos, Contexto con graphify, Dónde está cada cosa, Reglas del 
 Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
-### Community 14 - "check.ts"
-Cohesion: 0.11
-Nodes (20): ADR-0002, pyodide, TestCase, CodeEditor(), Props, CodeStep(), TestResults(), runTests() (+12 more)
+### Community 14 - "execute.test.ts"
+Cohesion: 0.39
+Nodes (5): ADR-0002, pyodide, cleanTraceback(), execute(), ready
 
 ### Community 15 - "adr/README.md"
 Cohesion: 0.04
@@ -133,8 +136,8 @@ Cohesion: 0.18
 Nodes (11): scripts, build, check-lines, dev, lint, prepare, preview, seed (+3 more)
 
 ### Community 17 - "package.json"
-Cohesion: 0.05
-Nodes (51): dependencies, codemirror@6.0.2, @codemirror/commands@6.11.1, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, pyodide@314.0.7, react@^19.3.1 (+43 more)
+Cohesion: 0.14
+Nodes (19): devDependencies, eslint@^9.39.5, lefthook@^1.13.6, @types/node@^22.20.5, @types/react@^19.3.0, @types/react-dom@^19.3.0, typescript@~5.8.3, wrangler@^4.168.0 (+11 more)
 
 ### Community 18 - "Leer datos con input"
 Cohesion: 0.40
@@ -168,24 +171,36 @@ Nodes (11): Antes de seguir, Dar la vuelta en un ciclo, División entera (//) y 
 Cohesion: 0.40
 Nodes (4): Controlar los decimales, Dentro de las llaves puede ir una cuenta, Mostrar resultados con f-strings, print con comas vs. f-string
 
+### Community 29 - "dependencies"
+Cohesion: 0.12
+Nodes (17): dependencies, codemirror@6.0.2, @codemirror/commands@6.11.1, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, pyodide@314.0.7, react@^19.3.1 (+9 more)
+
+### Community 31 - "eslint.config.js"
+Cohesion: 0.22
+Nodes (8): @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, typescript-eslint@^8.74.0, @eslint/js, eslint-plugin-react-hooks, globals, typescript-eslint
+
+### Community 32 - "vite"
+Cohesion: 0.33
+Nodes (4): vite@^6.4.6, @vitejs/plugin-react@^4.7.0, vite, @vitejs/plugin-react
+
 ## Knowledge Gaps
 - **5 isolated node(s):** `ADR-0002`, `ADR-0008`, `ADR-0006`, `ADR-0006`, `ADR-0005`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 255 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **6 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 256 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **7 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ExerciseDef` connect `line-limit.test.mjs` to `App.tsx`, `HomePage.tsx`, `check.ts`?**
+- **Why does `ExerciseDef` connect `HomePage.tsx` to `App.tsx`?**
   _High betweenness centrality (0.173) - this node is a cross-community bridge._
 - **What connects `ADR-0002`, `ADR-0008`, `ADR-0006` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07518796992481203 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06980433632998413 - nodes in this community are weakly interconnected._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
 - **Should `HomePage.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07355769230769231 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05220883534136546 - nodes in this community are weakly interconnected._
 - **Should `Publicar pylab en Cloudflare` be split into smaller, more focused modules?**
   _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**

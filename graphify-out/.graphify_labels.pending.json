@@ -5,7 +5,7 @@
   "3": "HomePage.tsx",
   "4": "Publicar pylab en Cloudflare",
   "5": "compilerOptions",
-  "6": "line-limit.test.mjs",
+  "6": "App.tsx",
   "7": "¿Qué es un programa?",
   "8": "lint",
   "9": "public.handle_new_user",
@@ -13,7 +13,7 @@
   "11": "Continuar pylab en otra sesión",
   "12": "rls_phase1.sql",
   "13": "steps",
-  "14": "check.ts",
+  "14": "execute.test.ts",
   "15": "adr/README.md",
   "16": "scripts",
   "17": "package.json",
@@ -28,5 +28,9 @@
   "26": "rls_lessons.sql",
   "27": "Mostrar resultados con f-strings",
   "28": "rls_fill_mastery.sql",
-  "30": "Operadores aritméticos"
+  "29": "dependencies",
+  "30": "Operadores aritméticos",
+  "31": "eslint.config.js",
+  "32": "vite",
+  "33": "20261124000008_read_grants.sql"
 }
