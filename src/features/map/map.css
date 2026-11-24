@@ -1,0 +1,76 @@
+/* Mapa de módulos: ruta | detalle | puerta del examen */
+.map {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr) 320px;
+  gap: 20px;
+  padding: 20px 24px 32px;
+  align-items: start;
+}
+
+.route { position: sticky; top: 76px; }
+.route__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.route__item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18px 36px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: var(--text);
+  font: 13px var(--mono);
+  text-align: left;
+  cursor: pointer;
+}
+.route__item:hover { background: rgba(255, 255, 255, 0.03); }
+.route__item[aria-current='true'] { border-color: var(--green); background: rgba(63, 185, 80, 0.08); }
+.route__icon { color: var(--muted); }
+.route__id { color: var(--muted); }
+.route__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.route__score { font-size: 12px; color: var(--muted); }
+
+.route__item--mastered .route__icon,
+.route__item--mastered .route__score { color: var(--green); }
+.route__item--in_progress .route__icon,
+.route__item--available .route__icon,
+.route__item--in_progress .route__score { color: var(--amber); }
+.route__item--reopened .route__icon,
+.route__item--reopened .route__score { color: var(--red); }
+.route__item--locked { color: var(--locked); }
+
+.detail { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.detail__head { display: flex; flex-direction: column; gap: 8px; }
+.detail__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; counter-reset: step; }
+.steps__item {
+  counter-increment: step;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+}
+.steps__item::before { content: counter(step); color: var(--green); font-weight: 700; font-size: 12px; }
+.steps__name { font-weight: 700; font-size: 13px; }
+.steps__item--locked { opacity: 0.55; }
+.steps__item--locked::before { content: counter(step) ' · bloqueado'; color: var(--locked); }
+
+.gate { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 76px; }
+
+@media (max-width: 1180px) {
+  .map { grid-template-columns: 280px minmax(0, 1fr); }
+  .gate { grid-column: 1 / -1; position: static; }
+}
+
+@media (max-width: 760px) {
+  .map { grid-template-columns: minmax(0, 1fr); padding: 16px; }
+  .route { position: static; }
+  .steps { grid-template-columns: minmax(0, 1fr); }
+  .detail__grid { grid-template-columns: minmax(0, 1fr); }
+}

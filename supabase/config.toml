@@ -1,0 +1,9 @@
+# Configuración mínima para la CLI de Supabase (supabase link / db push).
+project_id = "estudio-labs"
+
+[db]
+major_version = 15
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]

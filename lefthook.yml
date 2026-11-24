@@ -1,0 +1,9 @@
+# Se instala con `npx lefthook install` (lo hace `npm install` vía prepare).
+pre-commit:
+  parallel: true
+  commands:
+    check-lines:
+      run: node tools/check-lines.mjs
+    lint:
+      glob: "*.{ts,tsx,js,mjs}"
+      run: npx eslint {staged_files}

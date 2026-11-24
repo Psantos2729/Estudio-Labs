@@ -1,0 +1,33 @@
+{
+  "id": "M07",
+  "slug": "matrices",
+  "position": 7,
+  "title": "Matrices",
+  "summary": "Listas de listas: crear, recorrer, sumar, multiplicar y trasponer.",
+  "prerequisites": [
+    "M06"
+  ],
+  "concepts": [
+    "listas de listas",
+    "recorrido por filas y columnas",
+    "suma y multiplicación",
+    "traspuesta",
+    "tableros"
+  ],
+  "pdfExercises": [],
+  "realTasks": [
+    "matrices.py",
+    "ajedrez.py"
+  ],
+  "boss": {
+    "title": "Multiplicación de matrices con validación",
+    "source": "matrices.py"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}

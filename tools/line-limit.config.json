@@ -1,0 +1,9 @@
+{
+  "maxLines": 250,
+  "extensions": [".ts", ".tsx", ".js", ".mjs", ".cjs", ".py", ".sql", ".md", ".json", ".css", ".html", ".yml", ".yaml", ".toml"],
+  "ignoreDirs": ["node_modules", "dist", ".git", "graphify-out", "private", "coverage", "supabase/.temp"],
+  "ignoreFiles": {
+    "package-lock.json": "Generado por npm; nadie lo edita a mano.",
+    "supabase/seed.sql": "Generado por tools/seed-catalog.mjs desde content/."
+  }
+}

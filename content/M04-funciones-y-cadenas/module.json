@@ -1,0 +1,35 @@
+{
+  "id": "M04",
+  "slug": "funciones-y-cadenas",
+  "position": 4,
+  "title": "Funciones y cadenas",
+  "summary": "Funciones con parámetros y retorno, recorrido de cadenas y tablas de conversión.",
+  "prerequisites": [
+    "M03"
+  ],
+  "concepts": [
+    "def y return",
+    "parámetros",
+    "recorrer cadenas",
+    "palíndromos",
+    "tablas de conversión"
+  ],
+  "pdfExercises": [
+    18,
+    20
+  ],
+  "realTasks": [
+    "Palindromo.py"
+  ],
+  "boss": {
+    "title": "Número a letras de 1 a 99,999",
+    "source": "PDF C5 #18"
+  },
+  "passScore": 85,
+  "reviewDays": [
+    3,
+    7,
+    21,
+    60
+  ]
+}
