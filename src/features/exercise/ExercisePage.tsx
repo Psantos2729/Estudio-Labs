@@ -21,13 +21,13 @@ export function ExercisePage() {
     if (open && exercise) warmUp(); // Python baja mientras el estudiante lee y analiza
   }, [open, exercise]);
 
-  if (!exercise) return <p className="center muted">Ese ejercicio no existe. <Link to="/">volver al mapa</Link></p>;
+  if (!exercise) return <p className="center muted">Ese ejercicio no existe. <Link to="/mapa">volver al mapa</Link></p>;
   if (isLoading || last.isLoading) return <p className="center muted">cargando progreso…</p>;
-  if (!open) return <p className="center warn">Este módulo está bloqueado. <Link to="/">volver al mapa</Link></p>;
+  if (!open) return <p className="center warn">Este módulo está bloqueado. <Link to="/mapa">volver al mapa</Link></p>;
 
   return (
     <main className="lesson">
-      <Link to="/" className="small">← mapa</Link>
+      <Link to="/mapa" className="small">← mapa</Link>
       <span className="accent small">{displayId(moduleId)} · ejercicio{exercise.pdf ? ` · PDF C5 #${exercise.pdf}` : ''}</span>
       <h1 className="display">{exercise.title}</h1>
       <ExerciseFlow key={exercise.id} exercise={exercise} saved={last.attempt} canSave={last.canSave} />

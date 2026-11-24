@@ -102,15 +102,15 @@
     "semantic_hash": ""
   },
   "src/app/App.tsx": {
-    "mtime": 1795560266.2241457,
-    "seen": 1795560466.4121947,
-    "ast_hash": "66000e5a4fa75ce13b6529cc75320818",
+    "mtime": 1795562090.8020954,
+    "seen": 1795562179.1792011,
+    "ast_hash": "dea040869b9f7074957572369a204e57",
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
-    "mtime": 1795561694.8418424,
-    "seen": 1795561753.691365,
-    "ast_hash": "d7313084670e01a20a11d3f46ebc0500",
+    "mtime": 1795562090.8025591,
+    "seen": 1795562179.179203,
+    "ast_hash": "4a6fa463bc19ccb273dabfc13a5b806a",
     "semantic_hash": ""
   },
   "src/app/Providers.tsx": {
@@ -498,9 +498,9 @@
     "semantic_hash": ""
   },
   "src/features/lesson/LessonPage.tsx": {
-    "mtime": 1795561694.8414254,
-    "seen": 1795561753.6913893,
-    "ast_hash": "0e12dedf203b598f7885254fba73bc18",
+    "mtime": 1795562090.8031092,
+    "seen": 1795562179.179237,
+    "ast_hash": "7e20c0dc58a3b58f812e7797afd58435",
     "semantic_hash": ""
   },
   "src/features/lesson/RunnableCode.tsx": {
@@ -534,9 +534,9 @@
     "semantic_hash": ""
   },
   "src/features/exercise/ExercisePage.tsx": {
-    "mtime": 1795561711.3424442,
-    "seen": 1795561753.6913812,
-    "ast_hash": "90867f431a4370cd9fc40d1e8d5c1437",
+    "mtime": 1795562090.802875,
+    "seen": 1795562179.1792219,
+    "ast_hash": "ffcc78dd87f2b0dd02d43dd33ccd98f7",
     "semantic_hash": ""
   },
   "src/features/exercise/TestResults.tsx": {
@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "src/features/exercise/usePractice.ts": {
-    "mtime": 1795560812.5270293,
-    "seen": 1795560819.6568027,
-    "ast_hash": "3c50b60842f2c10c359da1aba4e0e406",
+    "mtime": 1795562090.780483,
+    "seen": 1795562179.179227,
+    "ast_hash": "3f016b116df30195a017e50d795aea65",
     "semantic_hash": ""
   },
   "supabase/migrations/20261124000005_practice.sql": {
@@ -705,6 +705,36 @@
     "mtime": 1795560557.8017116,
     "seen": 1795561753.6914496,
     "ast_hash": "499e303072708b36e63cbc62bc5c7214",
+    "semantic_hash": ""
+  },
+  "src/features/home/HomePage.tsx": {
+    "mtime": 1795562090.782712,
+    "seen": 1795562179.1792283,
+    "ast_hash": "c91830ba8b65eef00409045d2cdff86e",
+    "semantic_hash": ""
+  },
+  "src/features/home/ProgressRing.tsx": {
+    "mtime": 1795562068.0382695,
+    "seen": 1795562179.1792297,
+    "ast_hash": "147180c554364f1cf47417f5386bdef0",
+    "semantic_hash": ""
+  },
+  "src/features/home/nextStep.test.ts": {
+    "mtime": 1795562068.0353606,
+    "seen": 1795562179.1792312,
+    "ast_hash": "c51991c0caeda54b195f1b85745a5c0d",
+    "semantic_hash": ""
+  },
+  "src/features/home/nextStep.ts": {
+    "mtime": 1795562068.032913,
+    "seen": 1795562179.1792324,
+    "ast_hash": "9c88b560af9455a86a5175bd0e5e9a66",
+    "semantic_hash": ""
+  },
+  "src/features/home/tips.ts": {
+    "mtime": 1795562068.036837,
+    "seen": 1795562179.179233,
+    "ast_hash": "0f12239e013703fcdd9f171689ea2ef6",
     "semantic_hash": ""
   },
   "package-lock.json": {

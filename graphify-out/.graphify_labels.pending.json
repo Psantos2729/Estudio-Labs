@@ -1,6 +1,6 @@
 {
   "0": "Variables y tipos",
-  "1": "AuthProvider.tsx",
+  "1": "App.tsx",
   "2": "steps",
   "3": "masteryView.ts",
   "4": "Publicar pylab en Cloudflare",
@@ -16,11 +16,11 @@
   "14": "check.ts",
   "15": "ADR-001: React + Vite + TypeScript en Cloudflare Pages",
   "16": "scripts",
-  "17": "package.json",
+  "17": "dependencies",
   "18": "Leer datos con input",
   "19": "rls_practice.sql",
   "20": "Porcentajes y descuentos",
-  "21": "LessonPage.tsx",
+  "21": "supabase.ts",
   "22": "Tomar decisiones con if y else",
   "23": "Más de dos caminos con elif",
   "24": "Combinar condiciones: and, or, not",
@@ -36,5 +36,8 @@
   "34": "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz",
   "35": "ADR-009: ReactBits con carga diferida y movimiento reducido",
   "36": "ADR-010: Ningún archivo de más de 250 líneas",
-  "37": "adr/README.md"
+  "37": "package.json",
+  "38": "eslint.config.js",
+  "39": "CodeEditor.tsx",
+  "40": "vite"
 }

@@ -22,9 +22,9 @@ export function LessonPage() {
     if (open && hasCode) warmUp();
   }, [open, hasCode]);
 
-  if (!lesson) return <p className="center muted">Esa lección no existe. <Link to="/">volver al mapa</Link></p>;
+  if (!lesson) return <p className="center muted">Esa lección no existe. <Link to="/mapa">volver al mapa</Link></p>;
   if (isLoading) return <p className="center muted">cargando progreso…</p>;
-  if (!open) return <p className="center warn">Este módulo está bloqueado. <Link to="/">volver al mapa</Link></p>;
+  if (!open) return <p className="center warn">Este módulo está bloqueado. <Link to="/mapa">volver al mapa</Link></p>;
 
   const siblings = lessonsOf(lesson.moduleId);
   const i = siblings.findIndex((l) => l.id === lesson.id);
@@ -33,7 +33,7 @@ export function LessonPage() {
 
   return (
     <main className="lesson">
-      <Link to="/" className="small">← mapa</Link>
+      <Link to="/mapa" className="small">← mapa</Link>
       <span className="accent small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}</span>
       <ProgressBar value={i + 1} max={siblings.length} label="Avance en las lecciones del módulo" />
       <h1 className="display">{lesson.title}</h1>
@@ -51,7 +51,7 @@ export function LessonPage() {
       </article>
       <nav className="lesson__nav">
         {prev ? <Link to={`/leccion/${prev.id}`}>← {prev.title}</Link> : <span />}
-        {next ? <Link to={`/leccion/${next.id}`}>{next.title} →</Link> : <Link to="/">volver al mapa →</Link>}
+        {next ? <Link to={`/leccion/${next.id}`}>{next.title} →</Link> : <Link to="/mapa">volver al mapa →</Link>}
       </nav>
     </main>
   );
