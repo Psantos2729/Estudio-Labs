@@ -96,15 +96,15 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1795556452.7094185,
-    "seen": 1795556582.2691236,
-    "ast_hash": "b1ff583df51f97c656452ee0e8216b5a",
+    "mtime": 1795557447.3477168,
+    "seen": 1795557570.0753248,
+    "ast_hash": "18fe3c6686918fa330156c92f04a65dd",
     "semantic_hash": ""
   },
   "src/app/App.tsx": {
-    "mtime": 1795553868.6122797,
-    "seen": 1795555747.7548697,
-    "ast_hash": "6752b48594138171ebdeedbec21e4bb6",
+    "mtime": 1795557452.848279,
+    "seen": 1795557570.0753267,
+    "ast_hash": "4e544bb2ef516697d069219bdb1401bc",
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "src/features/map/ModuleDetail.tsx": {
-    "mtime": 1795553868.6125307,
-    "seen": 1795555747.7548904,
-    "ast_hash": "ba0bdb0e8f97e7a7536310d31f3572fc",
+    "mtime": 1795557452.848665,
+    "seen": 1795557570.075356,
+    "ast_hash": "ebe6d483e52adffd029a34c0362f9e97",
     "semantic_hash": ""
   },
   "src/features/map/ModuleList.tsx": {
@@ -497,10 +497,34 @@
     "ast_hash": "69add246aee7195f1d456154cb4074a3",
     "semantic_hash": ""
   },
+  "src/features/lesson/LessonPage.tsx": {
+    "mtime": 1795557447.475418,
+    "seen": 1795557570.0753462,
+    "ast_hash": "e83bdc65fdce11d6ed8fad89b191b7a8",
+    "semantic_hash": ""
+  },
+  "src/features/lesson/RunnableCode.tsx": {
+    "mtime": 1795557447.473894,
+    "seen": 1795557570.0753474,
+    "ast_hash": "88c9127a6839f9fcb45b4d13279c1900",
+    "semantic_hash": ""
+  },
+  "src/features/lesson/blocks.test.ts": {
+    "mtime": 1795557447.4718668,
+    "seen": 1795557570.0753484,
+    "ast_hash": "80667fd2f9f159f5479f80c12feb940f",
+    "semantic_hash": ""
+  },
+  "src/features/lesson/blocks.ts": {
+    "mtime": 1795557447.4701118,
+    "seen": 1795557570.075351,
+    "ast_hash": "7e82eb53ef1878ac814db9a09869afb4",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
-    "mtime": 1795556452.7774186,
-    "seen": 1795556582.2692978,
-    "ast_hash": "e0bab91a1113101ac9f319edc7c94df9",
+    "mtime": 1795557447.411717,
+    "seen": 1795557570.0754197,
+    "ast_hash": "588181e2d7cd7e6a7fd32205b11c3c14",
     "semantic_hash": ""
   }
 }

@@ -14,16 +14,7 @@
   "12": "rls_phase1.sql",
   "13": "steps",
   "14": "check.ts",
-  "15": "ADR-001: React + Vite + TypeScript en Cloudflare Pages",
+  "15": "adr/README.md",
   "16": "scripts",
-  "17": "adr/README.md",
-  "18": "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker",
-  "19": "lessons.ts",
-  "20": "ADR-003: Supabase como base de datos y autenticación",
-  "21": "ADR-004: El navegador enseña, el servidor certifica",
-  "22": "ADR-006: Desbloqueo por dominio con 85% y repasos espaciados",
-  "23": "ADR-007: Modo invitado sin Supabase",
-  "24": "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz",
-  "25": "ADR-009: ReactBits con carga diferida y movimiento reducido",
-  "26": "ADR-010: Ningún archivo de más de 250 líneas"
+  "19": "lessons.ts"
 }
