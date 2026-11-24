@@ -1,0 +1,23 @@
+{
+  "id": "M00-E01",
+  "title": "Saludo personalizado",
+  "statement": "Lee el nombre de una persona con `input()` e imprime `Hola, <nombre>!`.\n\nEjemplo: si escribe `Ana`, el programa imprime `Hola, Ana!`.",
+  "starter": "nombre = input()\n",
+  "predict": [
+    {
+      "question": "Si `nombre = \"Ana\"`, ¿qué imprime `print(\"Hola, nombre!\")`?",
+      "options": ["Hola, Ana!", "Hola, nombre!", "Un error"],
+      "answer": 1,
+      "why": "Lo que está entre comillas es texto literal: Python no reemplaza `nombre` por su valor. Para usar la variable necesitas una f-string: `f\"Hola, {nombre}!\"`."
+    }
+  ],
+  "hints": [
+    "Primero guarda lo que escribe la persona en una variable.",
+    "Usa una f-string para meter la variable dentro del texto.",
+    "print(f\"Hola, {nombre}!\")"
+  ],
+  "tests": [
+    { "stdin": "Ana\n", "stdout": "Hola, Ana!\n" },
+    { "stdin": "Paolo\n", "stdout": "Hola, Paolo!\n" }
+  ]
+}

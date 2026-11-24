@@ -23,3 +23,36 @@ export interface ModuleDef {
 export function displayId(id: string): string {
   return id.replace(/^M0(\d)$/, 'M$1');
 }
+
+/** Pregunta de opción múltiple: "¿qué imprime este código?" antes de escribir. */
+export interface PredictQuestion {
+  question: string;
+  options: string[];
+  answer: number; // índice de la opción correcta
+  why: string; // el razonamiento, no solo la respuesta
+}
+
+/** Caso de prueba público. Los ocultos viven solo en la base de datos (fase 3). */
+export interface TestCase {
+  stdin: string; // lo que se escribe en input(), una línea por llamada
+  stdout: string; // lo que debe imprimir el programa
+}
+
+export interface ExerciseDef {
+  id: string; // 'M01-E01'
+  title: string;
+  statement: string; // markdown
+  pdf?: number; // número del ejercicio en el PDF C5, si viene de ahí
+  starter: string; // código inicial del editor
+  predict: PredictQuestion[];
+  hints: string[]; // de la más vaga a la más concreta
+  tests: TestCase[];
+}
+
+/** Lección en markdown; el título es su primera línea `# ...`. */
+export interface LessonDef {
+  id: string; // 'M00-L01', del nombre del archivo
+  moduleId: string;
+  title: string;
+  body: string;
+}
