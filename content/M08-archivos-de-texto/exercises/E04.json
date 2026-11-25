@@ -1,0 +1,84 @@
+{
+  "id": "M08-E04",
+  "title": "Mayúsculas, minúsculas, espacios y signos",
+  "statement": "Como tu `Practica_archivos.py`: para cada línea de `texto.txt` imprime\n\n```\nLínea <i>: mayúsculas <a>, minúsculas <b>, espacios <e>, signos <s>\n```\n\ny al final `Palabra más larga: <palabra>` de todo el archivo.\n\n- **Signos:** los caracteres que no son letra, dígito ni espacio (`not c.isalnum() and c != ' '`); no cuentes el `\\n`.\n- **Palabras:** los pedazos de `split()`, quitándoles de los extremos los signos `.,;:!?¡¿` con `strip`. Si hay empate de largo, la **primera**.\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "with open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Qué da `'¡Hola!'.strip('.,;:!?¡¿')`?",
+      "options": [
+        "'¡Hola!'",
+        "'Hola'",
+        "'Hola!'"
+      ],
+      "answer": 1,
+      "why": "`strip` con un texto quita de los dos extremos cualquiera de esos caracteres."
+    },
+    {
+      "question": "¿`'Ñ'.isupper()`?",
+      "options": [
+        "False",
+        "True",
+        "Error"
+      ],
+      "answer": 1,
+      "why": "La Ñ es una letra mayúscula como las demás."
+    }
+  ],
+  "hints": [
+    "Quita el `\\n` con `rstrip('\\n')` antes de contar, así no se cuenta como signo.",
+    "`isupper()`, `islower()`, `== ' '` y el resto (si no es `isalnum()`) es signo.",
+    "Para la más larga, guarda `larga = ''` antes de leer y compara con `len(p) > len(larga)`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "El niño comió 3 piñas.\n\nAna vio un radar en 2026, ¡qué susto!\n"
+      },
+      "stdout": "Línea 1: mayúsculas 1, minúsculas 15, espacios 4, signos 1\nLínea 2: mayúsculas 0, minúsculas 0, espacios 0, signos 0\nLínea 3: mayúsculas 1, minúsculas 22, espacios 7, signos 3\nPalabra más larga: comió\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Hola Mundo\n"
+      },
+      "stdout": "Línea 1: mayúsculas 2, minúsculas 7, espacios 1, signos 0\nPalabra más larga: Mundo\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "¡¡¡ ??? !!!\nCASA casa Casa\n"
+      },
+      "stdout": "Línea 1: mayúsculas 0, minúsculas 0, espacios 2, signos 9\nLínea 2: mayúsculas 5, minúsculas 7, espacios 2, signos 0\nPalabra más larga: CASA\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "a bb ccc ddd\n"
+      },
+      "stdout": "Línea 1: mayúsculas 0, minúsculas 9, espacios 3, signos 0\nPalabra más larga: ccc\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Guatemala, Ómnibus; ÉXITO!\n"
+      },
+      "stdout": "Línea 1: mayúsculas 7, minúsculas 14, espacios 2, signos 3\nPalabra más larga: Guatemala\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\n\n¡cuaderno pingüino!\ncódigo 863\nradar examen archivo los\n"
+      },
+      "stdout": "Línea 1: mayúsculas 0, minúsculas 0, espacios 0, signos 0\nLínea 2: mayúsculas 0, minúsculas 0, espacios 0, signos 0\nLínea 3: mayúsculas 0, minúsculas 16, espacios 1, signos 2\nLínea 4: mayúsculas 0, minúsculas 6, espacios 1, signos 0\nLínea 5: mayúsculas 0, minúsculas 21, espacios 3, signos 0\nPalabra más larga: cuaderno\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\n¿señor el mañana. casa examen?\nla 67\npiña volcán\n"
+      },
+      "stdout": "Línea 1: mayúsculas 0, minúsculas 0, espacios 0, signos 0\nLínea 2: mayúsculas 0, minúsculas 23, espacios 4, signos 3\nLínea 3: mayúsculas 0, minúsculas 2, espacios 1, signos 0\nLínea 4: mayúsculas 0, minúsculas 10, espacios 1, signos 0\nPalabra más larga: mañana\n"
+    }
+  ]
+}

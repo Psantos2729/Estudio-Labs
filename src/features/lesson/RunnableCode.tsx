@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Button } from '@/ui/primitives/Button';
 import { runPython, type RunResult } from '@/features/runner/runner';
+import { OutFiles } from '@/features/exercise/FilesPanel';
 
 /** Ejemplo editable de una lección: el estudiante lo cambia y lo corre para comprobar su predicción. */
 export function RunnableCode({ initial }: { initial: string }) {
@@ -35,6 +36,7 @@ export function RunnableCode({ initial }: { initial: string }) {
           {!result.stdout && !result.error && <span className="muted">(no imprimió nada)</span>}
         </pre>
       )}
+      {result && <OutFiles files={result.files} />}
     </div>
   );
 }

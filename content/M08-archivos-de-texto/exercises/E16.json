@@ -1,0 +1,66 @@
+{
+  "id": "M08-E16",
+  "title": "Reto: mezclar dos archivos ordenados",
+  "challenge": true,
+  "statement": "**Reto opcional** (la mezcla de M6, con archivos). `a.txt` y `b.txt` tienen enteros **ordenados de menor a mayor**, uno por línea. Júntalos en `mezcla.txt`, también ordenado, **sin ordenar de nuevo**: avanza en las dos listas pasando siempre el menor. Después muestra `mezcla.txt` y una última línea `Total: <n>`. No uses `sort()` ni `sorted()`.",
+  "starter": "with open('a.txt', 'r', encoding='utf-8') as f:\n    A = f.readlines()\n",
+  "predict": [
+    {
+      "question": "Si A = 1, 6 y B = 2, 3, 9, ¿cuál es el tercero de la mezcla?",
+      "options": [
+        "6",
+        "3",
+        "2"
+      ],
+      "answer": 1,
+      "why": "1, 2, 3, 6, 9."
+    }
+  ],
+  "hints": [
+    "Lee cada archivo con `readlines()` y convierte cada línea con `int`.",
+    "Dos índices `i` y `j`; mientras los dos tengan datos, escribe el menor y avanza ese índice.",
+    "Al terminar uno, copia lo que queda del otro."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "a.txt": "1\n6\n",
+        "b.txt": "2\n3\n9\n"
+      },
+      "stdout": "1\n2\n3\n6\n9\nTotal: 5\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "a.txt": "5\n",
+        "b.txt": "5\n"
+      },
+      "stdout": "5\n5\nTotal: 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "a.txt": "1\n2\n3\n",
+        "b.txt": "10\n"
+      },
+      "stdout": "1\n2\n3\n10\nTotal: 4\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "a.txt": "-15\n36\n40\n56\n121\n122\n",
+        "b.txt": "1\n106\n107\n167\n"
+      },
+      "stdout": "-15\n1\n36\n40\n56\n106\n107\n121\n122\n167\nTotal: 10\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "a.txt": "20\n",
+        "b.txt": "-26\n82\n139\n140\n160\n164\n169\n186\n"
+      },
+      "stdout": "-26\n20\n82\n139\n140\n160\n164\n169\n186\nTotal: 9\n"
+    }
+  ]
+}

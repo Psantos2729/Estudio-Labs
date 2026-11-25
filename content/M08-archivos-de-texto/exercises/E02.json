@@ -1,0 +1,84 @@
+{
+  "id": "M08-E02",
+  "title": "Letras, palabras y líneas",
+  "statement": "El ejercicio 23 del PDF (la \"Revisión\"): lee `texto.txt` e imprime\n\n```\nLetras: <l>\nPalabras: <p>\nLíneas: <n>\n```\n\n**Letras** son los caracteres con `isalpha()` (incluye tildes y ñ). **Palabras** son los pedazos de `linea.split()`. **Líneas** cuenta todas, también las vacías.\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "with open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Cuántas palabras da `'  Hola   mundo \\n'.split()`?",
+      "options": [
+        "5",
+        "2",
+        "4"
+      ],
+      "answer": 1,
+      "why": "`split()` sin argumentos separa por cualquier cantidad de espacios y no deja pedazos vacíos."
+    },
+    {
+      "question": "¿Cuenta `'3'.isalpha()` como letra?",
+      "options": [
+        "No",
+        "Solo si está en una palabra",
+        "Sí"
+      ],
+      "answer": 0,
+      "why": "`isalpha()` es solo para letras; los dígitos son `isdigit()`."
+    }
+  ],
+  "hints": [
+    "Recorre `for linea in f:` y suma 1 a las líneas en cada vuelta.",
+    "Las palabras de la línea son `len(linea.split())`.",
+    "Las letras: otro `for c in linea:` con `if c.isalpha()`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "El niño comió 3 piñas.\n\nAna vio un radar en 2026, ¡qué susto!\n"
+      },
+      "stdout": "Letras: 39\nPalabras: 13\nLíneas: 3\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Hola\n"
+      },
+      "stdout": "Letras: 4\nPalabras: 1\nLíneas: 1\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "uno dos tres\ncuatro cinco\n"
+      },
+      "stdout": "Letras: 21\nPalabras: 5\nLíneas: 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\n\n\n"
+      },
+      "stdout": "Letras: 0\nPalabras: 0\nLíneas: 3\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Año 2026: ¡Éxito!\n  espacios   raros  \n"
+      },
+      "stdout": "Letras: 21\nPalabras: 5\nLíneas: 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\ngato código Ómnibus mañana maíz maíz,\nuna? 1\nAntigua canción examen\narchivo 36 la güero mar Antigua\n"
+      },
+      "stdout": "Letras: 78\nPalabras: 17\nLíneas: 5\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "camión oso Ómnibus línea 45 Antigua\n581 camión el güero: 1365 Guatemala:\ncorazón 69\nAntigua? 93 oso mar ama azúcar 2194 código.\n"
+      },
+      "stdout": "Letras: 85\nPalabras: 22\nLíneas: 4\n"
+    }
+  ]
+}

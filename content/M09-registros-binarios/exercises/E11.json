@@ -1,0 +1,42 @@
+{
+  "id": "M09-E11",
+  "title": "Reto: ordenar dentro del archivo",
+  "challenge": true,
+  "statement": "**Reto opcional.** Graba N productos y ordénalos **dentro del archivo** por precio, de menor a mayor, con **burbuja**: sin pasar los registros a una lista, sino leyendo los registros `j` y `j + 1` con `seek` y, si están al revés, escribiéndolos intercambiados. Usa `for i in range(n - 1)` y adentro `for j in range(n - 1 - i)` (posiciones desde 0); cada vez que escribas dos registros cambiados es un **intercambio**. Imprime `Intercambios: <t>` y luego la consulta general.\n\nCada producto se escribe con `struct.pack` y el formato **`'<i20sdi'`** (código, nombre en 20 bytes, precio, existencias): 36 bytes por registro. La entrada es **N** y luego, por cada producto, su código, nombre, precio y existencias, uno por línea. Los nombres caben en 20 bytes.\n\nUn producto se muestra así (precio con 2 decimales):\n\n```\n<n>. <código> | <nombre> | <precio> | <existencias>\n```",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'productos.dat'\nFORMATO = '<i20sdi'\nTAM = struct.calcsize(FORMATO)\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "Para intercambiar los registros en las posiciones j y j + 1, ¿dónde escribes?",
+      "options": [
+        "En un archivo nuevo",
+        "Al final del archivo",
+        "seek(j * TAM) y escribes los dos seguidos, primero el que estaba en j + 1"
+      ],
+      "answer": 2,
+      "why": "Los dos registros son vecinos: escribir los 2 × TAM bytes desde `j * TAM` los deja cambiados."
+    }
+  ],
+  "hints": [
+    "Abre con `'r+b'`. Para leer dos vecinos: `f.seek(j * TAM)` y `f.read(TAM)` dos veces.",
+    "Compara los precios con `struct.unpack(FORMATO, a)[2]`.",
+    "Si van al revés: `f.seek(j * TAM)`, `f.write(b)` y `f.write(a)`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n1\nA\n5.0\n1\n2\nB\n1.0\n1\n3\nC\n4.0\n1\n4\nD\n2.0\n1\n5\nE\n8.0\n1\n",
+      "stdout": "Intercambios: 4\n1. 2 | B | 1.00 | 1\n2. 4 | D | 2.00 | 1\n3. 3 | C | 4.00 | 1\n4. 1 | A | 5.00 | 1\n5. 5 | E | 8.00 | 1\n"
+    },
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n",
+      "stdout": "Intercambios: 2\n1. 30 | Borrador | 1.00 | 7\n2. 10 | Lápiz | 2.50 | 100\n3. 20 | Cuaderno | 15.75 | 40\n"
+    },
+    {
+      "stdin": "1\n1\nX\n1.0\n0\n",
+      "stdout": "Intercambios: 0\n1. 1 | X | 1.00 | 0\n"
+    },
+    {
+      "stdin": "6\n246\nTijeras\n220.77\n119\n324\nCrayones\n238.15\n101\n598\nBorrador\n247.47\n57\n265\nCrayones\n108.16\n131\n513\nPegamento\n105.61\n91\n426\nCuaderno\n180.68\n4\n",
+      "stdout": "Intercambios: 10\n1. 513 | Pegamento | 105.61 | 91\n2. 265 | Crayones | 108.16 | 131\n3. 426 | Cuaderno | 180.68 | 4\n4. 246 | Tijeras | 220.77 | 119\n5. 324 | Crayones | 238.15 | 101\n6. 598 | Borrador | 247.47 | 57\n"
+    }
+  ]
+}

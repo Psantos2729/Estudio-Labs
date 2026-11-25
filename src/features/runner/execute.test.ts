@@ -34,6 +34,20 @@ describe('execute', () => {
     expect((await execute(py, 'print(x)', '')).error).toMatch(/NameError/);
   });
 
+  it('cada corrida empieza en una carpeta vacía con los archivos dados', async () => {
+    const r = await execute(py, "print(open('a.txt').read())\nopen('b.txt', 'w').write('hola')", '', false, { 'a.txt': 'ñandú' });
+    expect(r.stdout).toBe('ñandú\n');
+    expect(r.files).toEqual([{ name: 'a.txt', text: 'ñandú' }, { name: 'b.txt', text: 'hola' }]);
+    expect((await execute(py, "import os\nprint(os.listdir())", '')).stdout).toBe('[]\n');
+  });
+
+  it('muestra los archivos binarios en hexadecimal', async () => {
+    const r = await execute(py, "open('r.dat', 'wb').write(bytes([0, 26, 255]))", '');
+    expect(r.files).toEqual([{ name: 'r.dat', text: '00 1a ff', binary: true }]);
+    const chico = await execute(py, "open('n.dat', 'wb').write(bytes([7, 0, 65]))", '');
+    expect(chico.files).toEqual([{ name: 'n.dat', text: '07 00 41', binary: true }]);
+  });
+
   it('da EOFError si se piden más datos de los que hay', async () => {
     expect((await execute(py, 'input()\ninput()', 'uno\n')).error).toMatch(/EOFError/);
   });

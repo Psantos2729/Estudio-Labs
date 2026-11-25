@@ -1,0 +1,50 @@
+{
+  "id": "M07-E10",
+  "title": "Reto: recorrido en espiral",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee una matriz e imprime todos sus valores **en espiral**, en una sola línea separados por espacios: la fila de arriba de izquierda a derecha, la columna derecha hacia abajo, la fila de abajo de derecha a izquierda, la columna izquierda hacia arriba, y así hacia adentro.\n\nLa matriz viene así: el número de filas, el de columnas, y luego **una línea por fila** con los valores separados por espacios. Crea la matriz de tamaño fijo (cada fila con `[0] * cols`), sin `append`.\n\nEjemplo: con `1 2 3` / `4 5 6` / `7 8 9` imprime `1 2 3 6 9 8 7 4 5`.",
+  "starter": "def leer_matriz():\n    filas = int(input())\n    cols = int(input())\n    m = [None] * filas\n    for i in range(filas):\n        partes = input().split()\n        m[i] = [0] * cols\n        for j in range(cols):\n            m[i][j] = int(partes[j])\n    return m\n\n\nm = leer_matriz()\n",
+  "predict": [
+    {
+      "question": "En la espiral de una matriz de 3 × 4, ¿cuántos valores se imprimen?",
+      "options": [
+        "10",
+        "9",
+        "12"
+      ],
+      "answer": 2,
+      "why": "Todos, una vez cada uno."
+    }
+  ],
+  "hints": [
+    "Usa cuatro límites: `arriba`, `abajo`, `izq` y `der`.",
+    "Recorre la fila `arriba` y súbelo; la columna `der` y bájalo; y así con los otros dos.",
+    "Antes de recorrer la fila de abajo y la columna izquierda revisa que todavía queden (`arriba <= abajo`, `izq <= der`)."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n3\n1 2 3\n4 5 6\n7 8 9\n",
+      "stdout": "1 2 3 6 9 8 7 4 5 \n"
+    },
+    {
+      "stdin": "3\n4\n1 2 3 4\n5 6 7 8\n9 10 11 12\n",
+      "stdout": "1 2 3 4 8 12 11 10 9 5 6 7 \n"
+    },
+    {
+      "stdin": "1\n1\n7\n",
+      "stdout": "7 \n"
+    },
+    {
+      "stdin": "1\n3\n1 2 3\n",
+      "stdout": "1 2 3 \n"
+    },
+    {
+      "stdin": "3\n1\n1\n2\n3\n",
+      "stdout": "1 2 3 \n"
+    },
+    {
+      "stdin": "4\n2\n1 2\n3 4\n5 6\n7 8\n",
+      "stdout": "1 2 4 6 8 7 5 3 \n"
+    }
+  ]
+}

@@ -38,3 +38,11 @@
   .split .editor, .split .editor .cm-editor { min-height: 360px; }
   .split__read { position: sticky; top: 56px; max-height: calc(100vh - 72px); overflow-y: auto; }
 }
+
+/* Archivos de la carpeta de trabajo (M08 y M09) */
+.files { display: grid; gap: 6px; }
+.files__item { display: grid; gap: 4px; }
+.files__head { display: flex; gap: 6px; align-items: center; }
+.files__name { flex: 1; font-family: var(--mono); }
+.files__text { font-family: var(--mono); }
+.files__out { margin: 0; white-space: pre-wrap; background: var(--bg-code); padding: 6px 10px; border-radius: 4px; max-height: 240px; overflow: auto; }

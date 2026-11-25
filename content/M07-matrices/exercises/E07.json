@@ -1,0 +1,63 @@
+{
+  "id": "M07-E07",
+  "title": "Multiplicación con validación",
+  "statement": "**El jefe del módulo** (tu tarea `matrices.py`). Lee dos matrices A y B. **Valida:** si las columnas de A no son iguales a las filas de B, imprime\n\n```\nError: las columnas de A deben ser iguales a las filas de B\n```\n\nSi sí se pueden multiplicar, imprime `Resultado: <F1> x <C2>` y luego la matriz producto C = A × B como tabla, con `C[i][j]` = suma de `A[i][k] * B[k][j]`.\n\nLa matriz viene así: el número de filas, el de columnas, y luego **una línea por fila** con los valores separados por espacios. Crea la matriz de tamaño fijo (cada fila con `[0] * cols`), sin `append`.",
+  "starter": "def leer_matriz():\n    filas = int(input())\n    cols = int(input())\n    m = [None] * filas\n    for i in range(filas):\n        partes = input().split()\n        m[i] = [0] * cols\n        for j in range(cols):\n            m[i][j] = int(partes[j])\n    return m\n\n\ndef mostrar(m):\n    for i in range(len(m)):\n        for j in range(len(m[i])):\n            print(m[i][j], end=' ')\n        print()\n\n\nA = leer_matriz()\nB = leer_matriz()\n",
+  "predict": [
+    {
+      "question": "¿Se puede multiplicar A (2 × 3) por B (3 × 4)? ¿De qué tamaño queda?",
+      "options": [
+        "Sí, 2 × 4",
+        "No",
+        "Sí, 3 × 3"
+      ],
+      "answer": 0,
+      "why": "Columnas de A (3) = filas de B (3). El resultado tiene las filas de A y las columnas de B."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nA = [[1, 2]]\nB = [[3], [4]]\ns = 0\nfor k in range(2):\n    s = s + A[0][k] * B[k][0]\nprint(s)\n```",
+      "options": [
+        "7",
+        "11",
+        "10"
+      ],
+      "answer": 1,
+      "why": "1·3 + 2·4 = 3 + 8 = 11."
+    }
+  ],
+  "hints": [
+    "Valida con `len(A[0]) != len(B)`.",
+    "C tiene `len(A)` filas y `len(B[0])` columnas.",
+    "Tres ciclos: `i` (filas de A), `j` (columnas de B) y `k` (de 0 a `len(B) - 1`), con `suma = suma + A[i][k] * B[k][j]`."
+  ],
+  "tests": [
+    {
+      "stdin": "2\n3\n1 2 3\n4 5 6\n3\n2\n7 8\n9 10\n11 12\n",
+      "stdout": "Resultado: 2 x 2\n58 64 \n139 154 \n"
+    },
+    {
+      "stdin": "2\n3\n1 2 3\n4 5 6\n2\n3\n1 2 3\n4 5 6\n",
+      "stdout": "Error: las columnas de A deben ser iguales a las filas de B\n"
+    },
+    {
+      "stdin": "1\n2\n1 2\n2\n1\n3\n4\n",
+      "stdout": "Resultado: 1 x 1\n11 \n"
+    },
+    {
+      "stdin": "2\n1\n3\n4\n1\n2\n1 2\n",
+      "stdout": "Resultado: 2 x 2\n3 6 \n4 8 \n"
+    },
+    {
+      "stdin": "1\n1\n2\n1\n1\n5\n",
+      "stdout": "Resultado: 1 x 1\n10 \n"
+    },
+    {
+      "stdin": "2\n2\n1 0\n0 1\n2\n3\n4 -2 7\n3 9 0\n",
+      "stdout": "Resultado: 2 x 3\n4 -2 7 \n3 9 0 \n"
+    },
+    {
+      "stdin": "3\n4\n-3 2 1 3\n-1 9 -3 8\n1 8 3 -1\n4\n2\n6 1\n0 5\n9 1\n-2 -3\n",
+      "stdout": "Resultado: 3 x 2\n-15 -1 \n-49 17 \n35 47 \n"
+    }
+  ]
+}

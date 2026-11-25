@@ -1,0 +1,77 @@
+{
+  "id": "M08-E06",
+  "title": "Buscar 5 palabras",
+  "statement": "El ejercicio 24 del PDF: el párrafo está en `parrafo.txt`. Lee **5 palabras** a buscar (una por línea) en un vector de tamaño 5. Para cada una, en el orden en que se escribieron, imprime `<palabra>: <n>` (cuántas veces está) o `<palabra>: no está`. Las que sí están se copian a un **nuevo vector** (de tamaño 5, con un contador de cuántas lleva) y al final imprime `Encontradas: <p1> <p2> ...` (o solo `Encontradas:` si ninguna).\n\nPara comparar: las palabras del archivo son los pedazos de `split()` sin los signos `.,;:!?¡¿` de los extremos, y **no** importan mayúsculas ni minúsculas (`Sol` = `sol` = `SOL`). Imprime cada palabra buscada como la escribió el usuario.\n\nEl archivo `parrafo.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "buscar = [''] * 5\nfor i in range(5):\n    buscar[i] = input()\n",
+  "predict": [
+    {
+      "question": "¿Cuántas veces está `sol` en `'Sol, sol y SOL'` sin distinguir mayúsculas?",
+      "options": [
+        "1",
+        "2",
+        "3"
+      ],
+      "answer": 2,
+      "why": "Pasando todo a minúsculas con `lower()` y quitando la coma, las tres son `sol`."
+    },
+    {
+      "question": "¿Para qué el contador del vector de encontradas?",
+      "options": [
+        "No hace falta",
+        "Para saber en qué posición va la siguiente y cuántas hay",
+        "Para contar las veces"
+      ],
+      "answer": 1,
+      "why": "El vector es de tamaño fijo: el contador dice dónde escribir y hasta dónde mostrar."
+    }
+  ],
+  "hints": [
+    "Lee primero todas las palabras del archivo en una lista: para cada pedazo de `split()`, `p.strip('.,;:!?¡¿').lower()`.",
+    "Para cada palabra buscada cuenta cuántas de esa lista son iguales a `buscada.lower()`.",
+    "Si la cuenta es mayor que 0: `encontradas[k] = buscada` y `k = k + 1`."
+  ],
+  "tests": [
+    {
+      "stdin": "sol\nmar\nluna\nEL\ny\n",
+      "files": {
+        "parrafo.txt": "El sol sale. El mar canta, y el sol se esconde.\n¡Sol, sol y más SOL!\n"
+      },
+      "stdout": "sol: 5\nmar: 1\nluna: no está\nEL: 3\ny: 2\nEncontradas: sol mar EL y \n"
+    },
+    {
+      "stdin": "nada\nde\nesto\nestá\naquí\n",
+      "files": {
+        "parrafo.txt": "El sol sale. El mar canta, y el sol se esconde.\n¡Sol, sol y más SOL!\n"
+      },
+      "stdout": "nada: no está\nde: no está\nesto: no está\nestá: no está\naquí: no está\nEncontradas: \n"
+    },
+    {
+      "stdin": "hola\nHola\nHOLA\nhol\nola\n",
+      "files": {
+        "parrafo.txt": "Hola\n"
+      },
+      "stdout": "hola: 1\nHola: 1\nHOLA: 1\nhol: no está\nola: no está\nEncontradas: hola Hola HOLA \n"
+    },
+    {
+      "stdin": "niño\npiñas\n3\ndurmió\nÑiño\n",
+      "files": {
+        "parrafo.txt": "El niño comió 3 piñas.\nY el niño durmió.\n"
+      },
+      "stdout": "niño: 2\npiñas: 1\n3: 1\ndurmió: 1\nÑiño: no está\nEncontradas: niño piñas 3 durmió \n"
+    },
+    {
+      "stdin": "el\nAna\nsol\ncafé\nradar\n",
+      "files": {
+        "parrafo.txt": "los volcán árbol; 1424 perro una reconocer volcán pingüino\n¿examen,?\nGuatemala mar río acción niño. 1514\nÓmnibus piña gato acción. corazón 665 6 azúcar\n"
+      },
+      "stdout": "el: no está\nAna: no está\nsol: no está\ncafé: no está\nradar: no está\nEncontradas: \n"
+    },
+    {
+      "stdin": "el\nAna\nsol\ncafé\nradar\n",
+      "files": {
+        "parrafo.txt": "¡7 casa volcán cuaderno!\nmaíz Python güero 1473\n\n¿298 Ana?\n"
+      },
+      "stdout": "el: no está\nAna: 1\nsol: no está\ncafé: no está\nradar: no está\nEncontradas: Ana \n"
+    }
+  ]
+}

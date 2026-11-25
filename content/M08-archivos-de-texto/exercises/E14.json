@@ -1,0 +1,61 @@
+{
+  "id": "M08-E14",
+  "title": "Reto: palabra más larga y misma letra",
+  "challenge": true,
+  "statement": "**Reto opcional** (tu `Practica_archivos.py`). Para cada línea de `texto.txt` imprime\n\n```\nLínea <i>: palabras <p>, más larga <palabra>, misma letra <m>\n```\n\nLas palabras son los pedazos de `split()` sin los signos `.,;:!?¡¿` de los extremos (si un pedazo queda vacío, no cuenta). **Misma letra** cuenta las palabras que empiezan y terminan con la misma letra, sin distinguir mayúsculas (las de una sola letra también cuentan). En empate de largo, la primera. Si la línea no tiene palabras, imprime `Línea <i>: sin palabras`.\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "with open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Cuenta `'Ana'` como misma letra?",
+      "options": [
+        "Sí: `'ana'[0] == 'ana'[-1]`",
+        "No, por la mayúscula",
+        "Solo si es palíndromo"
+      ],
+      "answer": 0,
+      "why": "Pasando a minúsculas, empieza y termina con `a`."
+    }
+  ],
+  "hints": [
+    "Quita los signos con `p.strip('.,;:!?¡¿')` y salta los vacíos.",
+    "Compara `p.lower()[0]` con `p.lower()[-1]`.",
+    "La más larga empieza vacía en cada línea."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "El niño comió 3 piñas.\n\nAna vio un radar en 2026, ¡qué susto!\n"
+      },
+      "stdout": "Línea 1: palabras 5, más larga comió, misma letra 1\nLínea 2: sin palabras\nLínea 3: palabras 8, más larga radar, misma letra 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Ana salas oso y arte\n"
+      },
+      "stdout": "Línea 1: palabras 5, más larga salas, misma letra 4\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "¡¿!?\n"
+      },
+      "stdout": "Línea 1: sin palabras\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "¡Python línea 7 Python 82 aérea!\nlos café, 1131\nsalas 60\n4 una Ómnibus una;\n¿cuaderno 5 café. mañana oso?\n"
+      },
+      "stdout": "Línea 1: palabras 6, más larga Python, misma letra 2\nLínea 2: palabras 3, más larga café, misma letra 1\nLínea 3: palabras 2, más larga salas, misma letra 1\nLínea 4: palabras 4, más larga Ómnibus, misma letra 1\nLínea 5: palabras 5, más larga cuaderno, misma letra 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\nÑandú café cuaderno sol piña Ana\nazúcar 442 gato\n¡3 oso mar árbol corazón: piña 1287 1737 37!\nniña ÉXITO radar:\n¡niño ÉXITO Antigua línea! archivo:!\n"
+      },
+      "stdout": "Línea 1: sin palabras\nLínea 2: palabras 6, más larga cuaderno, misma letra 1\nLínea 3: palabras 3, más larga azúcar, misma letra 0\nLínea 4: palabras 9, más larga corazón, misma letra 2\nLínea 5: palabras 3, más larga ÉXITO, misma letra 1\nLínea 6: palabras 5, más larga Antigua, misma letra 1\n"
+    }
+  ]
+}

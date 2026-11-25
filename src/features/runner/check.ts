@@ -20,7 +20,7 @@ export function sameOutput(actual: string, expected: string): boolean {
 export async function runTests(code: string, tests: TestCase[]): Promise<TestResult[]> {
   const results: TestResult[] = [];
   for (const test of tests) {
-    const run = await runPython(code, test.stdin, { quietPrompts: true });
+    const run = await runPython(code, test.stdin, { quietPrompts: true, files: test.files });
     results.push({ test, run, passed: !run.error && sameOutput(run.stdout, test.stdout) });
   }
   return results;

@@ -1,0 +1,94 @@
+{
+  "id": "M08-E03",
+  "title": "Conteo por línea con palíndromos",
+  "statement": "Como tu tarea `Archivos2_21.py`: para cada línea de `texto.txt` imprime\n\n```\nLínea <i>: vocales <v>, consonantes <c>, dígitos <d>, palabras <p>, palíndromos <q>\n```\n\ny al final una línea igual que empieza con `Total:` en vez de `Línea <i>:`, con la suma de todo el archivo. Las líneas se numeran desde 1.\n\n- **Vocales:** `aeiou` con o sin tilde (y `ü`), mayúsculas o minúsculas.\n- **Consonantes:** las demás letras (`isalpha()`), ñ incluida.\n- **Palabra:** una secuencia seguida de letras (un dígito, espacio o signo la termina). Arma cada palabra letra por letra.\n- **Palíndromo:** una palabra de **2 o más letras** que se lee igual al revés, sin distinguir mayúsculas (`Ana`, `oso`).\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "def es_palindromo(p):\n    p = p.lower()\n    return len(p) >= 2 and p == p[::-1]\n\n\nwith open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Cuántas palabras hay en `'oso3ana'` si una palabra es una secuencia seguida de letras?",
+      "options": [
+        "3",
+        "1",
+        "2"
+      ],
+      "answer": 2,
+      "why": "El `3` corta: quedan `oso` y `ana`."
+    },
+    {
+      "question": "¿Por qué se recorre `linea + ' '` al armar palabras?",
+      "options": [
+        "Para contar los espacios",
+        "Porque la línea no tiene \\n",
+        "Para que la última palabra también se cierre y se cuente"
+      ],
+      "answer": 2,
+      "why": "Si la línea termina en letra, sin ese carácter extra la última palabra nunca llega al `elif`."
+    },
+    {
+      "question": "¿Qué cuenta como consonante con `c.isalpha() and c.lower() not in 'aeiouáéíóúü'`?",
+      "options": [
+        "El 7",
+        "El espacio",
+        "La ñ, sí"
+      ],
+      "answer": 2,
+      "why": "La ñ es letra y no es vocal."
+    }
+  ],
+  "hints": [
+    "Contadores de la línea **dentro** del `for linea`; los del total, antes del `with`.",
+    "Para cada carácter: si `c.lower() in 'aeiouáéíóúü'` es vocal; si no, `elif c.isalpha()` es consonante; `elif c.isdigit()`, dígito.",
+    "Para las palabras: si `c.isalpha()`, pégala a `palabra`; si no y `palabra != ''`, cuenta la palabra, revisa si es palíndromo y vacíala."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "El niño comió 3 piñas.\n\nAna vio un radar en 2026, ¡qué susto!\n"
+      },
+      "stdout": "Línea 1: vocales 8, consonantes 8, dígitos 1, palabras 4, palíndromos 0\nLínea 2: vocales 0, consonantes 0, dígitos 0, palabras 0, palíndromos 0\nLínea 3: vocales 12, consonantes 11, dígitos 4, palabras 7, palíndromos 2\nTotal: vocales 20, consonantes 19, dígitos 5, palabras 11, palíndromos 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Oso\n"
+      },
+      "stdout": "Línea 1: vocales 2, consonantes 1, dígitos 0, palabras 1, palíndromos 1\nTotal: vocales 2, consonantes 1, dígitos 0, palabras 1, palíndromos 1\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "reconocer 12 salas, nivel 3 radar\n"
+      },
+      "stdout": "Línea 1: vocales 10, consonantes 14, dígitos 3, palabras 4, palíndromos 3\nTotal: vocales 10, consonantes 14, dígitos 3, palabras 4, palíndromos 3\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\n"
+      },
+      "stdout": "Línea 1: vocales 0, consonantes 0, dígitos 0, palabras 0, palíndromos 0\nTotal: vocales 0, consonantes 0, dígitos 0, palabras 0, palíndromos 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "aérea Ómnibus ÁRBOL pingüino\n1 2 3\n"
+      },
+      "stdout": "Línea 1: vocales 13, consonantes 12, dígitos 0, palabras 4, palíndromos 0\nLínea 2: vocales 0, consonantes 0, dígitos 3, palabras 0, palíndromos 0\nTotal: vocales 13, consonantes 12, dígitos 3, palabras 4, palíndromos 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "¿gato archivo?\n¿1 niño código río archivo?\n¿oso 1 lápiz: canción 1281?\n¡1883 oso 2134 la casa 186 1265 mañana!\nniña Ana 0 sol 666 los canción Ana\n"
+      },
+      "stdout": "Línea 1: vocales 5, consonantes 6, dígitos 0, palabras 2, palíndromos 0\nLínea 2: vocales 10, consonantes 10, dígitos 1, palabras 4, palíndromos 0\nLínea 3: vocales 7, consonantes 8, dígitos 5, palabras 3, palíndromos 1\nLínea 4: vocales 8, consonantes 7, dígitos 15, palabras 4, palíndromos 1\nLínea 5: vocales 11, consonantes 12, dígitos 4, palabras 6, palíndromos 2\nTotal: vocales 41, consonantes 43, dígitos 25, palabras 19, palíndromos 4\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "código la 1388 cuaderno\nmaíz radar ÁRBOL 5 4 café casa los 369\n¡4 niña oso niña!\n\n\n2466 ÉXITO 1089 código?\n"
+      },
+      "stdout": "Línea 1: vocales 8, consonantes 8, dígitos 4, palabras 3, palíndromos 0\nLínea 2: vocales 11, consonantes 14, dígitos 5, palabras 6, palíndromos 1\nLínea 3: vocales 6, consonantes 5, dígitos 1, palabras 3, palíndromos 1\nLínea 4: vocales 0, consonantes 0, dígitos 0, palabras 0, palíndromos 0\nLínea 5: vocales 0, consonantes 0, dígitos 0, palabras 0, palíndromos 0\nLínea 6: vocales 6, consonantes 5, dígitos 8, palabras 2, palíndromos 0\nTotal: vocales 31, consonantes 32, dígitos 18, palabras 14, palíndromos 2\n"
+    }
+  ]
+}

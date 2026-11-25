@@ -1,0 +1,94 @@
+{
+  "id": "M08-E09",
+  "title": "Conteos con expresiones regulares",
+  "statement": "Ahora con `re.findall`. Para cada línea de `texto.txt` imprime\n\n```\nLínea <i>: palabras <p>, números <n>, dígitos <d>, signos <s>\n```\n\ny al final la misma línea con `Total:`. Usa un patrón para cada cosa:\n\n- **Palabras:** secuencias de letras, con tildes y ñ: `[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]+`.\n- **Números:** secuencias de dígitos.\n- **Dígitos:** cada dígito.\n- **Signos:** cada carácter que no es `\\w` ni espacio: `[^\\w\\s]`.\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "import re\n\nwith open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Qué devuelve `re.findall(r'\\d+', 'a1b22c333')`?",
+      "options": [
+        "[1, 22, 333]",
+        "['1', '2', '2', '3', '3', '3']",
+        "['1', '22', '333']"
+      ],
+      "answer": 2,
+      "why": "`+` toma los dígitos seguidos como uno solo, y `findall` devuelve textos."
+    },
+    {
+      "question": "¿Cuántos elementos da `re.findall(r'[^\\w\\s]', '¡Hola, mundo!')`?",
+      "options": [
+        "2",
+        "3",
+        "13"
+      ],
+      "answer": 1,
+      "why": "Los signos `¡`, `,` y `!`: no son letra, dígito, `_` ni espacio."
+    },
+    {
+      "question": "¿Por qué el patrón de palabras no es `[a-z]+`?",
+      "options": [
+        "Porque `[a-z]` no incluye tildes, ñ ni mayúsculas",
+        "Es igual",
+        "Porque `+` no existe"
+      ],
+      "answer": 0,
+      "why": "Con `[a-z]+`, `niño` se partiría en `ni` y `o`."
+    }
+  ],
+  "hints": [
+    "Cuenta con `len(re.findall(patrón, linea))`; recuerda la `r` antes de las comillas.",
+    "Dígitos `\\d`, números `\\d+`.",
+    "Acumula los totales fuera del `for linea`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "El niño comió 3 piñas.\n\nAna vio un radar en 2026, ¡qué susto!\n"
+      },
+      "stdout": "Línea 1: palabras 4, números 1, dígitos 1, signos 1\nLínea 2: palabras 0, números 0, dígitos 0, signos 0\nLínea 3: palabras 7, números 1, dígitos 4, signos 3\nTotal: palabras 11, números 2, dígitos 5, signos 4\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "a1b22c333\n"
+      },
+      "stdout": "Línea 1: palabras 3, números 3, dígitos 6, signos 0\nTotal: palabras 3, números 3, dígitos 6, signos 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "¡¡Hola!!, ¿qué tal?\n"
+      },
+      "stdout": "Línea 1: palabras 3, números 0, dígitos 0, signos 7\nTotal: palabras 3, números 0, dígitos 0, signos 7\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "\n"
+      },
+      "stdout": "Línea 1: palabras 0, números 0, dígitos 0, signos 0\nTotal: palabras 0, números 0, dígitos 0, signos 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "niño_feliz 2026-11-25\n"
+      },
+      "stdout": "Línea 1: palabras 2, números 3, dígitos 8, signos 2\nTotal: palabras 2, números 3, dígitos 8, signos 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "331 los: mar ojo Python radar? 40 gato!\nPython lápiz perro nivel. 24 piña 2 Ómnibus volcán\n3 ama pingüino Ñandú casa la una\n¿casa 6 ÁRBOL? niña lápiz. ama 22 nivel mar?\ncanción línea árbol maíz\n"
+      },
+      "stdout": "Línea 1: palabras 6, números 2, dígitos 5, signos 3\nLínea 2: palabras 7, números 2, dígitos 3, signos 1\nLínea 3: palabras 6, números 1, dígitos 1, signos 0\nLínea 4: palabras 7, números 2, dígitos 3, signos 4\nLínea 5: palabras 4, números 0, dígitos 0, signos 0\nTotal: palabras 30, números 7, dígitos 12, signos 8\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "la lápiz café examen? ama 1318 Ómnibus\nÑandú señor perro camión. ÉXITO\nmar árbol: 251 oso, café 327\n2175 año aérea sol examen señor! maíz\n¿la mañana güero 23 1207 ÁRBOL 1840?\n¿camión 4?\n"
+      },
+      "stdout": "Línea 1: palabras 6, números 1, dígitos 4, signos 1\nLínea 2: palabras 5, números 0, dígitos 0, signos 1\nLínea 3: palabras 4, números 2, dígitos 6, signos 2\nLínea 4: palabras 6, números 1, dígitos 4, signos 1\nLínea 5: palabras 4, números 3, dígitos 10, signos 2\nLínea 6: palabras 1, números 1, dígitos 1, signos 2\nTotal: palabras 26, números 8, dígitos 25, signos 9\n"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "M08-E13",
+  "title": "Reto: censurar palabras",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee **K** y K palabras prohibidas. En `texto.txt`, reemplaza cada aparición de una palabra prohibida **como palabra completa** (no dentro de otra) y sin distinguir mayúsculas por asteriscos, uno por letra. Escribe el resultado en `censurado.txt` y luego muéstralo.\n\nEjemplo: prohibida `sol`, la línea `El Sol y el solar` queda `El *** y el solar`.\n\nUsa `re.sub` con `\\b` en los bordes y `flags=re.IGNORECASE`.",
+  "starter": "import re\n\nwith open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Por qué `\\bsol\\b` no toca la palabra `solar`?",
+      "options": [
+        "Porque después de `sol` viene una letra, y ahí no hay borde de palabra",
+        "Sí la toca",
+        "Porque solar es más larga"
+      ],
+      "answer": 0,
+      "why": "`\\b` está solo entre una letra o dígito y algo que no lo es."
+    }
+  ],
+  "hints": [
+    "Lee todo el texto con `read()`.",
+    "Para cada palabra `p`: `t = re.sub(r'\\b' + p + r'\\b', '*' * len(p), t, flags=re.IGNORECASE)`.",
+    "Escribe `t` en `censurado.txt` y vuelve a abrirlo para mostrarlo."
+  ],
+  "tests": [
+    {
+      "stdin": "1\nsol\n",
+      "files": {
+        "texto.txt": "El Sol y el solar\nSOL, sol.\n"
+      },
+      "stdout": "El *** y el solar\n***, ***.\n"
+    },
+    {
+      "stdin": "1\nsecreto\n",
+      "files": {
+        "texto.txt": "Nada que ocultar.\n"
+      },
+      "stdout": "Nada que ocultar.\n"
+    },
+    {
+      "stdin": "2\nana\npiña\n",
+      "files": {
+        "texto.txt": "Ana come piña con Ana.\n"
+      },
+      "stdout": "*** come **** con ***.\n"
+    },
+    {
+      "stdin": "3\nel\nSol\nAna\n",
+      "files": {
+        "texto.txt": "¡una acción el perro luna acción!\n¡lápiz los 2121 niña café sol!\n¡el niña niño mar archivo!\n\n"
+      },
+      "stdout": "¡una acción ** perro luna acción!\n¡lápiz los 2121 niña café ***!\n¡** niña niño mar archivo!\n\n"
+    }
+  ]
+}

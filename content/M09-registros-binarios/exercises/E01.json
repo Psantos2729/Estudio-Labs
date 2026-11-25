@@ -1,0 +1,65 @@
+{
+  "id": "M09-E01",
+  "title": "Empacar y desempacar un registro",
+  "statement": "Lee un **código** (entero), un **nombre** y un **precio** (decimal). Con `struct` y el formato `'<i20sd'`:\n\n1. Imprime `Tamaño del registro: <t> bytes` (con `struct.calcsize`) y `Bytes del nombre: <b>` (lo que mide el nombre en UTF-8).\n2. Empaca el registro y escríbelo en `uno.dat` (modo `'wb'`). Imprime `Tamaño del archivo: <s> bytes` con `os.path.getsize`.\n3. Vuelve a abrir `uno.dat` (`'rb'`), lee el registro, desempácalo e imprime\n\n```\nCódigo: <c>\nNombre: <nombre>\nPrecio: <precio con 2 decimales>\n```\n\nEl nombre cabe en 20 bytes.",
+  "starter": "import os\nimport struct\n\nFORMATO = '<i20sd'\ncodigo = int(input())\nnombre = input()\nprecio = float(input())\n",
+  "predict": [
+    {
+      "question": "¿Cuánto mide un registro `'<i20sd'`?",
+      "options": [
+        "28 bytes",
+        "32 bytes",
+        "3 bytes"
+      ],
+      "answer": 1,
+      "why": "`i` son 4, `20s` son 20 y `d` son 8."
+    },
+    {
+      "question": "¿Cuántos bytes ocupa `'Ñandú'.encode('utf-8')`?",
+      "options": [
+        "10",
+        "7",
+        "5"
+      ],
+      "answer": 1,
+      "why": "La Ñ y la ú ocupan 2 bytes cada una: 3 + 2 + 2."
+    },
+    {
+      "question": "¿Qué devuelve `struct.unpack`?",
+      "options": [
+        "Una lista de bytes",
+        "Un texto",
+        "Una tupla con los valores"
+      ],
+      "answer": 2,
+      "why": "Por eso se escribe `c, n, p = struct.unpack(...)`."
+    }
+  ],
+  "hints": [
+    "`struct.calcsize(FORMATO)` y `len(nombre.encode('utf-8'))`.",
+    "`struct.pack(FORMATO, codigo, nombre.encode('utf-8'), precio)`; los textos se empacan como bytes.",
+    "Al desempacar, el nombre trae ceros al final: `nombre.rstrip(b'\\x00').decode('utf-8')`."
+  ],
+  "tests": [
+    {
+      "stdin": "1024\nLápiz\n2.5\n",
+      "stdout": "Tamaño del registro: 32 bytes\nBytes del nombre: 6\nTamaño del archivo: 32 bytes\nCódigo: 1024\nNombre: Lápiz\nPrecio: 2.50\n"
+    },
+    {
+      "stdin": "7\nÑandú\n0.1\n",
+      "stdout": "Tamaño del registro: 32 bytes\nBytes del nombre: 7\nTamaño del archivo: 32 bytes\nCódigo: 7\nNombre: Ñandú\nPrecio: 0.10\n"
+    },
+    {
+      "stdin": "-3\nX\n1999.999\n",
+      "stdout": "Tamaño del registro: 32 bytes\nBytes del nombre: 1\nTamaño del archivo: 32 bytes\nCódigo: -3\nNombre: X\nPrecio: 2000.00\n"
+    },
+    {
+      "stdin": "2026\nCuaderno grande\n15.75\n",
+      "stdout": "Tamaño del registro: 32 bytes\nBytes del nombre: 15\nTamaño del archivo: 32 bytes\nCódigo: 2026\nNombre: Cuaderno grande\nPrecio: 15.75\n"
+    },
+    {
+      "stdin": "0\nPingüino de peluche\n100\n",
+      "stdout": "Tamaño del registro: 32 bytes\nBytes del nombre: 20\nTamaño del archivo: 32 bytes\nCódigo: 0\nNombre: Pingüino de peluche\nPrecio: 100.00\n"
+    }
+  ]
+}

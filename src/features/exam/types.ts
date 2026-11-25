@@ -1,5 +1,5 @@
 /** Lo que devuelve start_exam: entradas y preguntas, nunca las respuestas (migración 009). */
-export interface ExamCase { id: number; stdin: string }
+export interface ExamCase { id: number; stdin: string; files?: Record<string, string> | null }
 export interface ExamProblem { id: string; title: string; statement: string; cases: ExamCase[] }
 export interface ExamQuestion { id: number; question: string; options: string[] }
 export interface Exam {

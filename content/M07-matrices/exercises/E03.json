@@ -1,0 +1,63 @@
+{
+  "id": "M07-E03",
+  "title": "Mayor, menor y conteos",
+  "statement": "Lee una matriz de enteros e imprime:\n\n```\nMayor: <x> en fila <i>, columna <j>\nMenor: <x> en fila <i>, columna <j>\nPositivos: <p>\nNegativos: <n>\nCeros: <c>\n```\n\nSi el mayor (o el menor) se repite, da la **primera** vez que aparece recorriendo fila por fila, de izquierda a derecha.\n\nLa matriz viene así: el número de filas, el de columnas, y luego **una línea por fila** con los valores separados por espacios. Crea la matriz de tamaño fijo (cada fila con `[0] * cols`), sin `append`.",
+  "starter": "def leer_matriz():\n    filas = int(input())\n    cols = int(input())\n    m = [None] * filas\n    for i in range(filas):\n        partes = input().split()\n        m[i] = [0] * cols\n        for j in range(cols):\n            m[i][j] = int(partes[j])\n    return m\n\n\nm = leer_matriz()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nm = [[2, 9], [9, 1]]\nf = 0\nc = 0\nfor i in range(2):\n    for j in range(2):\n        if m[i][j] > m[f][c]:\n            f = i\n            c = j\nprint(f, c)\n```",
+      "options": [
+        "0 0",
+        "0 1",
+        "1 0"
+      ],
+      "answer": 1,
+      "why": "Con `>` no cambia al encontrar el segundo 9: se queda con el primero, fila 0 columna 1."
+    },
+    {
+      "question": "Si empiezas con `mayor = 0`, ¿con qué matriz falla?",
+      "options": [
+        "Una con un solo valor",
+        "Una con ceros",
+        "Una con todos los valores negativos"
+      ],
+      "answer": 2,
+      "why": "Ningún negativo es mayor que 0, así que imprimiría 0, que no está en la matriz. Empieza con `m[0][0]`."
+    }
+  ],
+  "hints": [
+    "Empieza con `mayor = m[0][0]` y su posición `0, 0`; igual el menor.",
+    "En los dos ciclos, si `m[i][j] > mayor` guarda el valor y los dos índices. Con `>` (no `>=`) te quedas con la primera vez.",
+    "Los conteos van en el mismo recorrido, con `if` / `elif` / `else`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n3\n3 8 1\n6 0 7\n2 4 9\n",
+      "stdout": "Mayor: 9 en fila 2, columna 2\nMenor: 0 en fila 1, columna 1\nPositivos: 8\nNegativos: 0\nCeros: 1\n"
+    },
+    {
+      "stdin": "1\n1\n5\n",
+      "stdout": "Mayor: 5 en fila 0, columna 0\nMenor: 5 en fila 0, columna 0\nPositivos: 1\nNegativos: 0\nCeros: 0\n"
+    },
+    {
+      "stdin": "2\n2\n-4 -2\n-9 -1\n",
+      "stdout": "Mayor: -1 en fila 1, columna 1\nMenor: -9 en fila 1, columna 0\nPositivos: 0\nNegativos: 4\nCeros: 0\n"
+    },
+    {
+      "stdin": "2\n2\n7 7\n7 7\n",
+      "stdout": "Mayor: 7 en fila 0, columna 0\nMenor: 7 en fila 0, columna 0\nPositivos: 4\nNegativos: 0\nCeros: 0\n"
+    },
+    {
+      "stdin": "1\n3\n0 0 0\n",
+      "stdout": "Mayor: 0 en fila 0, columna 0\nMenor: 0 en fila 0, columna 0\nPositivos: 0\nNegativos: 0\nCeros: 3\n"
+    },
+    {
+      "stdin": "2\n4\n1 -5 9 9\n-5 0 3 2\n",
+      "stdout": "Mayor: 9 en fila 0, columna 2\nMenor: -5 en fila 0, columna 1\nPositivos: 5\nNegativos: 2\nCeros: 1\n"
+    },
+    {
+      "stdin": "4\n4\n2 -6 8 13\n-7 9 -8 10\n-3 6 12 8\n4 15 1 5\n",
+      "stdout": "Mayor: 15 en fila 3, columna 1\nMenor: -8 en fila 1, columna 2\nPositivos: 12\nNegativos: 4\nCeros: 0\n"
+    }
+  ]
+}

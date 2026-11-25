@@ -40,3 +40,10 @@
 .walk__dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; background: var(--c); }
 .walk__row--text { min-height: 0; }
 .walk__row--text .walk__cell { height: auto; }
+.walk__grids { display: flex; flex-wrap: wrap; gap: 18px; align-items: flex-start; overflow-x: auto; }
+.walk__grid { display: grid; gap: 4px; justify-items: start; }
+.walk__grid table { border-collapse: separate; border-spacing: 3px; width: auto; }
+.walk__grid th { font-weight: normal; padding: 0 4px; border: 0; background: none; text-align: center; }
+.walk__grid td { padding: 0; border: 0; }
+.walk__grid td .walk__val { display: block; min-width: 34px; }
+.runnable .files { padding: 8px 12px; }

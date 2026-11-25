@@ -1,0 +1,55 @@
+{
+  "id": "M07-E04",
+  "title": "Diagonales",
+  "statement": "Lee una matriz **cuadrada** (mismo número de filas que de columnas) e imprime:\n\n```\nDiagonal principal: <valores>\nSuma principal: <s>\nDiagonal secundaria: <valores>\nSuma secundaria: <s>\n```\n\nLa principal va de arriba a la izquierda a abajo a la derecha; la secundaria, de arriba a la derecha a abajo a la izquierda. Los valores van en una línea, separados por espacios.\n\nLa matriz viene así: el número de filas, el de columnas, y luego **una línea por fila** con los valores separados por espacios. Crea la matriz de tamaño fijo (cada fila con `[0] * cols`), sin `append`.",
+  "starter": "def leer_matriz():\n    filas = int(input())\n    cols = int(input())\n    m = [None] * filas\n    for i in range(filas):\n        partes = input().split()\n        m[i] = [0] * cols\n        for j in range(cols):\n            m[i][j] = int(partes[j])\n    return m\n\n\nm = leer_matriz()\nn = len(m)\n",
+  "predict": [
+    {
+      "question": "En una matriz de 4 × 4, ¿qué casilla de la diagonal secundaria está en la fila 1?",
+      "options": [
+        "m[1][2]",
+        "m[1][3]",
+        "m[1][1]"
+      ],
+      "answer": 0,
+      "why": "Es `m[i][n - 1 - i]` = `m[1][4 - 1 - 1]` = `m[1][2]`."
+    },
+    {
+      "question": "¿Cuántos ciclos necesitas para recorrer una diagonal?",
+      "options": [
+        "Uno",
+        "Tres",
+        "Dos anidados"
+      ],
+      "answer": 0,
+      "why": "En la diagonal la columna depende de la fila, así que basta un `for i`."
+    }
+  ],
+  "hints": [
+    "Principal: `m[i][i]` con un solo `for i in range(n)`.",
+    "Secundaria: `m[i][n - 1 - i]`.",
+    "Imprime los valores con `end=' '` y después un `print()`; o arma la línea con `print('Diagonal principal:', end=' ')` primero."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n3\n1 2 3\n4 5 6\n7 8 9\n",
+      "stdout": "Diagonal principal: 1 5 9 \nSuma principal: 15\nDiagonal secundaria: 3 5 7 \nSuma secundaria: 15\n"
+    },
+    {
+      "stdin": "1\n1\n5\n",
+      "stdout": "Diagonal principal: 5 \nSuma principal: 5\nDiagonal secundaria: 5 \nSuma secundaria: 5\n"
+    },
+    {
+      "stdin": "2\n2\n1 2\n3 4\n",
+      "stdout": "Diagonal principal: 1 4 \nSuma principal: 5\nDiagonal secundaria: 2 3 \nSuma secundaria: 5\n"
+    },
+    {
+      "stdin": "4\n4\n7 25 5 22\n24 7 2 18\n9 16 15 28\n10 23 14 9\n",
+      "stdout": "Diagonal principal: 7 7 15 9 \nSuma principal: 38\nDiagonal secundaria: 22 2 16 10 \nSuma secundaria: 50\n"
+    },
+    {
+      "stdin": "5\n5\n19 2 3 16 13\n5 24 10 4 29\n15 13 1 30 21\n2 24 17 18 25\n28 26 10 10 22\n",
+      "stdout": "Diagonal principal: 19 24 1 18 22 \nSuma principal: 84\nDiagonal secundaria: 13 4 1 24 28 \nSuma secundaria: 70\n"
+    }
+  ]
+}

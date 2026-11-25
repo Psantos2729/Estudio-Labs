@@ -1,0 +1,55 @@
+{
+  "id": "M09-E03",
+  "title": "Consulta individual por número",
+  "statement": "Graba **N** productos en `productos.dat` como en el ejercicio anterior. Luego lee **K** y K números de registro (desde 1). Para cada uno, salta directo a él con `seek` e imprímelo. **Valida el número:** si no está entre 1 y la cantidad de registros, imprime `No existe el registro <n>`.\n\nCada producto se escribe con `struct.pack` y el formato **`'<i20sdi'`** (código, nombre en 20 bytes, precio, existencias): 36 bytes por registro. La entrada es **N** y luego, por cada producto, su código, nombre, precio y existencias, uno por línea. Los nombres caben en 20 bytes.\n\nUn producto se muestra así (precio con 2 decimales):\n\n```\n<n>. <código> | <nombre> | <precio> | <existencias>\n```",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'productos.dat'\nFORMATO = '<i20sdi'\nTAM = struct.calcsize(FORMATO)\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "Con registros de 36 bytes, ¿en qué byte empieza el registro 4?",
+      "options": [
+        "108",
+        "144",
+        "4"
+      ],
+      "answer": 0,
+      "why": "(4 − 1) × 36 = 108."
+    },
+    {
+      "question": "¿Por qué hay que validar el número antes de leer?",
+      "options": [
+        "Porque más allá del final `read` devuelve menos bytes y `unpack` falla",
+        "No hace falta",
+        "Porque `seek` borra el archivo"
+      ],
+      "answer": 0,
+      "why": "Un `seek` más allá del final no da error, pero lo que lees no es un registro."
+    }
+  ],
+  "hints": [
+    "Cuenta los registros con `os.path.getsize(ARCHIVO) // TAM`.",
+    "Si `1 <= n <= total`, `f.seek((n - 1) * TAM)` y `f.read(TAM)`.",
+    "Abre el archivo una vez con `'rb'` y haz todas las consultas adentro."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n3\n2\n3\n1\n",
+      "stdout": "2. 20 | Cuaderno | 15.75 | 40\n3. 30 | Borrador | 1.00 | 7\n1. 10 | Lápiz | 2.50 | 100\n"
+    },
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n4\n0\n4\n-1\n3\n",
+      "stdout": "No existe el registro 0\nNo existe el registro 4\nNo existe el registro -1\n3. 30 | Borrador | 1.00 | 7\n"
+    },
+    {
+      "stdin": "1\n7\nTinta\n9.5\n3\n3\n1\n1\n2\n",
+      "stdout": "1. 7 | Tinta | 9.50 | 3\n1. 7 | Tinta | 9.50 | 3\nNo existe el registro 2\n"
+    },
+    {
+      "stdin": "6\n699\nTinta\n113.57\n76\n354\nFolder\n45.35\n62\n183\nCalculadora\n75.41\n126\n996\nPegamento\n182.5\n73\n723\nCuaderno\n29.96\n107\n268\nFolder\n85.84\n125\n4\n6\n3\n7\n1\n",
+      "stdout": "6. 268 | Folder | 85.84 | 125\n3. 183 | Calculadora | 75.41 | 126\nNo existe el registro 7\n1. 699 | Tinta | 113.57 | 76\n"
+    },
+    {
+      "stdin": "4\n531\nLápiz\n240.52\n19\n882\nEngrapadora\n143.47\n80\n448\nCrayones\n87.87\n127\n693\nFolder\n114.32\n23\n5\n3\n6\n0\n-1\n3\n",
+      "stdout": "3. 448 | Crayones | 87.87 | 127\nNo existe el registro 6\nNo existe el registro 0\nNo existe el registro -1\n3. 448 | Crayones | 87.87 | 127\n"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 // Genera el .sql del banco oculto del examen (ADR-006) desde private/exam/MXX/gen.py.
 // Uso: node tools/exam-bank.mjs M00 M01 > private/exam/banco-examen.sql
 // gen.py imprime JSON: { problems: [{ id, title, statement, solution, inputs }],
+//   cada entrada es el texto de stdin o { stdin, files } con archivos dados (M08, migración 015);
 //                        questions: [{ question, code?, options, answer }] }
 // Las salidas esperadas salen de correr `solution` en el mismo Pyodide del navegador.
 // Falla si una solución da error o si la respuesta de un "¿qué imprime?" no es lo que imprime `code`.
@@ -19,9 +20,9 @@ const norm = (s) => s.replace(/\r\n/g, '\n').split('\n').map((l) => l.trimEnd())
 const q = (s) => (s == null ? 'null' : `'${String(s).replaceAll("'", "''")}'`);
 const arr = (xs) => `array[${xs.map(q).join(', ')}]`;
 
-async function run(code, stdin, what) {
-  const r = await execute(py, code, stdin, true);
-  if (r.error) throw new Error(`${what} falló con ${JSON.stringify(stdin)}:\n${r.error}`);
+async function run(code, stdin, what, files = {}) {
+  const r = await execute(py, code, stdin, true, files);
+  if (r.error) throw new Error(`${what} falló con ${JSON.stringify({ stdin, files })}:\n${r.error}`);
   return r.stdout;
 }
 
@@ -36,10 +37,12 @@ for (const mod of modules) {
   for (const p of bank.problems) {
     if (!p.id.startsWith(`${mod}-X`)) throw new Error(`${p.id} no pertenece a ${mod}`);
     out.push(`insert into public.exam_problems (id, module_id, title, statement) values (${q(p.id)}, ${q(mod)}, ${q(p.title)}, ${q(p.statement)});`);
-    for (const stdin of new Set(p.inputs)) {
-      const expected = await run(p.solution, stdin, p.id);
-      if (!norm(expected)) throw new Error(`${p.id} no imprime nada con ${JSON.stringify(stdin)}`);
-      out.push(`insert into public.exam_items (module_id, problem_id, stdin, answer) values (${q(mod)}, ${q(p.id)}, ${q(stdin)}, ${q(expected)});`);
+    for (const key of new Set(p.inputs.map((i) => JSON.stringify(typeof i === 'string' ? { stdin: i } : i)))) {
+      const { stdin = '', files } = JSON.parse(key);
+      const expected = await run(p.solution, stdin, p.id, files);
+      if (!norm(expected)) throw new Error(`${p.id} no imprime nada con ${key}`);
+      const f = files ? `${q(JSON.stringify(files))}::jsonb` : 'null';
+      out.push(`insert into public.exam_items (module_id, problem_id, stdin, files, answer) values (${q(mod)}, ${q(p.id)}, ${q(stdin)}, ${f}, ${q(expected)});`);
       cases++;
     }
   }

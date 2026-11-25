@@ -1,0 +1,87 @@
+{
+  "id": "M08-E12",
+  "title": "Archivo de números a romanos",
+  "statement": "**El jefe del módulo**, el ejercicio 26 del PDF. `datos1.txt` tiene números decimales menores a 2000, separados por `*`; alrededor del `*` puede haber espacios o tabuladores. Todas las líneas tienen la misma cantidad de números.\n\n1. Carga los números a una **matriz** de tamaño fijo (una fila por línea).\n2. Recorre la matriz por filas y escribe en `romanos.txt` cada fila con sus números en romano, separados por `; `.\n3. Al final de `romanos.txt` agrega dos líneas: `Número de líneas en el archivo de entrada: <n>` y `Dígitos en el archivo de entrada: <d>`.\n4. Vuelve a abrir `romanos.txt` y muestra todo su contenido.\n\nDebe usar una función tuya `a_romano(n)` que recibe el número y devuelve el texto en romano. Con el ejemplo del PDF:\n\n```\n8\t*525* 15* 20\n1550* 910 * 1995 * 5\n```\n\n`romanos.txt` queda:\n\n```\nVIII; DXXV; XV; XX\nMDL; CMX; MCMXCV; V\nNúmero de líneas en el archivo de entrada: 2\nDígitos en el archivo de entrada: 20\n```",
+  "starter": "import re\n\n\ndef a_romano(n):\n    return ''\n\n\nwith open('datos1.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Qué da `re.split(r'\\s*\\*\\s*', '8\\t*525* 15')`?",
+      "options": [
+        "['8', '525', '15']",
+        "['8', '*', '525', '*', '15']",
+        "['8\\t', '525', ' 15']"
+      ],
+      "answer": 0,
+      "why": "El patrón toma el `*` con los espacios que tenga alrededor; los pedazos quedan limpios."
+    },
+    {
+      "question": "¿Qué da `a_romano(1995)` con la tabla de mayor a menor?",
+      "options": [
+        "MCMXCV",
+        "MXMV",
+        "MDCCCCLXXXXV"
+      ],
+      "answer": 0,
+      "why": "1000 → M, 900 → CM, 90 → XC, 5 → V."
+    },
+    {
+      "question": "¿Cuántos dígitos tiene la línea `'1550* 910 * 1995 * 5'`?",
+      "options": [
+        "4",
+        "20",
+        "12"
+      ],
+      "answer": 2,
+      "why": "4 + 3 + 4 + 1 = 12. `len(re.findall(r'\\d', linea))`."
+    }
+  ],
+  "hints": [
+    "Lee con `readlines()`: `len(lineas)` son las filas, y los pedazos de la primera línea las columnas.",
+    "Para separar: `re.split(r'\\s*\\*\\s*', linea.strip())` o `re.findall(r'\\d+', linea)`. Los dígitos: `len(re.findall(r'\\d', linea))`.",
+    "Escribe cada fila con `'; '.join(...)` y un `\\n`; después las dos líneas de contadores. Luego abre con `'r'` e imprime con `print(f.read(), end='')`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "8\t*525* 15* 20\n1550* 910 * 1995 * 5\n"
+      },
+      "stdout": "VIII; DXXV; XV; XX\nMDL; CMX; MCMXCV; V\nNúmero de líneas en el archivo de entrada: 2\nDígitos en el archivo de entrada: 20\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "49\n"
+      },
+      "stdout": "XLIX\nNúmero de líneas en el archivo de entrada: 1\nDígitos en el archivo de entrada: 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "1999*1000\n4 * 9\n"
+      },
+      "stdout": "MCMXCIX; M\nIV; IX\nNúmero de líneas en el archivo de entrada: 2\nDígitos en el archivo de entrada: 10\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "125*31*1810*1333\n1674*\t1267*\t164*\t797\n640* 1494* 1230* 340\n"
+      },
+      "stdout": "CXXV; XXXI; MDCCCX; MCCCXXXIII\nMDCLXXIV; MCCLXVII; CLXIV; DCCXCVII\nDCXL; MCDXCIV; MCCXXX; CCCXL\nNúmero de líneas en el archivo de entrada: 3\nDígitos en el archivo de entrada: 41\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "1710  *  997  *  1248\n648*753*1944\n1491\t*899\t*963\n341*\t297*\t1980\n240  *  744  *  1954\n"
+      },
+      "stdout": "MDCCX; CMXCVII; MCCXLVIII\nDCXLVIII; DCCLIII; MCMXLIV\nMCDXCI; DCCCXCIX; CMLXIII\nCCCXLI; CCXCVII; MCMLXXX\nCCXL; DCCXLIV; MCMLIV\nNúmero de líneas en el archivo de entrada: 5\nDígitos en el archivo de entrada: 51\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "336*\t1290*\t1643*\t856*\t977*\t790\n"
+      },
+      "stdout": "CCCXXXVI; MCCXC; MDCXLIII; DCCCLVI; CMLXXVII; DCCXC\nNúmero de líneas en el archivo de entrada: 1\nDígitos en el archivo de entrada: 20\n"
+    }
+  ]
+}

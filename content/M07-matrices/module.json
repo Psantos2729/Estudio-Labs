@@ -8,11 +8,14 @@
     "M06"
   ],
   "concepts": [
-    "listas de listas",
-    "recorrido por filas y columnas",
-    "suma y multiplicación",
-    "traspuesta",
-    "tableros"
+    "listas de listas de tamaño fijo",
+    "leer una matriz por filas con split()",
+    "recorrido por filas y por columnas",
+    "mayor, menor, conteos y diagonales",
+    "suma con validación y traspuesta",
+    "multiplicación con validación",
+    "tableros: ajedrez, vecinos y tres en raya",
+    "retos: cuadrado mágico, espiral, rotar 90° y buscaminas"
   ],
   "pdfExercises": [],
   "realTasks": [

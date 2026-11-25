@@ -1,0 +1,73 @@
+{
+  "id": "M08-E11",
+  "title": "Dobles agentes",
+  "statement": "Como tu `Tarea_4_Progra_2-1.py`: `agentes1.txt` y `agentes2.txt` tienen un nombre por línea (sin repetidos dentro de cada archivo). Un **doble agente** está en los dos. Recorriendo `agentes1.txt` en orden, por cada doble agente imprime\n\n```\nAgente: <nombre> en la posición <i> de agentes1 y <j> de agentes2\n```\n\ncon las posiciones desde 0. Al final `Dobles agentes: <n>`.\n\nLos dos archivos ya están en la carpeta. Quita el `\\n` de cada nombre antes de comparar.",
+  "starter": "with open('agentes1.txt', 'r', encoding='utf-8') as f:\n    uno = f.readlines()\n",
+  "predict": [
+    {
+      "question": "¿Por qué `'Ana\\n' == 'Ana'` da False?",
+      "options": [
+        "Porque son de archivos distintos",
+        "Da True",
+        "Porque la línea leída trae el salto de línea"
+      ],
+      "answer": 2,
+      "why": "Hay que quitarlo con `rstrip('\\n')` (o `strip()`) antes de comparar."
+    }
+  ],
+  "hints": [
+    "Lee cada archivo con `readlines()` y quita el `\\n` de cada posición.",
+    "Dos ciclos: para cada `i` de la lista 1, busca `j` en la lista 2 con el mismo nombre.",
+    "Cuenta los encontrados en una variable aparte."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "agentes1.txt": "Ana\nLuis\nMarta\n",
+        "agentes2.txt": "Pedro\nMarta\nAna\n"
+      },
+      "stdout": "Agente: Ana en la posición 0 de agentes1 y 2 de agentes2\nAgente: Marta en la posición 2 de agentes1 y 1 de agentes2\nDobles agentes: 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "agentes1.txt": "Ana\n",
+        "agentes2.txt": "Luis\n"
+      },
+      "stdout": "Dobles agentes: 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "agentes1.txt": "Ana\nJosé\n",
+        "agentes2.txt": "José\nAna\n"
+      },
+      "stdout": "Agente: Ana en la posición 0 de agentes1 y 1 de agentes2\nAgente: José en la posición 1 de agentes1 y 0 de agentes2\nDobles agentes: 2\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "agentes1.txt": "Andrés\nPedro\nMarta\nValeria\nAna\nLucía\n",
+        "agentes2.txt": "Ana\n"
+      },
+      "stdout": "Agente: Ana en la posición 4 de agentes1 y 0 de agentes2\nDobles agentes: 1\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "agentes1.txt": "Valeria\nLuis\nÑusta\nPedro\nCamila\nMarta\n",
+        "agentes2.txt": "Ana\nSofía\nMateo\nJosé\n"
+      },
+      "stdout": "Dobles agentes: 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "agentes1.txt": "Andrés\nMateo\n",
+        "agentes2.txt": "Marta\nAna\nDiego\nMateo\nÓscar\nLuis\n"
+      },
+      "stdout": "Agente: Mateo en la posición 1 de agentes1 y 3 de agentes2\nDobles agentes: 1\n"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "id": "M07-E12",
+  "title": "Reto: buscaminas",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee F, C y F líneas con `.` (libre) y `*` (mina), sin espacios. Imprime el tablero con las minas igual y, en cada casilla libre, cuántas minas tiene alrededor (sus hasta 8 vecinos), sin espacios entre casillas.\n\nEjemplo: con `3`, `4`, `.*..`, `...*` y `*...` imprime:\n\n```\n1*21\n222*\n*111\n```",
+  "starter": "filas = int(input())\ncols = int(input())\nt = [None] * filas\nfor i in range(filas):\n    t[i] = input()\n",
+  "predict": [
+    {
+      "question": "¿Por qué hay que revisar `0 <= f` al mirar los vecinos?",
+      "options": [
+        "Para ir más rápido",
+        "Porque `t[-1]` no da error: da la última fila",
+        "Porque `f` siempre es positivo"
+      ],
+      "answer": 1,
+      "why": "Sin esa revisión, la fila 0 contaría minas de la última fila."
+    }
+  ],
+  "hints": [
+    "Para cada casilla libre, recorre `f` de `i - 1` a `i + 1` y `c` de `j - 1` a `j + 1`.",
+    "Cuenta solo si `0 <= f < filas`, `0 <= c < cols` y `t[f][c] == '*'`.",
+    "Imprime cada casilla con `end=''` y un `print()` al final de la fila."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n4\n.*..\n...*\n*...\n",
+      "stdout": "1*21\n222*\n*111\n"
+    },
+    {
+      "stdin": "1\n1\n.\n",
+      "stdout": "0\n"
+    },
+    {
+      "stdin": "1\n1\n*\n",
+      "stdout": "*\n"
+    },
+    {
+      "stdin": "3\n3\n***\n*.*\n***\n",
+      "stdout": "***\n*8*\n***\n"
+    },
+    {
+      "stdin": "2\n4\n....\n....\n",
+      "stdout": "0000\n0000\n"
+    },
+    {
+      "stdin": "5\n6\n....*.\n.....*\n.****.\n****.*\n..*...\n",
+      "stdout": "0001*2\n12344*\n3****3\n****4*\n24*321\n"
+    },
+    {
+      "stdin": "4\n7\n*....**\n...**..\n*.*....\n..*....\n",
+      "stdout": "*1123**\n232**32\n*3*4210\n13*2000\n"
+    }
+  ]
+}

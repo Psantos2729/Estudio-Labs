@@ -1,0 +1,55 @@
+{
+  "id": "M08-E01",
+  "title": "Guardar frases hasta Fin",
+  "statement": "Como el ejercicio 21 del PDF: lee frases (una por línea) hasta que se escriba `Fin` y guárdalas en `frases.txt`, una por línea. **`Fin` no se guarda.**\n\nDespués vuelve a abrir `frases.txt` y muestra lo que quedó:\n\n```\nFrases guardadas: <n>\n1: <frase>\n2: <frase>\n...\n```",
+  "starter": "frase = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué pasa con `open('frases.txt', 'w')` si el archivo ya existía?",
+      "options": [
+        "Da error",
+        "Se borra y empieza vacío",
+        "Se escribe al final"
+      ],
+      "answer": 1,
+      "why": "El modo `'w'` siempre empieza de cero; para agregar al final es `'a'`."
+    },
+    {
+      "question": "¿Qué escribe `f.write('hola')` dos veces seguidas?",
+      "options": [
+        "solo un hola",
+        "holahola en una sola línea",
+        "hola y hola en dos líneas"
+      ],
+      "answer": 1,
+      "why": "`write` no agrega el salto de línea: ese `\\n` lo pones tú."
+    }
+  ],
+  "hints": [
+    "Abre `frases.txt` con `'w'` y, dentro del `with`, haz el ciclo: mientras `frase != 'Fin'`, escribe `frase + '\\n'` y lee otra.",
+    "Lee la primera frase antes del `while` y la siguiente al final de cada vuelta, para que `Fin` nunca se escriba.",
+    "Para mostrarlo, abre de nuevo con `'r'`, guarda las líneas con `readlines()` y recorre con un contador desde 1, quitando el `\\n` con `rstrip('\\n')`."
+  ],
+  "tests": [
+    {
+      "stdin": "Hola mundo\nPython es genial\nFin\n",
+      "stdout": "Frases guardadas: 2\n1: Hola mundo\n2: Python es genial\n"
+    },
+    {
+      "stdin": "Fin\n",
+      "stdout": "Frases guardadas: 0\n"
+    },
+    {
+      "stdin": "una sola\nFin\n",
+      "stdout": "Frases guardadas: 1\n1: una sola\n"
+    },
+    {
+      "stdin": "Fin de semana\nfin\nFIN\nFin\n",
+      "stdout": "Frases guardadas: 3\n1: Fin de semana\n2: fin\n3: FIN\n"
+    },
+    {
+      "stdin": "árbol 1176\n6 pingüino salas 670\n¡81 9 niño línea gato volcán señor 1703 niño!!\naño? gato línea niña año: güero cuaderno año\n¡160 3 1280 río mañana piña.!\nFin\n",
+      "stdout": "Frases guardadas: 5\n1: árbol 1176\n2: 6 pingüino salas 670\n3: ¡81 9 niño línea gato volcán señor 1703 niño!!\n4: año? gato línea niña año: güero cuaderno año\n5: ¡160 3 1280 río mañana piña.!\n"
+    }
+  ]
+}

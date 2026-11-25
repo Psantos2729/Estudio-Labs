@@ -36,6 +36,7 @@ export interface PredictQuestion {
 export interface TestCase {
   stdin: string; // lo que se escribe en input(), una línea por llamada
   stdout: string; // lo que debe imprimir el programa
+  files?: Record<string, string>; // archivos de texto que ya están en la carpeta al empezar (M08)
 }
 
 export interface ExerciseDef {

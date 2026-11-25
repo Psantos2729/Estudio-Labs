@@ -37,6 +37,7 @@ export function validateExercise(e: ExerciseDef, moduleId: string): string[] {
   if (!e.tests?.length) p.push(`${e.id}: necesita al menos una prueba pública`);
   e.tests?.forEach((t, i) => {
     if (typeof t.stdin !== 'string' || typeof t.stdout !== 'string') p.push(`${e.id}: prueba ${i} mal formada`);
+    if (t.files && Object.values(t.files).some((f) => typeof f !== 'string')) p.push(`${e.id}: prueba ${i} con archivos mal formados`);
   });
   e.predict?.forEach((q, i) => {
     if (!(q.answer >= 0 && q.answer < q.options.length)) p.push(`${e.id}: predicción ${i} sin respuesta válida`);
