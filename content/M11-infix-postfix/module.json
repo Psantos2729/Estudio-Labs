@@ -3,15 +3,21 @@
   "slug": "infix-postfix",
   "position": 11,
   "title": "Infix y postfix",
-  "summary": "Convertir y evaluar expresiones con jerarquía de operadores.",
+  "summary": "Convertir y evaluar expresiones con jerarquía de operadores, evaluar con x y despejar x.",
   "prerequisites": [
     "M10"
   ],
   "concepts": [
-    "jerarquía de operadores",
-    "infix a postfix",
-    "evaluar postfix",
-    "casos especiales"
+    "infix, prefix y postfix",
+    "evaluar postfix con una pila (a op b en orden)",
+    "jerarquía y asociatividad: ^ se agrupa a la derecha",
+    "infix a postfix paso a paso (infix_a_postfix.py)",
+    "tokens con números de varias cifras",
+    "menos unario ~ (Final_2-3.py)",
+    "validar expresiones y división entre 0",
+    "evaluar con x y tabla de valores",
+    "despejar x en ecuaciones lineales",
+    "retos: prefix, postfix a infix y mini intérprete con variables"
   ],
   "pdfExercises": [],
   "realTasks": [

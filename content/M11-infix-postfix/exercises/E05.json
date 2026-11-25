@@ -1,0 +1,40 @@
+{
+  "id": "M11-E05",
+  "title": "Infix a postfix paso a paso",
+  "statement": "En el laboratorio a veces piden la **tabla** de la conversión. Lee **K** y luego K expresiones infix (una letra o cifra por operando, con paréntesis, sin espacios, válidas). Para cada símbolo imprime una línea **después** de procesarlo:\n\n```\n<símbolo> | pila: <de abajo hacia la cima, sin espacios> | salida: <salida hasta ahora>\n```\n\nSi la pila está vacía escribe `pila: vacía`; si la salida está vacía, `salida: vacía`. Al final imprime `Postfix: <resultado>` y, entre una expresión y otra, nada más. Mismas reglas de jerarquía que los ejercicios anteriores (`^` a la derecha).\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "JER = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}\n\n\ndef le_gana(cima, nuevo):\n    if cima == '(':\n        return False\n    if JER[cima] > JER[nuevo]:\n        return True\n    return JER[cima] == JER[nuevo] and nuevo != '^'\n\n\nk = int(input())\nfor _ in range(k):\n    expr = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "En `(a+b)*c`, después de procesar el `)`, ¿qué hay en la pila?",
+      "options": [
+        "Nada: el ( se descartó",
+        "(",
+        "+"
+      ],
+      "answer": 0,
+      "why": "El ) saca el + a la salida y descarta el (."
+    }
+  ],
+  "hints": [
+    "Arma la pila como texto con `''.join(pila[i] for i in range(p))`.",
+    "Usa `texto or 'vacía'` para el caso vacío."
+  ],
+  "tests": [
+    {
+      "stdin": "1\na+b*c\n",
+      "stdout": "a | pila: vacía | salida: a\n+ | pila: + | salida: a\nb | pila: + | salida: ab\n* | pila: +* | salida: ab\nc | pila: +* | salida: abc\nPostfix: abc*+\n"
+    },
+    {
+      "stdin": "2\n(a+b)*c\n2^3^2\n",
+      "stdout": "( | pila: ( | salida: vacía\na | pila: ( | salida: a\n+ | pila: (+ | salida: a\nb | pila: (+ | salida: ab\n) | pila: vacía | salida: ab+\n* | pila: * | salida: ab+\nc | pila: * | salida: ab+c\nPostfix: ab+c*\n2 | pila: vacía | salida: 2\n^ | pila: ^ | salida: 2\n3 | pila: ^ | salida: 23\n^ | pila: ^^ | salida: 23\n2 | pila: ^^ | salida: 232\nPostfix: 232^^\n"
+    },
+    {
+      "stdin": "2\n3\nz+x\n",
+      "stdout": "3 | pila: vacía | salida: 3\nPostfix: 3\nz | pila: vacía | salida: z\n+ | pila: + | salida: z\nx | pila: + | salida: zx\nPostfix: zx+\n"
+    },
+    {
+      "stdin": "2\n(z/1)*3*d+3-d^2\nd\n",
+      "stdout": "( | pila: ( | salida: vacía\nz | pila: ( | salida: z\n/ | pila: (/ | salida: z\n1 | pila: (/ | salida: z1\n) | pila: vacía | salida: z1/\n* | pila: * | salida: z1/\n3 | pila: * | salida: z1/3\n* | pila: * | salida: z1/3*\nd | pila: * | salida: z1/3*d\n+ | pila: + | salida: z1/3*d*\n3 | pila: + | salida: z1/3*d*3\n- | pila: - | salida: z1/3*d*3+\nd | pila: - | salida: z1/3*d*3+d\n^ | pila: -^ | salida: z1/3*d*3+d\n2 | pila: -^ | salida: z1/3*d*3+d2\nPostfix: z1/3*d*3+d2^-\nd | pila: vacía | salida: d\nPostfix: d\n"
+    }
+  ]
+}

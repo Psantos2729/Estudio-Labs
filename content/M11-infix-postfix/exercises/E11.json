@@ -1,0 +1,37 @@
+{
+  "id": "M11-E11",
+  "title": "Reto: evaluar prefix",
+  "challenge": true,
+  "statement": "**Reto opcional.** En prefix el operador va **antes** de sus datos: `* + 2 3 4` es `(2 + 3) * 4`. Lee **K** y luego K expresiones prefix con tokens separados por espacio (enteros y `+ - * /`). Imprime `Resultado: <valor>` o `Expresión inválida` (si faltan o sobran operandos).\n\nEl truco: recórrela **de derecha a izquierda** con una pila. Ahora, al llegar un operador, el **primero** que sale es el de la **izquierda** (`a`) y el segundo el de la derecha (`b`). No hay divisiones entre 0. Muestra los resultados con la función `mostrar` del código inicial: sin decimales si es entero, con 2 si no.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def mostrar(v):\n    v = round(v, 6)\n    if v == int(v):\n        return str(int(v))\n    return f'{v:.2f}'\n\n\nk = int(input())\nfor _ in range(k):\n    toks = input().split()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "Al evaluar `- 10 4` de derecha a izquierda, ¿qué sale primero de la pila al llegar `-`?",
+      "options": [
+        "10",
+        "4",
+        "-"
+      ],
+      "answer": 0,
+      "why": "Entró 4 y luego 10: sale primero 10, que es el de la izquierda. 10 - 4 = 6."
+    }
+  ],
+  "hints": [
+    "Recorre `for i in range(len(toks) - 1, -1, -1):`.",
+    "Con un operador: `a = pop()`, `b = pop()` y push de `a op b`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n* + 2 3 4\n- 10 4\n/ 7 2\n+ 1\n",
+      "stdout": "Resultado: 20\nResultado: 6\nResultado: 3.50\nExpresión inválida\n"
+    },
+    {
+      "stdin": "4\n/ 6 17\n/ - * 12 15 5 20\n* 4 14\n/ / 18 9 + 8 16\n",
+      "stdout": "Resultado: 0.35\nResultado: 8.75\nResultado: 56\nResultado: 0.08\n"
+    },
+    {
+      "stdin": "4\n18\n+ * 6 + 6 5 / 14 / 7 9\n15\n* - 5 - 4 11 16\n",
+      "stdout": "Resultado: 18\nResultado: 84\nResultado: 15\nResultado: 192\n"
+    }
+  ]
+}

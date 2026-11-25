@@ -1,0 +1,41 @@
+{
+  "id": "M11-E02",
+  "title": "Evaluar postfix con espacios",
+  "statement": "Lee **K** y luego K expresiones postfix con los tokens **separados por un espacio**: enteros de una o más cifras y los operadores `+ - * / ^`. Para cada una imprime `Resultado: <valor>` o, si no se puede, **uno** de estos errores (el primero que ocurra al recorrer):\n\n- `Error: faltan operandos` (llega un operador y no hay dos datos)\n- `Error: división entre 0`\n- `Error: sobran operandos` (al terminar queda más de un dato)\n\nMuestra los resultados con la función `mostrar` del código inicial: sin decimales si es entero, con 2 si no.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def mostrar(v):\n    v = round(v, 6)\n    if v == int(v):\n        return str(int(v))\n    return f'{v:.2f}'\n\n\ndef operar(a, op, b):\n    if op == '+':\n        return a + b\n    if op == '-':\n        return a - b\n    if op == '*':\n        return a * b\n    if op == '/':\n        return a / b\n    return a ** b\n\n\nk = int(input())\nfor _ in range(k):\n    toks = input().split()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Qué da `'12 3 /'.split()`?",
+      "options": [
+        "['12', '3', '/']",
+        "['1', '2', '3', '/']",
+        "'12 3 /'"
+      ],
+      "answer": 0,
+      "why": "split() separa por espacios: cada pedazo es un token."
+    }
+  ],
+  "hints": [
+    "Recorre `toks`; un token es número si `t.isdigit()`.",
+    "Atrapa la división entre 0 con `try` / `except ZeroDivisionError`, o revisa `b == 0` antes de dividir.",
+    "Guarda el mensaje en una variable y usa `break` en el primer error."
+  ],
+  "tests": [
+    {
+      "stdin": "6\n12 3 / 4 +\n100 7 -\n2 10 ^\n4 0 /\n5 +\n1 2 3 +\n",
+      "stdout": "Resultado: 8\nResultado: 93\nResultado: 1024\nError: división entre 0\nError: faltan operandos\nError: sobran operandos\n"
+    },
+    {
+      "stdin": "2\n7 2 /\n3 4 - 5 *\n",
+      "stdout": "Resultado: 3.50\nResultado: -5\n"
+    },
+    {
+      "stdin": "5\n62 20 24 * *\n113 116 +\n5 45 46 *\n23 88 73 91 / * /\n83 41 - +\n",
+      "stdout": "Resultado: 29760\nResultado: 229\nError: sobran operandos\nResultado: 0.33\nError: faltan operandos\n"
+    },
+    {
+      "stdin": "5\n116 38 97 101 - 105 * * *\n63 95 + 39 * 33 -\n113\n5 63 6 -\n33\n",
+      "stdout": "Resultado: -1851360\nResultado: 6129\nResultado: 113\nError: sobran operandos\nResultado: 33\n"
+    }
+  ]
+}

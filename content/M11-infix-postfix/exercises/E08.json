@@ -1,0 +1,51 @@
+{
+  "id": "M11-E08",
+  "title": "Calculadora infix completa",
+  "statement": "El **jefe** del módulo: junta `infix_a_postfix.py` y `Final_2-3.py`. Lee **K** y luego K expresiones infix (enteros de varias cifras, `+ - * / ^`, paréntesis, espacios y menos unario). Para cada una:\n\n- si es inválida, imprime `Inválida: <motivo>` con los motivos del ejercicio anterior;\n- si es válida, imprime `Postfix: <tokens separados por espacio>` (con `~` para el menos unario) y luego `Resultado: <valor>`, o `Error: división entre 0` si al evaluar se divide entre 0.\n\nJerarquía: `^` (a la derecha) sobre `~` sobre `* /` sobre `+ -`. `~` nunca saca nada de la pila al entrar y al evaluar hace un solo `pop`. Muestra los resultados con la función `mostrar` del código inicial: sin decimales si es entero, con 2 si no.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def mostrar(v):\n    v = round(v, 6)\n    if v == int(v):\n        return str(int(v))\n    return f'{v:.2f}'\n\n\ndef tokens(expr, letras=''):\n    lista = [None] * len(expr)\n    n = 0\n    i = 0\n    while i < len(expr):\n        c = expr[i]\n        if c.isdigit():\n            num = ''\n            while i < len(expr) and expr[i].isdigit():\n                num = num + expr[i]\n                i = i + 1\n            lista[n] = num\n            n = n + 1\n            continue\n        if c in '+-*/^()' or c in letras:\n            lista[n] = c\n            n = n + 1\n        elif c != ' ':\n            raise ValueError(f'carácter {c}')\n        i = i + 1\n    return lista[:n]\n\n\nk = int(input())\nfor _ in range(k):\n    expr = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Cuánto vale `-2^2`?",
+      "options": [
+        "-4",
+        "4",
+        "Inválida"
+      ],
+      "answer": 0,
+      "why": "La potencia va antes que el menos unario: -(2^2)."
+    },
+    {
+      "question": "¿Cuál es el postfix de `3*-2`?",
+      "options": [
+        "3 2 ~ *",
+        "3 2 * ~",
+        "3 ~ 2 *"
+      ],
+      "answer": 0,
+      "why": "El ~ se aplica al 2 y luego se multiplica."
+    }
+  ],
+  "hints": [
+    "Haz una función por paso: `validar`, `a_postfix` y `evaluar`. Cada una ya la escribiste en ejercicios anteriores.",
+    "En `le_gana`, si el nuevo es `~` devuelve `False`.",
+    "Un solo `try` con `except ValueError` (inválida) y `except ZeroDivisionError`. Imprime el postfix **antes** de evaluar."
+  ],
+  "tests": [
+    {
+      "stdin": "8\n3 + 4 * 2\n(3 + 4) * 2\n2^3^2\n-2^2\n3*-2\n10 / (5 - 5)\n7 / 2\n8 - 3 - 2\n",
+      "stdout": "Postfix: 3 4 2 * +\nResultado: 11\nPostfix: 3 4 + 2 *\nResultado: 14\nPostfix: 2 3 2 ^ ^\nResultado: 512\nPostfix: 2 2 ^ ~\nResultado: -4\nPostfix: 3 2 ~ *\nResultado: -6\nPostfix: 10 5 5 - /\nError: división entre 0\nPostfix: 7 2 /\nResultado: 3.50\nPostfix: 8 3 - 2 -\nResultado: 3\n"
+    },
+    {
+      "stdin": "4\n1 +\n((2)\n4 - -5\n12*(3 - 45)\n",
+      "stdout": "Inválida: falta un operando\nInválida: paréntesis sin cerrar\nPostfix: 4 5 ~ -\nResultado: 9\nPostfix: 12 3 45 - *\nResultado: -504\n"
+    },
+    {
+      "stdin": "5\n*-35\n56+5\n()5\n( 7 -2)^2\n15-5*-134*4\n",
+      "stdout": "Inválida: falta un operando\nPostfix: 56 5 +\nResultado: 61\nInválida: falta un operando\nPostfix: 7 2 - 2 ^\nResultado: 25\nPostfix: 15 5 134 ~ * 4 * -\nResultado: 2695\n"
+    },
+    {
+      "stdin": "5\n29 (\n(7*0)\n(6*9*( 0* 85))*139*- 6 --8 * 101\n-73+-0 *(86-4\n8*- 8\n",
+      "stdout": "Inválida: falta un operador\nPostfix: 7 0 *\nResultado: 0\nPostfix: 6 9 * 0 85 * * 139 * 6 ~ * 8 ~ 101 * -\nResultado: 808\nInválida: paréntesis sin cerrar\nPostfix: 8 8 ~ *\nResultado: -64\n"
+    }
+  ]
+}

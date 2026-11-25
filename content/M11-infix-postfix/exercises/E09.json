@@ -1,0 +1,49 @@
+{
+  "id": "M11-E09",
+  "title": "Tabla de valores con x",
+  "statement": "Lee una expresión infix con la variable **`x`** (enteros, `+ - * / ^`, paréntesis, espacios y menos unario; es válida) y luego dos enteros **a** y **b** (a ≤ b). Conviértela a postfix **una sola vez** e imprime `Postfix: <tokens>`. Luego, para cada x de a hasta b, imprime\n\n```\nx = <x> → <valor>\n```\n\no `x = <x> → división entre 0` si con ese valor se divide entre 0. Muestra los resultados con la función `mostrar` del código inicial: sin decimales si es entero, con 2 si no.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def mostrar(v):\n    v = round(v, 6)\n    if v == int(v):\n        return str(int(v))\n    return f'{v:.2f}'\n\n\ndef tokens(expr, letras=''):\n    lista = [None] * len(expr)\n    n = 0\n    i = 0\n    while i < len(expr):\n        c = expr[i]\n        if c.isdigit():\n            num = ''\n            while i < len(expr) and expr[i].isdigit():\n                num = num + expr[i]\n                i = i + 1\n            lista[n] = num\n            n = n + 1\n            continue\n        if c in '+-*/^()' or c in letras:\n            lista[n] = c\n            n = n + 1\n        elif c != ' ':\n            raise ValueError(f'carácter {c}')\n        i = i + 1\n    return lista[:n]\n\n\nexpr = input()\na = int(input())\nb = int(input())\ntoks = tokens(expr, 'x')\n# tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Qué hace el postfix con el token `x`?",
+      "options": [
+        "Al evaluar, se hace push del valor de x",
+        "Va a la pila de operadores",
+        "Se ignora"
+      ],
+      "answer": 0,
+      "why": "Es un operando: en la conversión va a la salida, al evaluar entra su valor."
+    }
+  ],
+  "hints": [
+    "`tokens(expr, 'x')` ya acepta la letra x como token.",
+    "En tu `evaluar(post, x)`, si el token es `'x'` haz push de `x`.",
+    "Atrapa `ZeroDivisionError` **dentro** del `for` de los valores, para seguir con el siguiente x."
+  ],
+  "tests": [
+    {
+      "stdin": "x^2 - 3*x\n-1\n4\n",
+      "stdout": "Postfix: x 2 ^ 3 x * -\nx = -1 → 4\nx = 0 → 0\nx = 1 → -2\nx = 2 → -2\nx = 3 → 0\nx = 4 → 4\n"
+    },
+    {
+      "stdin": "(x + 1) / (x - 2)\n0\n4\n",
+      "stdout": "Postfix: x 1 + x 2 - /\nx = 0 → -0.50\nx = 1 → -2\nx = 2 → división entre 0\nx = 3 → 4\nx = 4 → 2.50\n"
+    },
+    {
+      "stdin": "-x^2 + 10\n-2\n2\n",
+      "stdout": "Postfix: x 2 ^ ~ 10 +\nx = -2 → 6\nx = -1 → 9\nx = 0 → 10\nx = 1 → 9\nx = 2 → 6\n"
+    },
+    {
+      "stdin": "x\n-2\n2\n",
+      "stdout": "Postfix: x\nx = -2 → -2\nx = -1 → -1\nx = 0 → 0\nx = 1 → 1\nx = 2 → 2\n"
+    },
+    {
+      "stdin": "( x /95) -114-x\n0\n3\n",
+      "stdout": "Postfix: x 95 / 114 - x -\nx = 0 → -114\nx = 1 → -114.99\nx = 2 → -115.98\nx = 3 → -116.97\n"
+    },
+    {
+      "stdin": "(x ^1)/(63/58)\n-3\n1\n",
+      "stdout": "Postfix: x 1 ^ 63 58 / /\nx = -3 → -2.76\nx = -2 → -1.84\nx = -1 → -0.92\nx = 0 → 0\nx = 1 → 0.92\n"
+    }
+  ]
+}

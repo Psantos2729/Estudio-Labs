@@ -1,0 +1,36 @@
+{
+  "id": "M11-E06",
+  "title": "Tokens y postfix con números grandes",
+  "statement": "Lee **K** y luego K expresiones infix con **enteros de varias cifras**, `+ - * / ^`, paréntesis y espacios en cualquier lugar (son válidas y sin negativos). Para cada una imprime\n\n```\nTokens: <tokens separados por un espacio>\nPostfix: <postfix con los tokens separados por un espacio>\n```\n\nPrimero separa en tokens juntando las cifras seguidas (como en la lección 5) y luego convierte la **lista de tokens**.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def tokens(expr, letras=''):\n    lista = [None] * len(expr)\n    n = 0\n    i = 0\n    while i < len(expr):\n        c = expr[i]\n        if c.isdigit():\n            num = ''\n            while i < len(expr) and expr[i].isdigit():\n                num = num + expr[i]\n                i = i + 1\n            lista[n] = num\n            n = n + 1\n            continue\n        if c in '+-*/^()' or c in letras:\n            lista[n] = c\n            n = n + 1\n        elif c != ' ':\n            raise ValueError(f'carácter {c}')\n        i = i + 1\n    return lista[:n]\n\n\nJER = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}\n\n\ndef le_gana(cima, nuevo):\n    if cima == '(':\n        return False\n    if JER[cima] > JER[nuevo]:\n        return True\n    return JER[cima] == JER[nuevo] and nuevo != '^'\n\n\nk = int(input())\nfor _ in range(k):\n    toks = tokens(input())\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Cuántos tokens tiene `12*(3 - 45)`?",
+      "options": [
+        "7",
+        "9",
+        "11"
+      ],
+      "answer": 0,
+      "why": "12, *, (, 3, -, 45, ): los espacios no son tokens."
+    }
+  ],
+  "hints": [
+    "La función `tokens` ya viene: devuelve una lista como `['12', '*', '(', ...]`.",
+    "La conversión es igual, pero recorres tokens y la salida es un vector de tokens que al final unes con `' '.join(...)`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n12*(3 - 45)\n7+100^2\n(1+2)*(30-4)/5\n",
+      "stdout": "Tokens: 12 * ( 3 - 45 )\nPostfix: 12 3 45 - *\nTokens: 7 + 100 ^ 2\nPostfix: 7 100 2 ^ +\nTokens: ( 1 + 2 ) * ( 30 - 4 ) / 5\nPostfix: 1 2 + 30 4 - * 5 /\n"
+    },
+    {
+      "stdin": "4\n7/ 4 *40 +4\n((92* 4 )* 4+28/62* 123 ^ 2)\n(37*131)\n122+89\n",
+      "stdout": "Tokens: 7 / 4 * 40 + 4\nPostfix: 7 4 / 40 * 4 +\nTokens: ( ( 92 * 4 ) * 4 + 28 / 62 * 123 ^ 2 )\nPostfix: 92 4 * 4 * 28 62 / 123 2 ^ * +\nTokens: ( 37 * 131 )\nPostfix: 37 131 *\nTokens: 122 + 89\nPostfix: 122 89 +\n"
+    },
+    {
+      "stdin": "4\n9\n66+3\n8\n88+119+122-140/5* 29 *47\n",
+      "stdout": "Tokens: 9\nPostfix: 9\nTokens: 66 + 3\nPostfix: 66 3 +\nTokens: 8\nPostfix: 8\nTokens: 88 + 119 + 122 - 140 / 5 * 29 * 47\nPostfix: 88 119 + 122 + 140 5 / 29 * 47 * -\n"
+    }
+  ]
+}

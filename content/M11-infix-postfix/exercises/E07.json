@@ -1,0 +1,51 @@
+{
+  "id": "M11-E07",
+  "title": "Validar una expresión",
+  "statement": "Lee **K** y luego K expresiones infix (enteros de varias cifras, `+ - * / ^`, paréntesis y espacios). **Valida** cada una con las reglas de la lección 5 y la variable `espera`, y reporta el **primer** problema:\n\n| Problema | Mensaje |\n| --- | --- |\n| un carácter que no es cifra, operador, paréntesis ni espacio | `Inválida: carácter <c>` (se revisa antes que todo) |\n| `)` sin paréntesis abierto | `Inválida: paréntesis sin abrir` |\n| un número o `(` cuando se esperaba operador | `Inválida: falta un operador` |\n| un operador o `)` cuando se esperaba operando, o termina en operador | `Inválida: falta un operando` |\n| al final quedan paréntesis abiertos | `Inválida: paréntesis sin cerrar` |\n\nUn `-` cuando se espera operando es **menos unario**: cámbialo por `~`. Si la expresión es válida imprime `Válida: <tokens separados por espacio>` (con los `~`).",
+  "starter": "def tokens(expr, letras=''):\n    lista = [None] * len(expr)\n    n = 0\n    i = 0\n    while i < len(expr):\n        c = expr[i]\n        if c.isdigit():\n            num = ''\n            while i < len(expr) and expr[i].isdigit():\n                num = num + expr[i]\n                i = i + 1\n            lista[n] = num\n            n = n + 1\n            continue\n        if c in '+-*/^()' or c in letras:\n            lista[n] = c\n            n = n + 1\n        elif c != ' ':\n            raise ValueError(f'carácter {c}')\n        i = i + 1\n    return lista[:n]\n\n\nk = int(input())\nfor _ in range(k):\n    expr = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Qué mensaje da `3 + * 4`?",
+      "options": [
+        "Inválida: falta un operando",
+        "Inválida: falta un operador",
+        "Válida"
+      ],
+      "answer": 0,
+      "why": "Después de + se espera un operando y llega *."
+    },
+    {
+      "question": "¿Y `-(2)`?",
+      "options": [
+        "Válida: ~ ( 2 )",
+        "Inválida: falta un operando",
+        "Válida: - ( 2 )"
+      ],
+      "answer": 0,
+      "why": "Al inicio se espera operando: el - es unario."
+    }
+  ],
+  "hints": [
+    "`tokens()` lanza `ValueError('carácter X')`. Haz tu `validar(toks)` que también lance `ValueError` con el motivo.",
+    "Envuelve todo en `try` / `except ValueError as e:` e imprime `f'Inválida: {e}'`.",
+    "Revisa el `)` en este orden: primero si hay abiertos, luego si se esperaba operando."
+  ],
+  "tests": [
+    {
+      "stdin": "9\n3 + 4\n3 + * 4\n-(2)\n(1+2\n1+2)\n3 4\n2(3)\n7 & 8\n()\n",
+      "stdout": "Válida: 3 + 4\nInválida: falta un operando\nVálida: ~ ( 2 )\nInválida: paréntesis sin cerrar\nInválida: paréntesis sin abrir\nInválida: falta un operador\nInválida: falta un operador\nInválida: carácter &\nInválida: falta un operando\n"
+    },
+    {
+      "stdin": "3\n4 - -5\n-2^2\n((3)) * -(4 - 1)\n",
+      "stdout": "Válida: 4 - ~ 5\nVálida: ~ 2 ^ 2\nVálida: ( ( 3 ) ) * ~ ( 4 - 1 )\n"
+    },
+    {
+      "stdin": "5\n(128 +- 6/91- 8\n4 /3^2\n8/$36+ -4\n( 1 +53+ /3 )\n3+8\n",
+      "stdout": "Inválida: paréntesis sin cerrar\nVálida: 4 / 3 ^ 2\nInválida: carácter $\nInválida: falta un operando\nVálida: 3 + 8\n"
+    },
+    {
+      "stdin": "5\n0 -150 7\n(29 7 + 141) *(48^ 0) ^ 2\n*4\n3+73*7+6\n8 *-8()7\n",
+      "stdout": "Inválida: falta un operador\nInválida: falta un operador\nInválida: falta un operando\nVálida: 3 + 73 * 7 + 6\nInválida: falta un operador\n"
+    }
+  ]
+}

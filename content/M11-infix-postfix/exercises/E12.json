@@ -1,0 +1,32 @@
+{
+  "id": "M11-E12",
+  "title": "Reto: de postfix a infix",
+  "challenge": true,
+  "statement": "**Reto opcional.** El camino de regreso. Lee **K** y luego K expresiones postfix válidas con tokens separados por espacio (letras y `+ - * / ^`). Imprime cada una en infix con **todos** los paréntesis: cada operación entre paréntesis y sin espacios. Por ejemplo, `a b c * +` → `(a+(b*c))`.\n\nLa pila ahora guarda **textos**: al llegar un operador, saca `b` y `a` y mete `'(' + a + op + b + ')'`.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "k = int(input())\nfor _ in range(k):\n    toks = input().split()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Qué queda en la pila después de `a b +`?",
+      "options": [
+        "El texto (a+b)",
+        "a y b",
+        "El número a + b"
+      ],
+      "answer": 0,
+      "why": "La pila puede guardar textos: se combinan en vez de calcularse."
+    }
+  ],
+  "hints": [
+    "Es el mismo algoritmo de evaluar postfix; solo cambia la cuenta por armar un texto."
+  ],
+  "tests": [
+    {
+      "stdin": "4\na b c * +\na b + c *\nx\na b c ^ ^\n",
+      "stdout": "(a+(b*c))\n((a+b)*c)\nx\n(a^(b^c))\n"
+    },
+    {
+      "stdin": "4\na y / y x ^ /\nx\nz c ^ x z / -\nx b - c +\n",
+      "stdout": "((a/y)/(y^x))\nx\n((z^c)-(x/z))\n((x-b)+c)\n"
+    }
+  ]
+}

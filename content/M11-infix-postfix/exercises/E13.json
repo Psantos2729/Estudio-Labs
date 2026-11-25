@@ -1,0 +1,41 @@
+{
+  "id": "M11-E13",
+  "title": "Reto: mini intérprete con variables",
+  "challenge": true,
+  "statement": "**Reto opcional.** Un pequeño lenguaje. Lee líneas hasta `fin`:\n\n- `<letra> = <expresión>`: calcula la expresión (enteros, `+ - * / ^`, paréntesis, menos unario y **letras** de variables ya definidas) y guarda el valor en esa variable. No imprime nada.\n- `imprimir <letra>`: imprime `<letra> = <valor>`.\n\nErrores: si una expresión o un `imprimir` usa una variable sin valor, imprime `Error: <letra> no tiene valor` (y no cambia nada); si se divide entre 0, `Error: división entre 0`. Las expresiones son válidas en todo lo demás. Guarda los valores en un **diccionario**. Muestra los resultados con la función `mostrar` del código inicial: sin decimales si es entero, con 2 si no.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def mostrar(v):\n    v = round(v, 6)\n    if v == int(v):\n        return str(int(v))\n    return f'{v:.2f}'\n\n\ndef tokens(expr, letras=''):\n    lista = [None] * len(expr)\n    n = 0\n    i = 0\n    while i < len(expr):\n        c = expr[i]\n        if c.isdigit():\n            num = ''\n            while i < len(expr) and expr[i].isdigit():\n                num = num + expr[i]\n                i = i + 1\n            lista[n] = num\n            n = n + 1\n            continue\n        if c in '+-*/^()' or c in letras:\n            lista[n] = c\n            n = n + 1\n        elif c != ' ':\n            raise ValueError(f'carácter {c}')\n        i = i + 1\n    return lista[:n]\n\n\ndef validar(toks):\n    espera = True\n    abiertos = 0\n    for i in range(len(toks)):\n        t = toks[i]\n        if t.isdigit() or t.isalpha():\n            if not espera:\n                raise ValueError('falta un operador')\n            espera = False\n        elif t == '(':\n            if not espera:\n                raise ValueError('falta un operador')\n            abiertos = abiertos + 1\n        elif t == ')':\n            if abiertos == 0:\n                raise ValueError('paréntesis sin abrir')\n            if espera:\n                raise ValueError('falta un operando')\n            abiertos = abiertos - 1\n        elif t == '-' and espera:\n            toks[i] = '~'\n        else:\n            if espera:\n                raise ValueError('falta un operando')\n            espera = True\n    if espera:\n        raise ValueError('falta un operando')\n    if abiertos > 0:\n        raise ValueError('paréntesis sin cerrar')\n    return toks\n\n\nJER = {'+': 1, '-': 1, '*': 2, '/': 2, '~': 3, '^': 4}\n\n\ndef le_gana(cima, nuevo):\n    if cima == '(' or nuevo == '~':\n        return False\n    if JER[cima] > JER[nuevo]:\n        return True\n    return JER[cima] == JER[nuevo] and nuevo != '^'\n\n\ndef a_postfix(toks):\n    pila = [None] * len(toks)\n    p = 0\n    salida = [None] * len(toks)\n    n = 0\n    for t in toks:\n        if t == '(':\n            pila[p] = t\n            p = p + 1\n        elif t == ')':\n            while pila[p - 1] != '(':\n                p = p - 1\n                salida[n] = pila[p]\n                n = n + 1\n            p = p - 1\n        elif t in JER:\n            while p > 0 and le_gana(pila[p - 1], t):\n                p = p - 1\n                salida[n] = pila[p]\n                n = n + 1\n            pila[p] = t\n            p = p + 1\n        else:\n            salida[n] = t\n            n = n + 1\n    while p > 0:\n        p = p - 1\n        salida[n] = pila[p]\n        n = n + 1\n    return salida[:n]\n\n\ndef operar(a, op, b):\n    if op == '+':\n        return a + b\n    if op == '-':\n        return a - b\n    if op == '*':\n        return a * b\n    if op == '/':\n        return a / b\n    return a ** b\n\n\ndef evaluar(post, valores={}):\n    pila = [None] * len(post)\n    p = 0\n    for t in post:\n        if t == '~':\n            pila[p - 1] = -pila[p - 1]\n        elif t in '+-*/^':\n            p = p - 1\n            b = pila[p]\n            a = pila[p - 1]\n            pila[p - 1] = operar(a, t, b)\n        else:\n            pila[p] = valores[t] if t.isalpha() else int(t)\n            p = p + 1\n    return pila[0]\n\n\nvalores = {}\nlinea = input()\nwhile linea != 'fin':\n    # tu código aquí\n    linea = input()\n",
+  "predict": [
+    {
+      "question": "Si `a = 3` y luego `a = a * 2`, ¿cuánto vale a?",
+      "options": [
+        "6",
+        "3",
+        "Error"
+      ],
+      "answer": 0,
+      "why": "Primero se calcula la expresión con el valor viejo y luego se guarda."
+    }
+  ],
+  "hints": [
+    "`tokens(expr, 'abcdefghijklmnopqrstuvwxyz')` acepta letras; la validación de la calculadora ya las trata como operandos.",
+    "`evaluar(post, valores)` busca cada letra en el diccionario: atrapa `KeyError as e` y usa `e.args[0]` para saber cuál faltó."
+  ],
+  "tests": [
+    {
+      "stdin": "a = 3\nb = a * (2 + 1)\nimprimir b\na = a - 10\nimprimir a\nimprimir c\nc = b / (a + 7)\nc = 7 / 2\nimprimir c\nfin\n",
+      "stdout": "b = 9\na = -7\nError: c no tiene valor\nError: división entre 0\nc = 3.50\n"
+    },
+    {
+      "stdin": "c = 4+(0/ (0+35 ))\nc = 1 * 128\na = 33\nimprimir a\nfin\n",
+      "stdout": "a = 33\n"
+    },
+    {
+      "stdin": "b = 3 /5+c\nc = 44 - 41\na = 4/ 5\nimprimir b\nimprimir b\nfin\n",
+      "stdout": "Error: c no tiene valor\nError: b no tiene valor\nError: b no tiene valor\n"
+    },
+    {
+      "stdin": "n = 8-(5 +0)\nn = n/n+a\nb = 30\nimprimir a\nfin\n",
+      "stdout": "Error: a no tiene valor\nError: a no tiene valor\n"
+    }
+  ]
+}
