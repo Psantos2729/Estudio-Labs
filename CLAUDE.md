@@ -31,6 +31,7 @@ Durante desarrollo puedes dejar `graphify watch .` corriendo. Lo que se excluye 
 - `npm run dev`: servidor local (sin `.env.local` corre en modo invitado)
 - `npm run verify`: líneas + lint + tipos + pruebas
 - `npm run seed`: regenera `supabase/seed.sql` desde `content/`
+- `node tools/exam-bank.mjs M00 M01 > private/exam/banco-examen.sql`: banco oculto del examen desde `private/exam/MXX/gen.py` (se corre a mano en Supabase)
 - `DATABASE_URL=... bash tools/test-db.sh`: migraciones + pruebas de RLS en un Postgres vacío
 
 ## Dónde está cada cosa
