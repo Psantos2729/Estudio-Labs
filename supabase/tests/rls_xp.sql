@@ -17,7 +17,7 @@ begin
   perform public.mark_lesson_read('M00-L01');
   perform public.record_practice('M00-E01', 'print(1)', '{}', 2, 2);
   perform public.record_practice('M00-E01', 'print(1)', '{}', 2, 2);
-  perform public.record_practice('M00-E02', 'x', '{}', 1, 2);
+  perform public.record_practice('M00-E02', 'x', '{}', 1, 3);
   select * into r from public.leaderboard('all') where is_me;
   assert r.xp = 35 and r.rank = 1 and r.name = 'Ana Pérez' and r.station = 'M00', 'fila propia: ' || r::text;
   assert (select xp from public.leaderboard('week') where is_me) = 35, 'lo de hoy cuenta en la semana';
