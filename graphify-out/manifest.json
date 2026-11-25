@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795553868.539701,
-    "seen": 1795565146.0346465,
-    "ast_hash": "a53d3350fab5dad18bbfbb029e04d21a",
+    "mtime": 1795565535.602803,
+    "seen": 1795565549.9100218,
+    "ast_hash": "2fc0c8f19425139c59cb2b99efc95d22",
     "semantic_hash": ""
   },
   "docs/CONTINUAR.md": {
@@ -795,6 +795,12 @@
     "mtime": 1795565356.8509636,
     "seen": 1795565368.6293766,
     "ast_hash": "b223cd693f9ea9e0c79e0e038c4ce135",
+    "semantic_hash": ""
+  },
+  "tools/exam-bank.mjs": {
+    "mtime": 1795565441.6474998,
+    "seen": 1795565549.9100113,
+    "ast_hash": "16030723ec8c69cd9e6643f5476355df",
     "semantic_hash": ""
   },
   "package-lock.json": {
