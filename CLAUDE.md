@@ -36,7 +36,7 @@ Durante desarrollo puedes dejar `graphify watch .` corriendo. Lo que se excluye 
 
 ## Dónde está cada cosa
 
-- `content/`: módulos (M00–M12) como archivos JSON
+- `content/`: módulos (M00–M12) como archivos JSON; `content/cosmeticos.json`: piezas del taller (ver docs/cosmeticos.md)
 - `src/features/`: una carpeta por funcionalidad (auth, map, …)
 - `src/ui/`: tema, primitivas y componentes de ReactBits
 - `supabase/migrations/`: esquema; `supabase/tests/`: pruebas SQL

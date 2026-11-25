@@ -120,9 +120,9 @@
     "semantic_hash": ""
   },
   "src/content/modules.test.ts": {
-    "mtime": 1795553868.5439665,
-    "seen": 1795565146.034565,
-    "ast_hash": "0083c88989b467b6da42b44a77901c15",
+    "mtime": 1795647205.5517218,
+    "seen": 1795647258.6027215,
+    "ast_hash": "1dcbe0edd21260bf6df20fcdcffdf970",
     "semantic_hash": ""
   },
   "src/content/modules.ts": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "tools/seed-catalog.mjs": {
-    "mtime": 1795640678.894781,
-    "seen": 1795641132.9328601,
-    "ast_hash": "a34e9e0d3c9656fa7548e5e23bda1a1a",
+    "mtime": 1795647205.570537,
+    "seen": 1795647258.6028593,
+    "ast_hash": "7c09d25dd83e523d4574b58beebd5db5",
     "semantic_hash": ""
   },
   "tools/test-db.sh": {
@@ -348,9 +348,9 @@
     "semantic_hash": ""
   },
   "CLAUDE.md": {
-    "mtime": 1795640678.8559146,
-    "seen": 1795641132.9328637,
-    "ast_hash": "2fc0c8f19425139c59cb2b99efc95d22",
+    "mtime": 1795647231.3622956,
+    "seen": 1795647258.6028628,
+    "ast_hash": "e5ba06716c038271ed43e7f1b9829faa",
     "semantic_hash": ""
   },
   "docs/CONTINUAR.md": {
@@ -2202,9 +2202,9 @@
     "semantic_hash": ""
   },
   "src/features/game/game.ts": {
-    "mtime": 1795645389.2115152,
-    "seen": 1795645542.6195204,
-    "ast_hash": "a2412e024a60e937d5368bbea6b5c9f2",
+    "mtime": 1795647191.6075375,
+    "seen": 1795647258.6027622,
+    "ast_hash": "7ca92ac6ce78a981c40106afbd8a9756",
     "semantic_hash": ""
   },
   "src/features/game/useGame.ts": {
@@ -2220,9 +2220,9 @@
     "semantic_hash": ""
   },
   "src/ui/primitives/Robot.tsx": {
-    "mtime": 1795645529.4448571,
-    "seen": 1795645542.6195767,
-    "ast_hash": "47b06d2fc7ca6d63789ef15695534671",
+    "mtime": 1795647191.607016,
+    "seen": 1795647258.602819,
+    "ast_hash": "3bdf2cc1f6b0471544de3dd68cd692ea",
     "semantic_hash": ""
   },
   "supabase/migrations/20261125000016_xp_ranking.sql": {
@@ -2238,9 +2238,9 @@
     "semantic_hash": ""
   },
   "src/features/game/WorkshopPage.tsx": {
-    "mtime": 1795640924.848239,
-    "seen": 1795641132.9327736,
-    "ast_hash": "47a5c4c4d89e86a76d3e3334ca73d748",
+    "mtime": 1795647191.6078067,
+    "seen": 1795647258.6027558,
+    "ast_hash": "a0235fafe4154b505947cede69205f89",
     "semantic_hash": ""
   },
   "src/features/game/islands.ts": {
@@ -2286,9 +2286,9 @@
     "semantic_hash": ""
   },
   "src/ui/primitives/gearArt.tsx": {
-    "mtime": 1795645389.215652,
-    "seen": 1795645542.6195774,
-    "ast_hash": "cf1616caceef15794cc1d50e767e7416",
+    "mtime": 1795647181.5676963,
+    "seen": 1795647258.6028202,
+    "ast_hash": "aa48d54e989c62a658057901e5e88d43",
     "semantic_hash": ""
   },
   "supabase/migrations/20261125000018_more_gear.sql": {
@@ -2301,6 +2301,42 @@
     "mtime": 1795645322.341578,
     "seen": 1795645542.6196358,
     "ast_hash": "e372ae448807af422c7909afad368215",
+    "semantic_hash": ""
+  },
+  "content/cosmeticos.json": {
+    "mtime": 1795647161.6238,
+    "seen": 1795647258.602711,
+    "ast_hash": "6a766f47e41d3bbe616a3cbef7a15f4f",
+    "semantic_hash": ""
+  },
+  "src/features/game/cosmetics.test.ts": {
+    "mtime": 1795647181.567498,
+    "seen": 1795647258.602759,
+    "ast_hash": "5b182e4e876e6a4ded53f8198d96a865",
+    "semantic_hash": ""
+  },
+  "src/features/game/cosmetics.ts": {
+    "mtime": 1795647181.5636964,
+    "seen": 1795647258.6027598,
+    "ast_hash": "94b54c0305cd15dbbf1bc637d14eb703",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261125000019_gear_catalog.sql": {
+    "mtime": 1795647205.5754247,
+    "seen": 1795647258.6028404,
+    "ast_hash": "2d475d59cebfe6694636b0557271b0de",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_gear_catalog.sql": {
+    "mtime": 1795647214.7544496,
+    "seen": 1795647258.602848,
+    "ast_hash": "416dd335b8b1d929eb77f4ce82a5f462",
+    "semantic_hash": ""
+  },
+  "docs/cosmeticos.md": {
+    "mtime": 1795647231.3605828,
+    "seen": 1795647258.6029415,
+    "ast_hash": "0dc020173443955d6342470f36024f1e",
     "semantic_hash": ""
   },
   "package-lock.json": {
