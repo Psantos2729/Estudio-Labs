@@ -43,6 +43,7 @@ export interface ExerciseDef {
   title: string;
   statement: string; // markdown
   pdf?: number; // número del ejercicio en el PDF C5, si viene de ahí
+  challenge?: boolean; // reto opcional: aparece en la lista, pero no cuenta para el avance ni para Continuar
   starter: string; // código inicial del editor
   predict: PredictQuestion[];
   hints: string[]; // de la más vaga a la más concreta

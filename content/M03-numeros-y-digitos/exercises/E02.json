@@ -1,0 +1,63 @@
+{
+  "id": "M03-E02",
+  "title": "Cuántas cifras y cuánto suman",
+  "statement": "Lee un entero **N** (N ≥ 0) e imprime cuántas cifras tiene y la suma de esas cifras:\n\n```\nCifras: <c>\nSuma: <s>\n```\n\nEjemplo: con `4071` imprime `Cifras: 4` y `Suma: 12`.\n\nOjo: el número `0` tiene **una** cifra.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "Con `n = 4071`, ¿cuánto vale `n` después de `n = n // 10` dos veces?",
+      "options": [
+        "407",
+        "40",
+        "71"
+      ],
+      "answer": 1,
+      "why": "La primera división deja 407 y la segunda 40: cada `// 10` quita la última cifra."
+    },
+    {
+      "question": "¿Cuántas vueltas da `while n > 0:` si `n` empieza en 0?",
+      "options": [
+        "Una",
+        "Ninguna",
+        "Infinitas"
+      ],
+      "answer": 1,
+      "why": "La condición `0 > 0` es falsa desde el principio, así que el bloque no se ejecuta. Por eso el 0 hay que tratarlo aparte."
+    }
+  ],
+  "hints": [
+    "Recorre las cifras con `while n > 0:`, sacando la última con `% 10` y quitándola con `// 10`.",
+    "Usa un contador para las cifras y un acumulador para la suma, los dos en 0 antes del ciclo.",
+    "Si N es 0 el ciclo no entra: imprime `Cifras: 1` y `Suma: 0` con un `if` aparte, o empieza el ciclo solo cuando N > 0."
+  ],
+  "tests": [
+    {
+      "stdin": "4071\n",
+      "stdout": "Cifras: 4\nSuma: 12\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Cifras: 1\nSuma: 0\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "Cifras: 1\nSuma: 7\n"
+    },
+    {
+      "stdin": "10\n",
+      "stdout": "Cifras: 2\nSuma: 1\n"
+    },
+    {
+      "stdin": "99999\n",
+      "stdout": "Cifras: 5\nSuma: 45\n"
+    },
+    {
+      "stdin": "123456789\n",
+      "stdout": "Cifras: 9\nSuma: 45\n"
+    },
+    {
+      "stdin": "1000000\n",
+      "stdout": "Cifras: 7\nSuma: 1\n"
+    }
+  ]
+}

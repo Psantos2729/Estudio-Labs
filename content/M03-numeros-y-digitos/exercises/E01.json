@@ -1,0 +1,60 @@
+{
+  "id": "M03-E01",
+  "title": "Centenas, decenas y unidades",
+  "pdf": 16,
+  "statement": "Lee un número entero de **tres cifras** (de 100 a 999) y desglósalo:\n\n```\nCentenas: <c>\nDecenas: <d>\nUnidades: <u>\n```\n\nEjemplo: con `742` imprime `Centenas: 7`, `Decenas: 4` y `Unidades: 2`.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué da `742 // 10 % 10`?",
+      "options": [
+        "74",
+        "2",
+        "4"
+      ],
+      "answer": 2,
+      "why": "`742 // 10` es 74 (se quita la última cifra) y `74 % 10` es 4: la cifra de las decenas."
+    },
+    {
+      "question": "¿Qué da `742 % 100`?",
+      "options": [
+        "42",
+        "7.42",
+        "7"
+      ],
+      "answer": 0,
+      "why": "El residuo de dividir entre 100 son las dos últimas cifras: lo que sobra después de quitar las centenas."
+    }
+  ],
+  "hints": [
+    "Las centenas son cuántas veces cabe 100 en el número.",
+    "`n // 100` da las centenas y `n % 10` las unidades.",
+    "Las decenas: quita las unidades con `// 10` y quédate con la última cifra con `% 10`."
+  ],
+  "tests": [
+    {
+      "stdin": "742\n",
+      "stdout": "Centenas: 7\nDecenas: 4\nUnidades: 2\n"
+    },
+    {
+      "stdin": "100\n",
+      "stdout": "Centenas: 1\nDecenas: 0\nUnidades: 0\n"
+    },
+    {
+      "stdin": "999\n",
+      "stdout": "Centenas: 9\nDecenas: 9\nUnidades: 9\n"
+    },
+    {
+      "stdin": "305\n",
+      "stdout": "Centenas: 3\nDecenas: 0\nUnidades: 5\n"
+    },
+    {
+      "stdin": "560\n",
+      "stdout": "Centenas: 5\nDecenas: 6\nUnidades: 0\n"
+    },
+    {
+      "stdin": "811\n",
+      "stdout": "Centenas: 8\nDecenas: 1\nUnidades: 1\n"
+    }
+  ]
+}

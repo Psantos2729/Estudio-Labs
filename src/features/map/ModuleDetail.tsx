@@ -54,12 +54,13 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
 
       {exercises.length > 0 && (
         <section className="panel" aria-label="Práctica guiada">
-          <p className="small">práctica guiada</p>
+          <p className="small">práctica guiada{exercises.some((e) => e.challenge) && " · los retos son opcionales: no cuentan para tu avance"}</p>
           <ol className="plain">
             {exercises.map((e, i) => (
               <li key={e.id}>{view.open
                 ? <Link to={`/ejercicio/${e.id}`}>{i + 1}. {e.title}</Link>
-                : <span className="muted">{i + 1}. {e.title}</span>}</li>
+                : <span className="muted">{i + 1}. {e.title}</span>}
+                {e.challenge && <span className="warn small"> · reto</span>}</li>
             ))}
           </ol>
         </section>

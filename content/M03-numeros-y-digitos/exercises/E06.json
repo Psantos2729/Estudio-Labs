@@ -1,0 +1,68 @@
+{
+  "id": "M03-E06",
+  "title": "De decimal a binario",
+  "pdf": 17,
+  "statement": "Lee un entero **N** (N ≥ 0) e imprime su equivalente en binario:\n\n```\nBinario: <bits>\n```\n\nHazlo con el algoritmo de dividir entre 2, sin usar `bin()`.\n\nEjemplo: con `22` imprime `Binario: 10110`; con `0`, `Binario: 0`.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué da `22 % 2` y qué da `22 // 2`?",
+      "options": [
+        "0 y 11",
+        "11 y 0",
+        "1 y 11"
+      ],
+      "answer": 0,
+      "why": "22 es par, así que el residuo es 0; y 22 entre 2 da 11 exacto."
+    },
+    {
+      "question": "Con `bits = '10'`, ¿qué da `'1' + bits`?",
+      "options": [
+        "'101'",
+        "'110'",
+        "11"
+      ],
+      "answer": 1,
+      "why": "Sumar textos los pega. Poner el residuo nuevo a la izquierda deja los bits en el orden correcto."
+    }
+  ],
+  "hints": [
+    "Repite mientras `n > 0`: el residuo `n % 2` es el siguiente bit y `n // 2` avanza.",
+    "Los bits salen de derecha a izquierda: pega cada uno **delante** con `bits = str(n % 2) + bits`.",
+    "Si N es 0 el ciclo no entra: imprime `Binario: 0` aparte."
+  ],
+  "tests": [
+    {
+      "stdin": "22\n",
+      "stdout": "Binario: 10110\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Binario: 0\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "Binario: 1\n"
+    },
+    {
+      "stdin": "2\n",
+      "stdout": "Binario: 10\n"
+    },
+    {
+      "stdin": "37\n",
+      "stdout": "Binario: 100101\n"
+    },
+    {
+      "stdin": "255\n",
+      "stdout": "Binario: 11111111\n"
+    },
+    {
+      "stdin": "1024\n",
+      "stdout": "Binario: 10000000000\n"
+    },
+    {
+      "stdin": "2026\n",
+      "stdout": "Binario: 11111101010\n"
+    }
+  ]
+}

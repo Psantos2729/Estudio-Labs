@@ -8,10 +8,12 @@
     "M02"
   ],
   "concepts": [
-    "// y %",
-    "descomponer en dígitos",
+    "dígitos con % y //",
+    "contar, sumar e invertir dígitos",
+    "desglose en cascada (billetes)",
     "binario y decimal",
-    "fechas y edades"
+    "fechas y edades",
+    "retos: Armstrong, MCD de Euclides, otras bases y años bisiestos"
   ],
   "pdfExercises": [
     9,

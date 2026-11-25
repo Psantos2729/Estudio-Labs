@@ -1,0 +1,68 @@
+{
+  "id": "M03-E08",
+  "title": "Reto: octal y hexadecimal",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee un entero **N** (N ≥ 0) e imprime su valor en base 8 y en base 16:\n\n```\nOctal: <o>\nHexadecimal: <h>\n```\n\nEn hexadecimal los dígitos del 10 al 15 se escriben `A` a `F` (en mayúscula). Usa el mismo algoritmo del binario, sin `oct()` ni `hex()`.\n\nEjemplo: con `255` imprime `Octal: 377` y `Hexadecimal: FF`.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `print('0123456789ABCDEF'[12])`?",
+      "options": [
+        "B",
+        "C",
+        "12"
+      ],
+      "answer": 1,
+      "why": "Las posiciones de un texto se cuentan desde 0: la 10 es `A`, la 11 `B` y la 12 `C`."
+    },
+    {
+      "question": "¿Cuánto es `1F` en hexadecimal?",
+      "options": [
+        "31",
+        "16",
+        "115"
+      ],
+      "answer": 0,
+      "why": "1 × 16 + 15 = 31: la F vale 15."
+    }
+  ],
+  "hints": [
+    "Escribe un ciclo que convierta a una base cualquiera `b`: residuo `n % b`, avanza con `n // b`.",
+    "Convierte cada residuo en su símbolo con `DIGITOS[r]`, siendo `DIGITOS = '0123456789ABCDEF'`, y pégalo delante.",
+    "Haz la conversión dos veces (con 8 y con 16), cada una sobre una copia de N. No olvides el caso N = 0."
+  ],
+  "tests": [
+    {
+      "stdin": "255\n",
+      "stdout": "Octal: 377\nHexadecimal: FF\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Octal: 0\nHexadecimal: 0\n"
+    },
+    {
+      "stdin": "8\n",
+      "stdout": "Octal: 10\nHexadecimal: 8\n"
+    },
+    {
+      "stdin": "16\n",
+      "stdout": "Octal: 20\nHexadecimal: 10\n"
+    },
+    {
+      "stdin": "31\n",
+      "stdout": "Octal: 37\nHexadecimal: 1F\n"
+    },
+    {
+      "stdin": "4095\n",
+      "stdout": "Octal: 7777\nHexadecimal: FFF\n"
+    },
+    {
+      "stdin": "2026\n",
+      "stdout": "Octal: 3752\nHexadecimal: 7EA\n"
+    },
+    {
+      "stdin": "48879\n",
+      "stdout": "Octal: 137357\nHexadecimal: BEEF\n"
+    }
+  ]
+}

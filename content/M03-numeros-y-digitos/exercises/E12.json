@@ -1,0 +1,72 @@
+{
+  "id": "M03-E12",
+  "title": "Jefe: desglose en billetes de quetzales",
+  "pdf": 14,
+  "statement": "**Jefe del módulo.** Lee un monto entero en quetzales (de 0 en adelante) y muestra cuántos billetes de cada denominación se necesitan, **empezando por la mayor**. Solo hay billetes de Q50, Q20, Q10, Q5 y Q1.\n\nImprime las cinco denominaciones aunque alguna dé 0, y al final el total de billetes:\n\n```\n<c> billete(s) de Q.50.00\n<c> billete(s) de Q.20.00\n<c> billete(s) de Q.10.00\n<c> billete(s) de Q.5.00\n<c> billete(s) de Q.1.00\nTotal de billetes: <t>\n```\n\nEjemplo: con `1586` imprime 31 de Q.50.00, y 1 de cada una de las demás, con `Total de billetes: 35`.",
+  "starter": "monto = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué dan `1586 // 50` y `1586 % 50`?",
+      "options": [
+        "30 y 86",
+        "31 y 6",
+        "31 y 36"
+      ],
+      "answer": 2,
+      "why": "31 × 50 = 1550 y sobran 36. Esos 36 son los que pasan al billete de Q20."
+    },
+    {
+      "question": "¿Por qué se empieza por el billete más grande?",
+      "options": [
+        "Para usar la menor cantidad de billetes",
+        "Porque `//` solo funciona con números grandes",
+        "Da igual el orden"
+      ],
+      "answer": 0,
+      "why": "Si empiezas por los de Q1, todo el monto se paga con billetes de Q1. De mayor a menor se usan los menos billetes posibles."
+    }
+  ],
+  "hints": [
+    "Es una cascada: para cada billete, `//` dice cuántos caben y `%` deja lo que sobra.",
+    "Recorre `(50, 20, 10, 5, 1)` con un `for` y actualiza `monto = monto % b` en cada vuelta.",
+    "Lleva un acumulador con el total de billetes e imprímelo después del ciclo. El formato de cada línea: `f'{c} billete(s) de Q.{b}.00'`."
+  ],
+  "tests": [
+    {
+      "stdin": "1586\n",
+      "stdout": "31 billete(s) de Q.50.00\n1 billete(s) de Q.20.00\n1 billete(s) de Q.10.00\n1 billete(s) de Q.5.00\n1 billete(s) de Q.1.00\nTotal de billetes: 35\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "0 billete(s) de Q.50.00\n0 billete(s) de Q.20.00\n0 billete(s) de Q.10.00\n0 billete(s) de Q.5.00\n0 billete(s) de Q.1.00\nTotal de billetes: 0\n"
+    },
+    {
+      "stdin": "4\n",
+      "stdout": "0 billete(s) de Q.50.00\n0 billete(s) de Q.20.00\n0 billete(s) de Q.10.00\n0 billete(s) de Q.5.00\n4 billete(s) de Q.1.00\nTotal de billetes: 4\n"
+    },
+    {
+      "stdin": "50\n",
+      "stdout": "1 billete(s) de Q.50.00\n0 billete(s) de Q.20.00\n0 billete(s) de Q.10.00\n0 billete(s) de Q.5.00\n0 billete(s) de Q.1.00\nTotal de billetes: 1\n"
+    },
+    {
+      "stdin": "99\n",
+      "stdout": "1 billete(s) de Q.50.00\n2 billete(s) de Q.20.00\n0 billete(s) de Q.10.00\n1 billete(s) de Q.5.00\n4 billete(s) de Q.1.00\nTotal de billetes: 8\n"
+    },
+    {
+      "stdin": "88\n",
+      "stdout": "1 billete(s) de Q.50.00\n1 billete(s) de Q.20.00\n1 billete(s) de Q.10.00\n1 billete(s) de Q.5.00\n3 billete(s) de Q.1.00\nTotal de billetes: 7\n"
+    },
+    {
+      "stdin": "1000\n",
+      "stdout": "20 billete(s) de Q.50.00\n0 billete(s) de Q.20.00\n0 billete(s) de Q.10.00\n0 billete(s) de Q.5.00\n0 billete(s) de Q.1.00\nTotal de billetes: 20\n"
+    },
+    {
+      "stdin": "37\n",
+      "stdout": "0 billete(s) de Q.50.00\n1 billete(s) de Q.20.00\n1 billete(s) de Q.10.00\n1 billete(s) de Q.5.00\n2 billete(s) de Q.1.00\nTotal de billetes: 5\n"
+    },
+    {
+      "stdin": "123456\n",
+      "stdout": "2469 billete(s) de Q.50.00\n0 billete(s) de Q.20.00\n0 billete(s) de Q.10.00\n1 billete(s) de Q.5.00\n1 billete(s) de Q.1.00\nTotal de billetes: 2471\n"
+    }
+  ]
+}

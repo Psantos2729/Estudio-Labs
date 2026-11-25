@@ -1,0 +1,68 @@
+{
+  "id": "M03-E11",
+  "title": "Reto: ¿año bisiesto?",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee un año e imprime `<año> es bisiesto` o `<año> no es bisiesto`.\n\nUn año es bisiesto si es divisible entre 4, **excepto** si es divisible entre 100, **salvo** que también sea divisible entre 400.\n\nEjemplo: `2024 es bisiesto`, `1900 no es bisiesto`, `2000 es bisiesto`.",
+  "starter": "anio = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué da `1900 % 100 == 0`?",
+      "options": [
+        "False",
+        "19",
+        "True"
+      ],
+      "answer": 2,
+      "why": "1900 entre 100 da 19 exacto, residuo 0. Por eso 1900 cae en la excepción."
+    },
+    {
+      "question": "¿Es bisiesto 2100?",
+      "options": [
+        "Solo si es divisible entre 8",
+        "Sí",
+        "No"
+      ],
+      "answer": 2,
+      "why": "Es divisible entre 4 y entre 100, pero no entre 400: cae en la excepción, como 1900."
+    }
+  ],
+  "hints": [
+    "Cada condición es un residuo: `anio % 4 == 0`, `anio % 100 != 0`, `anio % 400 == 0`.",
+    "Divisible entre 4 **y** no entre 100 es un caso; divisible entre 400 es el otro.",
+    "`(anio % 4 == 0 and anio % 100 != 0) or anio % 400 == 0`."
+  ],
+  "tests": [
+    {
+      "stdin": "2024\n",
+      "stdout": "2024 es bisiesto\n"
+    },
+    {
+      "stdin": "1900\n",
+      "stdout": "1900 no es bisiesto\n"
+    },
+    {
+      "stdin": "2000\n",
+      "stdout": "2000 es bisiesto\n"
+    },
+    {
+      "stdin": "2026\n",
+      "stdout": "2026 no es bisiesto\n"
+    },
+    {
+      "stdin": "2100\n",
+      "stdout": "2100 no es bisiesto\n"
+    },
+    {
+      "stdin": "1600\n",
+      "stdout": "1600 es bisiesto\n"
+    },
+    {
+      "stdin": "1996\n",
+      "stdout": "1996 es bisiesto\n"
+    },
+    {
+      "stdin": "2023\n",
+      "stdout": "2023 no es bisiesto\n"
+    }
+  ]
+}

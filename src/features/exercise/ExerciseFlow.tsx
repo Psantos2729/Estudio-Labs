@@ -33,7 +33,10 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
   const save = useSavePractice(exercise.id);
   const [passed, setPassed] = useState(false);
   const siblings = exercisesOf(exercise.id.slice(0, 3));
-  const next = siblings[siblings.findIndex((e) => e.id === exercise.id) + 1];
+  const after = siblings.slice(siblings.findIndex((e) => e.id === exercise.id) + 1);
+  // Desde un ejercicio normal, Continuar salta los retos; el reto que sigue se ofrece aparte.
+  const next = exercise.challenge ? after[0] : after.find((e) => !e.challenge);
+  const reto = !exercise.challenge && after[0]?.challenge ? after[0] : undefined;
 
   const onTested = (code: string, results: TestResult[]) => {
     setPassed(results.every((r) => r.passed));
@@ -66,6 +69,7 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
           {next ? `Continuar: ${next.title} →` : 'Terminé los ejercicios →'}
         </Link>
       )}
+      {passed && reto && <Link className="btn btn--ghost" to={`/ejercicio/${reto.id}`}>o intenta el reto: {reto.title}</Link>}
       <p className="muted small" aria-live="polite">
         {!canSave && 'Modo invitado: tu trabajo no se guarda. Entra para guardarlo.'}
         {save.isPending && 'guardando…'}
