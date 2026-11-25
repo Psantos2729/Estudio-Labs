@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { displayId } from '@/content/types';
 import { exercisesOf, lessonsOf } from '@/content/lessons';
 import { useReadLessons } from '@/features/lesson/useLessonProgress';
+import { LockedNotice } from './LockedNotice';
 import type { ModuleView } from './masteryView';
 
 const STEPS = [
@@ -26,6 +27,8 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
         <h1 className="display">{m.title}</h1>
         <p className="muted">{m.summary}</p>
       </header>
+
+      {!view.open && <LockedNotice moduleId={m.id} />}
 
       <section className="panel" aria-label="Camino de dominio">
         <p className="small">camino de dominio</p>

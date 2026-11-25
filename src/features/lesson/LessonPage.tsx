@@ -3,6 +3,7 @@ import { Link, useParams, useSearchParams } from 'react-router-dom';
 import { marked } from 'marked';
 import { getLesson, lessonsOf } from '@/content/lessons';
 import { displayId } from '@/content/types';
+import { LockedNotice } from '@/features/map/LockedNotice';
 import { useModuleViews } from '@/features/map/useMastery';
 import { warmUp } from '@/features/runner/runner';
 import { splitBlocks } from './blocks';
@@ -30,7 +31,13 @@ export function LessonPage() {
 
   if (!lesson) return <p className="center muted">Esa lección no existe. <Link to="/mapa">volver al mapa</Link></p>;
   if (isLoading) return <p className="center muted">cargando progreso…</p>;
-  if (!open) return <p className="center warn">Este módulo está bloqueado. <Link to="/mapa">volver al mapa</Link></p>;
+  if (!open) return (
+    <main className="lesson">
+      <Link to="/mapa" className="small">← mapa</Link>
+      <LockedNotice moduleId={lesson.moduleId} />
+      <p className="small"><Link to={`/leccion/${lesson.id}?libre`}>desbloquear lección</Link> <span className="muted">(puedes leerla, pero no cuenta para tu avance)</span></p>
+    </main>
+  );
 
   const siblings = lessonsOf(lesson.moduleId);
   const i = siblings.findIndex((l) => l.id === lesson.id);
