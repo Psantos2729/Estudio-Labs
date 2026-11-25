@@ -14,11 +14,12 @@ select 'M00', p, n::text, 'out' || n || E'\n' from unnest(array['M00-X01', 'M00-
 insert into public.exam_items (module_id, question, options, answer)
 select 'M00', 'P' || n, array['a', 'b'], '1' from generate_series(1, 4) n;
 
--- Respuestas para un examen: todo bien salvo `wrong` puntos (casos primero).
+-- Respuestas para un examen: todo bien salvo `wrong` puntos (casos primero). Las buenas traen
+-- un título y líneas en blanco de más, que no deben contar.
 create function pg_temp.answers(e jsonb, wrong int) returns jsonb language sql as $$
-  select jsonb_object_agg(id, case when rn <= wrong then 'mal' else val end)
+  select jsonb_object_agg(id, case when rn <= wrong then replace(val, 'out', 'out0') || 'x' else val end)
   from (select id, val, row_number() over () as rn from (
-          select c ->> 'id' as id, 'out' || (c ->> 'stdin') || E'  \r\n\n' as val
+          select c ->> 'id' as id, E'Dato:\n\n' || 'out' || (c ->> 'stdin') || E'  \r\n\n' as val
           from jsonb_array_elements(e -> 'problems') p, jsonb_array_elements(p -> 'cases') c
           union all
           select q ->> 'id', ' 1 ' from jsonb_array_elements(e -> 'questions') q) t) r;
