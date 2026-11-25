@@ -3,7 +3,7 @@ import { exercisesOf, lessonsOf } from '@/content/lessons';
 import { displayId } from '@/content/types';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { useModuleViews } from '@/features/map/useMastery';
-import { currentModule } from '@/features/map/masteryView';
+import { currentModule, dueReviews } from '@/features/map/masteryView';
 import { usePracticeSummary } from '@/features/exercise/usePractice';
 import { useReadLessons } from '@/features/lesson/useLessonProgress';
 import { nextStep } from './nextStep';
@@ -26,7 +26,10 @@ export function HomePage() {
   const readHere = lessons.filter((l) => lessonsRead.read.has(l.id)).length;
   const steps = lessons.length + exercises.length;
   const percent = steps ? Math.round((100 * (readHere + solvedHere)) / steps) : 0;
-  const next = nextStep(lessons, exercises, lessonsRead.read, practice.passed);
+  const due = dueReviews(views)[0];
+  const next = due
+    ? { to: `/repaso/${due.module.id}`, kind: 'repaso', title: `Toca repasar ${displayId(due.module.id)} · ${due.module.title}` }
+    : nextStep(lessons, exercises, lessonsRead.read, practice.passed);
   const mastered = views.filter((v) => v.status === 'mastered').length;
   const name = (session?.user.user_metadata.full_name as string | undefined)?.split(' ')[0] ?? session?.user.email?.split('@')[0];
 

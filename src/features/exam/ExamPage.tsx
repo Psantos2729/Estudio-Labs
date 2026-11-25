@@ -41,6 +41,9 @@ export function ExamPage() {
               <li>· Tienes 45 minutos. Sin pistas. Si se acaba el tiempo, se entrega lo que tengas.</li>
               <li>· Si no apruebas, puedes repetirlo en 1 hora, con otras preguntas.</li>
             </ul>
+            {view.status === 'reopened' && (
+              <p className="warn small">Este módulo se reabrió porque fallaste un repaso. Al aprobar, los repasos empiezan de nuevo.</p>
+            )}
             {!supabase || isGuest ? (
               <p className="warn">Necesitas <Link to="/login">iniciar sesión</Link> para presentar el examen.</p>
             ) : view.status === 'mastered' ? (

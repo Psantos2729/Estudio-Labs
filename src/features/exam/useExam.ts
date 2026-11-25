@@ -13,7 +13,20 @@ export function useStartExam(moduleId: string) {
   });
 }
 
-/** Entrega el examen; el servidor califica y actualiza el dominio del módulo. */
+/** Empieza o retoma el repaso (RPC start_review). `expired`: se venció el anterior y el módulo se reabrió. */
+export function useStartReview(moduleId: string) {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (): Promise<Exam | { expired: true }> => {
+      const { data, error } = await supabase!.rpc('start_review', { p_module_id: moduleId });
+      if (error) throw new Error(error.message);
+      return data as Exam | { expired: true };
+    },
+    onSuccess: (d) => { if ('expired' in d) void qc.invalidateQueries({ queryKey: ['module_mastery'] }); },
+  });
+}
+
+/** Entrega el examen o el repaso; el servidor califica y actualiza el dominio del módulo. */
 export function useSubmitExam() {
   const qc = useQueryClient();
   return useMutation({

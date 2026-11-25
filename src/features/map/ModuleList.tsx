@@ -19,14 +19,14 @@ export function ModuleList({ views, selectedId, onSelect }: Props) {
           <li key={v.module.id}>
             <button
               type="button"
-              className={`route__item route__item--${v.status}`}
+              className={`route__item route__item--${v.status}${v.review === 'due' ? ' route__item--due' : ''}`}
               aria-current={v.module.id === selectedId ? 'true' : undefined}
               onClick={() => onSelect(v.module.id)}
             >
               <span className="route__icon" aria-hidden="true">{v.icon}</span>
               <span className="route__id">{displayId(v.module.id)}</span>
               <span className="route__name">{v.module.title}</span>
-              <span className="route__score">{v.score !== null ? `${v.score}%` : v.label}</span>
+              <span className="route__score">{v.score !== null && v.review !== 'due' ? `${v.score}%` : v.label}</span>
             </button>
           </li>
         ))}
