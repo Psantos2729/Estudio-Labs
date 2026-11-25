@@ -2,14 +2,14 @@
 .home { width: min(1040px, 100%); margin: 0 auto; padding: 32px 16px 48px; display: flex; flex-direction: column; gap: 20px; }
 .panel.home__hero { flex-direction: row; align-items: center; justify-content: space-between; gap: 32px; padding: 32px; }
 .home__intro { display: flex; flex-direction: column; gap: 12px; max-width: 560px; }
-.home__intro .display { font-size: 40px; text-shadow: var(--glow); }
-.home__next { display: flex; flex-direction: column; gap: 2px; border-left: 2px solid var(--accent); padding: 4px 12px; background: rgba(25, 211, 255, 0.06); }
+.home__intro .display { font-size: 42px; }
+.home__next { display: flex; flex-direction: column; gap: 2px; border-radius: 12px; padding: 10px 14px; background: rgba(111, 155, 255, 0.08); }
 .home__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .home__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
 .stat { align-items: flex-start; gap: 4px; transition: box-shadow 0.2s, transform 0.2s; }
 .stat:hover { box-shadow: var(--glow); transform: translateY(-2px); }
-.stat__value { font: 800 30px var(--display); color: var(--accent-hi); text-shadow: var(--glow); }
+.stat__value { font: 700 28px var(--display); color: var(--text); font-variant-numeric: tabular-nums; }
 
 .tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .tips li { padding-left: 20px; position: relative; }
@@ -18,12 +18,12 @@
 .ring { position: relative; width: 200px; flex: none; }
 .ring svg { display: block; width: 100%; transform: rotate(-90deg); }
 .ring circle { fill: none; }
-.ring__ticks { stroke: rgba(25, 211, 255, 0.35); stroke-width: 4; stroke-dasharray: 1.5 7; animation: hud-spin 40s linear infinite; transform-origin: center; }
-.ring__track { stroke: rgba(25, 211, 255, 0.12); stroke-width: 12; }
-.ring__fill { stroke: var(--accent); stroke-width: 12; stroke-linecap: round; filter: drop-shadow(0 0 6px var(--accent)); transition: stroke-dashoffset 1s ease-out; }
+.ring__ticks { stroke: rgba(111, 155, 255, 0.35); stroke-width: 4; stroke-dasharray: 1.5 7; animation: hud-spin 40s linear infinite; transform-origin: center; }
+.ring__track { stroke: rgba(111, 155, 255, 0.12); stroke-width: 12; }
+.ring__fill { stroke: url(#ring-grad); stroke-width: 12; stroke-linecap: round; filter: drop-shadow(0 0 8px rgba(130, 120, 255, 0.7)); transition: stroke-dashoffset 1s ease-out; }
 .ring__center { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-.ring__label { font: 700 14px var(--brand); color: var(--muted); letter-spacing: 2px; }
-.ring__value { font: 800 36px var(--display); color: var(--text); text-shadow: var(--glow); }
+.ring__label { font: 600 12px var(--sans); color: var(--muted); letter-spacing: 2px; text-transform: uppercase; }
+.ring__value { font: 700 38px var(--display); color: var(--text); }
 
 @media (max-width: 760px) {
   .panel.home__hero { flex-direction: column-reverse; padding: 20px; }

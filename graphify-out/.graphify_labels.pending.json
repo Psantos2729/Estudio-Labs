@@ -67,9 +67,9 @@
   "65": "Funciones con vectores y programas con menú",
   "66": "Ordenar: intercambios y el método de selección",
   "67": "LessonPage.tsx",
-  "68": "anon",
+  "68": "public.record_practice",
   "69": "exam_attempts",
-  "70": "CharacterCard.tsx",
+  "70": "ExpeditionMap.tsx",
   "71": "public.modules",
   "72": "Expresiones regulares (2): separar, validar y reemplazar",
   "73": "Conteos carácter por carácter",
@@ -117,6 +117,9 @@
   "115": "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz",
   "116": "ADR-009: ReactBits con carga diferida y movimiento reducido",
   "117": "ADR-010: Ningún archivo de más de 250 líneas",
-  "118": "@codemirror/commands",
-  "119": "rls_xp.sql"
+  "118": "main.tsx",
+  "119": "rls_xp.sql",
+  "120": "mapStore.ts",
+  "121": "20261125000011_exam_lenient.sql",
+  "122": "rls_gear.sql"
 }

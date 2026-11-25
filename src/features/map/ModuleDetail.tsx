@@ -3,6 +3,8 @@ import { displayId } from '@/content/types';
 import { exercisesOf, lessonsOf } from '@/content/lessons';
 import { useReadLessons } from '@/features/lesson/useLessonProgress';
 import { LockedNotice } from './LockedNotice';
+import { PixelSprite } from '@/ui/primitives/PixelSprite';
+import { islandOf } from '@/features/game/islands';
 import type { ModuleView } from './masteryView';
 
 const STEPS = [
@@ -84,7 +86,10 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
             {m.realTasks.length > 0 ? m.realTasks.map((t) => <li key={t}>· {t}</li>) : <li>· ejercicios propios</li>}
           </ul>
           <p className="muted small">jefe final</p>
-          <p className="warn">{m.boss.title} <span className="muted small">({m.boss.source})</span></p>
+          <p className="warn boss-line">
+            <PixelSprite name={islandOf(Number(m.id.slice(1))).minion} size={26} />
+            <span>{m.boss.title} <span className="muted small">({m.boss.source})</span></span>
+          </p>
         </section>
       </div>
     </main>

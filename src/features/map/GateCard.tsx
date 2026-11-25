@@ -1,13 +1,23 @@
 import { Link } from 'react-router-dom';
 import { displayId } from '@/content/types';
 import { Panel } from '@/ui/primitives/Panel';
+import { PixelSprite } from '@/ui/primitives/PixelSprite';
+import { islandOf } from '@/features/game/islands';
 import { daysUntil, type ModuleView } from './masteryView';
 
 export function GateCard({ view, isGuest }: { view: ModuleView; isGuest: boolean }) {
   const m = view.module;
+  const isl = islandOf(Number(m.id.slice(1)));
+  const islandBoss = Number(m.id.slice(1)) === isl.last;
   return (
     <aside className="gate">
       <Panel as="div" tone="warn">
+        {islandBoss && (
+          <div className="gate__boss">
+            <PixelSprite name={isl.boss.sprite} size={64} title={isl.boss.name} />
+            <p className="small">Jefe de la isla: <span className="strong">{isl.boss.name}</span>. Véncelo y ganas piezas para tu robot.</p>
+          </div>
+        )}
         <p className="warn strong">examen de dominio {displayId(m.id)}</p>
         <p className="muted small">Para desbloquear el siguiente módulo necesitas:</p>
         <ul className="plain small">

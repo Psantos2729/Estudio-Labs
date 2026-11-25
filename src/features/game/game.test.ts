@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { gearOf, levelOf } from './game';
+import { levelOf } from './game';
+import { islandOf } from './islands';
 
 describe('juego', () => {
   it('sube de nivel cada 500 XP', () => {
@@ -8,11 +9,11 @@ describe('juego', () => {
     expect(levelOf(1240)).toEqual({ level: 3, into: 240 });
   });
 
-  it('da un accesorio por zona completa', () => {
-    expect(gearOf(0)).toBe(0);
-    expect(gearOf(3)).toBe(0);
-    expect(gearOf(4)).toBe(1);
-    expect(gearOf(10)).toBe(3);
-    expect(gearOf(13)).toBe(4);
+  it('pone cada módulo en su isla', () => {
+    expect(islandOf(0).name).toBe('Bosque de las Ruinas');
+    expect(islandOf(3).name).toBe('Bosque de las Ruinas');
+    expect(islandOf(4).name).toBe('Archipiélago del Puerto');
+    expect(islandOf(9).name).toBe('Fortaleza del Archivo');
+    expect(islandOf(12).name).toBe('Isla de la Tormenta');
   });
 });
