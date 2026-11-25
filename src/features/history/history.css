@@ -4,3 +4,9 @@
 .history__table td { border-bottom: 1px solid var(--line); padding: 8px; vertical-align: top; }
 .history__table tr:last-child td { border-bottom: 0; }
 .history .panel { overflow-x: auto; }
+
+/* Revisar un intento */
+.history__problem { display: flex; flex-direction: column; gap: 12px; }
+.history__pre { margin: 0; white-space: pre-wrap; background: var(--bg-code); padding: 4px 8px; border-radius: 4px; font-family: var(--mono); }
+.history__option { display: flex; gap: 10px; align-items: flex-start; margin: 4px 0; padding: 6px 10px; border: 1px solid transparent; border-radius: 6px; }
+.history__option--picked { border-color: var(--line-strong); background: rgba(25, 211, 255, 0.06); }

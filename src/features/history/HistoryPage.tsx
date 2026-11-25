@@ -52,7 +52,7 @@ export function HistoryPage() {
           <p className="muted small">Todavía no presentas ningún examen.</p>
         ) : (
           <table className="history__table">
-            <thead><tr><th>fecha</th><th>módulo</th><th>tipo</th><th>nota</th><th>resultado</th></tr></thead>
+            <thead><tr><th>fecha</th><th>módulo</th><th>tipo</th><th>nota</th><th>resultado</th><th></th></tr></thead>
             <tbody>
               {attempts.map((a) => {
                 const r = attemptResult(a);
@@ -63,6 +63,7 @@ export function HistoryPage() {
                     <td>{a.kind === 'review' ? 'repaso' : 'examen'}</td>
                     <td>{a.score !== null ? `${a.score}%` : '—'}</td>
                     <td className={r.tone}>{r.label}</td>
+                    <td>{a.submitted_at && <Link to={`/historial/${a.id}`}>revisar →</Link>}</td>
                   </tr>
                 );
               })}

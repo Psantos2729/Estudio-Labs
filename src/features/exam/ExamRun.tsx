@@ -42,7 +42,7 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
     setRunning(true);
     const answers = await buildAnswers(exam, draft.code, draft.picked, (c, s) => runPython(c, s, { quietPrompts: true }));
     setRunning(false);
-    submit.mutate({ attemptId: exam.attempt_id, answers }, {
+    submit.mutate({ attemptId: exam.attempt_id, answers, code: draft.code }, {
       onSuccess: (r) => { try { localStorage.removeItem(key(exam)); } catch { /* igual */ } onDone(r); },
       onError: () => { sent.current = false; },
     });
@@ -63,6 +63,7 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
       </div>
       {exam.problems.map((p, i) => (
         <ExamProblemCard key={p.id} problem={p} n={i + 1} initial={draft.code[p.id] ?? ''}
+          note={`Al entregar, tu código corre con ${p.cases.length} entradas ocultas.`}
           onChange={(c) => setDraft((d) => ({ ...d, code: { ...d.code, [p.id]: c } }))} />
       ))}
       <ExamQuestions questions={exam.questions} picked={draft.picked}
