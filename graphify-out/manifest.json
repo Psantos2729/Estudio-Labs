@@ -102,9 +102,9 @@
     "semantic_hash": ""
   },
   "src/app/App.tsx": {
-    "mtime": 1795578002.6667912,
-    "seen": 1795578064.398121,
-    "ast_hash": "bb3f3cf7f0fb13afd1b4dd167b2a36c7",
+    "mtime": 1795578474.1712348,
+    "seen": 1795578531.8458319,
+    "ast_hash": "72085a5ef650de40f6f314d58b060e44",
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
@@ -810,9 +810,9 @@
     "semantic_hash": ""
   },
   "src/features/exam/ExamProblemCard.tsx": {
-    "mtime": 1795577155.0573797,
-    "seen": 1795577423.0446448,
-    "ast_hash": "681c5dae018dfb7bb41d55a48115c4c1",
+    "mtime": 1795578454.3866482,
+    "seen": 1795578531.8458753,
+    "ast_hash": "9d05186453c058d61525b52b612126f8",
     "semantic_hash": ""
   },
   "src/features/exam/ExamQuestions.tsx": {
@@ -828,9 +828,9 @@
     "semantic_hash": ""
   },
   "src/features/exam/ExamRun.tsx": {
-    "mtime": 1795577934.778729,
-    "seen": 1795578064.3981495,
-    "ast_hash": "bc6c0ae9e5c4d6ef1fad79935ec856bb",
+    "mtime": 1795578454.3870935,
+    "seen": 1795578531.845886,
+    "ast_hash": "9113aefcc62d62c1d87cf0d8073270c9",
     "semantic_hash": ""
   },
   "src/features/exam/answers.test.ts": {
@@ -846,15 +846,15 @@
     "semantic_hash": ""
   },
   "src/features/exam/types.ts": {
-    "mtime": 1795577934.778729,
-    "seen": 1795578064.398158,
-    "ast_hash": "cfeccea26e9ccbc15acc261fd2151aeb",
+    "mtime": 1795578483.6637304,
+    "seen": 1795578531.8459048,
+    "ast_hash": "0ac9bd600844a640746c0f8293e0db19",
     "semantic_hash": ""
   },
   "src/features/exam/useExam.ts": {
-    "mtime": 1795578002.649969,
-    "seen": 1795578064.3981593,
-    "ast_hash": "8a3c169fa9e0605423ce6b9be9b6e62e",
+    "mtime": 1795578454.3876898,
+    "seen": 1795578531.845907,
+    "ast_hash": "6c674de2fc6be8a6fd433dd340961eb4",
     "semantic_hash": ""
   },
   "src/ui/primitives/Logo.tsx": {
@@ -888,9 +888,9 @@
     "semantic_hash": ""
   },
   "src/features/history/HistoryPage.tsx": {
-    "mtime": 1795578048.0223641,
-    "seen": 1795578064.3981752,
-    "ast_hash": "7893de6cc45d777f6c006493ba0abff0",
+    "mtime": 1795578474.1716146,
+    "seen": 1795578531.845924,
+    "ast_hash": "c46489ffb9934318f033cac35da6c531",
     "semantic_hash": ""
   },
   "src/features/history/attempts.test.ts": {
@@ -927,6 +927,24 @@
     "mtime": 1795577712.4039283,
     "seen": 1795578064.398262,
     "ast_hash": "6fdb844d5ecc84cb42a9cb784e1d3af2",
+    "semantic_hash": ""
+  },
+  "src/features/history/AttemptReviewPage.tsx": {
+    "mtime": 1795578474.1540802,
+    "seen": 1795578531.8459225,
+    "ast_hash": "bd984be96cc6f17847782cb19aef3767",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261125000014_exam_work.sql": {
+    "mtime": 1795578402.8736432,
+    "seen": 1795578531.846012,
+    "ast_hash": "89d085af2a4e64a9b4868d3e04a7a085",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_exam_work.sql": {
+    "mtime": 1795578430.1445906,
+    "seen": 1795578531.8460233,
+    "ast_hash": "9e4b7e25899b53e2d4dc028b73c366aa",
     "semantic_hash": ""
   },
   "package-lock.json": {
