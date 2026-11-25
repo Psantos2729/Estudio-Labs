@@ -3,6 +3,7 @@ import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { Button } from '@/ui/primitives/Button';
 import { Logo } from '@/ui/primitives/Logo';
+import { XpBadge } from '@/features/game/XpBadge';
 
 export function Layout() {
   const { session, signOut } = useAuth();
@@ -24,10 +25,12 @@ export function Layout() {
           <NavLink to="/mapa">mapa</NavLink>
           <NavLink to="/repaso">repaso</NavLink>
           <NavLink to="/historial">historial</NavLink>
+          <NavLink to="/ranking">ranking</NavLink>
         </nav>
         <div className="topbar__user">
           {email ? (
             <>
+              <XpBadge />
               <span className="muted small">{email}</span>
               <Button variant="ghost" onClick={() => void signOut()}>salir</Button>
             </>
