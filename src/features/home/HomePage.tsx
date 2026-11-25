@@ -9,6 +9,8 @@ import { useReadLessons } from '@/features/lesson/useLessonProgress';
 import { nextStep } from './nextStep';
 import { tipsOfTheDay } from './tips';
 import { ProgressRing } from './ProgressRing';
+import { useLeaderboard } from '@/features/game/useGame';
+import { CharacterCard } from '@/features/game/CharacterCard';
 import './home.css';
 
 export function HomePage() {
@@ -16,6 +18,7 @@ export function HomePage() {
   const { views, isGuest, isLoading } = useModuleViews();
   const practice = usePracticeSummary();
   const lessonsRead = useReadLessons();
+  const { me } = useLeaderboard();
   if (isLoading || practice.isLoading || lessonsRead.isLoading) return <p className="center muted">cargando tu progreso…</p>;
 
   const current = currentModule(views) ?? views[0];
@@ -61,6 +64,8 @@ export function HomePage() {
         </div>
         <ProgressRing value={percent} label={displayId(m.id)} sub="del módulo" />
       </section>
+
+      {me && <CharacterCard key={`${me.name}${me.color}`} me={me} />}
 
       <section className="home__stats" aria-label="Estadísticas">
         {stats.map((s) => (

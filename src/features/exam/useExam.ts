@@ -36,7 +36,7 @@ export function useSubmitExam() {
       if (error) throw new Error(error.message);
       return data as ExamOutcome;
     },
-    onSuccess: () => Promise.all([qc.invalidateQueries({ queryKey: ['module_mastery'] }), qc.invalidateQueries({ queryKey: ['exam_attempts'] })]),
+    onSuccess: () => Promise.all([qc.invalidateQueries({ queryKey: ['module_mastery'] }), qc.invalidateQueries({ queryKey: ['exam_attempts'] }), qc.invalidateQueries({ queryKey: ['leaderboard'] })]),
   });
 }
 

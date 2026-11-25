@@ -44,7 +44,7 @@ export function useSavePractice(exerciseId: string) {
       });
       if (error) throw error;
     },
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['practice'] }),
+    onSuccess: () => Promise.all([qc.invalidateQueries({ queryKey: ['practice'] }), qc.invalidateQueries({ queryKey: ['leaderboard'] })]),
   });
 }
 

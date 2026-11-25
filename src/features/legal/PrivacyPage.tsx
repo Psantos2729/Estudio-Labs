@@ -16,7 +16,7 @@ export function PrivacyPage() {
         <h2 className="legal__title">Qué datos guardamos</h2>
         <ul className="plain">
           <li>· Tu correo electrónico, para identificar tu cuenta.</li>
-          <li>· Tu nombre, si entras con Google, para mostrarlo en tu perfil.</li>
+          <li>· Tu nombre, si entras con Google (o el que escribas), para mostrarlo en tu perfil y en el ranking, junto con tu XP, tu robot y el módulo donde vas. Tu correo nunca aparece en el ranking.</li>
           <li>· Tu progreso: módulos, intentos, puntajes y fechas de repaso.</li>
         </ul>
 
