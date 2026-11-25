@@ -4,6 +4,7 @@ import { isSupabaseConfigured } from '@/lib/supabase';
 import { Button } from '@/ui/primitives/Button';
 import { Panel } from '@/ui/primitives/Panel';
 import { useAuth } from './AuthProvider';
+import { LogoMark } from '@/ui/primitives/Logo';
 
 export function LoginPage() {
   const { session, signInWithGoogle, signInWithEmail } = useAuth();
@@ -21,6 +22,7 @@ export function LoginPage() {
   return (
     <main className="login">
       <Panel className="login__card">
+        <LogoMark size={56} />
         <p className="muted small">$ pylab login</p>
         <h1 className="display">Entra para guardar tu progreso</h1>
         {!isSupabaseConfigured && (
