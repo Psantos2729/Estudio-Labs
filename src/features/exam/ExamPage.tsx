@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { displayId } from '@/content/types';
 import { supabase } from '@/lib/supabase';
 import { Button } from '@/ui/primitives/Button';
+import { LockedNotice } from '@/features/map/LockedNotice';
 import { useModuleViews } from '@/features/map/useMastery';
 import { warmUp } from '@/features/runner/runner';
 import { ExamResult } from './ExamResult';
@@ -49,7 +50,7 @@ export function ExamPage() {
             ) : view.status === 'mastered' ? (
               <p className="ok">✓ Ya dominaste este módulo.</p>
             ) : !view.open ? (
-              <p className="warn">Este módulo está bloqueado.</p>
+              <LockedNotice moduleId={m.id} />
             ) : (
               <Button disabled={start.isPending} onClick={() => { warmUp(); start.mutate(); }}>
                 {start.isPending ? 'preparando…' : view.status === 'in_progress' ? 'Empezar o continuar el examen' : 'Empezar examen'}
