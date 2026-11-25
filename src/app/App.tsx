@@ -7,6 +7,7 @@ import { LoginPage } from '@/features/auth/LoginPage';
 import { PrivacyPage } from '@/features/legal/PrivacyPage';
 import { LessonPage } from '@/features/lesson/LessonPage';
 import { ExercisePage } from '@/features/exercise/ExercisePage';
+import { ExamPage } from '@/features/exam/ExamPage';
 
 export function App() {
   return (
@@ -19,6 +20,7 @@ export function App() {
             <Route path="login" element={<LoginPage />} />
             <Route path="leccion/:lessonId" element={<LessonPage />} />
             <Route path="ejercicio/:exerciseId" element={<ExercisePage />} />
+            <Route path="examen/:moduleId" element={<ExamPage />} />
             <Route path="privacidad" element={<PrivacyPage />} />
             <Route path="*" element={<p className="center muted">404 · esa ruta no existe</p>} />
           </Route>

@@ -102,9 +102,9 @@
     "semantic_hash": ""
   },
   "src/app/App.tsx": {
-    "mtime": 1795564628.1886983,
-    "seen": 1795565146.0345585,
-    "ast_hash": "dea040869b9f7074957572369a204e57",
+    "mtime": 1795565929.1695933,
+    "seen": 1795566020.4280553,
+    "ast_hash": "236a90fdca619aa29a42d3b666b033a5",
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
@@ -801,6 +801,60 @@
     "mtime": 1795565441.6474998,
     "seen": 1795565549.9100113,
     "ast_hash": "16030723ec8c69cd9e6643f5476355df",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ExamPage.tsx": {
+    "mtime": 1795565925.9420867,
+    "seen": 1795566020.428073,
+    "ast_hash": "4615589d05008d6f2f35053e9546889c",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ExamProblemCard.tsx": {
+    "mtime": 1795565999.743533,
+    "seen": 1795566020.428075,
+    "ast_hash": "1778301804472f439f8eb2fbd353c15c",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ExamQuestions.tsx": {
+    "mtime": 1795565892.910488,
+    "seen": 1795566020.4280765,
+    "ast_hash": "2b952e28c8d936ff499042837451ae01",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ExamResult.tsx": {
+    "mtime": 1795565911.2225392,
+    "seen": 1795566020.4280775,
+    "ast_hash": "a56cd9599a7098923ffffa438f688654",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ExamRun.tsx": {
+    "mtime": 1795565911.2211053,
+    "seen": 1795566020.4280787,
+    "ast_hash": "435c1ad1fb84ca2061730040a0fe8cfb",
+    "semantic_hash": ""
+  },
+  "src/features/exam/answers.test.ts": {
+    "mtime": 1795565880.0346236,
+    "seen": 1795566020.4280796,
+    "ast_hash": "cb4d60ba410a815a8de2b73d2270cb8a",
+    "semantic_hash": ""
+  },
+  "src/features/exam/answers.ts": {
+    "mtime": 1795565880.0322638,
+    "seen": 1795566020.4280803,
+    "ast_hash": "4c5d122c5ff1807309c9fa0806488d6d",
+    "semantic_hash": ""
+  },
+  "src/features/exam/types.ts": {
+    "mtime": 1795565880.0281343,
+    "seen": 1795566020.4280815,
+    "ast_hash": "8fcac6d07e44fdda091190fcda46c154",
+    "semantic_hash": ""
+  },
+  "src/features/exam/useExam.ts": {
+    "mtime": 1795565925.9374707,
+    "seen": 1795566020.4280822,
+    "ast_hash": "39c61bace8bfab60e398829111d7c261",
     "semantic_hash": ""
   },
   "package-lock.json": {
