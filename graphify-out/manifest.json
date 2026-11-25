@@ -354,9 +354,9 @@
     "semantic_hash": ""
   },
   "docs/CONTINUAR.md": {
-    "mtime": 1795564628.1791708,
-    "seen": 1795565146.0346608,
-    "ast_hash": "9a1c7ec6b5f74d887d4ca559c4a1dca8",
+    "mtime": 1795566106.1414342,
+    "seen": 1795566111.8464596,
+    "ast_hash": "4e2ab228f93ad1c1ef4e1c21c769abc0",
     "semantic_hash": ""
   },
   "docs/adr/001-stack-web.md": {
@@ -378,9 +378,9 @@
     "semantic_hash": ""
   },
   "docs/adr/004-servidor-certifica.md": {
-    "mtime": 1795553868.5404058,
-    "seen": 1795565146.0346656,
-    "ast_hash": "20a069f84d4f15f68c2c5f20cd02b334",
+    "mtime": 1795566106.1455388,
+    "seen": 1795566111.8464677,
+    "ast_hash": "c9e928827c15a139cdad532be44fbb13",
     "semantic_hash": ""
   },
   "docs/adr/005-contenido-archivos.md": {

@@ -1,30 +1,30 @@
 # Continuar pylab en otra sesión
 
 Archivo de traspaso. Léelo completo antes de tocar código; luego lee `CLAUDE.md` y `docs/adr/`.
-Última actualización: 24 de noviembre de 2026, al cerrar la fase 1.
+Última actualización: 24 de noviembre de 2026, al cerrar la fase 3.
 
 ## Para empezar la nueva sesión
 
 Pega esto como primer mensaje en Claude Code, abierto en la carpeta del repo:
 
 > Lee `docs/CONTINUAR.md`, `CLAUDE.md` y `docs/adr/README.md`. Corre `npm install` y
-> `npm run verify`. Después propón el plan de la fase 2 (lecciones + editor Python con Pyodide)
+> `npm run verify`. Después propón el plan de la fase 4 (repasos espaciados e historial)
 > en pasos pequeños y espera mi aprobación antes de programar.
 
 ## Qué es el proyecto
 
 Plataforma web para que Paolo (y cualquier estudiante) aprenda Python desde cero y se prepare
 para los laboratorios de C5. Nadie avanza de módulo sin dominarlo: examen con casos ocultos
-calificado en el servidor, 85% para aprobar, 24 h de espera si repruebas, repasos a los
+calificado en el servidor, 85% para aprobar, 1 hora de espera si repruebas, repasos a los
 3, 7, 21 y 60 días.
 
-## Estado actual (fase 1 cerrada)
+## Estado actual (fases 1, 2 y 3 cerradas)
 
 | Pieza | Estado |
 | --- | --- |
 | Repo | https://github.com/Psantos2729/Estudio-Labs (público), rama `main` |
 | Web publicada | https://psantos2729.github.io/Estudio-Labs/ (GitHub Pages) |
-| Base de datos | Supabase, proyecto `udkrnjkamwjsrdcyezlk`, 4 migraciones + seed aplicadas |
+| Base de datos | Supabase, proyecto `udkrnjkamwjsrdcyezlk`, migraciones 001–010 + seed + banco del examen (M00, M01) aplicados |
 | Login | Enlace mágico por correo y Google (app de OAuth publicada) |
 | Copia local | `C:\Users\suizo\Documents\Tareas\TutoríasProgramación\Guía Labs\` (hacer `git pull`) |
 
@@ -37,6 +37,21 @@ Lo que ya funciona:
 - Página `/privacidad` (la pide Google para publicar el login).
 - CI en cada PR: líneas, lint, tipos, pruebas, build y pruebas SQL en Postgres.
 - Publicación automática a GitHub Pages en cada merge a `main` (`.github/workflows/pages.yml`).
+- Fase 2: lecciones, editor Python con Pyodide en un worker, ejercicios con pistas y pruebas
+  públicas, práctica guardada por RPC, contenido de M0 y M1, portada con "Continuar".
+- Fase 3: examen de dominio en `/examen/MXX` (migraciones 009 y 010, `src/features/exam/`).
+  `start_exam` saca 12 puntos al azar del banco (2 problemas × 4 casos ocultos + 4 preguntas),
+  45 min, sin pistas; el navegador corre el código con las entradas y `submit_exam` califica.
+  85% domina el módulo, abre el siguiente y agenda el repaso a 3 días; si no, 1 hora de espera.
+
+### Banco oculto del examen
+
+Fuentes en `private/exam/MXX/gen.py` (fuera del repo; copia en la carpeta del proyecto de
+claude.ai, `soluciones-privadas/examen/`). Para agregar un módulo: escribir su `gen.py`
+(problemas con solución y entradas, y preguntas), correr
+`node tools/exam-bank.mjs M00 M01 MXX > private/exam/banco-examen.sql` y pegar ese `.sql` en el
+SQL Editor de Supabase. Hoy solo M00 y M01 tienen banco: los demás módulos dan
+"todavía no tiene banco de preguntas" al empezar el examen.
 
 ## Reglas de Paolo (no se negocian)
 
@@ -84,24 +99,7 @@ de corrida y `.py` con encabezado "Documentación interna".
 
 ## Próximas fases
 
-### Fase 2: lecciones y editor Python (siguiente)
-
-- `src/features/runner/`: Pyodide dentro de un Web Worker, límite de 5 s, terminar y recrear
-  el worker si se pasa (ADR-002). Cargar Pyodide solo al abrir un ejercicio.
-- Formato de contenido en `content/MXX-*/`: lecciones (`lessons/*.md` o `.json`) y ejercicios
-  con enunciado, preguntas de predicción, pistas escalonadas y pruebas públicas.
-- Pantalla de ejercicio según el diseño D1-Ejercicio: pasos entender → analizar → pseudocódigo
-  → código → pruebas. El editor se abre solo cuando el análisis está completo.
-- Contenido real de M0 y M1 primero; probar el flujo completo antes de escribir más módulos.
-- Tablas nuevas (con migración + prueba SQL): `lessons`, intentos de práctica.
-
-### Fase 3: examen de dominio en el servidor
-
-- RPC `start_exam` (elige 12 casos de un banco de ~200 por módulo) y `submit_exam` (compara
-  salidas, guarda intento, actualiza `module_mastery`). Casos ocultos solo en la base.
-- 85% para aprobar, 24 h de espera, sin pistas y con tiempo límite.
-
-### Fase 4: repasos, historial y ReactBits
+### Fase 4: repasos, historial y ReactBits (siguiente)
 
 - Repasos espaciados (3/7/21/60 días) que reabren el módulo si se fallan.
 - Historial de trabajos pasados; componentes ReactBits (DecryptedText, DotGrid, CountUp,
