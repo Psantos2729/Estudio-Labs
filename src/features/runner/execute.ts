@@ -28,10 +28,14 @@ export async function execute(py: PyodideAPI, code: string, stdin: string, quiet
   py.setStdin({ stdin: () => lines.shift() }); // undefined = fin de entrada → EOFError
   const globals = py.globals.get('dict')();
   if (quietPrompts) globals.set('input', py.runPython(QUIET_INPUT, { globals }));
+  // Sin esto se pierde lo último impreso sin salto de línea (print(x, end=' ') al final).
+  const flush = () => py.runPython('import sys\nsys.stdout.flush()');
   try {
     await py.runPythonAsync(code, { globals, filename: 'programa.py' });
+    flush();
     return { stdout };
   } catch (e) {
+    flush();
     return { stdout, error: cleanTraceback(String((e as Error).message ?? e)) };
   } finally {
     globals.destroy();

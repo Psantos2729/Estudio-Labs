@@ -20,3 +20,23 @@
 .prose table { border-collapse: collapse; width: 100%; font-size: 13px; }
 .prose th, .prose td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
 .prose th { background: var(--bg-raised); color: var(--muted); font-weight: 400; }
+
+/* Recorrido paso a paso (bloques ```pasos) */
+.walk { margin: 0; border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--bg-code); padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+.walk__row { display: flex; gap: 4px; align-items: flex-end; min-height: 150px; overflow-x: auto; padding-bottom: 2px; }
+.walk__cell { flex: 1 0 34px; max-width: 64px; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 150px; gap: 2px; --c: var(--accent); }
+.walk__bar { width: 100%; border-radius: 4px 4px 0 0; background: color-mix(in srgb, var(--c) 35%, transparent); border: 1px solid var(--c); transition: height .35s, background .35s; max-height: calc(100% - 40px); }
+.walk__val { font: 13px var(--mono); color: var(--c); border: 1px solid var(--c); border-radius: 4px; padding: 2px 4px; min-width: 100%; text-align: center; background: color-mix(in srgb, var(--c) 12%, transparent); }
+.walk__idx { font: 11px var(--mono); color: var(--muted); }
+.walk__cell--n { --c: var(--accent); }
+.walk__cell--c { --c: var(--amber); }
+.walk__cell--i { --c: var(--red); }
+.walk__cell--o { --c: var(--green); }
+.walk__cell--k { --c: var(--purple); }
+.walk__cell--x { --c: var(--locked); opacity: .55; }
+.walk__note { min-height: 2.6em; font-size: 14px; }
+.walk__bar-ui { display: flex; flex-wrap: wrap; gap: 8px; }
+.walk__legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 0; }
+.walk__dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; background: var(--c); }
+.walk__row--text { min-height: 0; }
+.walk__row--text .walk__cell { height: auto; }

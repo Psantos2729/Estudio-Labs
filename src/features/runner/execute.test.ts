@@ -25,6 +25,10 @@ describe('execute', () => {
     expect((await execute(py, 'input()', '', true)).error).toMatch(/EOFError/);
   });
 
+  it('no pierde lo impreso sin salto de línea al final', async () => {
+    expect((await execute(py, "print(1, end=' ')\nprint(2, end=' ')", '')).stdout).toBe('1 2 ');
+  });
+
   it('no comparte variables entre corridas', async () => {
     await execute(py, 'x = 1', '');
     expect((await execute(py, 'print(x)', '')).error).toMatch(/NameError/);
