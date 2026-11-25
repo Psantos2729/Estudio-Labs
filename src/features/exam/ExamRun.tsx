@@ -70,7 +70,7 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
       <section className="panel">
         <p className="muted small">Al entregar, tu código corre con las entradas ocultas aquí mismo y el servidor califica. No hay segunda entrega.</p>
         <Button disabled={busy} onClick={() => void deliver()}>
-          {running ? 'corriendo tus programas…' : submit.isPending ? 'calificando…' : 'Entregar examen'}
+          {running ? 'corriendo tus programas…' : submit.isPending ? 'calificando…' : 'Entregar'}
         </Button>
         {submit.error && <p className="warn" role="alert">{submit.error.message}</p>}
       </section>

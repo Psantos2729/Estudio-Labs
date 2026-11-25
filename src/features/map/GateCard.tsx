@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { displayId } from '@/content/types';
 import { Panel } from '@/ui/primitives/Panel';
-import type { ModuleView } from './masteryView';
+import { daysUntil, type ModuleView } from './masteryView';
 
 export function GateCard({ view, isGuest }: { view: ModuleView; isGuest: boolean }) {
   const m = view.module;
@@ -18,6 +18,11 @@ export function GateCard({ view, isGuest }: { view: ModuleView; isGuest: boolean
         </ul>
         {view.status === 'mastered' ? (
           <p className="ok small">✓ dominado{view.score !== null ? ` con ${view.score}%` : ''}</p>
+        ) : view.status === 'reopened' ? (
+          <>
+            <p className="warn small">Se reabrió porque fallaste un repaso. Vuelve a dar el examen.</p>
+            <Link className="btn btn--primary" to={`/examen/${m.id}`}>Presentar examen →</Link>
+          </>
         ) : isGuest ? (
           <p className="muted small"><Link to="/login">Entra</Link> para presentar el examen.</p>
         ) : view.open ? (
@@ -32,6 +37,13 @@ export function GateCard({ view, isGuest }: { view: ModuleView; isGuest: boolean
           Cada módulo dominado vuelve a los {m.reviewDays.join(', ')} días. Si fallas un repaso, el
           módulo se reabre.
         </p>
+        {view.review === 'due' ? (
+          <Link className="btn btn--primary" to={`/repaso/${m.id}`}>↻ Hacer el repaso →</Link>
+        ) : view.review === 'scheduled' && view.nextReviewAt ? (
+          <p className="small">Próximo repaso: <span className="accent">{daysUntil(view.nextReviewAt)}</span></p>
+        ) : view.review === 'done' ? (
+          <p className="ok small">✓ consolidado: aprobaste todos sus repasos</p>
+        ) : null}
       </Panel>
       {isGuest && (
         <Panel as="div">

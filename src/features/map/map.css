@@ -41,6 +41,8 @@
 .route__item--in_progress .route__score { color: var(--amber); }
 .route__item--reopened .route__icon,
 .route__item--reopened .route__score { color: var(--red); }
+.route__item--due .route__icon,
+.route__item--due .route__score { color: var(--amber); }
 .route__item--locked { color: var(--locked); }
 
 .detail { display: flex; flex-direction: column; gap: 16px; min-width: 0; }

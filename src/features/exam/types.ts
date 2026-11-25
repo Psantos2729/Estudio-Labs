@@ -10,8 +10,10 @@ export interface Exam {
   questions: ExamQuestion[];
 }
 
-/** Lo que devuelve submit_exam (migración 010): solo conteos. */
+/** Lo que devuelve submit_exam (migraciones 010 y 013): solo conteos. */
 export interface ExamOutcome {
+  kind?: 'exam' | 'review';
+  next_review_at?: string | null;
   score: number;
   passed: boolean;
   pass_score: number;

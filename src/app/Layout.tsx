@@ -22,8 +22,8 @@ export function Layout() {
         <nav className="topbar__nav" aria-label="Principal">
           <NavLink to="/" end>inicio</NavLink>
           <NavLink to="/mapa">mapa</NavLink>
-          <span className="muted" title="Disponible en la fase 4">repaso</span>
-          <span className="muted" title="Disponible en la fase 4">historial</span>
+          <NavLink to="/repaso">repaso</NavLink>
+          <NavLink to="/historial">historial</NavLink>
         </nav>
         <div className="topbar__user">
           {email ? (

@@ -102,15 +102,15 @@
     "semantic_hash": ""
   },
   "src/app/App.tsx": {
-    "mtime": 1795577155.0500016,
-    "seen": 1795577423.0446272,
-    "ast_hash": "236a90fdca619aa29a42d3b666b033a5",
+    "mtime": 1795578002.6667912,
+    "seen": 1795578064.398121,
+    "ast_hash": "bb3f3cf7f0fb13afd1b4dd167b2a36c7",
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
-    "mtime": 1795577359.0043213,
-    "seen": 1795577423.0446286,
-    "ast_hash": "7879b5fbee82728472ca6505786a14ef",
+    "mtime": 1795578002.66735,
+    "seen": 1795578064.3981233,
+    "ast_hash": "b173e3ebaf058224d458bf131fe80a64",
     "semantic_hash": ""
   },
   "src/app/Providers.tsx": {
@@ -156,9 +156,9 @@
     "semantic_hash": ""
   },
   "src/features/map/GateCard.tsx": {
-    "mtime": 1795577155.0580878,
-    "seen": 1795577423.0446804,
-    "ast_hash": "2e9df65764a7beb3dae63bf2dc52e6c0",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.398199,
+    "ast_hash": "01612d52226bc117bc98986f7e1c798c",
     "semantic_hash": ""
   },
   "src/features/map/MapPage.tsx": {
@@ -174,9 +174,9 @@
     "semantic_hash": ""
   },
   "src/features/map/ModuleList.tsx": {
-    "mtime": 1795553868.5443633,
-    "seen": 1795565146.034599,
-    "ast_hash": "48540fc70af1cc4498ce2adc5d825f96",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3982036,
+    "ast_hash": "3e35c4e544f7cb5b401de14f58a4a829",
     "semantic_hash": ""
   },
   "src/features/map/mapStore.ts": {
@@ -186,21 +186,21 @@
     "semantic_hash": ""
   },
   "src/features/map/masteryView.test.ts": {
-    "mtime": 1795553868.5443633,
-    "seen": 1795565146.0346014,
-    "ast_hash": "19fab47a7db9e88732f9bde5c669ea57",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.398207,
+    "ast_hash": "758a26c2638ee59f6d54d955e8dee108",
     "semantic_hash": ""
   },
   "src/features/map/masteryView.ts": {
-    "mtime": 1795553868.5443633,
-    "seen": 1795565146.0346026,
-    "ast_hash": "c0c651c78a52b721586c71267aeaeac6",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3982089,
+    "ast_hash": "d470875f4014b3033a6c202195ed1630",
     "semantic_hash": ""
   },
   "src/features/map/useMastery.ts": {
-    "mtime": 1795553868.5443633,
-    "seen": 1795565146.0346038,
-    "ast_hash": "1665637d0c80de77c370340cc5f850d8",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3982105,
+    "ast_hash": "bb55ad50871726b3e228d90ee3c3694f",
     "semantic_hash": ""
   },
   "src/lib/supabase.ts": {
@@ -708,9 +708,9 @@
     "semantic_hash": ""
   },
   "src/features/home/HomePage.tsx": {
-    "mtime": 1795577155.057662,
-    "seen": 1795577423.0446668,
-    "ast_hash": "716cd660fb0950b09676beb4fa6919ed",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3981814,
+    "ast_hash": "b9655a2894c25be27552b4e18bf9486a",
     "semantic_hash": ""
   },
   "src/features/home/ProgressRing.tsx": {
@@ -804,9 +804,9 @@
     "semantic_hash": ""
   },
   "src/features/exam/ExamPage.tsx": {
-    "mtime": 1795577155.0540018,
-    "seen": 1795577423.0446432,
-    "ast_hash": "4615589d05008d6f2f35053e9546889c",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3981402,
+    "ast_hash": "954f1c7943150833c3956aae1054f6a2",
     "semantic_hash": ""
   },
   "src/features/exam/ExamProblemCard.tsx": {
@@ -822,15 +822,15 @@
     "semantic_hash": ""
   },
   "src/features/exam/ExamResult.tsx": {
-    "mtime": 1795577155.0573797,
-    "seen": 1795577423.0446482,
-    "ast_hash": "a56cd9599a7098923ffffa438f688654",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.398147,
+    "ast_hash": "ab91ece2414255700ea8d09b900db352",
     "semantic_hash": ""
   },
   "src/features/exam/ExamRun.tsx": {
-    "mtime": 1795577155.0573797,
-    "seen": 1795577423.0446494,
-    "ast_hash": "435c1ad1fb84ca2061730040a0fe8cfb",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3981495,
+    "ast_hash": "bc6c0ae9e5c4d6ef1fad79935ec856bb",
     "semantic_hash": ""
   },
   "src/features/exam/answers.test.ts": {
@@ -846,15 +846,15 @@
     "semantic_hash": ""
   },
   "src/features/exam/types.ts": {
-    "mtime": 1795577155.0573797,
-    "seen": 1795577423.0446541,
-    "ast_hash": "8fcac6d07e44fdda091190fcda46c154",
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.398158,
+    "ast_hash": "cfeccea26e9ccbc15acc261fd2151aeb",
     "semantic_hash": ""
   },
   "src/features/exam/useExam.ts": {
-    "mtime": 1795577155.0573797,
-    "seen": 1795577423.044655,
-    "ast_hash": "39c61bace8bfab60e398829111d7c261",
+    "mtime": 1795578002.649969,
+    "seen": 1795578064.3981593,
+    "ast_hash": "8a3c169fa9e0605423ce6b9be9b6e62e",
     "semantic_hash": ""
   },
   "src/ui/primitives/Logo.tsx": {
@@ -873,6 +873,60 @@
     "mtime": 1795577351.7300134,
     "seen": 1795577423.0447702,
     "ast_hash": "0d0a82acd1ff149af1297567cdbd1d62",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ReviewListPage.tsx": {
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.3981514,
+    "ast_hash": "008aae6897b5fafbc0d4dc9785e9c5aa",
+    "semantic_hash": ""
+  },
+  "src/features/exam/ReviewPage.tsx": {
+    "mtime": 1795577934.778729,
+    "seen": 1795578064.398153,
+    "ast_hash": "e46f7924003928ad9f655a002009f8fd",
+    "semantic_hash": ""
+  },
+  "src/features/history/HistoryPage.tsx": {
+    "mtime": 1795578048.0223641,
+    "seen": 1795578064.3981752,
+    "ast_hash": "7893de6cc45d777f6c006493ba0abff0",
+    "semantic_hash": ""
+  },
+  "src/features/history/attempts.test.ts": {
+    "mtime": 1795577986.581267,
+    "seen": 1795578064.3981767,
+    "ast_hash": "beb5000eb4400b58584c889534ae604a",
+    "semantic_hash": ""
+  },
+  "src/features/history/attempts.ts": {
+    "mtime": 1795578039.0489953,
+    "seen": 1795578064.398178,
+    "ast_hash": "3a6a1189d6cd4be84a49296002b07a73",
+    "semantic_hash": ""
+  },
+  "src/features/history/useHistory.ts": {
+    "mtime": 1795577986.5825717,
+    "seen": 1795578064.3981793,
+    "ast_hash": "2f746a435494de9f422fe91d3f626bab",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261125000012_reviews.sql": {
+    "mtime": 1795577663.174032,
+    "seen": 1795578064.3982494,
+    "ast_hash": "36a9765a47e2bd9662a06107f29732b4",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261125000013_submit_review.sql": {
+    "mtime": 1795577674.531041,
+    "seen": 1795578064.398251,
+    "ast_hash": "0d43e836829300ef97b2b999f58b2ea8",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_reviews.sql": {
+    "mtime": 1795577712.4039283,
+    "seen": 1795578064.398262,
+    "ast_hash": "6fdb844d5ecc84cb42a9cb784e1d3af2",
     "semantic_hash": ""
   },
   "package-lock.json": {

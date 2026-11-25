@@ -5,3 +5,8 @@
 .exam__clock--low { color: var(--red); }
 .exam__option { margin: 0; font-family: var(--mono); white-space: pre-wrap; }
 .exam__score { font-family: var(--display); font-size: 40px; margin: 0; }
+
+/* Lista de repasos (fase 4). */
+.review__row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.review__row:last-child { border-bottom: 0; }
+.review__name { flex: 1; min-width: 0; }

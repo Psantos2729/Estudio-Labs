@@ -15,7 +15,7 @@ export function useModuleViews() {
     queryFn: async (): Promise<MasteryRow[]> => {
       const { data, error } = await supabase!
         .from('module_mastery')
-        .select('module_id, status, best_score');
+        .select('module_id, status, best_score, next_review_at');
       if (error) throw error;
       return data as MasteryRow[];
     },
