@@ -3,21 +3,27 @@
   "slug": "stacks",
   "position": 10,
   "title": "Stacks",
-  "summary": "La pila como estructura: push, pop, top, empty y sus usos.",
+  "summary": "La pila como estructura: push, pop, top, empty, sus usos y salir de un laberinto.",
   "prerequisites": [
     "M09"
   ],
   "concepts": [
-    "clases",
-    "push, pop, top, empty",
-    "overflow y underflow",
-    "símbolos balanceados"
+    "LIFO: push, pop, top y empty",
+    "clases desde cero: class, __init__, self y métodos",
+    "pila con vector fijo y puntero (libstack.py)",
+    "overflow y underflow con raise y try/except",
+    "invertir, cambio de base y pila auxiliar (PDF #32)",
+    "símbolos balanceados ()[]{}<> y dónde falla",
+    "laberinto con backtracking",
+    "deshacer y rehacer con dos pilas",
+    "retos: dos pilas en un vector, pila con mínimo, ordenar con pila y sumar números enormes"
   ],
   "pdfExercises": [
     32
   ],
   "realTasks": [
     "libstack.py",
+    "Tarea_4_Stacks.py",
     "Parentesis.py"
   ],
   "boss": {

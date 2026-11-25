@@ -1,0 +1,44 @@
+{
+  "id": "M10-E02",
+  "title": "Invertir con una pila",
+  "statement": "Lee **K** y luego K frases. Para cada una, inviértela usando una pila (mete cada carácter y luego sácalos todos) e imprime:\n\n```\nAl revés: <frase invertida>\nPalíndromo: sí\n```\n\n(o `Palíndromo: no`). Una frase es palíndromo si al revés dice lo mismo **sin contar espacios ni mayúsculas**: `Oso` y `anita lava la tina` lo son. Las frases no traen tildes.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\nk = int(input())\nfor _ in range(k):\n    frase = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "Si metes `h`, `o`, `l`, `a` y luego haces pop cuatro veces, ¿en qué orden salen?",
+      "options": [
+        "a l o h",
+        "h o l a",
+        "a h l o"
+      ],
+      "answer": 0,
+      "why": "El último que entró sale primero."
+    }
+  ],
+  "hints": [
+    "Crea `Stack(len(frase))`: así nunca se llena.",
+    "Para comparar, quita espacios con `replace(' ', '')` y pasa a minúsculas con `lower()`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\nanita lava la tina\nHola mundo\nOso\n",
+      "stdout": "Al revés: anit al aval atina\nPalíndromo: sí\nAl revés: odnum aloH\nPalíndromo: no\nAl revés: osO\nPalíndromo: sí\n"
+    },
+    {
+      "stdin": "2\nreconocer\nab\n",
+      "stdout": "Al revés: reconocer\nPalíndromo: sí\nAl revés: ba\nPalíndromo: no\n"
+    },
+    {
+      "stdin": "1\nx\n",
+      "stdout": "Al revés: x\nPalíndromo: sí\n"
+    },
+    {
+      "stdin": "4\nHola mundo\npila\nSomos o no somos\nab\n",
+      "stdout": "Al revés: odnum aloH\nPalíndromo: no\nAl revés: alip\nPalíndromo: no\nAl revés: somos on o somoS\nPalíndromo: sí\nAl revés: ba\nPalíndromo: no\n"
+    },
+    {
+      "stdin": "3\nx\nOso\nab\n",
+      "stdout": "Al revés: x\nPalíndromo: sí\nAl revés: osO\nPalíndromo: sí\nAl revés: ba\nPalíndromo: no\n"
+    }
+  ]
+}

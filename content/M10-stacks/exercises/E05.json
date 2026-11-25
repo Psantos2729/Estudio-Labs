@@ -1,0 +1,40 @@
+{
+  "id": "M10-E05",
+  "title": "Paréntesis bien cerrados",
+  "statement": "Lee **K** y luego K expresiones. Para cada una imprime `Correcta` si sus paréntesis `(` `)` están bien cerrados, o `Incorrecta` si no. Los demás caracteres se ignoran.\n\nUsa una pila: `push` con cada `(`; con cada `)`, si la pila está vacía es incorrecta, si no, `pop`. Al final, la pila debe quedar vacía.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\nk = int(input())\nfor _ in range(k):\n    expr = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Por qué `)(` es incorrecta aunque tenga uno de cada uno?",
+      "options": [
+        "El `)` llega con la pila vacía",
+        "Porque empieza con `)`... y eso siempre es correcto",
+        "Porque la pila queda llena"
+      ],
+      "answer": 0,
+      "why": "Se cerró algo que no estaba abierto."
+    }
+  ],
+  "hints": [
+    "`Stack(len(expr))` nunca se llena.",
+    "Usa una variable `bien = True` y ponla en `False` si un `)` llega con la pila vacía; al final revisa también `pila.empty()`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n(a+b)*(c-d)\n((a)\na+b)\n)(\n((()))\n",
+      "stdout": "Correcta\nIncorrecta\nIncorrecta\nIncorrecta\nCorrecta\n"
+    },
+    {
+      "stdin": "2\nsin parentesis\n(x*(y+z)-(w))\n",
+      "stdout": "Correcta\nCorrecta\n"
+    },
+    {
+      "stdin": "4\na) b1a*(1)\n)++)+)1))*\n11b++*a+((\n)(( b+(( )\n",
+      "stdout": "Incorrecta\nIncorrecta\nIncorrecta\nIncorrecta\n"
+    },
+    {
+      "stdin": "4\n++1 b+*+ a(+\n(+a ((aab(+\n)+((( b1*a(1\n)a(*1*b(+b b\n",
+      "stdout": "Incorrecta\nIncorrecta\nIncorrecta\nIncorrecta\n"
+    }
+  ]
+}

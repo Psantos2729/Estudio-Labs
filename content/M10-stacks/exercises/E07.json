@@ -1,0 +1,67 @@
+{
+  "id": "M10-E07",
+  "title": "Salir del laberinto",
+  "statement": "Lee **F** y **C** y luego F líneas de C caracteres: `E` entrada, `S` salida, `#` pared y `.` pasillo. Busca un camino con una pila como en la lección: desde la cima, prueba las vecinas en el orden **arriba, derecha, abajo, izquierda**; entra a la primera que esté dentro, no sea pared y no esté visitada; si ninguna sirve, `pop`.\n\nSi llegas a `S`, imprime `Camino de <p> pasos` (p = casillas del camino menos 1) y luego el laberinto con `*` en cada casilla del camino que era `.`. Si la pila se vacía, imprime `No hay salida`.\n\nHay exactamente una `E` y una `S`, en cualquier lugar.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\nF = int(input())\nC = int(input())\nM = [None] * F\nfor f in range(F):\n    M[f] = list(input())\n# busca la E y empieza aquí\n",
+  "predict": [
+    {
+      "question": "¿Por qué hay que marcar las casillas visitadas?",
+      "options": [
+        "Para no ir y venir entre dos casillas para siempre",
+        "Para que el camino sea el más corto",
+        "Para que la pila no se llene de paredes"
+      ],
+      "answer": 0,
+      "why": "Sin marcas, desde B regresarías a A, y de A otra vez a B."
+    },
+    {
+      "question": "¿De qué tamaño debe ser la pila para que nunca se llene?",
+      "options": [
+        "F * C",
+        "F + C",
+        "4"
+      ],
+      "answer": 0,
+      "why": "Cada casilla entra a lo mucho una vez."
+    }
+  ],
+  "hints": [
+    "Busca la `E` con dos `for` y guarda su fila y columna.",
+    "La condición para entrar: `0 <= nf < F and 0 <= nc < C and M[nf][nc] != '#' and not visto[nf][nc]` (en ese orden).",
+    "Al terminar, el camino es `pila.data[0]` a `pila.data[pila.pointer - 1]`. Pon `*` donde haya `.` y muestra cada fila con `''.join(fila)`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n4\nE..#\n.#.#\n.###\n...S\n",
+      "stdout": "Camino de 6 pasos\nE..#\n*#.#\n*###\n***S\n"
+    },
+    {
+      "stdin": "3\n3\nE#.\n##.\n..S\n",
+      "stdout": "No hay salida\n"
+    },
+    {
+      "stdin": "1\n5\nE...S\n",
+      "stdout": "Camino de 4 pasos\nE***S\n"
+    },
+    {
+      "stdin": "3\n4\n#S..\n##.#\nE...\n",
+      "stdout": "Camino de 5 pasos\n#S*.\n##*#\nE**.\n"
+    },
+    {
+      "stdin": "3\n8\nE...##..\n..#...#.\n##.####S\n",
+      "stdout": "No hay salida\n"
+    },
+    {
+      "stdin": "7\n8\nE#...##.\n##.....#\n....#.#.\n.##.....\n..#.#.#.\n..#.....\n..##...S\n",
+      "stdout": "No hay salida\n"
+    },
+    {
+      "stdin": "7\n4\nE#..\n###.\n###.\n.#..\n...#\n...#\n...S\n",
+      "stdout": "No hay salida\n"
+    },
+    {
+      "stdin": "7\n5\nE..##\n.#...\n.#...\n#..#.\n.....\n....#\n....S\n",
+      "stdout": "Camino de 12 pasos\nE**##\n.#***\n.#..*\n#..#*\n...**\n...*#\n...*S\n"
+    }
+  ]
+}
