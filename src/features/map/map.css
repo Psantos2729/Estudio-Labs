@@ -37,8 +37,8 @@
   text-align: left;
   cursor: pointer;
 }
-.route__item { transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s; }
-.route__item:hover { background: rgba(111, 155, 255, 0.07); transform: translateX(2px); }
+.route__item { transition: background 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.route__item:hover { background: rgba(111, 155, 255, 0.07); }
 .route__item[aria-current='true'] { border-color: var(--accent); background: rgba(111, 155, 255, 0.12); box-shadow: var(--glow); }
 .route__icon { color: var(--muted); }
 .route__id { color: var(--muted); }
