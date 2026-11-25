@@ -7,6 +7,7 @@ import { validateModules } from './validate';
 
 const root = join(__dirname, '../../content');
 const modules: ModuleDef[] = readdirSync(root)
+  .filter((dir) => /^M\d/.test(dir))
   .map((dir) => JSON.parse(readFileSync(join(root, dir, 'module.json'), 'utf8')) as ModuleDef)
   .sort((a, b) => a.position - b.position);
 

@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/ui/primitives/Button';
 import { Robot } from '@/ui/primitives/Robot';
-import { PIECES, SLOTS, type Gear, type Slot } from './game';
+import type { Gear } from './game';
+import { PIECES, SLOTS, howOf } from './cosmetics';
 import { useLeaderboard, useMyGear, useSetGear } from './useGame';
 import './game.css';
 
@@ -18,7 +19,7 @@ export function WorkshopPage() {
 function Workshop({ color, unlocked, initial }: { color: string; unlocked: string[]; initial: Gear }) {
   const [gear, setGear] = useState<Gear>(initial);
   const save = useSetGear();
-  const pick = (slot: Slot, id?: string) => setGear({ ...gear, [slot]: id });
+  const pick = (slot: string, id?: string) => setGear({ ...gear, [slot]: id });
   const changed = JSON.stringify(gear) !== JSON.stringify(initial);
 
   return (
@@ -54,7 +55,7 @@ function Workshop({ color, unlocked, initial }: { color: string; unlocked: strin
                     >
                       <Robot color="#5c6a80" gear={{ [slot]: p.id }} size={36} />
                       <span className="strong">{p.name}</span>
-                      <span className="muted small">{owned ? 'ganada' : `🔒 ${p.how}`}</span>
+                      <span className="muted small">{owned ? 'ganada' : `🔒 ${howOf(p.unlock)}`}</span>
                     </button>
                   );
                 })}
