@@ -1,0 +1,45 @@
+{
+  "id": "M10-E11",
+  "title": "Reto: ordenar una pila con otra",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee **N** enteros y mételos a una pila en ese orden. Ordénala usando **solo** otra pila y una variable: al final, la pila original debe tener el **mayor abajo** y el **menor en la cima**. Imprime `Antes: ...` y `Después: ...` (de abajo hacia la cima).\n\nLa idea: saca `x` de la original; mientras la cima de la auxiliar sea **menor** que `x`, regrésala a la original; luego mete `x` en la auxiliar. Al vaciar la original, la auxiliar queda con el menor abajo: pásala de vuelta y se voltea.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\nn = int(input())\npila = Stack(n)\nfor _ in range(n):\n    pila.push(int(input()))\n",
+  "predict": [
+    {
+      "question": "¿Para qué sirve regresar a la original los de la auxiliar que son menores que `x`?",
+      "options": [
+        "Para dejar a `x` debajo de ellos y mantener la auxiliar ordenada",
+        "Para contar cuántos hay",
+        "No sirve de nada"
+      ],
+      "answer": 0,
+      "why": "Así la auxiliar siempre tiene el menor abajo y el mayor arriba."
+    }
+  ],
+  "hints": [
+    "`while not aux.empty() and aux.top() < x: pila.push(aux.pop())`.",
+    "Al final: `while not aux.empty(): pila.push(aux.pop())`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n3\n1\n4\n1\n5\n",
+      "stdout": "Antes: 3 1 4 1 5\nDespués: 1 1 3 4 5\n"
+    },
+    {
+      "stdin": "1\n7\n",
+      "stdout": "Antes: 7\nDespués: 7\n"
+    },
+    {
+      "stdin": "7\n68\n-35\n43\n52\n-26\n15\n28\n",
+      "stdout": "Antes: 68 -35 43 52 -26 15 28\nDespués: -35 -26 15 28 43 52 68\n"
+    },
+    {
+      "stdin": "2\n-9\n89\n",
+      "stdout": "Antes: -9 89\nDespués: -9 89\n"
+    },
+    {
+      "stdin": "10\n37\n-35\n-39\n41\n5\n-39\n-18\n74\n56\n25\n",
+      "stdout": "Antes: 37 -35 -39 41 5 -39 -18 74 56 25\nDespués: -39 -39 -35 -18 5 25 37 41 56 74\n"
+    }
+  ]
+}

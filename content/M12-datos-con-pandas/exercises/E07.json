@@ -1,0 +1,70 @@
+{
+  "id": "M12-E07",
+  "title": "Resumen por curso",
+  "statement": "En la carpeta está `notas.csv` con las columnas `Nombre`, `Curso` y `Nota` (entera). Para cada curso, **en orden alfabético**, imprime una línea:\n\n```\n<Curso>: promedio <p>, aprobados <a> de <n>, mejor <Nombre> (<nota>)\n```\n\nSe aprueba con 61 o más. \"Mejor\" es la nota más alta del curso; si hay empate, el que aparece primero en el archivo. Al final imprime `Mejor curso: <curso con el promedio más alto>` (si hay empate, el primero en orden alfabético). Usa `groupby`.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import pandas as pd\n\nnotas = pd.read_csv('notas.csv')\n",
+  "predict": [
+    {
+      "question": "¿En qué orden salen los grupos de `groupby('Curso')`?",
+      "options": [
+        "Alfabético",
+        "Como aparecen en el archivo",
+        "Al azar"
+      ],
+      "answer": 0,
+      "why": "El índice del resultado queda ordenado."
+    },
+    {
+      "question": "¿Qué da `notas.groupby('Curso')['Nota'].idxmax()`?",
+      "options": [
+        "Por cada curso, el índice de la fila con la nota más alta",
+        "La nota más alta",
+        "El curso con la nota más alta"
+      ],
+      "answer": 0,
+      "why": "Con ese índice lees el nombre con `notas.loc[i, 'Nombre']`."
+    }
+  ],
+  "hints": [
+    "`g = notas.groupby('Curso')['Nota']` y luego `g.mean()`, `g.count()`, `g.idxmax()`.",
+    "Aprobados por curso: `notas[notas['Nota'] >= 61].groupby('Curso')['Nota'].count()`, pero ojo: un curso sin aprobados no aparece; usa `.get(curso, 0)`.",
+    "Recorre `for curso, prom in g.mean().items():`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nAna,Física,80\nLuis,Física,55\nMaría,Programación,95\nPedro,Física,80\nSofía,Programación,61\n"
+      },
+      "stdout": "Física: promedio 71.67, aprobados 2 de 3, mejor Ana (80)\nProgramación: promedio 78.00, aprobados 2 de 2, mejor María (95)\nMejor curso: Programación\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nJosé,Química,40\n"
+      },
+      "stdout": "Química: promedio 40.00, aprobados 0 de 1, mejor José (40)\nMejor curso: Química\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nPedro,Matemática,26\nAna,Matemática,71\nLucía,Programación,98\nSofía,Física,79\nLucía,Programación,45\nLucía,Programación,45\nLuis,Programación,21\nMaría,Física,21\nAna,Física,87\nValeria,Programación,96\nPedro,Matemática,27\nLuis,Matemática,43\nCarmen,Programación,81\nSofía,Matemática,21\n"
+      },
+      "stdout": "Física: promedio 62.33, aprobados 2 de 3, mejor Ana (87)\nMatemática: promedio 37.60, aprobados 1 de 5, mejor Ana (71)\nProgramación: promedio 64.33, aprobados 3 de 6, mejor Lucía (98)\nMejor curso: Programación\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nDiego,Programación,74\nMaría,Física,93\nAna,Matemática,38\nSofía,Química,30\nPedro,Programación,68\nValeria,Física,52\nPedro,Programación,73\nAndrés,Química,77\n"
+      },
+      "stdout": "Física: promedio 72.50, aprobados 1 de 2, mejor María (93)\nMatemática: promedio 38.00, aprobados 0 de 1, mejor Ana (38)\nProgramación: promedio 71.67, aprobados 3 de 3, mejor Diego (74)\nQuímica: promedio 53.50, aprobados 1 de 2, mejor Andrés (77)\nMejor curso: Física\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nLucía,Física,64\nLucía,Programación,93\nDiego,Matemática,73\nÓscar,Física,100\nJosé,Matemática,87\nAndrés,Matemática,44\nAndrés,Química,22\nCarmen,Matemática,31\nMaría,Matemática,25\nJosé,Matemática,60\nLucía,Matemática,91\nPedro,Química,53\nAna,Programación,73\nAna,Química,35\n"
+      },
+      "stdout": "Física: promedio 82.00, aprobados 2 de 2, mejor Óscar (100)\nMatemática: promedio 58.71, aprobados 3 de 7, mejor Lucía (91)\nProgramación: promedio 83.00, aprobados 2 de 2, mejor Lucía (93)\nQuímica: promedio 36.67, aprobados 0 de 3, mejor Pedro (53)\nMejor curso: Programación\n"
+    }
+  ]
+}

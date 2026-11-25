@@ -1,0 +1,45 @@
+{
+  "id": "M10-E10",
+  "title": "Reto: pila con mínimo",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee comandos hasta `fin` (a lo mucho 50): `push <n>` (entero), `pop` y `min`. Imprime `Pop: <n>` y `Mínimo: <m>`; si la pila está vacía, `Stack Underflow`.\n\nEl truco: `min` debe responder **sin recorrer** la pila. Usa una segunda pila que en cada `push` guarde el mínimo **hasta ese momento** (el menor entre el nuevo y la cima de la pila de mínimos). En cada `pop` se sacan de las dos.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\ndatos = Stack(50)\nminimos = Stack(50)\ncomando = input()\nwhile comando != 'fin':\n    # tu código aquí\n    comando = input()\n",
+  "predict": [
+    {
+      "question": "Push 5, push 3, push 7. ¿Qué hay en la pila de mínimos?",
+      "options": [
+        "5 3 3",
+        "5 3 7",
+        "3"
+      ],
+      "answer": 0,
+      "why": "Cada casilla guarda el mínimo hasta ese momento: al entrar el 7, el mínimo sigue siendo 3."
+    }
+  ],
+  "hints": [
+    "En `push x`: `m = x if minimos.empty() else min(x, minimos.top())` y `minimos.push(m)`.",
+    "En `pop`, saca de las dos pilas; `min` es `minimos.top()`."
+  ],
+  "tests": [
+    {
+      "stdin": "push 5\npush 3\npush 7\nmin\npop\nmin\npop\nmin\npop\nmin\nfin\n",
+      "stdout": "Mínimo: 3\nPop: 7\nMínimo: 3\nPop: 3\nMínimo: 5\nPop: 5\nStack Underflow\n"
+    },
+    {
+      "stdin": "pop\npush 2\npush 2\npop\nmin\nfin\n",
+      "stdout": "Stack Underflow\nPop: 2\nMínimo: 2\n"
+    },
+    {
+      "stdin": "min\npop\npush -16\npop\npush 13\npush -9\nmin\npush -19\nfin\n",
+      "stdout": "Stack Underflow\nStack Underflow\nPop: -16\nMínimo: -9\n"
+    },
+    {
+      "stdin": "push 20\npush -18\npush 3\npush 27\npush 25\npop\npush 8\nmin\npop\npush 34\npush -14\npush 49\npop\npop\npush 30\nfin\n",
+      "stdout": "Pop: 25\nMínimo: -18\nPop: 8\nPop: 49\nPop: -14\n"
+    },
+    {
+      "stdin": "pop\npush 50\npop\npop\nmin\npop\nmin\npush 34\nfin\n",
+      "stdout": "Stack Underflow\nPop: 50\nStack Underflow\nStack Underflow\nStack Underflow\nStack Underflow\n"
+    }
+  ]
+}

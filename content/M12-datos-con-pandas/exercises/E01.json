@@ -1,0 +1,59 @@
+{
+  "id": "M12-E01",
+  "title": "Notas con numpy",
+  "statement": "Como el ejercicio 30 del PDF, pero con **numpy**. Lee **N** y luego N notas enteras de 0 a 100. Guárdalas en un arreglo (`np.array`) y, **sin ciclos para calcular** (usa los métodos y las máscaras de la lección), imprime:\n\n```\nPromedio: <promedio>\nMayor: <nota> (posición <p>)\nMenor: <nota> (posición <p>)\nAprobados: <cuántas ≥ 61>\nReprobados: <cuántas < 61>\nPromedio de aprobados: <promedio, o \"no hay\">\nSobre el promedio: <las notas mayores que el promedio, en su orden, separadas por espacio, o \"ninguna\">\n```\n\nLas posiciones cuentan desde 0; si hay empate, la primera.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import numpy as np\n\nn = int(input())\nlista = [0] * n\nfor i in range(n):\n    lista[i] = int(input())\nnotas = np.array(lista)\n",
+  "predict": [
+    {
+      "question": "Si `notas = np.array([70, 45, 88])`, ¿qué es `notas >= 61`?",
+      "options": [
+        "[True False True]",
+        "2",
+        "[70 88]"
+      ],
+      "answer": 0,
+      "why": "Una comparación con un arreglo da una máscara casilla por casilla."
+    },
+    {
+      "question": "¿Qué da `(notas >= 61).sum()`?",
+      "options": [
+        "Cuántas cumplen",
+        "La suma de las aprobadas",
+        "True"
+      ],
+      "answer": 0,
+      "why": "Cada True cuenta como 1."
+    }
+  ],
+  "hints": [
+    "`notas.mean()`, `notas.max()` y `notas.argmax()`.",
+    "`ap = notas[notas >= 61]` es el arreglo de aprobadas; si `len(ap) == 0`, no hay.",
+    "Para mostrar un arreglo: `' '.join(str(x) for x in arreglo)`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n70\n45\n88\n61\n93\n",
+      "stdout": "Promedio: 71.40\nMayor: 93 (posición 4)\nMenor: 45 (posición 1)\nAprobados: 4\nReprobados: 1\nPromedio de aprobados: 78.00\nSobre el promedio: 88 93\n"
+    },
+    {
+      "stdin": "3\n10\n20\n60\n",
+      "stdout": "Promedio: 30.00\nMayor: 60 (posición 2)\nMenor: 10 (posición 0)\nAprobados: 0\nReprobados: 3\nPromedio de aprobados: no hay\nSobre el promedio: 60\n"
+    },
+    {
+      "stdin": "1\n61\n",
+      "stdout": "Promedio: 61.00\nMayor: 61 (posición 0)\nMenor: 61 (posición 0)\nAprobados: 1\nReprobados: 0\nPromedio de aprobados: 61.00\nSobre el promedio: ninguna\n"
+    },
+    {
+      "stdin": "6\n20\n18\n51\n26\n77\n3\n",
+      "stdout": "Promedio: 32.50\nMayor: 77 (posición 4)\nMenor: 3 (posición 5)\nAprobados: 1\nReprobados: 5\nPromedio de aprobados: 77.00\nSobre el promedio: 51 77\n"
+    },
+    {
+      "stdin": "6\n32\n83\n55\n68\n75\n25\n",
+      "stdout": "Promedio: 56.33\nMayor: 83 (posición 1)\nMenor: 25 (posición 5)\nAprobados: 3\nReprobados: 3\nPromedio de aprobados: 75.33\nSobre el promedio: 83 68 75\n"
+    },
+    {
+      "stdin": "12\n82\n19\n56\n53\n0\n51\n58\n13\n61\n78\n28\n49\n",
+      "stdout": "Promedio: 45.67\nMayor: 82 (posición 0)\nMenor: 0 (posición 4)\nAprobados: 3\nReprobados: 9\nPromedio de aprobados: 73.67\nSobre el promedio: 82 56 53 51 58 61 78 49\n"
+    }
+  ]
+}

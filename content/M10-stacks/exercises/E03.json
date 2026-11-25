@@ -1,0 +1,45 @@
+{
+  "id": "M10-E03",
+  "title": "Cambio de base con una pila",
+  "statement": "Lee **K** y luego K parejas de líneas: un entero **n ≥ 0** y una **base** entre 2 y 16. Para cada pareja imprime\n\n```\n<n> en base <base>: <resultado>\n```\n\nSaca los residuos con `% base` y `// base`, mételos a una pila y sácalos para formar el resultado. Usa los dígitos `0123456789ABCDEF`. El 0 en cualquier base es `0`.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\nDIGITOS = '0123456789ABCDEF'\nk = int(input())\nfor _ in range(k):\n    n = int(input())\n    base = int(input())\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Qué residuos salen al dividir 6 entre 2 una y otra vez?",
+      "options": [
+        "0, 1, 1 (y 6 es 110)",
+        "1, 1, 0",
+        "0, 0, 1"
+      ],
+      "answer": 0,
+      "why": "6 % 2 = 0, 3 % 2 = 1, 1 % 2 = 1. Salen al revés: por eso la pila."
+    }
+  ],
+  "hints": [
+    "Con 64 casillas alcanza para cualquier número de este ejercicio: `Stack(64)`.",
+    "`pila.push(DIGITOS[n % base])` y luego `n = n // base`, mientras `n > 0`.",
+    "Si `n` es 0 de entrada, el resultado es `'0'`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n13\n2\n255\n16\n0\n8\n",
+      "stdout": "13 en base 2: 1101\n255 en base 16: FF\n0 en base 8: 0\n"
+    },
+    {
+      "stdin": "2\n10\n10\n100\n3\n",
+      "stdout": "10 en base 10: 10\n100 en base 3: 10201\n"
+    },
+    {
+      "stdin": "1\n1\n2\n",
+      "stdout": "1 en base 2: 1\n"
+    },
+    {
+      "stdin": "5\n6797\n13\n23971\n2\n25394\n13\n32583\n16\n19053\n5\n",
+      "stdout": "6797 en base 13: 312B\n23971 en base 2: 101110110100011\n25394 en base 13: B735\n32583 en base 16: 7F47\n19053 en base 5: 1102203\n"
+    },
+    {
+      "stdin": "4\n392\n16\n986\n2\n2131\n8\n4452\n16\n",
+      "stdout": "392 en base 16: 188\n986 en base 2: 1111011010\n2131 en base 8: 4123\n4452 en base 16: 1164\n"
+    }
+  ]
+}

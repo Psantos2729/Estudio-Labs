@@ -1,0 +1,55 @@
+{
+  "id": "M10-E01",
+  "title": "Manejo de una pila",
+  "statement": "Como tu `Tarea_4_Stacks.py`, pero en consola. Lee el **tamaño** de la pila y luego comandos, uno por línea, hasta `fin`:\n\n| Comando | Qué imprime |\n| --- | --- |\n| `push <dato>` | nada si entra; si la pila está llena: `Stack Overflow: no entró <dato>` |\n| `pop` | `Pop: <dato>`; si está vacía: `Stack Underflow` |\n| `top` | `Top: <dato>`; si está vacía: `Stack Underflow` |\n| `empty` | `Vacía: True` o `Vacía: False` |\n| `mostrar` | `Pila: <datos de abajo hacia la cima separados por espacio>`, o `Pila: vacía` |\n\nLos datos son texto (`push hola` mete `hola`). **Valida** overflow y underflow con los mensajes de la tabla: el programa nunca debe romperse.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\ntam = int(input())\npila = Stack(tam)\ncomando = input()\nwhile comando != 'fin':\n    # tu código aquí\n    comando = input()\n",
+  "predict": [
+    {
+      "question": "Con una pila de tamaño 2: `push a`, `push b`, `push c`, `pop`. ¿Qué imprime el `pop`?",
+      "options": [
+        "Pop: b",
+        "Pop: c",
+        "Pop: a"
+      ],
+      "answer": 0,
+      "why": "La `c` no entró (overflow), así que la cima era `b`."
+    },
+    {
+      "question": "¿Cómo separas `push hola` en el comando y el dato?",
+      "options": [
+        "`partes = comando.split()` y el dato es `partes[1]`",
+        "`comando[5]`",
+        "`comando.split(',')`"
+      ],
+      "answer": 0,
+      "why": "Con `split()` sin argumento se separa por espacios."
+    }
+  ],
+  "hints": [
+    "Separa con `partes = comando.split()` y pregunta por `partes[0]`.",
+    "Rodea `pila.push(partes[1])` con `try` / `except OverflowError`.",
+    "Para `mostrar`, recorre `pila.data` de 0 a `pila.pointer - 1` y une con `' '.join(...)`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\npush a\npush b\nmostrar\ntop\npop\npop\npop\nempty\nfin\n",
+      "stdout": "Pila: a b\nTop: b\nPop: b\nPop: a\nStack Underflow\nVacía: True\n"
+    },
+    {
+      "stdin": "2\npush 1\npush 2\npush 3\nmostrar\nempty\nfin\n",
+      "stdout": "Stack Overflow: no entró 3\nPila: 1 2\nVacía: False\n"
+    },
+    {
+      "stdin": "1\ntop\nmostrar\npush hola\ntop\nfin\n",
+      "stdout": "Stack Underflow\nPila: vacía\nTop: hola\n"
+    },
+    {
+      "stdin": "4\npush b\npush 42\npush x\nmostrar\ntop\nmostrar\npush 7\npop\ntop\nmostrar\ntop\npush 7\ntop\nempty\nmostrar\nfin\n",
+      "stdout": "Pila: b 42 x\nTop: x\nPila: b 42 x\nPop: 7\nTop: x\nPila: b 42 x\nTop: x\nTop: 7\nVacía: False\nPila: b 42 x 7\n"
+    },
+    {
+      "stdin": "2\npush hola\npush a\nempty\npop\ntop\ntop\npush b\npush Z\ntop\ntop\nempty\nmostrar\nfin\n",
+      "stdout": "Vacía: False\nPop: a\nTop: hola\nTop: hola\nStack Overflow: no entró Z\nTop: b\nTop: b\nVacía: False\nPila: hola b\n"
+    }
+  ]
+}

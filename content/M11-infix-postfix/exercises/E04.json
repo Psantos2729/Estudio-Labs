@@ -1,0 +1,36 @@
+{
+  "id": "M11-E04",
+  "title": "Infix a postfix con paréntesis",
+  "statement": "Tu `infix_a_postfix.py`, en consola. Igual que el ejercicio anterior, pero ahora las expresiones pueden tener **paréntesis**. Recuerda: `(` siempre entra a la pila; `)` saca a la salida hasta el `(`, y el `(` se descarta. Las expresiones son válidas y sin espacios.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "JER = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}\n\n\ndef le_gana(cima, nuevo):\n    if cima == '(':\n        return False\n    if JER[cima] > JER[nuevo]:\n        return True\n    return JER[cima] == JER[nuevo] and nuevo != '^'\n\n\nk = int(input())\nfor _ in range(k):\n    expr = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el postfix de `(a+b)*c`?",
+      "options": [
+        "ab+c*",
+        "abc*+",
+        "ab*c+"
+      ],
+      "answer": 0,
+      "why": "El paréntesis obliga a sumar primero."
+    }
+  ],
+  "hints": [
+    "`le_gana` ya devuelve `False` si la cima es `(`: así un operador nunca saca a un `(`.",
+    "Para `)`: `while pila[p - 1] != '(':` saca a la salida, y después `p = p - 1` para descartar el `(`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n(a+b)*c\na*(b+c)\n(a+b)*(c-d)\n((a))\n(a+b)^(c-d)^2\n",
+      "stdout": "ab+c*\nabc+*\nab+cd-*\na\nab+cd-2^^\n"
+    },
+    {
+      "stdin": "4\nz^(b^2)+(b-(y-c))\n(b/(d/(d+x)))\n2\nx\n",
+      "stdout": "zb2^^byc--+\nbddx+//\n2\nx\n"
+    },
+    {
+      "stdin": "4\nd\nc\n(1*d)\nz-2^c\n",
+      "stdout": "d\nc\n1d*\nz2c^-\n"
+    }
+  ]
+}

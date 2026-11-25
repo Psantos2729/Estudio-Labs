@@ -1,0 +1,46 @@
+{
+  "id": "M12-E13",
+  "title": "Reto: estadística descriptiva",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee **N** (al menos 2) y N notas enteras. Con una Series imprime:\n\n```\nMedia: <promedio>\nMediana: <mediana>\nModa: <el valor que más se repite; si empatan, el menor>\nRango: <mayor - menor>\nDesviación estándar: <std() de pandas>\nCuartiles: <quantile(0.25)> <quantile(0.5)> <quantile(0.75)>\nAtípicos: <notas a más de 1.5 rangos intercuartílicos de Q1 o Q3, en su orden, o \"ninguno\">\n```\n\nTodo con 2 decimales menos la moda, el rango y los atípicos. El rango intercuartílico es `Q3 - Q1`; una nota es atípica si es menor que `Q1 - 1.5·(Q3 - Q1)` o mayor que `Q3 + 1.5·(Q3 - Q1)`.",
+  "starter": "import pandas as pd\n\nn = int(input())\nlista = [0] * n\nfor i in range(n):\n    lista[i] = int(input())\ns = pd.Series(lista)\n",
+  "predict": [
+    {
+      "question": "¿Qué es la mediana de 3, 9, 4, 10?",
+      "options": [
+        "6.5",
+        "4",
+        "9"
+      ],
+      "answer": 0,
+      "why": "Ordenados: 3 4 9 10. Con cantidad par, es el promedio de los dos del medio."
+    }
+  ],
+  "hints": [
+    "`s.median()`, `s.std()` y `s.quantile(0.25)`.",
+    "`s.mode()` da todas las modas ordenadas; la menor es `s.mode().iloc[0]`.",
+    "Atípicos: `s[(s < q1 - 1.5 * iqr) | (s > q3 + 1.5 * iqr)]`."
+  ],
+  "tests": [
+    {
+      "stdin": "8\n70\n75\n80\n75\n90\n10\n100\n75\n",
+      "stdout": "Media: 71.88\nMediana: 75.00\nModa: 75\nRango: 90\nDesviación estándar: 26.85\nCuartiles: 73.75 75.00 82.50\nAtípicos: 10 100\n"
+    },
+    {
+      "stdin": "2\n50\n60\n",
+      "stdout": "Media: 55.00\nMediana: 55.00\nModa: 50\nRango: 10\nDesviación estándar: 7.07\nCuartiles: 52.50 55.00 57.50\nAtípicos: ninguno\n"
+    },
+    {
+      "stdin": "8\n49\n75\n80\n75\n80\n75\n80\n71\n",
+      "stdout": "Media: 73.12\nMediana: 75.00\nModa: 75\nRango: 31\nDesviación estándar: 10.27\nCuartiles: 74.00 75.00 80.00\nAtípicos: 49\n"
+    },
+    {
+      "stdin": "3\n80\n50\n75\n",
+      "stdout": "Media: 68.33\nMediana: 75.00\nModa: 50\nRango: 30\nDesviación estándar: 16.07\nCuartiles: 62.50 75.00 77.50\nAtípicos: ninguno\n"
+    },
+    {
+      "stdin": "12\n75\n75\n75\n91\n75\n83\n50\n80\n80\n75\n75\n60\n",
+      "stdout": "Media: 74.50\nMediana: 75.00\nModa: 75\nRango: 41\nDesviación estándar: 10.52\nCuartiles: 75.00 75.00 80.00\nAtípicos: 91 50 60\n"
+    }
+  ]
+}

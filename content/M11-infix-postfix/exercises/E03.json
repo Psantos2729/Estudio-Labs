@@ -1,0 +1,47 @@
+{
+  "id": "M11-E03",
+  "title": "Infix a postfix sin paréntesis",
+  "statement": "Lee **K** y luego K expresiones infix **sin paréntesis ni espacios**; cada operando es **una** letra o cifra y los operadores son `+ - * / ^`. Imprime cada una en postfix (sin espacios).\n\nJerarquía: `^` sobre `* /` sobre `+ -`. Con la misma jerarquía se agrupa a la izquierda, **excepto** `^`, que se agrupa a la derecha (`2^3^2` → `232^^`). Las expresiones son válidas.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "JER = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}\n\n\ndef le_gana(cima, nuevo):\n    if cima == '(':\n        return False\n    if JER[cima] > JER[nuevo]:\n        return True\n    return JER[cima] == JER[nuevo] and nuevo != '^'\n\n\nk = int(input())\nfor _ in range(k):\n    expr = input()\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el postfix de `a-b+c`?",
+      "options": [
+        "ab-c+",
+        "abc+-",
+        "ab+c-"
+      ],
+      "answer": 0,
+      "why": "Misma jerarquía, de izquierda a derecha: primero a-b."
+    },
+    {
+      "question": "¿Y el de `a*b^c`?",
+      "options": [
+        "abc^*",
+        "ab*c^",
+        "ab^c*"
+      ],
+      "answer": 0,
+      "why": "La potencia le gana a la multiplicación."
+    }
+  ],
+  "hints": [
+    "Las letras y cifras van directo a la salida (`c.isalnum()`).",
+    "Para un operador: `while p > 0 and le_gana(pila[p - 1], c):` saca a la salida; luego mételo.",
+    "Al final, vacía la pila a la salida."
+  ],
+  "tests": [
+    {
+      "stdin": "6\na+b*c\na*b+c\na-b+c\n2^3^2\na*b^c\nx\n",
+      "stdout": "abc*+\nab*c+\nab-c+\n232^^\nabc^*\nx\n"
+    },
+    {
+      "stdin": "3\na+a/y-3-a^z^y\nd^1^d*z\n2*2-d+1/3-2\n",
+      "stdout": "aay/+3-azy^^-\nd1d^^z*\n22*d-13/+2-\n"
+    },
+    {
+      "stdin": "4\nd^x+y-d\ny/b*x\n2\ny-c\n",
+      "stdout": "dx^y+d-\nyb/x*\n2\nyc-\n"
+    }
+  ]
+}

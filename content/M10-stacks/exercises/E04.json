@@ -1,0 +1,50 @@
+{
+  "id": "M10-E04",
+  "title": "Reemplazar en una pila",
+  "pdf": 32,
+  "statement": "Ejercicio 32 del PDF. Programa la función\n\n```python\ndef reemplazar(pila, nuevo, viejo):\n```\n\nque cambia **cada** `viejo` de la pila por `nuevo`, sin cambiar el orden de los demás, y **devuelve** cuántos cambió. Solo puedes usar `push`, `pop` y `empty`, con una **pila auxiliar** (no recorras `pila.data`).\n\nLa entrada es **N**, los N enteros (uno por línea, se meten en ese orden; el último queda en la cima), y luego **viejo** y **nuevo**. La pila es de tamaño N. Imprime\n\n```\nAntes: <de abajo hacia la cima>\nDespués: <de abajo hacia la cima>\nReemplazos: <cantidad>\n```\n\nPara mostrar sí puedes recorrer `pila.data` hasta el puntero.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\ndef reemplazar(pila, nuevo, viejo):\n    aux = Stack(len(pila.data))\n    # tu código aquí\n\n\nn = int(input())\npila = Stack(n)\n",
+  "predict": [
+    {
+      "question": "Después de pasar todo de `pila` a `aux` con pop/push, ¿dónde queda lo que estaba en la cima?",
+      "options": [
+        "En el fondo de aux",
+        "En la cima de aux",
+        "Se pierde"
+      ],
+      "answer": 0,
+      "why": "Por eso se regresa todo: dos pasadas dejan el orden original."
+    }
+  ],
+  "hints": [
+    "Primer ciclo: `while not pila.empty():` saca, cambia si es `viejo` y mete en `aux`.",
+    "Segundo ciclo: `while not aux.empty(): pila.push(aux.pop())`.",
+    "Cuenta los cambios en el primer ciclo y devuélvelos con `return`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n5\n3\n8\n3\n3\n9\n",
+      "stdout": "Antes: 5 3 8 3\nDespués: 5 9 8 9\nReemplazos: 2\n"
+    },
+    {
+      "stdin": "3\n1\n2\n4\n7\n0\n",
+      "stdout": "Antes: 1 2 4\nDespués: 1 2 4\nReemplazos: 0\n"
+    },
+    {
+      "stdin": "1\n6\n6\n60\n",
+      "stdout": "Antes: 6\nDespués: 60\nReemplazos: 1\n"
+    },
+    {
+      "stdin": "6\n5\n6\n6\n1\n6\n5\n4\n19\n",
+      "stdout": "Antes: 5 6 6 1 6 5\nDespués: 5 6 6 1 6 5\nReemplazos: 0\n"
+    },
+    {
+      "stdin": "2\n5\n4\n6\n46\n",
+      "stdout": "Antes: 5 4\nDespués: 5 4\nReemplazos: 0\n"
+    },
+    {
+      "stdin": "6\n4\n3\n2\n6\n3\n4\n2\n48\n",
+      "stdout": "Antes: 4 3 2 6 3 4\nDespués: 4 3 48 6 3 4\nReemplazos: 1\n"
+    }
+  ]
+}

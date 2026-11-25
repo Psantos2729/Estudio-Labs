@@ -11,9 +11,9 @@ values
   ('M07', 7, 'matrices', 'Matrices', 'Listas de listas: crear, recorrer, sumar, multiplicar y trasponer.', array['M06']::text[], 85, array[3, 7, 21, 60]::smallint[]),
   ('M08', 8, 'archivos-de-texto', 'Archivos de texto', 'Leer y escribir archivos secuenciales, analizar línea por línea.', array['M07']::text[], 85, array[3, 7, 21, 60]::smallint[]),
   ('M09', 9, 'registros-binarios', 'Registros y archivos binarios', 'Registros de tamaño fijo, acceso directo y rutinas de ingreso, consulta y modificación.', array['M08']::text[], 85, array[3, 7, 21, 60]::smallint[]),
-  ('M10', 10, 'stacks', 'Stacks', 'La pila como estructura: push, pop, top, empty y sus usos.', array['M09']::text[], 85, array[3, 7, 21, 60]::smallint[]),
-  ('M11', 11, 'infix-postfix', 'Infix y postfix', 'Convertir y evaluar expresiones con jerarquía de operadores.', array['M10']::text[], 85, array[3, 7, 21, 60]::smallint[]),
-  ('M12', 12, 'datos-con-pandas', 'Datos con pandas', 'Series, DataFrame, filtros y estadísticas sobre archivos CSV.', array['M11']::text[], 85, array[3, 7, 21, 60]::smallint[])
+  ('M10', 10, 'stacks', 'Stacks', 'La pila como estructura: push, pop, top, empty, sus usos y salir de un laberinto.', array['M09']::text[], 85, array[3, 7, 21, 60]::smallint[]),
+  ('M11', 11, 'infix-postfix', 'Infix y postfix', 'Convertir y evaluar expresiones con jerarquía de operadores, evaluar con x y despejar x.', array['M10']::text[], 85, array[3, 7, 21, 60]::smallint[]),
+  ('M12', 12, 'datos-con-pandas', 'Datos con pandas', 'numpy, Series, DataFrame, filtros, read_csv, groupby y regex con pandas.', array['M11']::text[], 85, array[3, 7, 21, 60]::smallint[])
 on conflict (id) do update set
   position = excluded.position, slug = excluded.slug, title = excluded.title,
   summary = excluded.summary, prerequisites = excluded.prerequisites,

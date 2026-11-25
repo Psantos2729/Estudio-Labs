@@ -1,0 +1,53 @@
+{
+  "id": "M12-E12",
+  "title": "Reto: ranking con desempate",
+  "challenge": true,
+  "statement": "**Reto opcional.** Con `notas.csv` (`Nombre`, `Curso`, `Nota`), lee un número **k** e imprime el top k general:\n\n```\n<puesto>. <Nombre> (<Curso>): <Nota>\n```\n\nOrden: nota de **mayor a menor**; si empatan, por **nombre** alfabético; si también empatan, por **curso** alfabético. Si hay menos de k filas, imprime todas. Usa `sort_values` con una **lista** de columnas y otra de `ascending`.",
+  "starter": "import pandas as pd\n\nnotas = pd.read_csv('notas.csv')\nk = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué hace `sort_values(['Nota', 'Nombre'], ascending=[False, True])`?",
+      "options": [
+        "Nota de mayor a menor y, si empatan, nombre de A a Z",
+        "Primero por nombre",
+        "Nota y nombre de mayor a menor"
+      ],
+      "answer": 0,
+      "why": "Cada columna tiene su propio sentido."
+    }
+  ],
+  "hints": [
+    "`notas.sort_values(['Nota', 'Nombre', 'Curso'], ascending=[False, True, True]).head(k)`.",
+    "El puesto lo llevas tú con un contador, porque el índice es el de la fila original."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nLuis,Física,90\nAna,Química,90\nAna,Física,90\nSofía,Física,95\n"
+      },
+      "stdout": "1. Sofía (Física): 95\n2. Ana (Física): 90\n3. Ana (Química): 90\n"
+    },
+    {
+      "stdin": "5\n",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nJosé,Química,40\n"
+      },
+      "stdout": "1. José (Química): 40\n"
+    },
+    {
+      "stdin": "4\n",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nAna,Matemática,25\nValeria,Química,78\nCarmen,Programación,71\nLucía,Programación,61\nÓscar,Química,99\nSofía,Matemática,53\nJosé,Física,32\nLuis,Matemática,85\nSofía,Química,45\n"
+      },
+      "stdout": "1. Óscar (Química): 99\n2. Luis (Matemática): 85\n3. Valeria (Química): 78\n4. Carmen (Programación): 71\n"
+    },
+    {
+      "stdin": "6\n",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nAna,Programación,69\nSofía,Física,96\nAna,Química,89\nCarmen,Química,45\nÓscar,Matemática,78\nValeria,Física,30\nValeria,Programación,70\nDiego,Matemática,59\nAna,Matemática,47\nSofía,Física,23\nSofía,Física,77\nSofía,Física,49\nLucía,Matemática,49\nAna,Programación,67\n"
+      },
+      "stdout": "1. Sofía (Física): 96\n2. Ana (Química): 89\n3. Óscar (Matemática): 78\n4. Sofía (Física): 77\n5. Valeria (Programación): 70\n6. Ana (Programación): 69\n"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "id": "M10-E08",
+  "title": "Deshacer y rehacer",
+  "statement": "Así funcionan Ctrl+Z y Ctrl+Y: con **dos pilas**. Lee comandos hasta `fin` (a lo mucho 50):\n\n| Comando | Qué hace |\n| --- | --- |\n| `escribir <palabra>` | agrega la palabra al final del texto y **vacía** la pila de rehacer |\n| `deshacer` | quita la última palabra del texto y la guarda para rehacer; si no hay: `Nada que deshacer` |\n| `rehacer` | vuelve a poner la última palabra deshecha; si no hay: `Nada que rehacer` |\n| `mostrar` | `Texto: <palabras separadas por espacio>`, o `Texto: (vacío)` |\n\nEl texto **es** la pila de lo hecho (de abajo hacia la cima). Usa `Stack(50)` para las dos.\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\nhecho = Stack(50)\nrehacer = Stack(50)\ncomando = input()\nwhile comando != 'fin':\n    # tu código aquí\n    comando = input()\n",
+  "predict": [
+    {
+      "question": "Escribes `a`, `b`, deshaces y escribes `c`. ¿Qué hace `rehacer`?",
+      "options": [
+        "Nada que rehacer: escribir vació esa pila",
+        "Vuelve a poner `b`",
+        "Quita la `c`"
+      ],
+      "answer": 0,
+      "why": "Igual que en cualquier editor: al escribir algo nuevo se pierde lo que se podía rehacer."
+    }
+  ],
+  "hints": [
+    "`deshacer`: `rehacer.push(hecho.pop())`. `rehacer`: al revés.",
+    "Para vaciar una pila basta con `rehacer.pointer = 0`, o sacar todo con un `while`.",
+    "Muestra `hecho.data` de 0 a `hecho.pointer - 1`."
+  ],
+  "tests": [
+    {
+      "stdin": "escribir hola\nescribir mundo\nmostrar\ndeshacer\nmostrar\nrehacer\nmostrar\nfin\n",
+      "stdout": "Texto: hola mundo\nTexto: hola\nTexto: hola mundo\n"
+    },
+    {
+      "stdin": "deshacer\nrehacer\nmostrar\nescribir a\nescribir b\ndeshacer\nescribir c\nrehacer\nmostrar\nfin\n",
+      "stdout": "Nada que deshacer\nNada que rehacer\nTexto: (vacío)\nNada que rehacer\nTexto: a c\n"
+    },
+    {
+      "stdin": "mostrar\nescribir uno\nrehacer\ndeshacer\ndeshacer\nescribir mundo\ndeshacer\ndeshacer\nmostrar\nfin\n",
+      "stdout": "Texto: (vacío)\nNada que rehacer\nNada que deshacer\nNada que deshacer\nTexto: (vacío)\n"
+    },
+    {
+      "stdin": "escribir hola\ndeshacer\nrehacer\ndeshacer\nescribir uno\nmostrar\ndeshacer\nrehacer\nescribir dos\ndeshacer\nescribir uno\nmostrar\nfin\n",
+      "stdout": "Texto: uno\nTexto: uno uno\n"
+    },
+    {
+      "stdin": "deshacer\nescribir uno\nescribir pila\nrehacer\ndeshacer\nmostrar\nrehacer\nmostrar\nfin\n",
+      "stdout": "Nada que deshacer\nNada que rehacer\nTexto: uno\nTexto: uno pila\n"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "id": "M10-E12",
+  "title": "Reto: sumar números enormes",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee dos números enteros positivos **como texto** (pueden tener hasta 60 cifras). Súmalos como en primaria, cifra por cifra con lo que se lleva, usando pilas: mete las cifras de cada número; al sacarlas salen desde las **unidades**. Cada cifra del resultado entra a una tercera pila y al final se saca para escribirlo en orden. Imprime `Suma: <resultado>`.\n\n(En Python `int()` maneja números enormes, pero aquí la idea es hacerlo con pilas, como se hace en lenguajes que no pueden.)\n\nEl código inicial ya trae la clase `Stack` de la lección (vector fijo y puntero). Úsala con `push`, `pop`, `top` y `empty`: no uses `append`, `pop` ni `insert` de listas.",
+  "starter": "class Stack:\n    def __init__(self, tamaño=10):\n        self.data = [None] * tamaño\n        self.pointer = 0\n\n    def push(self, elemento):\n        if self.pointer == len(self.data):\n            raise OverflowError('Stack Overflow')\n        self.data[self.pointer] = elemento\n        self.pointer = self.pointer + 1\n\n    def pop(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        self.pointer = self.pointer - 1\n        return self.data[self.pointer]\n\n    def top(self):\n        if self.pointer == 0:\n            raise IndexError('Stack Underflow')\n        return self.data[self.pointer - 1]\n\n    def empty(self):\n        return self.pointer == 0\n\n\na = input()\nb = input()\n",
+  "predict": [
+    {
+      "question": "Al sumar 95 + 8, ¿qué cifra va en las unidades y cuánto se lleva?",
+      "options": [
+        "3 y se lleva 1",
+        "13",
+        "3 y no se lleva nada"
+      ],
+      "answer": 0,
+      "why": "5 + 8 = 13: se escribe 3 y se lleva 1."
+    }
+  ],
+  "hints": [
+    "Mientras alguna pila tenga cifras **o** se lleve algo: saca de cada una (0 si está vacía), suma con lo que se lleva.",
+    "`res.push(suma % 10)` y `lleva = suma // 10`.",
+    "La pila del resultado necesita `max(len(a), len(b)) + 1` casillas."
+  ],
+  "tests": [
+    {
+      "stdin": "95\n8\n",
+      "stdout": "Suma: 103\n"
+    },
+    {
+      "stdin": "999999999999999999999\n1\n",
+      "stdout": "Suma: 1000000000000000000000\n"
+    },
+    {
+      "stdin": "123\n456\n",
+      "stdout": "Suma: 579\n"
+    },
+    {
+      "stdin": "16941882192612532003675941774374314021008184\n4012285743055\n",
+      "stdout": "Suma: 16941882192612532003675941774378326306751239\n"
+    },
+    {
+      "stdin": "6628809022496135614346967715749536162892398\n78\n",
+      "stdout": "Suma: 6628809022496135614346967715749536162892476\n"
+    }
+  ]
+}

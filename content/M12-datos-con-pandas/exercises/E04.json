@@ -1,0 +1,41 @@
+{
+  "id": "M12-E04",
+  "title": "Autos con impuesto",
+  "statement": "Tu `DataFrame.py`, en consola. La entrada es **N** y luego, por cada auto, su marca, modelo (año), estilo y precio (entero), uno por línea. El código inicial ya arma el DataFrame `autos` con las columnas `Marca`, `Modelo`, `Estilo` y `Precio`.\n\nAgrega las columnas **Impuesto** (12 % del precio) y **Total** (precio + impuesto), sin ciclos. Luego imprime cada auto así (número desde 1):\n\n```\n<n>. <Marca> <Modelo> | <Estilo> | Q<precio> | Q<impuesto> | Q<total>\n```\n\n(precio, impuesto y total con 2 decimales) y al final:\n\n```\nTotal de impuestos: Q<suma>\nMás caro: <Marca> <Modelo>\nPromedio por auto: Q<promedio del total>\n```\n\nSi hay empate en el más caro, el primero.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import pandas as pd\n\nn = int(input())\nmarcas = [None] * n\nmodelos = [0] * n\nestilos = [None] * n\nprecios = [0] * n\nfor i in range(n):\n    marcas[i] = input()\n    modelos[i] = int(input())\n    estilos[i] = input()\n    precios[i] = int(input())\nautos = pd.DataFrame({'Marca': marcas, 'Modelo': modelos, 'Estilo': estilos, 'Precio': precios})\n",
+  "predict": [
+    {
+      "question": "¿Qué hace `autos['Impuesto'] = autos['Precio'] * 12 / 100`?",
+      "options": [
+        "Crea la columna y la llena para todas las filas",
+        "Solo cambia la primera fila",
+        "Da error porque la columna no existe"
+      ],
+      "answer": 0,
+      "why": "Asignar a una columna nueva la crea; la operación se hace con toda la columna."
+    }
+  ],
+  "hints": [
+    "Recorre con `for i, f in autos.iterrows():` y usa `i + 1` como número.",
+    "`autos.loc[autos['Precio'].idxmax()]` es la fila del más caro.",
+    "Formato: `f\"Q{f['Precio']:.2f}\"`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\nMazda\n2020\nDeportivo\n125000\nHonda\n1998\nSedan\n15000\nKia\n2023\nCamioneta\n225000\nToyota\n2021\nSedan\n135000\n",
+      "stdout": "1. Mazda 2020 | Deportivo | Q125000.00 | Q15000.00 | Q140000.00\n2. Honda 1998 | Sedan | Q15000.00 | Q1800.00 | Q16800.00\n3. Kia 2023 | Camioneta | Q225000.00 | Q27000.00 | Q252000.00\n4. Toyota 2021 | Sedan | Q135000.00 | Q16200.00 | Q151200.00\nTotal de impuestos: Q60000.00\nMás caro: Kia 2023\nPromedio por auto: Q140000.00\n"
+    },
+    {
+      "stdin": "1\nNissan\n2007\nSedan\n66500\n",
+      "stdout": "1. Nissan 2007 | Sedan | Q66500.00 | Q7980.00 | Q74480.00\nTotal de impuestos: Q7980.00\nMás caro: Nissan 2007\nPromedio por auto: Q74480.00\n"
+    },
+    {
+      "stdin": "6\nToyota\n2015\nCamioneta\n176000\nToyota\n2005\nSedan\n159500\nToyota\n2000\nCamioneta\n111500\nNissan\n2000\nDeportivo\n272500\nKia\n2017\nCamioneta\n129000\nToyota\n1996\nCamioneta\n96500\n",
+      "stdout": "1. Toyota 2015 | Camioneta | Q176000.00 | Q21120.00 | Q197120.00\n2. Toyota 2005 | Sedan | Q159500.00 | Q19140.00 | Q178640.00\n3. Toyota 2000 | Camioneta | Q111500.00 | Q13380.00 | Q124880.00\n4. Nissan 2000 | Deportivo | Q272500.00 | Q32700.00 | Q305200.00\n5. Kia 2017 | Camioneta | Q129000.00 | Q15480.00 | Q144480.00\n6. Toyota 1996 | Camioneta | Q96500.00 | Q11580.00 | Q108080.00\nTotal de impuestos: Q113400.00\nMás caro: Nissan 2000\nPromedio por auto: Q176400.00\n"
+    },
+    {
+      "stdin": "3\nKia\n2006\nSedan\n183000\nHonda\n2015\nCamioneta\n110000\nHonda\n2013\nDeportivo\n235500\n",
+      "stdout": "1. Kia 2006 | Sedan | Q183000.00 | Q21960.00 | Q204960.00\n2. Honda 2015 | Camioneta | Q110000.00 | Q13200.00 | Q123200.00\n3. Honda 2013 | Deportivo | Q235500.00 | Q28260.00 | Q263760.00\nTotal de impuestos: Q63420.00\nMás caro: Honda 2013\nPromedio por auto: Q197306.67\n"
+    }
+  ]
+}

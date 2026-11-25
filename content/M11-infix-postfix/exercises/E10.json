@@ -1,0 +1,51 @@
+{
+  "id": "M11-E10",
+  "title": "Despejar x",
+  "statement": "Lee **K** y luego K ecuaciones con **un** signo `=` y la variable `x` de los dos lados o de uno (enteros, `+ - * / ^`, paréntesis, espacios y menos unario; son válidas y `x` nunca está en un denominador). Para cada una imprime **una** línea:\n\n- `x = <valor>` si tiene una solución;\n- `Sin solución` o `Infinitas soluciones` si la x desaparece;\n- `No es lineal` si no es de la forma `a·x + b`.\n\nUsa el método de la lección 6: `f(x) = izquierda - derecha`, convertida a postfix una vez; `b = f(0)`, `a = f(1) - f(0)` y `x = -b / a`. Es lineal si `f(2) - f(1)` es igual a `a`. Compara con 0 usando `abs(...) < 1e-9`. Muestra los resultados con la función `mostrar` del código inicial: sin decimales si es entero, con 2 si no.\n\nUsa una pila hecha con un **vector de tamaño fijo** y un puntero (o tu clase `Stack` de M10). No uses `append` ni `pop` de listas, ni `eval`.",
+  "starter": "def mostrar(v):\n    v = round(v, 6)\n    if v == int(v):\n        return str(int(v))\n    return f'{v:.2f}'\n\n\ndef tokens(expr, letras=''):\n    lista = [None] * len(expr)\n    n = 0\n    i = 0\n    while i < len(expr):\n        c = expr[i]\n        if c.isdigit():\n            num = ''\n            while i < len(expr) and expr[i].isdigit():\n                num = num + expr[i]\n                i = i + 1\n            lista[n] = num\n            n = n + 1\n            continue\n        if c in '+-*/^()' or c in letras:\n            lista[n] = c\n            n = n + 1\n        elif c != ' ':\n            raise ValueError(f'carácter {c}')\n        i = i + 1\n    return lista[:n]\n\n\ndef validar(toks):\n    espera = True\n    abiertos = 0\n    for i in range(len(toks)):\n        t = toks[i]\n        if t.isdigit() or t.isalpha():\n            if not espera:\n                raise ValueError('falta un operador')\n            espera = False\n        elif t == '(':\n            if not espera:\n                raise ValueError('falta un operador')\n            abiertos = abiertos + 1\n        elif t == ')':\n            if abiertos == 0:\n                raise ValueError('paréntesis sin abrir')\n            if espera:\n                raise ValueError('falta un operando')\n            abiertos = abiertos - 1\n        elif t == '-' and espera:\n            toks[i] = '~'\n        else:\n            if espera:\n                raise ValueError('falta un operando')\n            espera = True\n    if espera:\n        raise ValueError('falta un operando')\n    if abiertos > 0:\n        raise ValueError('paréntesis sin cerrar')\n    return toks\n\n\nJER = {'+': 1, '-': 1, '*': 2, '/': 2, '~': 3, '^': 4}\n\n\ndef le_gana(cima, nuevo):\n    if cima == '(' or nuevo == '~':\n        return False\n    if JER[cima] > JER[nuevo]:\n        return True\n    return JER[cima] == JER[nuevo] and nuevo != '^'\n\n\ndef a_postfix(toks):\n    pila = [None] * len(toks)\n    p = 0\n    salida = [None] * len(toks)\n    n = 0\n    for t in toks:\n        if t == '(':\n            pila[p] = t\n            p = p + 1\n        elif t == ')':\n            while pila[p - 1] != '(':\n                p = p - 1\n                salida[n] = pila[p]\n                n = n + 1\n            p = p - 1\n        elif t in JER:\n            while p > 0 and le_gana(pila[p - 1], t):\n                p = p - 1\n                salida[n] = pila[p]\n                n = n + 1\n            pila[p] = t\n            p = p + 1\n        else:\n            salida[n] = t\n            n = n + 1\n    while p > 0:\n        p = p - 1\n        salida[n] = pila[p]\n        n = n + 1\n    return salida[:n]\n\n\ndef operar(a, op, b):\n    if op == '+':\n        return a + b\n    if op == '-':\n        return a - b\n    if op == '*':\n        return a * b\n    if op == '/':\n        return a / b\n    return a ** b\n\n\ndef evaluar(post, valores={}):\n    pila = [None] * len(post)\n    p = 0\n    for t in post:\n        if t == '~':\n            pila[p - 1] = -pila[p - 1]\n        elif t in '+-*/^':\n            p = p - 1\n            b = pila[p]\n            a = pila[p - 1]\n            pila[p - 1] = operar(a, t, b)\n        else:\n            pila[p] = valores[t] if t.isalpha() else int(t)\n            p = p + 1\n    return pila[0]\n\n\nk = int(input())\nfor _ in range(k):\n    izq, der = input().split('=')\n    # tu código aquí\n",
+  "predict": [
+    {
+      "question": "En `3*x = 12`, ¿cuánto valen b = f(0) y a?",
+      "options": [
+        "b = -12, a = 3",
+        "b = 12, a = 3",
+        "b = 0, a = 12"
+      ],
+      "answer": 0,
+      "why": "f(x) = 3x - 12: f(0) = -12, f(1) = -9, a = -9 - (-12) = 3."
+    },
+    {
+      "question": "¿Por qué se arma `'(' + izq + ')-(' + der + ')'` con paréntesis?",
+      "options": [
+        "Para restar todo el lado derecho, no solo su primer término",
+        "Por estética",
+        "Para que la x quede a la izquierda"
+      ],
+      "answer": 0,
+      "why": "Sin ellos, `x = 2 + 3` sería `x - 2 + 3`."
+    }
+  ],
+  "hints": [
+    "Todas las funciones de la calculadora ya vienen en el código inicial; `evaluar(post, {'x': 0})` evalúa con x = 0.",
+    "Ojo con el orden: primero revisa si es lineal, luego si `a` es 0.",
+    "Con `a` = 0: si `f(0)` también es 0, son infinitas; si no, sin solución."
+  ],
+  "tests": [
+    {
+      "stdin": "6\n2*(x+3) = 4*x - 2\n3*x = 12\n2*x + 1 = 2*x + 5\n2*(x+1) = 2*x + 2\nx^2 = 4\nx/3 + 1 = 2\n",
+      "stdout": "x = 4\nx = 4\nSin solución\nInfinitas soluciones\nNo es lineal\nx = 3\n"
+    },
+    {
+      "stdin": "3\n-x = 7\n5 = (x - 1) / 4\nx - 1/2 = 0\n",
+      "stdout": "x = -7\nx = 21\nx = 0.50\n"
+    },
+    {
+      "stdin": "5\n(x-6)/2+4 = 4+5*(x+8)+2*(x+6)\n(x-8)/4 = x\n4 = 4\n6 = 5*x-3*x\nx = (x-2)/4+5*(x+2)\n",
+      "stdout": "x = -8.46\nx = -2.67\nInfinitas soluciones\nx = 3\nx = -2.24\n"
+    },
+    {
+      "stdin": "5\n1*(x+5)-7*(x+8) = (x-8)/4-4*(x+2)-(x-7)/2\n5*(x+5)+(x-5)/4+2*x = x+6+(x-4)/5\n4-x-5*(x+9) = 3*(x+2)\n(x-8)/4-(x-4)/4 = 8-5*(x+5)\n1+(x-3)/2+9*(x+7) = 7-5*x\n",
+      "stdout": "x = -25.43\nx = -3.07\nx = -5.22\nx = -3.20\nx = -3.83\n"
+    }
+  ]
+}

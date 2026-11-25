@@ -43,6 +43,8 @@ export async function execute(
   py.FS.mkdirTree(dir);
   py.FS.chdir(dir);
   for (const [name, text] of Object.entries(files)) py.FS.writeFile(name, text);
+  // pandas y numpy (M12) se descargan la primera vez que el código los importa; luego quedan cargados.
+  await py.loadPackagesFromImports(code, { messageCallback: () => {} }).catch(() => undefined); // error de sintaxis: lo reporta la corrida
   const done = (r: RunResult): RunResult => {
     const out = collect(py, dir);
     return out.length ? { ...r, files: out } : r;

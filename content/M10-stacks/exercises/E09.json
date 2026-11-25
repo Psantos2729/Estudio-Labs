@@ -1,0 +1,42 @@
+{
+  "id": "M10-E09",
+  "title": "Reto: dos pilas en un vector",
+  "challenge": true,
+  "statement": "**Reto opcional.** En tu Tarea 5 había dos pilas. Aquí van las dos en **un solo vector** de tamaño N: la pila 1 crece desde la casilla 0 hacia la derecha y la pila 2 desde la casilla N-1 hacia la izquierda. Así ninguna se llena mientras haya espacio libre en medio.\n\nLee N y comandos hasta `fin`: `push1 <n>`, `push2 <n>`, `pop1`, `pop2` y `mostrar`.\n\n- `push` cuando ya no hay casilla libre: `Stack Overflow`.\n- `pop` de una pila vacía: `Stack Underflow`; si no: `Pop1: <n>` o `Pop2: <n>`.\n- `mostrar`: `Vector: ` y las N casillas separadas por espacio, con `·` en las libres.\n\nAquí no uses la clase `Stack`: programa el vector con **dos punteros**.",
+  "starter": "n = int(input())\nv = [None] * n\np1 = 0       # dónde entra el próximo de la pila 1\np2 = n - 1   # dónde entra el próximo de la pila 2\ncomando = input()\nwhile comando != 'fin':\n    # tu código aquí\n    comando = input()\n",
+  "predict": [
+    {
+      "question": "Con N = 4, `p1` = 2 y `p2` = 1, ¿hay espacio?",
+      "options": [
+        "No: los punteros se cruzaron",
+        "Sí, una casilla",
+        "Sí, dos casillas"
+      ],
+      "answer": 0,
+      "why": "Hay espacio mientras `p1 <= p2`."
+    }
+  ],
+  "hints": [
+    "Hay espacio libre si `p1 <= p2`.",
+    "`pop1`: si `p1 == 0` está vacía; si no, `p1 = p1 - 1` y devuelve `v[p1]`. `pop2`: vacía si `p2 == n - 1`.",
+    "En `mostrar`, la casilla `i` es libre si `p1 <= i <= p2`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\npush1 5\npush2 9\npush1 6\nmostrar\npush2 8\npush1 7\npop2\npop2\npop2\nmostrar\nfin\n",
+      "stdout": "Vector: 5 6 · 9\nStack Overflow\nPop2: 8\nPop2: 9\nStack Underflow\nVector: 5 6 · ·\n"
+    },
+    {
+      "stdin": "2\npop1\npush2 1\npush2 2\npush1 3\nmostrar\nfin\n",
+      "stdout": "Stack Underflow\nStack Overflow\nVector: 2 1\n"
+    },
+    {
+      "stdin": "6\nmostrar\npush2 90\npush1 82\npush2 21\npush2 47\npop2\npush2 24\nmostrar\npush2 92\npush2 40\npush2 92\nmostrar\nfin\n",
+      "stdout": "Vector: · · · · · ·\nPop2: 47\nVector: 82 · · 24 21 90\nStack Overflow\nVector: 82 40 92 24 21 90\n"
+    },
+    {
+      "stdin": "5\npop1\npush1 13\npush2 93\npush1 11\nmostrar\npush1 75\npush2 55\npush1 68\npop2\npop2\npush1 68\nmostrar\nfin\n",
+      "stdout": "Stack Underflow\nVector: 13 11 · · 93\nStack Overflow\nPop2: 55\nPop2: 93\nVector: 13 11 75 68 ·\n"
+    }
+  ]
+}

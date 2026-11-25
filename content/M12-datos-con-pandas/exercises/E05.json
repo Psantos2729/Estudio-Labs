@@ -1,0 +1,55 @@
+{
+  "id": "M12-E05",
+  "title": "Filtrar autos",
+  "statement": "La entrada es **N** y luego, por cada auto, su marca, modelo (año), estilo y precio (entero), uno por línea. El código inicial ya arma el DataFrame `autos` con las columnas `Marca`, `Modelo`, `Estilo` y `Precio`. Después vienen tres datos más: una **marca**, un **año** y un **precio máximo**. Con filtros de pandas imprime:\n\n```\nMarca <marca>: <modelos de esa marca separados por coma y espacio, o \"ninguno\">\nDesde <año>: <cuántos autos con modelo ≥ año>\nPrecio promedio desde <año>: Q<promedio con 2 decimales, o \"no hay\">\nDesde <año> y bajo Q<precio>: <marcas que cumplen las dos, separadas por coma y espacio, o \"ninguno\">\nSedan o Camioneta: <cuántos>\n```\n\n\"Bajo\" quiere decir **menor estricto**. Los autos van en el orden en que se leyeron.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import pandas as pd\n\nn = int(input())\nmarcas = [None] * n\nmodelos = [0] * n\nestilos = [None] * n\nprecios = [0] * n\nfor i in range(n):\n    marcas[i] = input()\n    modelos[i] = int(input())\n    estilos[i] = input()\n    precios[i] = int(input())\nautos = pd.DataFrame({'Marca': marcas, 'Modelo': modelos, 'Estilo': estilos, 'Precio': precios})\nmarca = input()\naño = int(input())\nmaximo = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué tiene de malo `autos[autos['Modelo'] >= 2018 & autos['Precio'] < 9000]`?",
+      "options": [
+        "Faltan paréntesis en cada condición",
+        "Hay que usar `and`",
+        "Nada"
+      ],
+      "answer": 0,
+      "why": "`&` se calcula antes que `>=` y `<`: cada condición va entre paréntesis."
+    },
+    {
+      "question": "Para 'Sedan o Camioneta', ¿qué operador usas?",
+      "options": [
+        "`|`",
+        "`or`",
+        "`&`"
+      ],
+      "answer": 0,
+      "why": "Con Series no se usan `and`/`or`: se usan `&` y `|`."
+    }
+  ],
+  "hints": [
+    "`autos[autos['Marca'] == marca]['Modelo']` son los modelos; conviértelos a texto con `str(x)` para unirlos.",
+    "`desde = autos[autos['Modelo'] >= año]` y reutilízalo.",
+    "`autos['Estilo'].isin(['Sedan', 'Camioneta'])` también sirve en vez de `|`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\nMazda\n2020\nDeportivo\n125000\nHonda\n1998\nSedan\n15000\nKia\n2023\nCamioneta\n225000\nToyota\n2021\nSedan\n135000\nToyota\n2018\n200000\n",
+      "stdout": "Marca Toyota: 2021\nDesde 2018: 3\nPrecio promedio desde 2018: Q161666.67\nDesde 2018 y bajo Q200000: Mazda, Toyota\nSedan o Camioneta: 3\n"
+    },
+    {
+      "stdin": "2\nKia\n2001\nSedan\n20000\nKia\n2005\nDeportivo\n90000\nHonda\n2030\n50000\n",
+      "stdout": "Marca Honda: ninguno\nDesde 2030: 0\nPrecio promedio desde 2030: no hay\nDesde 2030 y bajo Q50000: ninguno\nSedan o Camioneta: 1\n"
+    },
+    {
+      "stdin": "7\nToyota\n2025\nCamioneta\n171500\nKia\n2025\nCamioneta\n228500\nNissan\n2021\nSedan\n182000\nMazda\n1995\nDeportivo\n110500\nMazda\n1998\nDeportivo\n170500\nKia\n2019\nDeportivo\n58000\nMazda\n2023\nDeportivo\n278500\nHonda\n2018\n100000\n",
+      "stdout": "Marca Honda: ninguno\nDesde 2018: 5\nPrecio promedio desde 2018: Q183700.00\nDesde 2018 y bajo Q100000: Kia\nSedan o Camioneta: 3\n"
+    },
+    {
+      "stdin": "4\nToyota\n2010\nDeportivo\n142500\nNissan\n2012\nCamioneta\n202000\nKia\n2010\nSedan\n42500\nNissan\n2003\nSedan\n144500\nHonda\n2015\n30000\n",
+      "stdout": "Marca Honda: ninguno\nDesde 2015: 0\nPrecio promedio desde 2015: no hay\nDesde 2015 y bajo Q30000: ninguno\nSedan o Camioneta: 3\n"
+    },
+    {
+      "stdin": "8\nMazda\n2025\nSedan\n96500\nHonda\n1996\nCamioneta\n240500\nMazda\n2016\nDeportivo\n296000\nKia\n1995\nSedan\n21000\nToyota\n2001\nCamioneta\n178500\nHonda\n2019\nSedan\n208500\nMazda\n2013\nSedan\n21500\nNissan\n2020\nCamioneta\n209500\nNissan\n2011\n180000\n",
+      "stdout": "Marca Nissan: 2020\nDesde 2011: 5\nPrecio promedio desde 2011: Q166400.00\nDesde 2011 y bajo Q180000: Mazda, Mazda\nSedan o Camioneta: 7\n"
+    }
+  ]
+}

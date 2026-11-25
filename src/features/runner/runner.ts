@@ -41,6 +41,10 @@ export function runPython(
     const { w, ready } = load();
     const loadError = await ready;
     if (loadError) return { stdout: '', error: loadError };
+    await new Promise((resolve) => {
+      w.onmessage = resolve;
+      w.postMessage({ code, preload: true });
+    });
     return new Promise<RunResult>((resolve) => {
       const timer = setTimeout(() => {
         w.terminate();

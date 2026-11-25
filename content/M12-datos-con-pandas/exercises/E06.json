@@ -1,0 +1,60 @@
+{
+  "id": "M12-E06",
+  "title": "Resumen de Hospital.txt",
+  "statement": "En la carpeta está `Hospital.txt` (míralo en el panel de archivos): un CSV con las columnas `Sexo`, `Presión` y `PPM`, con un espacio después de cada coma. Léelo con `read_csv` e imprime:\n\n```\nPacientes: <n>\nHombres: <h>\nMujeres: <m>\nPromedio PPM hombres: <promedio, o \"no hay\">\nPromedio PPM mujeres: <promedio, o \"no hay\">\nPresión mayor a 90: <cuántos>\nMayor presión: paciente <número desde 1> (<Sexo>, <presión>)\n```\n\nSi hay empate en la mayor presión, el primero. No se lee nada con `input()`.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import pandas as pd\n\ndatos = pd.read_csv('Hospital.txt', skipinitialspace=True)\n",
+  "predict": [
+    {
+      "question": "¿Para qué sirve `skipinitialspace=True`?",
+      "options": [
+        "Para ignorar el espacio después de cada coma",
+        "Para saltar la primera línea",
+        "Para quitar las líneas vacías"
+      ],
+      "answer": 0,
+      "why": "Sin eso, ' 119' podría quedar como texto."
+    }
+  ],
+  "hints": [
+    "`datos[datos['Sexo'] == 'Hombre']` y luego `['PPM'].mean()`.",
+    "`(datos['Presión'] > 90).sum()` cuenta los que cumplen.",
+    "`i = datos['Presión'].idxmax()` da el índice: el paciente es `i + 1`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "Hospital.txt": "Sexo,Presión,PPM\nHombre, 119, 59\nMujer, 99, 89\nHombre, 102, 107\nHombre, 78, 76\nMujer, 78, 91\n"
+      },
+      "stdout": "Pacientes: 5\nHombres: 3\nMujeres: 2\nPromedio PPM hombres: 80.67\nPromedio PPM mujeres: 90.00\nPresión mayor a 90: 3\nMayor presión: paciente 1 (Hombre, 119)\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "Hospital.txt": "Sexo,Presión,PPM\nMujer, 85, 70\nMujer, 85, 72\n"
+      },
+      "stdout": "Pacientes: 2\nHombres: 0\nMujeres: 2\nPromedio PPM hombres: no hay\nPromedio PPM mujeres: 71.00\nPresión mayor a 90: 0\nMayor presión: paciente 1 (Mujer, 85)\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "Hospital.txt": "Sexo,Presión,PPM\nHombre, 108, 64\nMujer, 101, 66\nHombre, 124, 74\nHombre, 126, 61\nMujer, 140, 105\nHombre, 98, 53\nMujer, 120, 108\n"
+      },
+      "stdout": "Pacientes: 7\nHombres: 4\nMujeres: 3\nPromedio PPM hombres: 63.00\nPromedio PPM mujeres: 93.00\nPresión mayor a 90: 7\nMayor presión: paciente 5 (Mujer, 140)\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "Hospital.txt": "Sexo,Presión,PPM\nHombre, 101, 108\nMujer, 92, 82\nHombre, 106, 110\nHombre, 140, 70\n"
+      },
+      "stdout": "Pacientes: 4\nHombres: 3\nMujeres: 1\nPromedio PPM hombres: 96.00\nPromedio PPM mujeres: 82.00\nPresión mayor a 90: 4\nMayor presión: paciente 4 (Hombre, 140)\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "Hospital.txt": "Sexo,Presión,PPM\nHombre, 100, 77\nMujer, 129, 53\nMujer, 121, 90\nHombre, 102, 69\nHombre, 90, 106\nMujer, 77, 52\nMujer, 97, 52\nHombre, 132, 109\nMujer, 107, 52\nMujer, 108, 106\nHombre, 137, 85\nHombre, 79, 97\nHombre, 123, 56\nHombre, 116, 107\n"
+      },
+      "stdout": "Pacientes: 14\nHombres: 8\nMujeres: 6\nPromedio PPM hombres: 88.25\nPromedio PPM mujeres: 67.50\nPresión mayor a 90: 11\nMayor presión: paciente 11 (Hombre, 137)\n"
+    }
+  ]
+}

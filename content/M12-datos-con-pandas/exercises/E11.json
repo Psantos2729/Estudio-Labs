@@ -1,0 +1,54 @@
+{
+  "id": "M12-E11",
+  "title": "Reto: escribir un reporte CSV",
+  "challenge": true,
+  "statement": "**Reto opcional.** En la carpeta está `parciales.csv` con `Nombre`, `P1`, `P2` y `P3`. Agrega la columna **Promedio** (de las 3 notas, con `mean(axis=1)`) y la columna **Estado** (`Aprobado` si el promedio es ≥ 61, si no `Reprobado`). Guarda la tabla en `reporte.csv` con `to_csv(index=False, float_format='%.2f')`. Luego **abre `reporte.csv` como texto** e imprímelo tal cual, y al final `Aprobados: <a> de <n>`.\n\nPara el Estado puedes usar una lista por comprensión o `np.where(condición, 'Aprobado', 'Reprobado')`.",
+  "starter": "import pandas as pd\n\nt = pd.read_csv('parciales.csv')\n",
+  "predict": [
+    {
+      "question": "¿Qué hace `index=False` en `to_csv`?",
+      "options": [
+        "No escribe la columna del índice (0, 1, 2…)",
+        "No escribe los encabezados",
+        "Escribe sin comas"
+      ],
+      "answer": 0,
+      "why": "Sin eso, el archivo empezaría con una columna sin nombre."
+    }
+  ],
+  "hints": [
+    "`t['Promedio'] = t[['P1', 'P2', 'P3']].mean(axis=1)`.",
+    "`t['Estado'] = ['Aprobado' if p >= 61 else 'Reprobado' for p in t['Promedio']]`.",
+    "Muestra el archivo con `print(f.read(), end='')`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "parciales.csv": "Nombre,P1,P2,P3\nAna,80,90,70\nLuis,60,60,61\nSofía,100,95,90\n"
+      },
+      "stdout": "Nombre,P1,P2,P3,Promedio,Estado\nAna,80,90,70,80.00,Aprobado\nLuis,60,60,61,60.33,Reprobado\nSofía,100,95,90,95.00,Aprobado\nAprobados: 2 de 3\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "parciales.csv": "Nombre,P1,P2,P3\nPedro,91,39,48\nJosé,91,81,39\nLuis,97,58,39\nLucía,39,79,71\nValeria,54,53,97\nAndrés,99,20,81\nDiego,56,64,42\n"
+      },
+      "stdout": "Nombre,P1,P2,P3,Promedio,Estado\nPedro,91,39,48,59.33,Reprobado\nJosé,91,81,39,70.33,Aprobado\nLuis,97,58,39,64.67,Aprobado\nLucía,39,79,71,63.00,Aprobado\nValeria,54,53,97,68.00,Aprobado\nAndrés,99,20,81,66.67,Aprobado\nDiego,56,64,42,54.00,Reprobado\nAprobados: 5 de 7\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "parciales.csv": "Nombre,P1,P2,P3\nÓscar,78,65,38\nCarmen,85,97,44\nPedro,38,36,36\nDiego,13,81,94\nAndrés,83,3,93\nAndrés,51,9,47\nAna,95,78,94\nMaría,48,76,60\n"
+      },
+      "stdout": "Nombre,P1,P2,P3,Promedio,Estado\nÓscar,78,65,38,60.33,Reprobado\nCarmen,85,97,44,75.33,Aprobado\nPedro,38,36,36,36.67,Reprobado\nDiego,13,81,94,62.67,Aprobado\nAndrés,83,3,93,59.67,Reprobado\nAndrés,51,9,47,35.67,Reprobado\nAna,95,78,94,89.00,Aprobado\nMaría,48,76,60,61.33,Aprobado\nAprobados: 4 de 8\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "parciales.csv": "Nombre,P1,P2,P3\nDiego,97,75,40\nDiego,56,89,39\nLucía,55,46,87\nAna,94,93,32\nLucía,65,42,76\nValeria,87,96,92\nAndrés,89,76,0\nDiego,68,15,66\n"
+      },
+      "stdout": "Nombre,P1,P2,P3,Promedio,Estado\nDiego,97,75,40,70.67,Aprobado\nDiego,56,89,39,61.33,Aprobado\nLucía,55,46,87,62.67,Aprobado\nAna,94,93,32,73.00,Aprobado\nLucía,65,42,76,61.00,Aprobado\nValeria,87,96,92,91.67,Aprobado\nAndrés,89,76,0,55.00,Reprobado\nDiego,68,15,66,49.67,Reprobado\nAprobados: 6 de 8\n"
+    }
+  ]
+}
