@@ -1,0 +1,52 @@
+{
+  "id": "M02-E01",
+  "title": "Solo los positivos",
+  "pdf": 2,
+  "statement": "Lee **10 números enteros**, uno por línea, e imprime **solamente los positivos**, cada uno en su propia línea y en el mismo orden en que llegaron.\n\nEl 0 no es positivo.\n\nEjemplo: con `5, -3, 0, 8, -1, 2, 0, -7, 4, 9` imprime `5`, `8`, `2`, `4` y `9`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Cuántas veces se ejecuta `input()` en `for i in range(10): n = int(input())`?",
+      "options": [
+        "1",
+        "9",
+        "10"
+      ],
+      "answer": 2,
+      "why": "`range(10)` da 10 valores (del 0 al 9), así que el bloque, con su `input()`, se ejecuta 10 veces."
+    },
+    {
+      "question": "Si el `print(n)` va **sin sangría**, después del ciclo, ¿qué imprime?",
+      "options": [
+        "Todos los positivos",
+        "Solo el último número leído",
+        "Nada"
+      ],
+      "answer": 1,
+      "why": "Fuera del ciclo, `n` tiene el último valor que se guardó: el décimo número. Para imprimir cada positivo, el `print` va dentro del `if`, dentro del `for`."
+    }
+  ],
+  "hints": [
+    "Usa `for i in range(10):` y dentro lee un número.",
+    "Dentro del ciclo, un `if n > 0:` decide si se imprime.",
+    "El `print(n)` lleva dos niveles de sangría: dentro del `for` y dentro del `if`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n-3\n0\n8\n-1\n2\n0\n-7\n4\n9\n",
+      "stdout": "5\n8\n2\n4\n9\n"
+    },
+    {
+      "stdin": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n",
+      "stdout": "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n"
+    },
+    {
+      "stdin": "-1\n-2\n-3\n0\n0\n0\n-5\n-6\n-7\n1\n",
+      "stdout": "1\n"
+    },
+    {
+      "stdin": "0\n0\n0\n0\n0\n0\n0\n0\n0\n100\n",
+      "stdout": "100\n"
+    }
+  ]
+}
