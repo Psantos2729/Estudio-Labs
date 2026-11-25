@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { Button } from '@/ui/primitives/Button';
+import { Logo } from '@/ui/primitives/Logo';
 
 export function Layout() {
   const { session, signOut } = useAuth();
@@ -15,8 +16,8 @@ export function Layout() {
   return (
     <div className="shell">
       <header className="topbar">
-        <NavLink to="/" className="brand">
-          pylab<span className="ok">_</span>
+        <NavLink to="/" className="brand" aria-label="pylab, ir al inicio">
+          <Logo />
         </NavLink>
         <nav className="topbar__nav" aria-label="Principal">
           <NavLink to="/" end>inicio</NavLink>
