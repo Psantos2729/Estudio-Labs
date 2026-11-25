@@ -7,8 +7,7 @@
 .home__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 .home__stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
-.stat { align-items: flex-start; gap: 4px; transition: box-shadow 0.2s, transform 0.2s; }
-.stat:hover { box-shadow: var(--glow); transform: translateY(-2px); }
+.stat { align-items: flex-start; gap: 4px; }
 .stat__value { font: 700 28px var(--display); color: var(--text); font-variant-numeric: tabular-nums; }
 
 .tips { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
