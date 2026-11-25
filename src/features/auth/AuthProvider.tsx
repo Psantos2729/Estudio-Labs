@@ -4,7 +4,6 @@ import { supabase } from '@/lib/supabase';
 
 interface AuthState {
   session: Session | null;
-  loading: boolean;
   signInWithGoogle: () => Promise<void>;
   signInWithEmail: (email: string) => Promise<string | null>;
   signOut: () => Promise<void>;
@@ -30,7 +29,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const value: AuthState = {
     session,
-    loading,
     async signInWithGoogle() {
       await supabase?.auth.signInWithOAuth({ provider: 'google', options: { redirectTo } });
     },
@@ -44,7 +42,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  // Sin esperar la sesión, al recargar se ve un momento "bloqueado" o "inicia sesión" (modo invitado).
+  return <AuthContext.Provider value={value}>{loading ? <p className="center muted">cargando…</p> : children}</AuthContext.Provider>;
 }
 
 export function useAuth(): AuthState {

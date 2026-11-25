@@ -25,6 +25,7 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
   const [running, setRunning] = useState(false);
   const submit = useSubmitExam();
   const sent = useRef(false);
+  const autoSent = useRef(false);
   const left = Math.max(0, Math.floor((Date.parse(exam.expires_at) - now) / 1000));
   const answered = Object.keys(draft.picked).length;
 
@@ -49,7 +50,11 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
   };
 
   useEffect(() => {
-    if (left === 0) void deliver(); // se acabó el tiempo: entrega lo que haya
+    // Se acabó el tiempo: entrega lo que haya, una sola vez (si falla, el botón permite reintentar).
+    if (left === 0 && !autoSent.current) {
+      autoSent.current = true;
+      void deliver();
+    }
   });
 
   const busy = running || submit.isPending;
