@@ -7,10 +7,13 @@ export interface TestResult {
   passed: boolean;
 }
 
-/** Igual que un corrector humano: ignora espacios al final de cada línea y líneas vacías al final. */
+/**
+ * Pasa si las líneas esperadas aparecen seguidas en la salida. No cuentan las líneas en blanco,
+ * los espacios al final de cada línea ni el texto extra antes o después (p. ej. un título).
+ */
 export function sameOutput(actual: string, expected: string): boolean {
-  const norm = (s: string) => s.replace(/\r\n/g, '\n').split('\n').map((l) => l.trimEnd()).join('\n').trimEnd();
-  return norm(actual) === norm(expected);
+  const lines = (s: string) => `\n${s.split('\n').map((l) => l.trimEnd()).filter(Boolean).join('\n')}\n`;
+  return lines(actual).includes(lines(expected));
 }
 
 /** Corre el código contra cada prueba pública, en orden. Los mensajes de input("...") no cuentan. */

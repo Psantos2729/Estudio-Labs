@@ -54,4 +54,10 @@ describe('sameOutput', () => {
     expect(sameOutput('7\r\n8', '7\n8\n')).toBe(true);
     expect(sameOutput('7\n8', '78')).toBe(false);
   });
+  it('ignora líneas en blanco y texto extra, pero no acepta líneas a medias', () => {
+    expect(sameOutput('\nResultado:\n\n7\n\n8\nfin\n', '7\n8\n')).toBe(true);
+    expect(sameOutput('17\n8', '7\n8')).toBe(false);
+    expect(sameOutput('8\n7', '7\n8')).toBe(false);
+    expect(sameOutput('  *', '*')).toBe(false); // la sangría importa (figuras con espacios)
+  });
 });
