@@ -785,6 +785,18 @@
     "ast_hash": "1afff8f4fe7597e841e41fa653cb4e4b",
     "semantic_hash": ""
   },
+  "supabase/migrations/20261124000010_submit_exam.sql": {
+    "mtime": 1795565323.3354928,
+    "seen": 1795565368.6293714,
+    "ast_hash": "d39cde56545324580a233014748e7d1c",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_exam_submit.sql": {
+    "mtime": 1795565356.8509636,
+    "seen": 1795565368.6293766,
+    "ast_hash": "b223cd693f9ea9e0c79e0e038c4ce135",
+    "semantic_hash": ""
+  },
   "package-lock.json": {
     "mtime": 1795564644.9926991,
     "seen": 1795565146.0346794,
