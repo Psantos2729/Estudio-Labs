@@ -1,0 +1,60 @@
+{
+  "id": "M02-E08",
+  "title": "Jefe: el reloj digital",
+  "pdf": 10,
+  "statement": "**Jefe del módulo.** Simula un reloj digital que imprime cada segundo de un día, desde `0:00:00` hasta `23:59:59`, una hora por línea:\n\n```\n0:00:00\n0:00:01\n...\n0:00:59\n0:01:00\n...\n23:59:59\n```\n\nLa hora va **sin** cero a la izquierda; los minutos y segundos siempre con **dos dígitos**.\n\nLas pruebas revisan varios tramos del día: el inicio, los cambios de minuto y de hora, y el final.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Cuántas líneas imprime el reloj completo?",
+      "options": [
+        "24 + 60 + 60 = 144",
+        "24 × 60 × 60 = 86 400",
+        "60 × 60 = 3600"
+      ],
+      "answer": 1,
+      "why": "Por cada una de las 24 horas el ciclo de minutos da 60 vueltas, y por cada minuto el de segundos da 60: se multiplican."
+    },
+    {
+      "question": "¿Qué imprime `print(f\"{5:02d}\")`?",
+      "options": [
+        "5",
+        "05",
+        "50"
+      ],
+      "answer": 1,
+      "why": "`:02d` escribe el entero con ancho 2 y rellena con ceros a la izquierda."
+    }
+  ],
+  "hints": [
+    "Necesitas tres ciclos anidados: horas, minutos y segundos.",
+    "`for h in range(24):`, dentro `for m in range(60):`, dentro `for s in range(60):`.",
+    "El `print` va en el ciclo más interno: `print(f\"{h}:{m:02d}:{s:02d}\")`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "stdout": "0:00:00\n0:00:01\n0:00:02\n0:00:03\n0:00:04\n"
+    },
+    {
+      "stdin": "",
+      "stdout": "0:00:58\n0:00:59\n0:01:00\n0:01:01\n0:01:02\n"
+    },
+    {
+      "stdin": "",
+      "stdout": "0:59:58\n0:59:59\n1:00:00\n1:00:01\n1:00:02\n"
+    },
+    {
+      "stdin": "",
+      "stdout": "12:29:58\n12:29:59\n12:30:00\n12:30:01\n12:30:02\n"
+    },
+    {
+      "stdin": "",
+      "stdout": "22:59:58\n22:59:59\n23:00:00\n23:00:01\n23:00:02\n"
+    },
+    {
+      "stdin": "",
+      "stdout": "23:59:55\n23:59:56\n23:59:57\n23:59:58\n23:59:59\n"
+    }
+  ]
+}

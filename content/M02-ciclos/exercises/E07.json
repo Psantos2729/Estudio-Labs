@@ -1,0 +1,71 @@
+{
+  "id": "M02-E07",
+  "title": "¿Es primo?",
+  "statement": "Un número **primo** es un entero mayor que 1 que solo se puede dividir exactamente entre 1 y entre sí mismo: 2, 3, 5, 7, 11, 13…\n\nLee un entero N e imprime `<N> es primo` o `<N> no es primo`.\n\nUsa una **bandera**: supón que es primo y cambia de opinión si encuentras un divisor. Ojo: 0, 1 y los negativos **no** son primos.\n\nEjemplo: con `21` imprime `21 no es primo` (21 = 3 × 7); con `13`, `13 es primo`.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `print(21 % 7 == 0)`?",
+      "options": [
+        "True",
+        "False",
+        "3"
+      ],
+      "answer": 0,
+      "why": "21 entre 7 da 3 exacto, residuo 0. Que el residuo sea 0 significa que 7 es divisor de 21."
+    },
+    {
+      "question": "Con `es_primo = True` y `for d in range(2, n)`, ¿qué pasa si N = 1?",
+      "options": [
+        "El ciclo no da vueltas y dice que 1 es primo",
+        "Da error",
+        "El ciclo detecta que no es primo"
+      ],
+      "answer": 0,
+      "why": "`range(2, 1)` está vacío, así que nada cambia la bandera. Por eso hay que tratar los N menores que 2 aparte, por ejemplo con `es_primo = n > 1`."
+    }
+  ],
+  "hints": [
+    "Empieza con una bandera `es_primo` y un ciclo que pruebe los posibles divisores de 2 a N − 1.",
+    "Si `n % d == 0`, encontraste un divisor: pon la bandera en `False` y usa `break`.",
+    "Inicia la bandera con `es_primo = n > 1` para que 0, 1 y los negativos queden como no primos."
+  ],
+  "tests": [
+    {
+      "stdin": "21\n",
+      "stdout": "21 no es primo\n"
+    },
+    {
+      "stdin": "13\n",
+      "stdout": "13 es primo\n"
+    },
+    {
+      "stdin": "2\n",
+      "stdout": "2 es primo\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "1 no es primo\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "0 no es primo\n"
+    },
+    {
+      "stdin": "97\n",
+      "stdout": "97 es primo\n"
+    },
+    {
+      "stdin": "91\n",
+      "stdout": "91 no es primo\n"
+    },
+    {
+      "stdin": "-7\n",
+      "stdout": "-7 no es primo\n"
+    },
+    {
+      "stdin": "7919\n",
+      "stdout": "7919 es primo\n"
+    }
+  ]
+}

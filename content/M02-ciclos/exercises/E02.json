@@ -1,0 +1,60 @@
+{
+  "id": "M02-E02",
+  "title": "Suma de los pares hasta N",
+  "pdf": 4,
+  "statement": "El PDF pide sumar los números **pares** entre 1 y 100. Hagámoslo más general: lee un entero **N** (N ≥ 1) y suma los pares desde 1 hasta N, **incluido N** si es par.\n\nImprime `Suma de pares: <suma>`.\n\nEjemplo: con `100` imprime `Suma de pares: 2550` (la respuesta del PDF); con `7`, `Suma de pares: 12` (2 + 4 + 6).",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué valores da `range(2, 11, 2)`?",
+      "options": [
+        "2, 4, 6, 8, 10",
+        "2, 4, 6, 8",
+        "2, 11"
+      ],
+      "answer": 0,
+      "why": "Empieza en 2 y salta de 2 en 2. Se detiene **antes** de llegar a 11, así que el 10 sí entra."
+    },
+    {
+      "question": "¿Qué pasa si escribes `suma = 0` **dentro** del `for`?",
+      "options": [
+        "Funciona igual",
+        "Al final `suma` solo tiene el último par",
+        "Error de sintaxis"
+      ],
+      "answer": 1,
+      "why": "Se reinicia en cada vuelta, así que se pierde lo que llevabas acumulado. El acumulador se inicia una sola vez, **antes** del ciclo."
+    }
+  ],
+  "hints": [
+    "Necesitas un acumulador que empiece en 0 antes del ciclo.",
+    "`range(2, n + 1, 2)` da justo los pares de 2 a N.",
+    "Dentro del ciclo: `suma = suma + i`. El `print` va después, sin sangría."
+  ],
+  "tests": [
+    {
+      "stdin": "100\n",
+      "stdout": "Suma de pares: 2550\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "Suma de pares: 12\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "Suma de pares: 0\n"
+    },
+    {
+      "stdin": "2\n",
+      "stdout": "Suma de pares: 2\n"
+    },
+    {
+      "stdin": "50\n",
+      "stdout": "Suma de pares: 650\n"
+    },
+    {
+      "stdin": "999\n",
+      "stdout": "Suma de pares: 249500\n"
+    }
+  ]
+}

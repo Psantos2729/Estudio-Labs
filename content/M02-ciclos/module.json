@@ -9,9 +9,10 @@
   ],
   "concepts": [
     "for y range",
-    "while",
     "acumuladores y contadores",
-    "break y continue",
+    "while y centinelas",
+    "banderas, break y continue",
+    "números primos",
     "ciclos anidados"
   ],
   "pdfExercises": [
