@@ -40,7 +40,7 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
     if (sent.current) return;
     sent.current = true;
     setRunning(true);
-    const answers = await buildAnswers(exam, draft.code, draft.picked, (c, s) => runPython(c, s, { quietPrompts: true }));
+    const answers = await buildAnswers(exam, draft.code, draft.picked, (c, s, files) => runPython(c, s, { quietPrompts: true, files }));
     setRunning(false);
     submit.mutate({ attemptId: exam.attempt_id, answers, code: draft.code }, {
       onSuccess: (r) => { try { localStorage.removeItem(key(exam)); } catch { /* igual */ } onDone(r); },

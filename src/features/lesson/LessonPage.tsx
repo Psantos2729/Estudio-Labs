@@ -8,7 +8,7 @@ import { useModuleViews } from '@/features/map/useMastery';
 import { warmUp } from '@/features/runner/runner';
 import { splitBlocks } from './blocks';
 import { RunnableCode } from './RunnableCode';
-import { StepViewer } from './StepViewer';
+import { GridViewer, StepViewer } from './StepViewer';
 import { ProgressBar } from '@/ui/primitives/ProgressBar';
 import { useMarkLessonRead } from './useLessonProgress';
 import './lesson.css';
@@ -58,6 +58,8 @@ export function LessonPage() {
               <RunnableCode initial={b.code} />
             ) : b.kind === 'steps' ? (
               <StepViewer steps={b.steps} />
+            ) : b.kind === 'grid' ? (
+              <GridViewer steps={b.steps} />
             ) : (
               // El markdown viene de content/ en este repo, no del usuario.
               <div dangerouslySetInnerHTML={{ __html: marked.parse(b.text, { async: false }) }} />

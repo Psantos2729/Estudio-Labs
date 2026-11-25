@@ -25,4 +25,12 @@ describe('splitBlocks', () => {
       { kind: 'md', text: '\n\nFin' },
     ]);
   });
+
+  it('lee matrices con etiqueta, filas y marcas por matriz:fila.columna', () => {
+    const [b] = splitBlocks('```matriz\nA: 1 2 / 3 4 || 9 | c1.0 k1:0.0 | nota\n```');
+    expect(b).toEqual({ kind: 'grid', steps: [{
+      grids: [{ label: 'A', rows: [['1', '2'], ['3', '4']] }, { label: '', rows: [['9']] }],
+      marks: { '0:1.0': 'c', '1:0.0': 'k' }, note: 'nota',
+    }] });
+  });
 });

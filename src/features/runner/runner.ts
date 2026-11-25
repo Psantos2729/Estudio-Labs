@@ -1,6 +1,6 @@
-import type { RunResult } from './execute';
+import type { RunResult, OutFile } from './execute';
 
-export type { RunResult };
+export type { RunResult, OutFile };
 export const TIME_LIMIT_MS = 5000;
 
 interface Loaded {
@@ -35,7 +35,7 @@ export function warmUp(): void {
 export function runPython(
   code: string,
   stdin = '',
-  { limitMs = TIME_LIMIT_MS, quietPrompts = false } = {},
+  { limitMs = TIME_LIMIT_MS, quietPrompts = false, files = {} as Record<string, string> } = {},
 ): Promise<RunResult> {
   const run = queue.then(async (): Promise<RunResult> => {
     const { w, ready } = load();
@@ -51,7 +51,7 @@ export function runPython(
         clearTimeout(timer);
         resolve(e.data);
       };
-      w.postMessage({ code, stdin, quietPrompts });
+      w.postMessage({ code, stdin, quietPrompts, files });
     });
   });
   queue = run.catch(() => undefined);

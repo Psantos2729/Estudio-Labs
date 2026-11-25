@@ -67,7 +67,7 @@ export function AttemptReviewPage() {
                 {p.cases.map((c) => (
                   <tr key={c.id}>
                     <td>{mark(c.good)}</td>
-                    <td><pre className="history__pre">{c.stdin}</pre></td>
+                    <td><pre className="history__pre">{c.stdin}{Object.entries(c.files ?? {}).map(([n, t]) => `\n── ${n} ──\n${t}`).join('')}</pre></td>
                     <td><pre className="history__pre">{c.given || '(nada)'}</pre></td>
                   </tr>
                 ))}

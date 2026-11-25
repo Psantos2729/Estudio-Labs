@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import type { TestResult } from '@/features/runner/check';
 
 /** Cada prueba: qué se escribió, qué se esperaba y qué imprimió el programa. */
@@ -14,6 +15,9 @@ export function TestResults({ results }: { results: TestResult[] }) {
           <summary>{r.passed ? '✓' : '✗'} prueba {i + 1}</summary>
           <div className="tests__grid">
             <span className="muted small">entrada</span><pre>{r.test.stdin || '(nada)'}</pre>
+            {Object.entries(r.test.files ?? {}).map(([name, text]) => (
+              <Fragment key={name}><span className="muted small">{name}</span><pre>{text}</pre></Fragment>
+            ))}
             <span className="muted small">esperado</span><pre>{r.test.stdout}</pre>
             <span className="muted small">obtenido</span>
             <pre>{r.run.stdout}{r.run.error && <span className="runnable__err">{r.run.error}</span>}</pre>
