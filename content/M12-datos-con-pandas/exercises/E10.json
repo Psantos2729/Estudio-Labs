@@ -1,0 +1,54 @@
+{
+  "id": "M12-E10",
+  "title": "Reto: limpiar datos",
+  "challenge": true,
+  "statement": "**Reto opcional.** Los datos reales vienen sucios. En la carpeta está `notas.csv` (`Nombre`, `Curso`, `Nota`) donde algunas casillas están **vacías** (pandas las lee como `NaN`) y algunas filas están **repetidas** exactamente. Imprime:\n\n```\nFilas: <total>\nCon datos faltantes: <filas con al menos una casilla vacía>\nRepetidas: <filas idénticas a una anterior>\nFilas limpias: <las que quedan al quitar las de datos faltantes y después las repetidas>\nPromedio limpio: <promedio de Nota en las limpias, o \"no hay\">\n```\n\nUsa `isna()`, `duplicated()`, `dropna()` y `drop_duplicates()`. Las repetidas se cuentan en la tabla **original**.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import pandas as pd\n\nnotas = pd.read_csv('notas.csv')\n",
+  "predict": [
+    {
+      "question": "¿Qué da `df.isna().any(axis=1)`?",
+      "options": [
+        "Por fila, True si tiene alguna casilla vacía",
+        "Por columna, cuántas vacías hay",
+        "El número de vacías"
+      ],
+      "answer": 0,
+      "why": "axis=1 recorre cada fila."
+    }
+  ],
+  "hints": [
+    "`notas.isna().any(axis=1).sum()` cuenta filas con faltantes.",
+    "`notas.duplicated().sum()` cuenta las repetidas (la primera aparición no cuenta).",
+    "`limpias = notas.dropna().drop_duplicates()`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nAna,Física,80\nLuis,,55\nAna,Física,80\nMaría,Química,\nPedro,Física,70\n"
+      },
+      "stdout": "Filas: 5\nCon datos faltantes: 2\nRepetidas: 1\nFilas limpias: 2\nPromedio limpio: 75.00\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nJosé,Física,\nSofía,Matemática,\nJosé,Física,78\nDiego,Matemática,31\nAna,Programación,98\nAndrés,Matemática,34\nAndrés,Matemática,34\nSofía,Matemática,46\nAndrés,Química,\nSofía,Matemática,85\nLucía,Programación,76\n"
+      },
+      "stdout": "Filas: 11\nCon datos faltantes: 3\nRepetidas: 1\nFilas limpias: 7\nPromedio limpio: 64.00\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nCarmen,Matemática,98\nMaría,Matemática,39\nCarmen,Química,86\nLuis,,47\nAna,,50\nÓscar,Física,67\nÓscar,Física,67\nAna,Química,82\nDiego,Física,21\nDiego,Física,21\n"
+      },
+      "stdout": "Filas: 10\nCon datos faltantes: 2\nRepetidas: 2\nFilas limpias: 6\nPromedio limpio: 65.50\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "notas.csv": "Nombre,Curso,Nota\nCarmen,,65\nAna,Matemática,76\nSofía,Química,38\nDiego,Química,59\nLuis,Matemática,97\nJosé,Física,92\nAna,Programación,26\nAna,Programación,26\nCarmen,Química,50\nCarmen,Química,50\nCarmen,Matemática,89\nSofía,,89\nSofía,,89\n"
+      },
+      "stdout": "Filas: 13\nCon datos faltantes: 3\nRepetidas: 3\nFilas limpias: 8\nPromedio limpio: 65.88\n"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "id": "M12-E03",
+  "title": "Ventas de la semana con Series",
+  "statement": "Lee **N** (1 a 7) y luego N líneas `<día> <monto>` (monto entero). Arma una **Series** con los montos y los días como índice. Imprime:\n\n```\nTotal: <suma>\nPromedio: <promedio>\nMejor día: <día> (<monto>)\nPeor día: <día> (<monto>)\nSobre el promedio: <días con monto mayor que el promedio, en su orden, separados por coma y espacio, o \"ninguno\">\nTop 3: <hasta 3 días de mayor a menor monto, separados por coma y espacio>\n```\n\nSi hay empates, va primero el día que aparece antes (usa `sort_values(ascending=False, kind='stable')`).\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import pandas as pd\n\nn = int(input())\ndias = [None] * n\nmontos = [0] * n\nfor i in range(n):\n    dia, monto = input().split()\n    dias[i] = dia\n    montos[i] = int(monto)\nventas = pd.Series(montos, index=dias)\n",
+  "predict": [
+    {
+      "question": "¿Qué devuelve `ventas.idxmax()`?",
+      "options": [
+        "La etiqueta (el día) del mayor",
+        "La posición del mayor",
+        "El monto mayor"
+      ],
+      "answer": 0,
+      "why": "idx = índice: en una Series con días de índice, da el día."
+    }
+  ],
+  "hints": [
+    "`ventas[ventas > ventas.mean()].index` son los días sobre el promedio.",
+    "`', '.join(lista)` los separa con coma y espacio.",
+    "`ventas.sort_values(ascending=False, kind='stable').index[:3]`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\nlunes 120\nmartes 95\nmiércoles 140\njueves 80\nviernes 160\n",
+      "stdout": "Total: 595\nPromedio: 119.00\nMejor día: viernes (160)\nPeor día: jueves (80)\nSobre el promedio: lunes, miércoles, viernes\nTop 3: viernes, miércoles, lunes\n"
+    },
+    {
+      "stdin": "1\nsábado 300\n",
+      "stdout": "Total: 300\nPromedio: 300.00\nMejor día: sábado (300)\nPeor día: sábado (300)\nSobre el promedio: ninguno\nTop 3: sábado\n"
+    },
+    {
+      "stdin": "3\nlunes 100\nmartes 100\nmiércoles 100\n",
+      "stdout": "Total: 300\nPromedio: 100.00\nMejor día: lunes (100)\nPeor día: lunes (100)\nSobre el promedio: ninguno\nTop 3: lunes, martes, miércoles\n"
+    },
+    {
+      "stdin": "1\nlunes 232\n",
+      "stdout": "Total: 232\nPromedio: 232.00\nMejor día: lunes (232)\nPeor día: lunes (232)\nSobre el promedio: ninguno\nTop 3: lunes\n"
+    },
+    {
+      "stdin": "3\nlunes 456\nmartes 410\nmiércoles 64\n",
+      "stdout": "Total: 930\nPromedio: 310.00\nMejor día: lunes (456)\nPeor día: miércoles (64)\nSobre el promedio: lunes, martes\nTop 3: lunes, martes, miércoles\n"
+    },
+    {
+      "stdin": "7\nlunes 415\nmartes 124\nmiércoles 74\njueves 481\nviernes 200\nsábado 200\ndomingo 367\n",
+      "stdout": "Total: 1861\nPromedio: 265.86\nMejor día: jueves (481)\nPeor día: miércoles (74)\nSobre el promedio: lunes, jueves, domingo\nTop 3: jueves, lunes, domingo\n"
+    }
+  ]
+}

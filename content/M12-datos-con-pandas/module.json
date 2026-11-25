@@ -3,16 +3,19 @@
   "slug": "datos-con-pandas",
   "position": 12,
   "title": "Datos con pandas",
-  "summary": "Series, DataFrame, filtros y estadísticas sobre archivos CSV.",
+  "summary": "numpy, Series, DataFrame, filtros, read_csv, groupby y regex con pandas.",
   "prerequisites": [
     "M11"
   ],
   "concepts": [
-    "numpy básico",
-    "Series",
-    "DataFrame",
-    "filtros booleanos",
-    "read_csv y estadísticas"
+    "numpy: arreglos, operaciones con todo el vector y máscaras",
+    "Series: índice, idxmax, value_counts y sort_values",
+    "DataFrame: columnas, iloc/loc, columnas calculadas e iterrows",
+    "filtros booleanos con &, | y ~",
+    "read_csv (Hospital.txt) y groupby",
+    "regex + pandas: de texto suelto a tabla (Prueba_Bellaquita_1)",
+    "promedio por fila con axis=1",
+    "retos: limpiar datos, escribir CSV, ranking con desempate y estadística descriptiva"
   ],
   "pdfExercises": [],
   "realTasks": [

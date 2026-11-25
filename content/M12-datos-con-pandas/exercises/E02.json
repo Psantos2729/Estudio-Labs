@@ -1,0 +1,55 @@
+{
+  "id": "M12-E02",
+  "title": "Vectores A y B con numpy",
+  "statement": "Inspirado en el ejercicio 31 del PDF. Lee **N** y luego dos líneas con N enteros cada una, separados por espacio: el vector **A** y el vector **B** (del rango −500 a 500). Con arreglos de numpy, **sin ciclos para operar**, imprime:\n\n```\nA + B: <...>\nB - A: <...>\nA * B: <...>\nProducto punto: <suma de A * B>\nIguales en: <posiciones donde A y B tienen el mismo valor, o \"ninguna\">\n```\n\nCada vector se imprime con sus valores separados por un espacio.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import numpy as np\n\nn = int(input())\nA = np.array([int(x) for x in input().split()])\nB = np.array([int(x) for x in input().split()])\n",
+  "predict": [
+    {
+      "question": "Con listas, ¿qué da `[1, 2] + [3, 4]`?",
+      "options": [
+        "[1, 2, 3, 4]",
+        "[4, 6]",
+        "10"
+      ],
+      "answer": 0,
+      "why": "Con listas, + pega. Con arreglos de numpy, suma casilla por casilla."
+    },
+    {
+      "question": "¿Cómo sacas las posiciones donde `A == B`?",
+      "options": [
+        "`np.arange(n)[A == B]`",
+        "`A.index(B)`",
+        "`(A == B).sum()`"
+      ],
+      "answer": 0,
+      "why": "Filtras el arreglo de posiciones 0..n-1 con la máscara."
+    }
+  ],
+  "hints": [
+    "`A + B`, `B - A` y `A * B` ya son arreglos completos.",
+    "`(A * B).sum()` es el producto punto.",
+    "`np.arange(n)` da `[0 1 2 ... n-1]`; fíltralo con la máscara `A == B`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n1 2 3 4\n10 2 30 4\n",
+      "stdout": "A + B: 11 4 33 8\nB - A: 9 0 27 0\nA * B: 10 4 90 16\nProducto punto: 120\nIguales en: 1 3\n"
+    },
+    {
+      "stdin": "1\n-500\n500\n",
+      "stdout": "A + B: 0\nB - A: 1000\nA * B: -250000\nProducto punto: -250000\nIguales en: ninguna\n"
+    },
+    {
+      "stdin": "8\n237 -131 343 -330 -287 127 -102 405\n431 -131 55 -390 -499 476 234 23\n",
+      "stdout": "A + B: 668 -262 398 -720 -786 603 132 428\nB - A: 194 0 -288 -60 -212 349 336 -382\nA * B: 102147 17161 18865 128700 143213 60452 -23868 9315\nProducto punto: 455985\nIguales en: 1\n"
+    },
+    {
+      "stdin": "1\n-270\n-322\n",
+      "stdout": "A + B: -592\nB - A: -52\nA * B: 86940\nProducto punto: 86940\nIguales en: ninguna\n"
+    },
+    {
+      "stdin": "8\n-126 295 -296 -276 453 275 421 -437\n304 440 122 23 58 363 27 156\n",
+      "stdout": "A + B: 178 735 -174 -253 511 638 448 -281\nB - A: 430 145 418 299 -395 88 -394 593\nA * B: -38304 129800 -36112 -6348 26274 99825 11367 -68172\nProducto punto: 118330\nIguales en: ninguna\n"
+    }
+  ]
+}

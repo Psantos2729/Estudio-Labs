@@ -1,0 +1,70 @@
+{
+  "id": "M12-E08",
+  "title": "Productos desde texto suelto",
+  "statement": "Como tu `Prueba_Bellaquita_1.py`. En la carpeta está `productos.txt`: cada línea **válida** trae exactamente **tres** números enteros, en este orden: código, precio y cantidad, mezclados con texto (`Código 101, precio Q130, cantidad 5`, `101;130;5`…). Las líneas que no traen exactamente 3 números están dañadas: sáltalas.\n\nSaca los números con `re.findall(r'\\d+', linea)`, arma un DataFrame con `Codigo`, `Precio` y `Cantidad`, agrega `Total = Precio * Cantidad` e imprime:\n\n```\n<código>: <cantidad> x Q<precio> = Q<total>      (una línea por producto, en orden)\nLíneas dañadas: <k>\nGran total: Q<suma de Total>\nPrecio mayor a 130: <códigos separados por coma y espacio, o \"ninguno\">\nMenor cantidad: <código> (<cantidad>)\nPromedio de precio: <p>\nPromedio de cantidad: <c>\n```\n\nSi hay empate en la menor cantidad, el primero. Siempre hay al menos una línea válida.\n\nImprime con el formato pedido (f-strings), nunca con `print(df)`. Los decimales van con 2 cifras.",
+  "starter": "import re\nimport pandas as pd\n\nwith open('productos.txt', encoding='utf-8') as f:\n    lineas = f.readlines()\n",
+  "predict": [
+    {
+      "question": "¿Qué da `re.findall(r'\\d+', 'cod 7 - Q15 - 3 unidades')`?",
+      "options": [
+        "['7', '15', '3']",
+        "[7, 15, 3]",
+        "['7153']"
+      ],
+      "answer": 0,
+      "why": "Devuelve textos: hay que convertirlos con int()."
+    },
+    {
+      "question": "¿Cómo saltas una línea dañada?",
+      "options": [
+        "Si `len(nums) != 3`, cuenta y `continue`",
+        "Con `try` / `except`",
+        "No hace falta"
+      ],
+      "answer": 0,
+      "why": "Una línea con 2 o 4 números desacomodaría las columnas."
+    }
+  ],
+  "hints": [
+    "Llena tres listas de tamaño `len(lineas)` y lleva un contador `n` de las válidas; al armar el DataFrame usa `codigos[:n]`.",
+    "`df.loc[df['Cantidad'].idxmin()]` es la fila de la menor cantidad.",
+    "`df[df['Precio'] > 130]['Codigo']` son los códigos; pásalos a texto para unirlos."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "productos.txt": "Código 101, precio Q130, cantidad 5\ncod 205 - Q99 - 12 unidades\nlínea dañada\n310;250;2\n"
+      },
+      "stdout": "101: 5 x Q130 = Q650\n205: 12 x Q99 = Q1188\n310: 2 x Q250 = Q500\nLíneas dañadas: 1\nGran total: Q2338\nPrecio mayor a 130: 310\nMenor cantidad: 310 (2)\nPromedio de precio: 159.67\nPromedio de cantidad: 6.33\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "productos.txt": "Producto #7: precio Q131, cantidad 1\n"
+      },
+      "stdout": "7: 1 x Q131 = Q131\nLíneas dañadas: 0\nGran total: Q131\nPrecio mayor a 130: 7\nMenor cantidad: 7 (1)\nPromedio de precio: 131.00\nPromedio de cantidad: 1.00\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "productos.txt": "Código 979 sin precio\ncod 991 - Q134 - 12 unidades\nCódigo 494, precio Q336, cantidad 28\nProducto #201: precio Q261, cantidad 38\nProducto #789: precio Q113, cantidad 6\nProducto #678: precio Q358, cantidad 39\nlínea dañada\ncod 106 - Q371 - 20 unidades\n316;355;13\nProducto #940: precio Q342, cantidad 35\n"
+      },
+      "stdout": "991: 12 x Q134 = Q1608\n494: 28 x Q336 = Q9408\n201: 38 x Q261 = Q9918\n789: 6 x Q113 = Q678\n678: 39 x Q358 = Q13962\n106: 20 x Q371 = Q7420\n316: 13 x Q355 = Q4615\n940: 35 x Q342 = Q11970\nLíneas dañadas: 2\nGran total: Q59579\nPrecio mayor a 130: 991, 494, 201, 678, 106, 316, 940\nMenor cantidad: 789 (6)\nPromedio de precio: 283.75\nPromedio de cantidad: 23.88\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "productos.txt": "Producto #310: precio Q266, cantidad 21\nProducto #891: precio Q196, cantidad 29\ncod 776 - Q189 - 53 unidades\ncod 195 - Q325 - 60 unidades\nProducto #820: precio Q84, cantidad 41\nProducto #583: precio Q271, cantidad 37\nlínea dañada\n"
+      },
+      "stdout": "310: 21 x Q266 = Q5586\n891: 29 x Q196 = Q5684\n776: 53 x Q189 = Q10017\n195: 60 x Q325 = Q19500\n820: 41 x Q84 = Q3444\n583: 37 x Q271 = Q10027\nLíneas dañadas: 1\nGran total: Q54258\nPrecio mayor a 130: 310, 891, 776, 195, 583\nMenor cantidad: 310 (21)\nPromedio de precio: 221.83\nPromedio de cantidad: 40.17\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "productos.txt": "línea dañada\nCódigo 653, precio Q50, cantidad 45\nCódigo 477, precio Q337, cantidad 12\nlínea dañada\ncod 527 - Q58 - 12 unidades\n---\nProducto #550: precio Q174, cantidad 39\nProducto #529: precio Q80, cantidad 57\nCódigo 856, precio Q167, cantidad 55\n882;314;41\n"
+      },
+      "stdout": "653: 45 x Q50 = Q2250\n477: 12 x Q337 = Q4044\n527: 12 x Q58 = Q696\n550: 39 x Q174 = Q6786\n529: 57 x Q80 = Q4560\n856: 55 x Q167 = Q9185\n882: 41 x Q314 = Q12874\nLíneas dañadas: 3\nGran total: Q40395\nPrecio mayor a 130: 477, 550, 856, 882\nMenor cantidad: 477 (12)\nPromedio de precio: 168.57\nPromedio de cantidad: 37.29\n"
+    }
+  ]
+}
