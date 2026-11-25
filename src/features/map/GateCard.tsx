@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { displayId } from '@/content/types';
 import { Panel } from '@/ui/primitives/Panel';
 import type { ModuleView } from './masteryView';
@@ -13,9 +14,17 @@ export function GateCard({ view, isGuest }: { view: ModuleView; isGuest: boolean
           <li>· {m.passScore}% o más en casos ocultos</li>
           <li>· aprobar las preguntas de razonamiento</li>
           <li>· sin pistas y con tiempo límite</li>
-          <li>· si repruebas: 24 h de espera y refuerzo</li>
+          <li>· si repruebas: 1 hora de espera y otras preguntas</li>
         </ul>
-        <p className="muted small">Disponible en la fase 3 del proyecto.</p>
+        {view.status === 'mastered' ? (
+          <p className="ok small">✓ dominado{view.score !== null ? ` con ${view.score}%` : ''}</p>
+        ) : isGuest ? (
+          <p className="muted small"><Link to="/login">Entra</Link> para presentar el examen.</p>
+        ) : view.open ? (
+          <Link className="btn btn--primary" to={`/examen/${m.id}`}>Presentar examen →</Link>
+        ) : (
+          <p className="muted small">Se abre al dominar el módulo anterior.</p>
+        )}
       </Panel>
       <Panel as="div">
         <p className="strong">repasos</p>
