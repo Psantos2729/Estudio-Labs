@@ -78,7 +78,7 @@
 .steps__item--locked { opacity: 0.55; }
 .steps__item--locked::before { content: counter(step) ' · bloqueado'; color: var(--locked); }
 
-.gate { display: flex; flex-direction: column; gap: 16px; position: sticky; top: 76px; }
+.gate { display: flex; flex-direction: column; gap: 16px; position: sticky; top: calc(var(--topbar-h) + 8px); }
 
 @media (max-width: 1000px) {
   .map { grid-template-columns: minmax(0, 1fr); }

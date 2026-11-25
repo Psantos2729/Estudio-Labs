@@ -8,7 +8,7 @@
 
 .predict { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin: 0; display: grid; gap: 6px; }
 .predict legend { padding: 0 6px; }
-.predict__option { display: flex; gap: 8px; align-items: center; min-height: 32px; cursor: pointer; }
+.predict__option { display: flex; gap: 8px; align-items: center; min-height: 44px; cursor: pointer; }
 
 .field { display: grid; gap: 4px; }
 .field__text { width: 100%; resize: vertical; }
@@ -37,7 +37,7 @@
 @media (min-width: 960px) {
   .panel.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; gap: 24px; }
   .split .editor, .split .editor .cm-editor { min-height: 360px; }
-  .split__read { position: sticky; top: 56px; max-height: calc(100vh - 72px); overflow-y: auto; }
+  .split__read { position: sticky; top: calc(var(--topbar-h) + 12px); max-height: calc(100vh - var(--topbar-h) - 24px); overflow-y: auto; }
 }
 
 /* Archivos de la carpeta de trabajo (M08 y M09) */

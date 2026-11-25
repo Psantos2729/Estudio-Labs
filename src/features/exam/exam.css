@@ -1,5 +1,5 @@
 /* Examen de dominio (fase 3). */
-.exam__bar { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+.exam__bar { position: sticky; top: var(--topbar-h); z-index: 2; display: flex; justify-content: space-between; align-items: center; gap: 12px;
   background: var(--bg); border-bottom: 1px solid var(--line); padding: 8px 0; }
 .exam__clock { font-family: var(--mono); font-size: 18px; }
 .exam__clock--low { color: var(--red); }
