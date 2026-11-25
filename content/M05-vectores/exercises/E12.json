@@ -1,0 +1,56 @@
+{
+  "id": "M05-E12",
+  "title": "Reto: la moda",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee **N** (N ≥ 1) y N notas enteras de 0 a 100. Imprime la **moda** (la nota que más se repite) y cuántas veces aparece. Si hay empate, gana la nota **menor**:\n\n```\nModa: <m>\nVeces: <k>\n```\n\nUsa un vector de conteo de 101 posiciones: `conteo[nota]` dice cuántas veces salió esa nota.\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nconteo = [0] * 101\nfor nota in [85, 70, 85]:\n    conteo[nota] = conteo[nota] + 1\nprint(conteo[85])\n```",
+      "options": [
+        "2",
+        "1",
+        "85"
+      ],
+      "answer": 0,
+      "why": "Cada nota suma 1 en su propia posición del vector de conteo: el 85 salió dos veces."
+    },
+    {
+      "question": "Al recorrer `conteo` de 0 a 100 buscando el mayor con `>`, ¿qué nota gana en un empate?",
+      "options": [
+        "La menor, porque aparece primero",
+        "La mayor",
+        "Ninguna, da error"
+      ],
+      "answer": 0,
+      "why": "Con `>` estricto, una nota con el mismo conteo no reemplaza a la que ya se encontró antes."
+    }
+  ],
+  "hints": [
+    "Crea `conteo = [0] * 101` y suma 1 en `conteo[v[i]]` por cada nota.",
+    "Recorre `conteo` de 0 a 100 buscando la posición con el mayor valor, con `>`.",
+    "La posición es la moda; el valor, las veces."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n85\n70\n85\n90\n",
+      "stdout": "Moda: 85\nVeces: 2\n"
+    },
+    {
+      "stdin": "1\n100\n",
+      "stdout": "Moda: 100\nVeces: 1\n"
+    },
+    {
+      "stdin": "4\n60\n70\n60\n70\n",
+      "stdout": "Moda: 60\nVeces: 2\n"
+    },
+    {
+      "stdin": "3\n0\n0\n100\n",
+      "stdout": "Moda: 0\nVeces: 2\n"
+    },
+    {
+      "stdin": "15\n59\n62\n65\n65\n55\n63\n58\n57\n58\n62\n63\n56\n65\n62\n59\n",
+      "stdout": "Moda: 62\nVeces: 3\n"
+    }
+  ]
+}

@@ -8,11 +8,11 @@
     "M03"
   ],
   "concepts": [
-    "def y return",
-    "parámetros",
-    "recorrer cadenas",
-    "palíndromos",
-    "tablas de conversión"
+    "def, parámetros y return",
+    "recorrer cadenas e índices",
+    "palíndromos comparando extremos",
+    "tablas de conversión: romanos y número a letras",
+    "retos: romano a decimal, cifrado César, anagramas y factorial recursivo"
   ],
   "pdfExercises": [
     18,

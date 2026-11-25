@@ -8,12 +8,14 @@
     "M05"
   ],
   "concepts": [
-    "selección",
-    "burbuja y burbuja mejorada",
+    "intercambios y selección",
+    "burbuja y burbuja mejorada con bandera",
+    "comparaciones, intercambios y tiempo",
     "inserción",
     "counting sort",
     "búsqueda binaria",
-    "comparaciones e intercambios"
+    "mezcla de listas ordenadas",
+    "retos: radix sort, ordenar palabras, binaria recursiva y selección por el menor"
   ],
   "pdfExercises": [
     30,
@@ -25,7 +27,8 @@
   "realTasks": [
     "Ordenar_Selección.py",
     "OrdenarBurbuja.py",
-    "Sort_De_Inserción.py"
+    "Sort_De_Inserción.py",
+    "Leetcode_1.py"
   ],
   "boss": {
     "title": "Burbuja normal vs mejorada",

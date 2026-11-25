@@ -1,0 +1,63 @@
+{
+  "id": "M06-E03",
+  "title": "Selección pasada por pasada",
+  "statement": "Lee **N** (N ≥ 2) y N enteros. Ordénalos con **selección**, como en tu `Ordenar_Selección.py`: en cada pasada busca el **mayor** de la parte sin ordenar (posiciones 0 a `fin`) y, si no está ya en `fin`, intercámbialo con `fin`. `fin` va de N − 1 hasta 1. Si el mayor se repite, usa la primera posición donde aparece (compara con `>`).\n\nDespués de cada pasada imprime el vector, y al final cuántos intercambios hiciste:\n\n```\nPasada 1: <vector>\nPasada 2: <vector>\n...\nIntercambios: <k>\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.\n\nEjemplo: con `29 10 14 37 13` la primera línea es `Pasada 1: 29 10 14 13 37`.",
+  "starter": "def mostrar(v):\n    for i in range(len(v)):\n        print(v[i], end=' ')\n    print()\n\n\nn = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "Con `[29, 10, 14, 37, 13]`, ¿qué queda después de la primera pasada?",
+      "options": [
+        "10 13 14 29 37",
+        "10 29 14 37 13",
+        "29 10 14 13 37"
+      ],
+      "answer": 2,
+      "why": "El mayor (37, en la posición 3) se intercambia con la última posición (el 13)."
+    },
+    {
+      "question": "¿Cuántas comparaciones hace selección con 5 elementos?",
+      "options": [
+        "5",
+        "10",
+        "25"
+      ],
+      "answer": 1,
+      "why": "4 + 3 + 2 + 1 = 10, esté como esté el vector: siempre tiene que revisar toda la parte sin ordenar."
+    }
+  ],
+  "hints": [
+    "El ciclo de afuera: `for fin in range(n - 1, 0, -1):`.",
+    "Adentro busca el índice del mayor entre 0 y `fin`: empieza con `m = 0` y recorre `range(1, fin + 1)`.",
+    "Si `m != fin`, intercambia y suma 1. Imprime la pasada (`n - fin` es su número) después del `if`, haya o no intercambio."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n29\n10\n14\n37\n13\n",
+      "stdout": "Pasada 1: 29 10 14 13 37 \nPasada 2: 13 10 14 29 37 \nPasada 3: 13 10 14 29 37 \nPasada 4: 10 13 14 29 37 \nIntercambios: 3\n"
+    },
+    {
+      "stdin": "4\n1\n2\n3\n4\n",
+      "stdout": "Pasada 1: 1 2 3 4 \nPasada 2: 1 2 3 4 \nPasada 3: 1 2 3 4 \nIntercambios: 0\n"
+    },
+    {
+      "stdin": "4\n4\n3\n2\n1\n",
+      "stdout": "Pasada 1: 1 3 2 4 \nPasada 2: 1 2 3 4 \nPasada 3: 1 2 3 4 \nIntercambios: 2\n"
+    },
+    {
+      "stdin": "2\n2\n1\n",
+      "stdout": "Pasada 1: 1 2 \nIntercambios: 1\n"
+    },
+    {
+      "stdin": "4\n5\n5\n1\n5\n",
+      "stdout": "Pasada 1: 5 5 1 5 \nPasada 2: 1 5 5 5 \nPasada 3: 1 5 5 5 \nIntercambios: 2\n"
+    },
+    {
+      "stdin": "7\n73\n55\n14\n33\n73\n24\n57\n",
+      "stdout": "Pasada 1: 57 55 14 33 73 24 73 \nPasada 2: 57 55 14 33 24 73 73 \nPasada 3: 24 55 14 33 57 73 73 \nPasada 4: 24 33 14 55 57 73 73 \nPasada 5: 24 14 33 55 57 73 73 \nPasada 6: 14 24 33 55 57 73 73 \nIntercambios: 6\n"
+    },
+    {
+      "stdin": "9\n90\n72\n6\n50\n41\n37\n83\n67\n12\n",
+      "stdout": "Pasada 1: 12 72 6 50 41 37 83 67 90 \nPasada 2: 12 72 6 50 41 37 67 83 90 \nPasada 3: 12 67 6 50 41 37 72 83 90 \nPasada 4: 12 37 6 50 41 67 72 83 90 \nPasada 5: 12 37 6 41 50 67 72 83 90 \nPasada 6: 12 37 6 41 50 67 72 83 90 \nPasada 7: 12 6 37 41 50 67 72 83 90 \nPasada 8: 6 12 37 41 50 67 72 83 90 \nIntercambios: 7\n"
+    }
+  ]
+}

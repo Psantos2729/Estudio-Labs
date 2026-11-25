@@ -1,0 +1,60 @@
+{
+  "id": "M06-E08",
+  "title": "Counting sort y el dato del medio",
+  "pdf": 35,
+  "statement": "Lee una **semilla** y **N** (N ≥ 1). Con `random.seed(semilla)`, genera N valores con `random.randint(0, 50)` en orden. Ordénalos con **counting sort** (vector de conteo de 51 posiciones) y luego revisa si el dato de la posición media, `(N - 1) // 2`, es primo. Imprime como en el PDF:\n\n```\nLista de valores generados: 28, 2, 50, 4, 5\nLista de valores ordenados: 2, 4, 5, 28, 50\nPosición media del vector: 2\nV[2]: 5\nResultado: El número 5 SI es un número PRIMO\n```\n\n(o `NO es un número PRIMO`). Los valores van separados por coma y espacio. Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "import random\n\nsemilla = int(input())\nn = int(input())\nrandom.seed(semilla)\n",
+  "predict": [
+    {
+      "question": "Para ordenar valores de 0 a 50 con counting sort, ¿cuántas posiciones necesita el vector de conteo?",
+      "options": [
+        "50",
+        "51",
+        "N"
+      ],
+      "answer": 1,
+      "why": "Una por cada valor posible, de 0 a 50 inclusive: `[0] * 51`."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nconteo = [0] * 4\nfor x in [1, 3, 1]:\n    conteo[x] = conteo[x] + 1\nprint(conteo)\n```",
+      "options": [
+        "[2, 1]",
+        "[1, 1, 3]",
+        "[0, 2, 0, 1]"
+      ],
+      "answer": 2,
+      "why": "Cada valor suma 1 en su propia casilla: el 1 aparece dos veces y el 3 una vez."
+    }
+  ],
+  "hints": [
+    "Cuenta con `conteo[v[i]] = conteo[v[i]] + 1`.",
+    "Reconstruye: recorre `valor` de 0 a 50 y escribe ese valor `conteo[valor]` veces, avanzando una posición `p`.",
+    "La posición media es `(n - 1) // 2`. Usa la función `es_primo` de M2 (los números menores que 2 no son primos)."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n5\n",
+      "stdout": "Lista de valores generados: 20, 9, 25, 41, 3\nLista de valores ordenados: 3, 9, 20, 25, 41\nPosición media del vector: 2\nV[2]: 20\nResultado: El número 20 NO es un número PRIMO\n"
+    },
+    {
+      "stdin": "2027\n9\n",
+      "stdout": "Lista de valores generados: 6, 29, 5, 0, 41, 20, 50, 25, 40\nLista de valores ordenados: 0, 5, 6, 20, 25, 29, 40, 41, 50\nPosición media del vector: 4\nV[4]: 25\nResultado: El número 25 NO es un número PRIMO\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "Lista de valores generados: 8\nLista de valores ordenados: 8\nPosición media del vector: 0\nV[0]: 8\nResultado: El número 8 NO es un número PRIMO\n"
+    },
+    {
+      "stdin": "42\n6\n",
+      "stdout": "Lista de valores generados: 40, 7, 1, 47, 17, 15\nLista de valores ordenados: 1, 7, 15, 17, 40, 47\nPosición media del vector: 2\nV[2]: 15\nResultado: El número 15 NO es un número PRIMO\n"
+    },
+    {
+      "stdin": "13\n12\n",
+      "stdout": "Lista de valores generados: 16, 18, 43, 43, 11, 41, 14, 42, 9, 14, 41, 46\nLista de valores ordenados: 9, 11, 14, 14, 16, 18, 41, 41, 42, 43, 43, 46\nPosición media del vector: 5\nV[5]: 18\nResultado: El número 18 NO es un número PRIMO\n"
+    },
+    {
+      "stdin": "100\n4\n",
+      "stdout": "Lista de valores generados: 9, 29, 29, 49\nLista de valores ordenados: 9, 29, 29, 49\nPosición media del vector: 1\nV[1]: 29\nResultado: El número 29 SI es un número PRIMO\n"
+    }
+  ]
+}

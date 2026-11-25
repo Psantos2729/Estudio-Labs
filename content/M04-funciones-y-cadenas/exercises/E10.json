@@ -1,0 +1,60 @@
+{
+  "id": "M04-E10",
+  "title": "Reto: cifrado César",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee un mensaje (en minúsculas, sin ñ ni tildes) y un desplazamiento **k** (entero de 0 a 25). Imprime el mensaje cifrado: cada letra se corre `k` posiciones en el alfabeto, dando la vuelta de la `z` a la `a`. Lo que no sea letra (espacios, dígitos, signos) queda igual.\n\nEjemplo: con `hola mundo` y `3` imprime `krod pxqgr`.",
+  "starter": "ABC = 'abcdefghijklmnopqrstuvwxyz'\n\nmensaje = input()\nk = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nABC = 'abcdefghijklmnopqrstuvwxyz'\nprint(ABC[(ABC.index('z') + 3) % 26])\n```",
+      "options": [
+        "c",
+        "Error",
+        "b"
+      ],
+      "answer": 0,
+      "why": "`index('z')` es 25. (25 + 3) % 26 = 2, que es la `c`: el `% 26` da la vuelta al alfabeto."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('abc'.find(' '))\n```",
+      "options": [
+        "Error",
+        "0",
+        "-1"
+      ],
+      "answer": 2,
+      "why": "`find` devuelve -1 si el carácter no está. (`index` en cambio daría error.)"
+    }
+  ],
+  "hints": [
+    "Recorre el mensaje letra por letra y arma un texto nuevo.",
+    "Si `c in ABC`, busca su posición `p = ABC.index(c)` y pega `ABC[(p + k) % 26]`.",
+    "Si no es letra, pégala tal cual."
+  ],
+  "tests": [
+    {
+      "stdin": "hola mundo\n3\n",
+      "stdout": "krod pxqgr\n"
+    },
+    {
+      "stdin": "xyz\n3\n",
+      "stdout": "abc\n"
+    },
+    {
+      "stdin": "abc\n0\n",
+      "stdout": "abc\n"
+    },
+    {
+      "stdin": "laboratorio c5!\n13\n",
+      "stdout": "ynobengbevb p5!\n"
+    },
+    {
+      "stdin": "zorro\n25\n",
+      "stdout": "ynqqn\n"
+    },
+    {
+      "stdin": "examen a las 7\n1\n",
+      "stdout": "fybnfo b mbt 7\n"
+    }
+  ]
+}

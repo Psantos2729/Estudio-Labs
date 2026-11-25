@@ -1,0 +1,79 @@
+{
+  "id": "M04-E02",
+  "title": "Contar vocales",
+  "statement": "Escribe una función `contar_vocales(texto)` que devuelva cuántas vocales tiene un texto. Cuentan las vocales en mayúscula y en minúscula, con o sin tilde (`a e i o u á é í ó ú`). Lee una línea de texto e imprime:\n\n```\nVocales: <v>\n```\n\nEjemplo: con `Hola Mundo` imprime `Vocales: 4`.",
+  "starter": "def contar_vocales(texto):\n    pass\n\n\ntexto = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('e' in 'aeiou')\n```",
+      "options": [
+        "False",
+        "Error",
+        "True"
+      ],
+      "answer": 2,
+      "why": "`in` pregunta si un texto aparece dentro de otro. `'e'` sí aparece en `'aeiou'`."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('E' in 'aeiou')\n```",
+      "options": [
+        "True",
+        "E",
+        "False"
+      ],
+      "answer": 2,
+      "why": "`'E'` (mayúscula) no está en `'aeiou'`: para Python son caracteres distintos. Por eso conviene pasar todo a minúscula con `lower()` antes de comparar."
+    }
+  ],
+  "hints": [
+    "Recorre el texto con `for c in texto.lower():`.",
+    "Usa un contador que suma 1 cuando `c in 'aeiouáéíóú'`.",
+    "Devuelve el contador con `return` e imprímelo afuera con el formato pedido."
+  ],
+  "tests": [
+    {
+      "stdin": "Hola Mundo\n",
+      "stdout": "Vocales: 4\n"
+    },
+    {
+      "stdin": "Murcielago\n",
+      "stdout": "Vocales: 5\n"
+    },
+    {
+      "stdin": "programar en python\n",
+      "stdout": "Vocales: 5\n"
+    },
+    {
+      "stdin": "AEIOU\n",
+      "stdout": "Vocales: 5\n"
+    },
+    {
+      "stdin": "xyz\n",
+      "stdout": "Vocales: 0\n"
+    },
+    {
+      "stdin": "Laboratorio de computacion\n",
+      "stdout": "Vocales: 12\n"
+    },
+    {
+      "stdin": "El examen es manana\n",
+      "stdout": "Vocales: 8\n"
+    },
+    {
+      "stdin": "a\n",
+      "stdout": "Vocales: 1\n"
+    },
+    {
+      "stdin": "Rhythm\n",
+      "stdout": "Vocales: 0\n"
+    },
+    {
+      "stdin": "Paolo Andres Santos\n",
+      "stdout": "Vocales: 7\n"
+    },
+    {
+      "stdin": "canción del corazón\n",
+      "stdout": "Vocales: 7\n"
+    }
+  ]
+}

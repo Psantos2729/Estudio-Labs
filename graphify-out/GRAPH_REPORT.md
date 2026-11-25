@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-25)
 
 ## Corpus Check
-- 188 files · ~45,103 words
+- 244 files · ~73,541 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 13 file(s) not represented in the graph (top: .css 7, (none) 3, .example 1)
 
 ## Summary
-- 751 nodes · 1429 edges · 63 communities (52 shown, 11 thin omitted)
+- 881 nodes · 1553 edges · 67 communities (56 shown, 11 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `4e7f7373`
+- Built from commit: `ea55da4e`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,7 +30,7 @@
 - Continuar pylab en otra sesión
 - steps
 - content/types.ts
-- ADR-001: React + Vite + TypeScript en Cloudflare Pages
+- adr/README.md
 - scripts
 - vite
 - Leer datos con input
@@ -45,23 +45,23 @@
 - Operadores aritméticos
 - eslint.config.js
 - line-limit.test.mjs
-- auth.users
+- Funciones: def, parámetros y return
 - Banderas, break y continue
 - package.json
-- ADR-002: Python en el navegador con Pyodide dentro de un Web Worker
-- ADR-003: Supabase como base de datos y autenticación
-- ADR-004: El navegador enseña, el servidor certifica
-- ADR-005: Contenido como archivos en `content/`
-- ADR-006: Desbloqueo por dominio con 85% y repasos espaciados
-- ADR-007: Modo invitado sin Supabase
-- ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz
-- ADR-009: ReactBits con carga diferida y movimiento reducido
-- ADR-010: Ningún archivo de más de 250 líneas
+- Búsqueda binaria
+- Recorrer cadenas de texto
+- Palíndromos: comparar los extremos
+- Listas como vectores de tamaño fijo
+- Ordenamiento por inserción
+- Ordenamiento por conteo y qué hacer con un vector ordenado
+- Operar vectores y llenarlos al azar
+- Ordenamiento burbuja
+- Burbuja mejorada y cómo medir el costo
 - Ciclos anidados
 - Repetir con for y range
-- main.tsx
+- Mezclar listas ordenadas y elegir el método
 - Repetir mientras algo sea cierto: while
-- AttemptReviewPage.tsx
+- App.tsx
 - Binario y decimal
 - Fechas y edades
 - README.md
@@ -71,12 +71,16 @@
 - Publicar pylab en GitHub Pages
 - Reglas del proyecto pylab (Estudio-Labs)
 - setup.md
+- Tablas de conversión: romanos y números a letras
+- Recorrer un vector: sumar, el mayor y buscar
+- Funciones con vectores y programas con menú
+- Ordenar: intercambios y el método de selección
 
 ## God Nodes (most connected - your core abstractions)
 1. `displayId()` - 26 edges
-2. `useModuleViews()` - 22 edges
-3. `Button()` - 21 edges
-4. `react` - 21 edges
+2. `Button()` - 23 edges
+3. `useModuleViews()` - 22 edges
+4. `react` - 22 edges
 5. `useAuth()` - 19 edges
 6. `react-router-dom` - 18 edges
 7. `compilerOptions` - 17 edges
@@ -91,15 +95,15 @@
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
 - `run()` --calls--> `execute()`  [EXTRACTED]
   tools/exam-bank.mjs → src/features/runner/execute.ts
-- `ExamPage()` --calls--> `ExamRun()`  [EXTRACTED]
-  src/features/exam/ExamPage.tsx → src/features/exam/ExamRun.tsx
-- `ExamPage()` --calls--> `Button()`  [EXTRACTED]
-  src/features/exam/ExamPage.tsx → src/ui/primitives/Button.tsx
+- `LessonPage()` --calls--> `lessonsOf()`  [EXTRACTED]
+  src/features/lesson/LessonPage.tsx → src/content/lessons.ts
+- `LessonPage()` --calls--> `displayId()`  [EXTRACTED]
+  src/features/lesson/LessonPage.tsx → src/content/types.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (63 total, 11 thin omitted)
+## Communities (67 total, 11 thin omitted)
 
 ### Community 0 - "Variables y tipos"
 Cohesion: 0.40
@@ -107,7 +111,7 @@ Nodes (4): El orden importa, Los tres tipos del módulo, Nombres de variables, V
 
 ### Community 1 - "ExerciseFlow.tsx"
 Cohesion: 0.07
-Nodes (48): marked, react, ExerciseDef, TestCase, buildAnswers(), Run, exam, ExamProblemCard() (+40 more)
+Nodes (43): ADR-0004, @supabase/supabase-js@^2.119.2, marked, react-router-dom, @supabase/supabase-js, buildAnswers(), Run, exam (+35 more)
 
 ### Community 2 - "steps"
 Cohesion: 0.08
@@ -138,8 +142,8 @@ Cohesion: 0.22
 Nodes (8): run, check-lines, lint, glob, run, pre-commit, commands, parallel
 
 ### Community 9 - "public.handle_new_user"
-Cohesion: 0.09
-Nodes (13): practice_attempts_user_exercise, public.practice_attempts, public.record_practice(), public.lesson_progress, public.mark_lesson_read(), public.start_exam(), public.submit_exam(), public.submit_exam() (+5 more)
+Cohesion: 0.05
+Nodes (29): public.exercises, public.modules, public.profiles, public.module_mastery, on_auth_user_created, public.handle_new_user(), practice_attempts_user_exercise, public.practice_attempts (+21 more)
 
 ### Community 11 - "Continuar pylab en otra sesión"
 Cohesion: 0.17
@@ -150,12 +154,12 @@ Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
 ### Community 14 - "content/types.ts"
-Cohesion: 0.07
-Nodes (70): ADR-0004, ADR-0005, react-router-dom, App(), exerciseFiles, EXERCISES, exercisesOf(), getExercise() (+62 more)
+Cohesion: 0.06
+Nodes (61): ADR-0005, @tanstack/react-query@^5.108.4, @tanstack/react-query, vitest, exercisesOf(), lessonsOf(), files, MODULES (+53 more)
 
-### Community 15 - "ADR-001: React + Vite + TypeScript en Cloudflare Pages"
-Cohesion: 0.40
-Nodes (4): ADR-001: React + Vite + TypeScript en Cloudflare Pages, Consecuencias, Contexto, Decisión
+### Community 15 - "adr/README.md"
+Cohesion: 0.04
+Nodes (37): ADR-001: React + Vite + TypeScript en Cloudflare Pages, Consecuencias, Contexto, Decisión, ADR-002: Python en el navegador con Pyodide dentro de un Web Worker, Consecuencias, Contexto, Decisión (+29 more)
 
 ### Community 16 - "scripts"
 Cohesion: 0.18
@@ -202,60 +206,60 @@ Cohesion: 0.12
 Nodes (17): dependencies, codemirror@6.0.2, @codemirror/commands@6.11.1, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, marked@18.2.0, pyodide@314.0.7 (+9 more)
 
 ### Community 31 - "eslint.config.js"
-Cohesion: 0.15
-Nodes (15): devDependencies, eslint@^9.39.5, @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, @types/node@^22.20.5, typescript@~5.8.3, typescript-eslint@^8.74.0 (+7 more)
+Cohesion: 0.22
+Nodes (8): @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, typescript-eslint@^8.74.0, @eslint/js, eslint-plugin-react-hooks, globals, typescript-eslint
 
 ### Community 32 - "line-limit.test.mjs"
-Cohesion: 0.06
-Nodes (30): Consecuencias, vitest@^3.2.7, vitest, LESSONS, parseLesson(), root, modules, root (+22 more)
+Cohesion: 0.09
+Nodes (22): ADR-005: Contenido como archivos en `content/`, Consecuencias, Contexto, Decisión, exerciseFiles, EXERCISES, lessonFiles, LESSONS (+14 more)
 
-### Community 35 - "auth.users"
-Cohesion: 0.13
-Nodes (16): public.exercises, public.modules, public.profiles, public.module_mastery, on_auth_user_created, public.handle_new_user(), public.fill_missing_mastery(), exam_attempts_user_module (+8 more)
+### Community 35 - "Funciones: def, parámetros y return"
+Cohesion: 0.20
+Nodes (9): Antes de seguir, Definir y llamar, Funciones: def, parámetros y return, Funciones que devuelven True o False, Funciones que usan otras funciones, Reto: una función que se llama a sí misma, return: devolver un resultado, Variables locales (+1 more)
 
 ### Community 36 - "Banderas, break y continue"
 Cohesion: 0.29
 Nodes (6): Banderas, break y continue, Banderas: recordar si algo pasó, break: salir del ciclo ya, Contador o bandera, continue: saltar a la siguiente vuelta, Probar menos divisores
 
 ### Community 37 - "package.json"
-Cohesion: 0.15
-Nodes (12): lefthook@^1.13.6, @types/react@^19.3.0, @types/react-dom@^19.3.0, wrangler@^4.168.0, name, private, type, version (+4 more)
+Cohesion: 0.13
+Nodes (20): devDependencies, eslint@^9.39.5, lefthook@^1.13.6, @types/node@^22.20.5, @types/react@^19.3.0, @types/react-dom@^19.3.0, typescript@~5.8.3, vitest@^3.2.7 (+12 more)
 
-### Community 38 - "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker"
-Cohesion: 0.40
-Nodes (4): ADR-002: Python en el navegador con Pyodide dentro de un Web Worker, Consecuencias, Contexto, Decisión
+### Community 38 - "Búsqueda binaria"
+Cohesion: 0.20
+Nodes (9): Antes de seguir, Buscar un valor que sí está, Buscar uno que no está, Búsqueda binaria, El ejercicio 36, En código, La idea, ¿Por qué es tan rápida? (+1 more)
 
-### Community 39 - "ADR-003: Supabase como base de datos y autenticación"
-Cohesion: 0.40
-Nodes (4): ADR-003: Supabase como base de datos y autenticación, Consecuencias, Contexto, Decisión
+### Community 39 - "Recorrer cadenas de texto"
+Cohesion: 0.22
+Nodes (8): Antes de seguir, Armar un texto nuevo, Contar y acumular sobre un texto, Dos formas de recorrer, Rebanadas, Recorrer cadenas de texto, Separar en palabras, Índices y len
 
-### Community 40 - "ADR-004: El navegador enseña, el servidor certifica"
-Cohesion: 0.40
-Nodes (4): ADR-004: El navegador enseña, el servidor certifica, Consecuencias, Contexto, Decisión
+### Community 40 - "Palíndromos: comparar los extremos"
+Cohesion: 0.22
+Nodes (8): Antes de seguir, En código, con una bandera, Errores comunes, Frases: limpiar antes de comparar, La letra y su espejo, Palíndromos: comparar los extremos, Reto: anagramas, Reto: cifrado César
 
-### Community 41 - "ADR-005: Contenido como archivos en `content/`"
-Cohesion: 0.33
-Nodes (4): ADR-005: Contenido como archivos en `content/`, Contexto, Decisión, Decisiones de arquitectura (ADR)
+### Community 41 - "Listas como vectores de tamaño fijo"
+Cohesion: 0.22
+Nodes (8): Antes de seguir, Copiar un vector, La regla de este curso: tamaño definido, Leer un vector, Listas como vectores de tamaño fijo, Mostrar un vector, Posiciones (índices), Recorrer al revés
 
-### Community 42 - "ADR-006: Desbloqueo por dominio con 85% y repasos espaciados"
-Cohesion: 0.40
-Nodes (4): ADR-006: Desbloqueo por dominio con 85% y repasos espaciados, Consecuencias, Contexto, Decisión
+### Community 42 - "Ordenamiento por inserción"
+Cohesion: 0.22
+Nodes (8): Antes de seguir, Con intercambios, como en tu tarea, ¿Cuándo conviene?, En código, Errores comunes, La idea, Ordenamiento por inserción, Paso a paso
 
-### Community 43 - "ADR-007: Modo invitado sin Supabase"
-Cohesion: 0.40
-Nodes (4): ADR-007: Modo invitado sin Supabase, Consecuencias, Contexto, Decisión
+### Community 43 - "Ordenamiento por conteo y qué hacer con un vector ordenado"
+Cohesion: 0.22
+Nodes (8): Antes de seguir, Aprobados y reprobados (ejercicio 30), ¿Cuánto cuesta?, En código, La posición media, Ordenamiento por conteo y qué hacer con un vector ordenado, Paso 1: contar, Paso 2: reconstruir
 
-### Community 44 - "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz"
-Cohesion: 0.40
-Nodes (4): ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz, Consecuencias, Contexto, Decisión
+### Community 44 - "Operar vectores y llenarlos al azar"
+Cohesion: 0.25
+Nodes (7): Antes de seguir, La semilla, Números aleatorios con random, Operar vectores y llenarlos al azar, Producto escalar: un solo número, Reto: producto vectorial, Suma y resta: un vector nuevo
 
-### Community 46 - "ADR-009: ReactBits con carga diferida y movimiento reducido"
-Cohesion: 0.40
-Nodes (4): ADR-009: ReactBits con carga diferida y movimiento reducido, Consecuencias, Contexto, Decisión
+### Community 46 - "Ordenamiento burbuja"
+Cohesion: 0.25
+Nodes (7): Antes de seguir, Contar comparaciones e intercambios, El recorrido completo, En código, Errores comunes, Ordenamiento burbuja, Una pasada
 
-### Community 47 - "ADR-010: Ningún archivo de más de 250 líneas"
-Cohesion: 0.40
-Nodes (4): ADR-010: Ningún archivo de más de 250 líneas, Consecuencias, Contexto, Decisión
+### Community 47 - "Burbuja mejorada y cómo medir el costo"
+Cohesion: 0.25
+Nodes (7): Antes de seguir, Burbuja mejorada y cómo medir el costo, Contar en la mejorada, El mismo vector, con bandera, La bandera, Medir el tiempo, Normal contra mejorada
 
 ### Community 48 - "Ciclos anidados"
 Cohesion: 0.29
@@ -265,17 +269,17 @@ Nodes (6): Ciclos anidados, Como un odómetro, ¿Cuántas vueltas?, Figuras con 
 Cohesion: 0.33
 Nodes (5): Antes de programar: haz la tabla, Combinar for con if, Los tres usos de range, Repetir algo N veces, Repetir con for y range
 
-### Community 51 - "main.tsx"
-Cohesion: 0.33
-Nodes (3): react-dom@^19.3.1, react-dom, root
+### Community 51 - "Mezclar listas ordenadas y elegir el método"
+Cohesion: 0.25
+Nodes (7): Antes de seguir, Dos índices que avanzan, En código, con tamaño fijo, Lo que pide el ejercicio 33, Mezclar listas ordenadas y elegir el método, ¿Qué método uso?, Reto: radix sort
 
 ### Community 52 - "Repetir mientras algo sea cierto: while"
 Cohesion: 0.40
 Nodes (4): Centinela: leer hasta una señal, El ciclo infinito, for o while, Repetir mientras algo sea cierto: while
 
-### Community 53 - "AttemptReviewPage.tsx"
-Cohesion: 0.12
-Nodes (21): @supabase/supabase-js, @tanstack/react-query, Layout(), Providers(), AuthContext, AuthProvider(), AuthState, useAuth() (+13 more)
+### Community 53 - "App.tsx"
+Cohesion: 0.06
+Nodes (52): react, App(), Layout(), Providers(), getExercise(), getLesson(), ExerciseDef, TestCase (+44 more)
 
 ### Community 54 - "Binario y decimal"
 Cohesion: 0.22
@@ -309,25 +313,41 @@ Nodes (6): Paso 1. Activar GitHub Pages (una sola vez), Paso 2. Guardar las llav
 Cohesion: 0.40
 Nodes (5): Comandos, Contexto con graphify, Dónde está cada cosa, Reglas del proyecto pylab (Estudio-Labs), Reglas que no se rompen
 
+### Community 63 - "Tablas de conversión: romanos y números a letras"
+Cohesion: 0.29
+Nodes (6): Antes de seguir, Cómo pensar un problema por capas, Números a letras, Números romanos, Reto: de romano a decimal, Tablas de conversión: romanos y números a letras
+
+### Community 64 - "Recorrer un vector: sumar, el mayor y buscar"
+Cohesion: 0.29
+Nodes (6): Antes de seguir, Búsqueda lineal, El mayor y su posición, Recorrer un vector: sumar, el mayor y buscar, Recorridos con dos posiciones, Suma y promedio
+
+### Community 65 - "Funciones con vectores y programas con menú"
+Cohesion: 0.29
+Nodes (6): Antes de seguir, Funciones con vectores y programas con menú, Imprimir al revés desde una posición, Pasar un vector a una función, Un programa con menú, Una función puede modificar el vector que recibe
+
+### Community 66 - "Ordenar: intercambios y el método de selección"
+Cohesion: 0.29
+Nodes (6): Antes de seguir, ¿Cuánto trabajo hace?, ¿Está ordenado?, La pieza básica: intercambiar, Ordenar: intercambios y el método de selección, Selección: el mayor al final
+
 ## Knowledge Gaps
-- **5 isolated node(s):** `ADR-0004`, `ADR-0006`, `ADR-0005`, `ADR-0008`, `ADR-0002`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 331 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **5 isolated node(s):** `ADR-0004`, `ADR-0005`, `ADR-0008`, `ADR-0006`, `ADR-0002`
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 440 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Consecuencias` connect `line-limit.test.mjs` to `ADR-005: Contenido como archivos en `content/``, `ExerciseFlow.tsx`?**
-  _High betweenness centrality (0.129) - this node is a cross-community bridge._
-- **What connects `ADR-0004`, `ADR-0006`, `ADR-0005` to the rest of the system?**
+- **Why does `Consecuencias` connect `line-limit.test.mjs` to `App.tsx`?**
+  _High betweenness centrality (0.095) - this node is a cross-community bridge._
+- **What connects `ADR-0004`, `ADR-0005`, `ADR-0008` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ExerciseFlow.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06832298136645963 - nodes in this community are weakly interconnected._
-- **Why does `ADR-005: Contenido como archivos en `content/`` connect `ADR-005: Contenido como archivos en `content/`` to `line-limit.test.mjs`?**
-  _High betweenness centrality (0.129) - this node is a cross-community bridge._
+  _Cohesion score 0.06628621597892889 - nodes in this community are weakly interconnected._
+- **Why does `ExerciseDef` connect `App.tsx` to `line-limit.test.mjs`, `content/types.ts`?**
+  _High betweenness centrality (0.091) - this node is a cross-community bridge._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
-- **Why does `ExerciseDef` connect `ExerciseFlow.tsx` to `line-limit.test.mjs`, `content/types.ts`?**
-  _High betweenness centrality (0.123) - this node is a cross-community bridge._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+- **Should `public.handle_new_user` be split into smaller, more focused modules?**
+  _Cohesion score 0.0547945205479452 - nodes in this community are weakly interconnected._

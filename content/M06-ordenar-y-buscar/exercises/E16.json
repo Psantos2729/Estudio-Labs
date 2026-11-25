@@ -1,0 +1,56 @@
+{
+  "id": "M06-E16",
+  "title": "Reto: selección por el menor",
+  "challenge": true,
+  "statement": "**Reto opcional.** La otra versión de selección: para cada posición `i` de 0 a N − 2, busca el **menor** entre `i` y el final y, si no está ya en `i`, intercámbialo con `i`. Cuenta cada `v[j] < v[m]` como comparación. Lee **N** (N ≥ 1) y N enteros e imprime el vector ordenado y los totales:\n\n```\n<vector>\nComparaciones: <c>\nIntercambios: <t>\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "def mostrar(v):\n    for i in range(len(v)):\n        print(v[i], end=' ')\n    print()\n\n\nn = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "Con 6 elementos, ¿cuántas comparaciones hace selección?",
+      "options": [
+        "6",
+        "36",
+        "15"
+      ],
+      "answer": 2,
+      "why": "5 + 4 + 3 + 2 + 1 = 15, venga como venga el vector."
+    },
+    {
+      "question": "¿Cuántos intercambios hace como máximo con 6 elementos?",
+      "options": [
+        "6",
+        "15",
+        "5"
+      ],
+      "answer": 2,
+      "why": "A lo sumo uno por pasada, y hay N − 1 = 5 pasadas."
+    }
+  ],
+  "hints": [
+    "`for i in range(n - 1):` con `m = i`.",
+    "Adentro, `for j in range(i + 1, n):` busca el menor, contando cada comparación.",
+    "Intercambia solo si `m != i`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n29\n10\n14\n37\n13\n",
+      "stdout": "10 13 14 29 37 \nComparaciones: 10\nIntercambios: 3\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "1 \nComparaciones: 0\nIntercambios: 0\n"
+    },
+    {
+      "stdin": "3\n1\n2\n3\n",
+      "stdout": "1 2 3 \nComparaciones: 3\nIntercambios: 0\n"
+    },
+    {
+      "stdin": "3\n3\n2\n1\n",
+      "stdout": "1 2 3 \nComparaciones: 3\nIntercambios: 1\n"
+    },
+    {
+      "stdin": "8\n77\n85\n29\n63\n32\n27\n76\n56\n",
+      "stdout": "27 29 32 56 63 76 77 85 \nComparaciones: 28\nIntercambios: 6\n"
+    }
+  ]
+}

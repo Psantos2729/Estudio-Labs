@@ -1,0 +1,55 @@
+{
+  "id": "M05-E07",
+  "title": "Vector aleatorio con semilla",
+  "statement": "Lee una **semilla** y **N** (N ≥ 1). Llama `random.seed(semilla)` una vez y llena un vector de N posiciones, en orden de la 0 a la N − 1, con `random.randint(-500, 500)`. Imprime:\n\n```\nVector: <v0> <v1> ...\nMayor: <m>\nMenor: <n>\n```\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.",
+  "starter": "import random\n\nsemilla = int(input())\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "¿`random.randint(-500, 500)` puede dar exactamente 500?",
+      "options": [
+        "Solo si la semilla es 500",
+        "No, llega hasta 499",
+        "Sí: incluye los dos extremos"
+      ],
+      "answer": 2,
+      "why": "A diferencia de `range`, `randint(a, b)` incluye `a` y `b`."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nimport random\nrandom.seed(5)\na = random.randint(1, 100)\nrandom.seed(5)\nb = random.randint(1, 100)\nprint(a == b)\n```",
+      "options": [
+        "False",
+        "True",
+        "Depende de la suerte"
+      ],
+      "answer": 1,
+      "why": "Con la misma semilla, la secuencia de números \"al azar\" se repite exactamente."
+    }
+  ],
+  "hints": [
+    "`random.seed(semilla)` va **una vez**, antes del ciclo.",
+    "Llena con `v[i] = random.randint(-500, 500)` en orden.",
+    "Busca el mayor y el menor empezando con `v[0]`."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n5\n",
+      "stdout": "Vector: -169 470 -346 -96 166 \nMayor: 470\nMenor: -346\n"
+    },
+    {
+      "stdin": "2027\n10\n",
+      "stdout": "Vector: -390 449 -25 -419 -487 170 -170 311 -85 140 \nMayor: 449\nMenor: -487\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "Vector: -363 \nMayor: -363\nMenor: -363\n"
+    },
+    {
+      "stdin": "42\n8\n",
+      "stdout": "Vector: 154 -386 -475 259 -219 -250 -272 -358 \nMayor: 259\nMenor: -475\n"
+    },
+    {
+      "stdin": "999\n15\n",
+      "stdout": "Vector: 300 195 -419 417 393 81 87 46 2 -6 -365 399 317 162 -175 \nMayor: 417\nMenor: -419\n"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "id": "M06-E14",
+  "title": "Reto: ordenar palabras",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee **N** (N ≥ 1) y N palabras en minúsculas (sin tildes ni ñ), una por línea. Ordénalas alfabéticamente con burbuja e imprímelas, una por línea. Los textos se comparan con `>` igual que los números: letra por letra. Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "n = int(input())\nv = [''] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('casa' > 'arbol')\n```",
+      "options": [
+        "False",
+        "True",
+        "Error"
+      ],
+      "answer": 1,
+      "why": "Se compara letra por letra: c > a, así que \"casa\" va después que \"arbol\"."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('sol' < 'solar')\n```",
+      "options": [
+        "False",
+        "Error",
+        "True"
+      ],
+      "answer": 2,
+      "why": "Las tres primeras letras son iguales; \"sol\" se acaba antes, y el texto más corto va primero."
+    }
+  ],
+  "hints": [
+    "Crea `v = [''] * n` y llénalo con `input()`.",
+    "La burbuja es idéntica a la de números: `if v[j] > v[j + 1]`.",
+    "Imprime cada palabra en su propia línea."
+  ],
+  "tests": [
+    {
+      "stdin": "4\nperro\ngato\narbol\ncasa\n",
+      "stdout": "arbol\ncasa\ngato\nperro\n"
+    },
+    {
+      "stdin": "1\nhola\n",
+      "stdout": "hola\n"
+    },
+    {
+      "stdin": "3\nsolar\nsol\nsola\n",
+      "stdout": "sol\nsola\nsolar\n"
+    },
+    {
+      "stdin": "5\nzeta\nalfa\nmu\nbeta\ngama\n",
+      "stdout": "alfa\nbeta\ngama\nmu\nzeta\n"
+    }
+  ]
+}

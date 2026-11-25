@@ -1,0 +1,63 @@
+{
+  "id": "M06-E09",
+  "title": "Búsqueda binaria paso a paso",
+  "statement": "Lee **N** (N ≥ 1), N enteros **ya ordenados** de menor a mayor y un valor **x**. Búscalo con búsqueda binaria: `izq = 0`, `der = N - 1` y `medio = (izq + der) // 2`. Por cada medio que revises imprime una línea, y al final el resultado:\n\n```\nRevisa la posición <medio>: <valor>\n...\nEncontrado en la posición <p>      (o: No está)\nPasos: <k>\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.\n\nEjemplo: en `2 5 8 12 16 23 38 56 72 91` buscando `23` revisa las posiciones 4, 7 y 5.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "En un vector de 10 elementos, ¿cuál es el primer medio que se revisa?",
+      "options": [
+        "9",
+        "5",
+        "4"
+      ],
+      "answer": 2,
+      "why": "(0 + 9) // 2 = 4: la división entera redondea hacia abajo."
+    },
+    {
+      "question": "Si `v[medio]` es menor que `x`, ¿qué se hace?",
+      "options": [
+        "`izq = medio + 1`",
+        "`izq = medio`",
+        "`der = medio - 1`"
+      ],
+      "answer": 0,
+      "why": "El valor solo puede estar a la derecha del medio. Y el medio ya se revisó, por eso `+ 1`."
+    }
+  ],
+  "hints": [
+    "Ciclo `while izq <= der:` con un contador de pasos.",
+    "Imprime la línea del medio antes de decidir; si es igual, guarda la posición y `break`.",
+    "Si `v[medio] < x`, `izq = medio + 1`; si no, `der = medio - 1`."
+  ],
+  "tests": [
+    {
+      "stdin": "10\n2\n5\n8\n12\n16\n23\n38\n56\n72\n91\n23\n",
+      "stdout": "Revisa la posición 4: 16\nRevisa la posición 7: 56\nRevisa la posición 5: 23\nEncontrado en la posición 5\nPasos: 3\n"
+    },
+    {
+      "stdin": "10\n2\n5\n8\n12\n16\n23\n38\n56\n72\n91\n40\n",
+      "stdout": "Revisa la posición 4: 16\nRevisa la posición 7: 56\nRevisa la posición 5: 23\nRevisa la posición 6: 38\nNo está\nPasos: 4\n"
+    },
+    {
+      "stdin": "10\n2\n5\n8\n12\n16\n23\n38\n56\n72\n91\n2\n",
+      "stdout": "Revisa la posición 4: 16\nRevisa la posición 1: 5\nRevisa la posición 0: 2\nEncontrado en la posición 0\nPasos: 3\n"
+    },
+    {
+      "stdin": "10\n2\n5\n8\n12\n16\n23\n38\n56\n72\n91\n100\n",
+      "stdout": "Revisa la posición 4: 16\nRevisa la posición 7: 56\nRevisa la posición 8: 72\nRevisa la posición 9: 91\nNo está\nPasos: 4\n"
+    },
+    {
+      "stdin": "1\n7\n7\n",
+      "stdout": "Revisa la posición 0: 7\nEncontrado en la posición 0\nPasos: 1\n"
+    },
+    {
+      "stdin": "1\n7\n3\n",
+      "stdout": "Revisa la posición 0: 7\nNo está\nPasos: 1\n"
+    },
+    {
+      "stdin": "15\n16\n19\n26\n34\n36\n39\n55\n65\n65\n71\n71\n77\n83\n95\n96\n50\n",
+      "stdout": "Revisa la posición 7: 65\nRevisa la posición 3: 34\nRevisa la posición 5: 39\nRevisa la posición 6: 55\nNo está\nPasos: 4\n"
+    }
+  ]
+}

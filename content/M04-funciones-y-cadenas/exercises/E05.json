@@ -1,0 +1,55 @@
+{
+  "id": "M04-E05",
+  "title": "Iniciales de un nombre",
+  "statement": "Lee un nombre completo (palabras separadas por espacios, en mayúsculas o minúsculas) e imprime sus **iniciales** en mayúscula, cada una seguida de un punto:\n\n```\nIniciales: <iniciales>\n```\n\nEjemplo: con `paolo andres santos` imprime `Iniciales: P.A.S.`",
+  "starter": "nombre = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('ana luz'.split())\n```",
+      "options": [
+        "ana luz",
+        "['ana', 'luz']",
+        "['a', 'l']"
+      ],
+      "answer": 1,
+      "why": "`split()` corta el texto en los espacios y devuelve una lista con las palabras."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\np = 'luz'\nprint(p[0].upper())\n```",
+      "options": [
+        "luz",
+        "L",
+        "l"
+      ],
+      "answer": 1,
+      "why": "`p[0]` es la primera letra de la palabra y `upper()` la pasa a mayúscula."
+    }
+  ],
+  "hints": [
+    "`nombre.split()` te da la lista de palabras.",
+    "Recorre las palabras y pega `p[0].upper() + '.'` a un texto vacío.",
+    "Al final: `print(f'Iniciales: {ini}')`."
+  ],
+  "tests": [
+    {
+      "stdin": "paolo andres santos\n",
+      "stdout": "Iniciales: P.A.S.\n"
+    },
+    {
+      "stdin": "Ana\n",
+      "stdout": "Iniciales: A.\n"
+    },
+    {
+      "stdin": "maria jose lopez garcia\n",
+      "stdout": "Iniciales: M.J.L.G.\n"
+    },
+    {
+      "stdin": "JUAN PEREZ\n",
+      "stdout": "Iniciales: J.P.\n"
+    },
+    {
+      "stdin": "luis  alberto\n",
+      "stdout": "Iniciales: L.A.\n"
+    }
+  ]
+}

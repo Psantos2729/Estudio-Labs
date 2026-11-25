@@ -1,0 +1,63 @@
+{
+  "id": "M05-E02",
+  "title": "Suma y promedio",
+  "statement": "Lee **N** (N ≥ 1) y N enteros en un vector. Imprime la suma, el promedio con dos decimales y cuántos valores quedan **por encima** del promedio:\n\n```\nSuma: <s>\nPromedio: <p>\nSobre el promedio: <k>\n```\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.\n\nEjemplo: con `72 85 61 90 48` imprime `Suma: 356`, `Promedio: 71.20` y `Sobre el promedio: 3`.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint(f'{15 / 2:.2f}')\n```",
+      "options": [
+        "7.5",
+        "7.50",
+        "7"
+      ],
+      "answer": 1,
+      "why": "`15 / 2` es 7.5 y `:.2f` lo muestra con dos decimales: 7.50."
+    },
+    {
+      "question": "¿Por qué hay que recorrer el vector **dos veces** para contar los que están sobre el promedio?",
+      "options": [
+        "No hace falta, con una vuelta basta",
+        "Porque `for` solo puede sumar",
+        "Porque el promedio solo se conoce después de sumar todos"
+      ],
+      "answer": 2,
+      "why": "Mientras sumas todavía no sabes el promedio. Primero un recorrido para sumar, después otro para comparar cada valor con el promedio."
+    }
+  ],
+  "hints": [
+    "Primer recorrido: acumula la suma.",
+    "`promedio = suma / n`, e imprímelo con `:.2f`.",
+    "Segundo recorrido: cuenta los `v[i] > promedio`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n72\n85\n61\n90\n48\n",
+      "stdout": "Suma: 356\nPromedio: 71.20\nSobre el promedio: 3\n"
+    },
+    {
+      "stdin": "1\n5\n",
+      "stdout": "Suma: 5\nPromedio: 5.00\nSobre el promedio: 0\n"
+    },
+    {
+      "stdin": "3\n10\n10\n10\n",
+      "stdout": "Suma: 30\nPromedio: 10.00\nSobre el promedio: 0\n"
+    },
+    {
+      "stdin": "2\n-3\n4\n",
+      "stdout": "Suma: 1\nPromedio: 0.50\nSobre el promedio: 1\n"
+    },
+    {
+      "stdin": "7\n-14\n95\n59\n-24\n14\n94\n-3\n",
+      "stdout": "Suma: 221\nPromedio: 31.57\nSobre el promedio: 3\n"
+    },
+    {
+      "stdin": "9\n62\n92\n-40\n49\n31\n22\n83\n-28\n67\n",
+      "stdout": "Suma: 338\nPromedio: 37.56\nSobre el promedio: 5\n"
+    },
+    {
+      "stdin": "3\n0\n0\n1\n",
+      "stdout": "Suma: 1\nPromedio: 0.33\nSobre el promedio: 1\n"
+    }
+  ]
+}

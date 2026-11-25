@@ -1,0 +1,99 @@
+{
+  "id": "M04-E07",
+  "title": "Número a letras de 1 a 99",
+  "statement": "Lee un entero entre 1 y 99 y escríbelo en letras, en minúsculas. Usa una tabla para 0 a 29 (son irregulares) y la regla *decena* + ` y ` + *unidad* desde 30.\n\nEjemplos: `16` → `dieciséis`, `21` → `veintiuno`, `40` → `cuarenta`, `47` → `cuarenta y siete`.",
+  "starter": "HASTA_29 = ['cero', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve',\n            'diez', 'once', 'doce', 'trece', 'catorce', 'quince', 'dieciséis', 'diecisiete',\n            'dieciocho', 'diecinueve', 'veinte', 'veintiuno', 'veintidós', 'veintitrés',\n            'veinticuatro', 'veinticinco', 'veintiséis', 'veintisiete', 'veintiocho', 'veintinueve']\n\n\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué dan `47 // 10` y `47 % 10`?",
+      "options": [
+        "4 y 7",
+        "47 y 0",
+        "7 y 4"
+      ],
+      "answer": 0,
+      "why": "La decena es `n // 10` y la unidad `n % 10`, como en M3."
+    },
+    {
+      "question": "¿Cuál de estos números NO sigue la regla \"decena y unidad\"?",
+      "options": [
+        "81",
+        "35",
+        "22"
+      ],
+      "answer": 2,
+      "why": "Del 21 al 29 se escribe junto: *veintidós*. La regla con \" y \" empieza en el 31."
+    }
+  ],
+  "hints": [
+    "Si `n < 30`, la respuesta es directo `HASTA_29[n]`.",
+    "Si no, arma una lista de decenas: `['', '', '', 'treinta', 'cuarenta', ...]`.",
+    "Si `n % 10 == 0` solo va la decena; si no, `decena + ' y ' + HASTA_29[n % 10]`."
+  ],
+  "tests": [
+    {
+      "stdin": "1\n",
+      "stdout": "uno\n"
+    },
+    {
+      "stdin": "9\n",
+      "stdout": "nueve\n"
+    },
+    {
+      "stdin": "10\n",
+      "stdout": "diez\n"
+    },
+    {
+      "stdin": "15\n",
+      "stdout": "quince\n"
+    },
+    {
+      "stdin": "16\n",
+      "stdout": "dieciséis\n"
+    },
+    {
+      "stdin": "19\n",
+      "stdout": "diecinueve\n"
+    },
+    {
+      "stdin": "20\n",
+      "stdout": "veinte\n"
+    },
+    {
+      "stdin": "21\n",
+      "stdout": "veintiuno\n"
+    },
+    {
+      "stdin": "22\n",
+      "stdout": "veintidós\n"
+    },
+    {
+      "stdin": "29\n",
+      "stdout": "veintinueve\n"
+    },
+    {
+      "stdin": "30\n",
+      "stdout": "treinta\n"
+    },
+    {
+      "stdin": "31\n",
+      "stdout": "treinta y uno\n"
+    },
+    {
+      "stdin": "47\n",
+      "stdout": "cuarenta y siete\n"
+    },
+    {
+      "stdin": "60\n",
+      "stdout": "sesenta\n"
+    },
+    {
+      "stdin": "71\n",
+      "stdout": "setenta y uno\n"
+    },
+    {
+      "stdin": "99\n",
+      "stdout": "noventa y nueve\n"
+    }
+  ]
+}

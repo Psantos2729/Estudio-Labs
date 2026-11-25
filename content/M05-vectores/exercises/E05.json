@@ -1,0 +1,55 @@
+{
+  "id": "M05-E05",
+  "title": "Suma y producto escalar",
+  "statement": "Lee **N** (N ≥ 1), luego los N enteros del vector **A** y después los N enteros del vector **B**, uno por línea. Imprime A + B (separado por espacios) y el producto escalar:\n\n```\nA + B: <c0> <c1> ...\nProducto escalar: <p>\n```\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.\n\nEjemplo: con N = 3, A = `3 -1 4` y B = `2 5 -6` imprime `A + B: 5 4 -2` y `Producto escalar: -23`.",
+  "starter": "n = int(input())\nA = [0] * n\nB = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nA = [1, 2]\nB = [3, 4]\np = 0\nfor i in range(2):\n    p = p + A[i] * B[i]\nprint(p)\n```",
+      "options": [
+        "10",
+        "11",
+        "[3, 8]"
+      ],
+      "answer": 1,
+      "why": "1·3 + 2·4 = 3 + 8 = 11: se multiplica posición por posición y se suma todo."
+    },
+    {
+      "question": "¿Por qué A y B deben tener el mismo tamaño?",
+      "options": [
+        "Por costumbre",
+        "Porque `[0] * n` no deja otros tamaños",
+        "Porque se opera posición por posición: a cada A[i] le corresponde un B[i]"
+      ],
+      "answer": 2,
+      "why": "Si B fuera más corto, `B[i]` daría `IndexError` en alguna posición."
+    }
+  ],
+  "hints": [
+    "Lee primero los N valores de A y luego los N de B, cada uno en su vector.",
+    "Crea `C = [0] * n` y llena `C[i] = A[i] + B[i]`.",
+    "El producto escalar es un acumulador de `A[i] * B[i]`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n3\n-1\n4\n2\n5\n-6\n",
+      "stdout": "A + B: 5 4 -2 \nProducto escalar: -23\n"
+    },
+    {
+      "stdin": "1\n5\n7\n",
+      "stdout": "A + B: 12 \nProducto escalar: 35\n"
+    },
+    {
+      "stdin": "2\n0\n0\n1\n1\n",
+      "stdout": "A + B: 1 1 \nProducto escalar: 0\n"
+    },
+    {
+      "stdin": "4\n61\n-38\n76\n-34\n-3\n29\n98\n-3\n",
+      "stdout": "A + B: 58 -9 174 -37 \nProducto escalar: 6265\n"
+    },
+    {
+      "stdin": "6\n-52\n87\n33\n4\n-324\n32\n38\n22\n-35\n81\n-15\n86\n",
+      "stdout": "A + B: -14 109 -2 85 -339 118 \nProducto escalar: 6719\n"
+    }
+  ]
+}

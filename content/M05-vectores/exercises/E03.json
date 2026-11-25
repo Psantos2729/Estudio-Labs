@@ -1,0 +1,63 @@
+{
+  "id": "M05-E03",
+  "title": "El mayor, el menor y sus posiciones",
+  "statement": "Lee **N** (N ≥ 1) y N enteros en un vector. Imprime el mayor y el menor con su posición (desde 0). Si se repiten, usa **la primera** posición donde aparecen:\n\n```\nMayor: <m> en la posición <i>\nMenor: <n> en la posición <j>\n```\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.\n\nEjemplo: con `48 72 61 90 85` imprime `Mayor: 90 en la posición 3` y `Menor: 48 en la posición 0`.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "Con `v = [-8, -3, -5]`, si empiezas con `mayor = 0`, ¿qué mayor obtienes?",
+      "options": [
+        "-8",
+        "0, que ni siquiera está en el vector",
+        "-3"
+      ],
+      "answer": 1,
+      "why": "Ningún valor es mayor que 0, así que nunca se reemplaza. Por eso se empieza con `mayor = v[0]`."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nv = [4, 9, 2, 9]\npos = 0\nfor i in range(1, len(v)):\n    if v[i] > v[pos]:\n        pos = i\nprint(pos)\n```",
+      "options": [
+        "1",
+        "3",
+        "0"
+      ],
+      "answer": 0,
+      "why": "Con `>` estricto, el segundo 9 no reemplaza al primero: se queda la primera posición."
+    }
+  ],
+  "hints": [
+    "Empieza con `mayor = v[0]`, `pm = 0` y lo mismo para el menor.",
+    "Recorre desde la posición 1; con `>` y `<` estrictos te quedas con la primera aparición.",
+    "Imprime con el formato exacto del enunciado."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n48\n72\n61\n90\n85\n",
+      "stdout": "Mayor: 90 en la posición 3\nMenor: 48 en la posición 0\n"
+    },
+    {
+      "stdin": "1\n5\n",
+      "stdout": "Mayor: 5 en la posición 0\nMenor: 5 en la posición 0\n"
+    },
+    {
+      "stdin": "3\n-8\n-3\n-5\n",
+      "stdout": "Mayor: -3 en la posición 1\nMenor: -8 en la posición 0\n"
+    },
+    {
+      "stdin": "5\n4\n9\n2\n9\n2\n",
+      "stdout": "Mayor: 9 en la posición 1\nMenor: 2 en la posición 2\n"
+    },
+    {
+      "stdin": "3\n3\n3\n3\n",
+      "stdout": "Mayor: 3 en la posición 0\nMenor: 3 en la posición 0\n"
+    },
+    {
+      "stdin": "8\n-4\n54\n-37\n98\n-34\n100\n-30\n-34\n",
+      "stdout": "Mayor: 100 en la posición 5\nMenor: -37 en la posición 2\n"
+    },
+    {
+      "stdin": "10\n242\n-437\n-227\n-351\n-266\n61\n-422\n497\n435\n476\n",
+      "stdout": "Mayor: 497 en la posición 7\nMenor: -437 en la posición 1\n"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "id": "M06-E10",
+  "title": "Inserción y búsqueda del promedio",
+  "pdf": 36,
+  "statement": "Lee una **semilla** y **N** (N ≥ 1). Con `random.seed(semilla)` genera N valores con `random.randint(100, 999)`, ordénalos con **inserción** y calcula el promedio entero `abs(suma // N)`. Búscalo con **búsqueda binaria** (`medio = (izq + der) // 2`) e imprime:\n\n```\nOrdenado: <vector>\nPromedio: <p>\nEl <p> SÍ está, en la posición <i>      (o: El <p> NO está en el vector)\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "import random\n\nsemilla = int(input())\nn = int(input())\nrandom.seed(semilla)\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\ns = 1234\nn = 5\nprint(s // n, s / n)\n```",
+      "options": [
+        "246.8 246",
+        "247 246.8",
+        "246 246.8"
+      ],
+      "answer": 2,
+      "why": "`//` es la división entera (corta los decimales) y `/` la normal. La búsqueda necesita un entero, por eso el promedio se calcula con `//`."
+    },
+    {
+      "question": "¿Por qué hay que ordenar **antes** de la búsqueda binaria?",
+      "options": [
+        "No hace falta",
+        "Para que el promedio cambie",
+        "Porque descarta mitades suponiendo que a la izquierda están los menores"
+      ],
+      "answer": 2,
+      "why": "Si el vector no está ordenado, la binaria descarta la mitad equivocada y responde mal sin dar ningún error."
+    }
+  ],
+  "hints": [
+    "Genera el vector con la semilla, en orden, y ordénalo con tu función de inserción.",
+    "Suma todo y calcula `p = abs(s // n)`.",
+    "La binaria devuelve la posición o -1; con eso eliges el mensaje."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n5\n",
+      "stdout": "Ordenado: 149 254 431 504 766 \nPromedio: 420\nEl 420 NO está en el vector\n"
+    },
+    {
+      "stdin": "32\n3\n",
+      "stdout": "Ordenado: 179 248 318 \nPromedio: 248\nEl 248 SÍ está, en la posición 1\n"
+    },
+    {
+      "stdin": "2027\n10\n",
+      "stdout": "Ordenado: 113 181 210 430 515 575 740 770 911 925 \nPromedio: 537\nEl 537 NO está en el vector\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "Ordenado: 237 \nPromedio: 237\nEl 237 SÍ está, en la posición 0\n"
+    },
+    {
+      "stdin": "42\n8\n",
+      "stdout": "Ordenado: 125 214 242 328 350 381 754 859 \nPromedio: 406\nEl 406 NO está en el vector\n"
+    },
+    {
+      "stdin": "5\n20\n",
+      "stdout": "Ordenado: 129 153 215 260 355 361 467 480 576 642 737 764 767 807 857 859 894 914 960 961 \nPromedio: 607\nEl 607 NO está en el vector\n"
+    },
+    {
+      "stdin": "11\n3\n",
+      "stdout": "Ordenado: 563 673 986 \nPromedio: 740\nEl 740 NO está en el vector\n"
+    }
+  ]
+}

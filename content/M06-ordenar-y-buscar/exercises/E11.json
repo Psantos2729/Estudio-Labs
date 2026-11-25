@@ -1,0 +1,60 @@
+{
+  "id": "M06-E11",
+  "title": "Mezcla2: unir dos listas ordenadas",
+  "pdf": 33,
+  "statement": "Escribe una función `mezcla2(A, B)` que reciba dos listas ordenadas de menor a mayor y **devuelva** una nueva, de tamaño `len(A) + len(B)`, con todos los elementos ordenados, **sin volver a ordenar**: avanza con un índice en cada lista y pasa siempre el menor (en empate, primero el de A).\n\nLee N1 (N1 ≥ 1) y los N1 valores de A, luego N2 (N2 ≥ 1) y los N2 valores de B, todos uno por línea y ya ordenados. Imprime:\n\n```\nResultado: <vector>\nMenor posición: <R[0]>\nMayor posición: <R[n-1]>\nPosición media: <R[m]> (PAR)      (o IMPAR)\n```\n\nCon `m = (n - 1) // 2`. Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "def mezcla2(A, B):\n    pass\n\n\ndef leer():\n    n = int(input())\n    v = [0] * n\n    for i in range(n):\n        v[i] = int(input())\n    return v\n\n\nA = leer()\nB = leer()\n",
+  "predict": [
+    {
+      "question": "Al mezclar `A = [1, 4, 9]` y `B = [2, 3]`, ¿qué falta copiar cuando B se acaba?",
+      "options": [
+        "Solo el 9",
+        "Nada, ya terminó",
+        "El 4 y el 9 de A"
+      ],
+      "answer": 2,
+      "why": "Después de pasar 1, 2 y 3, B se acabó. Lo que queda en A (4 y 9) ya está ordenado y se copia tal cual."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nR = [3, 8, 10, 15]\nprint((len(R) - 1) // 2)\n```",
+      "options": [
+        "1",
+        "2",
+        "0"
+      ],
+      "answer": 0,
+      "why": "Con 4 elementos, la posición media es (4 − 1) // 2 = 1."
+    }
+  ],
+  "hints": [
+    "Crea `R = [0] * (len(A) + len(B))` y tres índices `i`, `j`, `k` en 0.",
+    "Mientras queden elementos en las dos, compara `A[i] <= B[j]` y pasa el menor a `R[k]`.",
+    "Luego dos `while` más para copiar lo que sobró de A o de B."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n1\n4\n9\n4\n2\n3\n10\n12\n",
+      "stdout": "Resultado: 1 2 3 4 9 10 12 \nMenor posición: 1\nMayor posición: 12\nPosición media: 4 (PAR)\n"
+    },
+    {
+      "stdin": "1\n5\n1\n5\n",
+      "stdout": "Resultado: 5 5 \nMenor posición: 5\nMayor posición: 5\nPosición media: 5 (IMPAR)\n"
+    },
+    {
+      "stdin": "3\n1\n2\n3\n2\n7\n8\n",
+      "stdout": "Resultado: 1 2 3 7 8 \nMenor posición: 1\nMayor posición: 8\nPosición media: 3 (IMPAR)\n"
+    },
+    {
+      "stdin": "2\n10\n20\n4\n1\n2\n3\n4\n",
+      "stdout": "Resultado: 1 2 3 4 10 20 \nMenor posición: 1\nMayor posición: 20\nPosición media: 3 (IMPAR)\n"
+    },
+    {
+      "stdin": "5\n2\n15\n17\n43\n60\n6\n-16\n1\n21\n23\n37\n38\n",
+      "stdout": "Resultado: -16 1 2 15 17 21 23 37 38 43 60 \nMenor posición: -16\nMayor posición: 60\nPosición media: 21 (IMPAR)\n"
+    },
+    {
+      "stdin": "1\n14\n8\n-19\n13\n26\n40\n47\n50\n60\n60\n",
+      "stdout": "Resultado: -19 13 14 26 40 47 50 60 60 \nMenor posición: -19\nMayor posición: 60\nPosición media: 40 (PAR)\n"
+    }
+  ]
+}

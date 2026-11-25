@@ -1,0 +1,108 @@
+{
+  "id": "M04-E08",
+  "title": "Jefe: número a letras de 1 a 99,999",
+  "pdf": 18,
+  "statement": "**Jefe del módulo.** Lee un entero entre 1 y 99,999 y muéstralo en letras, en minúsculas. Arma la solución por capas, con una función para cada una (hasta 99, hasta 999 y con miles). Reglas:\n\n- 100 es `cien`; de 101 a 199 es `ciento ...`. Ojo con `quinientos`, `setecientos` y `novecientos`.\n- 1000 es `mil` (no *uno mil*); delante de `mil` el *uno* se acorta: `veintiún mil`, `treinta y un mil`.\n- Si una parte es 0 no se escribe: 5000 es `cinco mil`.\n\nEjemplos: `47315` → `cuarenta y siete mil trescientos quince`; `21000` → `veintiún mil`; `1001` → `mil uno`.",
+  "starter": "def hasta_99(n):\n    pass\n\n\ndef hasta_999(n):\n    pass\n\n\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Cuál es la forma correcta de 715?",
+      "options": [
+        "sietecientos quince",
+        "setecientos quince",
+        "setecientos y quince"
+      ],
+      "answer": 1,
+      "why": "Setecientos es un caso especial (no *sietecientos*), y entre la centena y el resto no va *y*."
+    },
+    {
+      "question": "¿Qué dan `47315 // 1000` y `47315 % 1000`?",
+      "options": [
+        "47315 y 0",
+        "47 y 315",
+        "4 y 7315"
+      ],
+      "answer": 1,
+      "why": "Igual que con los billetes: `// 1000` dice cuántos miles caben y `% 1000` deja el resto. Cada parte se escribe con `hasta_999`."
+    }
+  ],
+  "hints": [
+    "Primero `hasta_99(n)` (tabla hasta 29 y decenas). Luego `hasta_999(n)` usa `n // 100` y `n % 100`.",
+    "En `hasta_999` revisa primero el 100 exacto (`cien`). Si el resto es 0, solo va la centena.",
+    "Para los miles: `m = n // 1000`. Si `m == 1` es `mil`; si no, escribe `m` y cambia el `uno` final por `un` (y `veintiuno` por `veintiún`)."
+  ],
+  "tests": [
+    {
+      "stdin": "1\n",
+      "stdout": "uno\n"
+    },
+    {
+      "stdin": "16\n",
+      "stdout": "dieciséis\n"
+    },
+    {
+      "stdin": "100\n",
+      "stdout": "cien\n"
+    },
+    {
+      "stdin": "101\n",
+      "stdout": "ciento uno\n"
+    },
+    {
+      "stdin": "500\n",
+      "stdout": "quinientos\n"
+    },
+    {
+      "stdin": "715\n",
+      "stdout": "setecientos quince\n"
+    },
+    {
+      "stdin": "999\n",
+      "stdout": "novecientos noventa y nueve\n"
+    },
+    {
+      "stdin": "1000\n",
+      "stdout": "mil\n"
+    },
+    {
+      "stdin": "1001\n",
+      "stdout": "mil uno\n"
+    },
+    {
+      "stdin": "2026\n",
+      "stdout": "dos mil veintiséis\n"
+    },
+    {
+      "stdin": "5000\n",
+      "stdout": "cinco mil\n"
+    },
+    {
+      "stdin": "21000\n",
+      "stdout": "veintiún mil\n"
+    },
+    {
+      "stdin": "31001\n",
+      "stdout": "treinta y un mil uno\n"
+    },
+    {
+      "stdin": "47315\n",
+      "stdout": "cuarenta y siete mil trescientos quince\n"
+    },
+    {
+      "stdin": "71500\n",
+      "stdout": "setenta y un mil quinientos\n"
+    },
+    {
+      "stdin": "99999\n",
+      "stdout": "noventa y nueve mil novecientos noventa y nueve\n"
+    },
+    {
+      "stdin": "15016\n",
+      "stdout": "quince mil dieciséis\n"
+    },
+    {
+      "stdin": "10101\n",
+      "stdout": "diez mil ciento uno\n"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "M05-E08",
+  "title": "Jefe: menú de vectores A, B y C",
+  "pdf": 31,
+  "statement": "**Jefe del módulo** (PDF #31). Lee una **semilla** y la longitud **N** de los vectores (se pide una sola vez). Llama `random.seed(semilla)` una vez y crea A, B y C de tamaño N, llenos de ceros. Luego repite: lee una opción y hazla, hasta que sea la 6.\n\n| Opción | Qué hace | Qué imprime |\n| --- | --- | --- |\n| 1 | Llena A al azar: posiciones 0 a N − 1 con `random.randint(-500, 500)` | `A llenado` |\n| 2 | Igual con B | `B llenado` |\n| 3 | C = A + B | `C = A + B` |\n| 4 | C = B − A | `C = B - A` |\n| 5 | Lee otra línea (`A`, `B` o `C`) y muestra ese vector | `A: <v0> <v1> ...` |\n| 6 | Salir | `Adiós` |\n\nPon el texto del menú dentro del `input()` (no se califica). Usa una función para llenar y otra para mostrar. Las opciones siempre son válidas.\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.",
+  "starter": "import random\n\n\ndef llenar(v):\n    pass\n\n\ndef mostrar(nombre, v):\n    pass\n\n\nsemilla = int(input())\nn = int(input())\nrandom.seed(semilla)\n",
+  "predict": [
+    {
+      "question": "Si eliges la opción 3 antes de llenar A y B, ¿qué queda en C?",
+      "options": [
+        "Puros ceros",
+        "Un error",
+        "Números al azar"
+      ],
+      "answer": 0,
+      "why": "A y B se crearon con `[0] * n`, así que 0 + 0 da 0 en cada posición."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\ndef f(v):\n    v[0] = 3\n\na = [1, 0]\nf(a)\nprint(a[0])\n```",
+      "options": [
+        "3",
+        "1",
+        "[3, 0]"
+      ],
+      "answer": 0,
+      "why": "La función recibe la misma lista, no una copia: el cambio en `v[0]` se ve afuera."
+    }
+  ],
+  "hints": [
+    "Crea A, B y C **antes** del `while True`. Cada opción solo cambia sus posiciones.",
+    "`llenar(v)` recorre `range(len(v))` con `v[i] = random.randint(-500, 500)`; como cambia la lista que recibe, sirve para A y para B.",
+    "En la opción 5 lee otra línea con `input()` para saber qué vector mostrar. La opción 6 imprime `Adiós` y hace `break`."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n4\n1\n2\n3\n5\nC\n6\n",
+      "stdout": "A llenado\nB llenado\nC = A + B\nC: -3 19 -772 244 \nAdiós\n"
+    },
+    {
+      "stdin": "2027\n5\n1\n5\nA\n2\n5\nB\n4\n5\nC\n6\n",
+      "stdout": "A llenado\nA: -390 449 -25 -419 -487 \nB llenado\nB: 170 -170 311 -85 140 \nC = B - A\nC: 560 -619 336 334 627 \nAdiós\n"
+    },
+    {
+      "stdin": "1\n3\n3\n5\nC\n6\n",
+      "stdout": "C = A + B\nC: 0 0 0 \nAdiós\n"
+    },
+    {
+      "stdin": "42\n6\n2\n1\n5\nA\n5\nB\n3\n5\nC\n4\n5\nC\n6\n",
+      "stdout": "B llenado\nA llenado\nA: -272 -358 254 -396 192 258 \nB: 154 -386 -475 259 -219 -250 \nC = A + B\nC: -118 -744 -221 -137 -27 8 \nC = B - A\nC: 426 -28 -729 655 -411 -508 \nAdiós\n"
+    },
+    {
+      "stdin": "5\n1\n6\n",
+      "stdout": "Adiós\n"
+    }
+  ]
+}

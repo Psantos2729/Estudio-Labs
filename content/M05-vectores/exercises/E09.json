@@ -1,0 +1,52 @@
+{
+  "id": "M05-E09",
+  "title": "Reto: producto vectorial",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee los 3 enteros del vector A y luego los 3 de B, uno por línea. Imprime el producto vectorial A × B:\n\n```\nA x B: <c0> <c1> <c2>\n```\n\nCon C[0] = A[1]·B[2] − A[2]·B[1], C[1] = A[2]·B[0] − A[0]·B[2] y C[2] = A[0]·B[1] − A[1]·B[0].\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.\n\nEjemplo: con A = `1 2 3` y B = `4 5 6` imprime `A x B: -3 6 -3`.",
+  "starter": "A = [0] * 3\nB = [0] * 3\n",
+  "predict": [
+    {
+      "question": "¿Qué da el producto vectorial de un vector consigo mismo?",
+      "options": [
+        "0 0 0",
+        "El mismo vector",
+        "Su producto escalar"
+      ],
+      "answer": 0,
+      "why": "Cada componente queda A[1]·A[2] − A[2]·A[1] = 0, y así las tres."
+    },
+    {
+      "question": "¿Cuántas componentes deben tener A y B para el producto vectorial?",
+      "options": [
+        "Cualquier cantidad igual",
+        "3",
+        "2"
+      ],
+      "answer": 1,
+      "why": "El producto vectorial solo está definido en 3 dimensiones."
+    }
+  ],
+  "hints": [
+    "Llena A y B con dos ciclos de 3 vueltas.",
+    "Crea `C = [0] * 3` y calcula cada componente con la fórmula.",
+    "Imprime `A x B:` y las tres componentes."
+  ],
+  "tests": [
+    {
+      "stdin": "1\n2\n3\n4\n5\n6\n",
+      "stdout": "A x B: -3 6 -3\n"
+    },
+    {
+      "stdin": "1\n0\n0\n0\n1\n0\n",
+      "stdout": "A x B: 0 0 1\n"
+    },
+    {
+      "stdin": "2\n2\n2\n2\n2\n2\n",
+      "stdout": "A x B: 0 0 0\n"
+    },
+    {
+      "stdin": "-3\n7\n5\n4\n-1\n9\n",
+      "stdout": "A x B: 68 47 -25\n"
+    }
+  ]
+}
