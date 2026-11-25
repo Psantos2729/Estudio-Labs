@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-25)
 
 ## Corpus Check
-- 142 files · ~26,737 words
+- 142 files · ~26,809 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 12 file(s) not represented in the graph (top: .css 6, (none) 3, .example 1)
 
 ## Summary
-- 626 nodes · 1104 edges · 46 communities (37 shown, 9 thin omitted)
+- 626 nodes · 1105 edges · 46 communities (37 shown, 9 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bfe71809`
+- Built from commit: `ecc1d1cc`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -65,8 +65,8 @@
 6. `HomePage()` - 14 edges
 7. `useModuleViews()` - 14 edges
 8. `runPython()` - 13 edges
-9. `public.submit_exam()` - 13 edges
-10. `ExerciseDef` - 12 edges
+9. `react-router-dom` - 13 edges
+10. `public.submit_exam()` - 13 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Consecuencias` --references--> `ExerciseDef`  [INFERRED]
@@ -75,10 +75,10 @@
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
 - `run()` --calls--> `execute()`  [EXTRACTED]
   tools/exam-bank.mjs → src/features/runner/execute.ts
-- `App()` --calls--> `ExamPage()`  [EXTRACTED]
-  src/app/App.tsx → src/features/exam/ExamPage.tsx
-- `App()` --calls--> `LessonPage()`  [EXTRACTED]
-  src/app/App.tsx → src/features/lesson/LessonPage.tsx
+- `HomePage()` --calls--> `nextStep()`  [EXTRACTED]
+  src/features/home/HomePage.tsx → src/features/home/nextStep.ts
+- `ModuleView` --references--> `ModuleDef`  [EXTRACTED]
+  src/features/map/masteryView.ts → src/content/types.ts
 
 ## Import Cycles
 - None detected.
@@ -246,7 +246,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **What connects `ADR-0004`, `ADR-0005`, `ADR-0008` to the rest of the system?**
   _7 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ExerciseFlow.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.07322068612391193 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07242063492063493 - nodes in this community are weakly interconnected._
 - **Why does `ADR-005: Contenido como archivos en `content/`` connect `adr/README.md` to `types.ts`?**
   _High betweenness centrality (0.169) - this node is a cross-community bridge._
 - **Should `steps` be split into smaller, more focused modules?**
@@ -254,4 +254,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `ExerciseDef` connect `ExerciseFlow.tsx` to `types.ts`?**
   _High betweenness centrality (0.159) - this node is a cross-community bridge._
 - **Should `HomePage.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.059370725034199726 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05966386554621849 - nodes in this community are weakly interconnected._
