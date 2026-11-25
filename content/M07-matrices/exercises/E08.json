@@ -1,0 +1,51 @@
+{
+  "id": "M07-E08",
+  "title": "Tablero de ajedrez",
+  "statement": "Como tu tarea `ajedrez.py`: crea una matriz de 8 × 8 con `(i + j) % 2` (0 = blanca, 1 = negra). Imprime el tablero con los números de columna arriba y la letra de cada fila (A a H) al inicio, usando `B` y `N`:\n\n```\n  1 2 3 4 5 6 7 8\nA B N B N B N B N\nB N B N B N B N B\n...\n```\n\nDespués lee **K** y K casillas como `C5` (letra de fila y número de columna, siempre válidas) y para cada una imprime `C5: blanca` o `C5: negra`.",
+  "starter": "letras = 'ABCDEFGH'\n",
+  "predict": [
+    {
+      "question": "¿De qué color es la casilla A1 con `(i + j) % 2`?",
+      "options": [
+        "Negra (1)",
+        "Depende",
+        "Blanca (0)"
+      ],
+      "answer": 2,
+      "why": "A1 es fila 0, columna 0: (0 + 0) % 2 = 0."
+    },
+    {
+      "question": "Para la casilla `'D7'`, ¿cuál es la columna `j` en la matriz?",
+      "options": [
+        "7",
+        "3",
+        "6"
+      ],
+      "answer": 2,
+      "why": "El usuario cuenta desde 1 y la matriz desde 0: `int('7') - 1` = 6."
+    }
+  ],
+  "hints": [
+    "Crea la matriz con `t[i] = [0] * 8` y llénala con `(i + j) % 2`.",
+    "Para imprimir cada fila: `print(letras[i], end=' ')` y luego los 8 valores como `B` o `N`.",
+    "Para una casilla `c`: `i = letras.index(c[0])` y `j = int(c[1]) - 1`."
+  ],
+  "tests": [
+    {
+      "stdin": "1\nA1\n",
+      "stdout": "  1 2 3 4 5 6 7 8\nA B N B N B N B N \nB N B N B N B N B \nC B N B N B N B N \nD N B N B N B N B \nE B N B N B N B N \nF N B N B N B N B \nG B N B N B N B N \nH N B N B N B N B \nA1: blanca\n"
+    },
+    {
+      "stdin": "3\nC5\nH8\nA8\n",
+      "stdout": "  1 2 3 4 5 6 7 8\nA B N B N B N B N \nB N B N B N B N B \nC B N B N B N B N \nD N B N B N B N B \nE B N B N B N B N \nF N B N B N B N B \nG B N B N B N B N \nH N B N B N B N B \nC5: blanca\nH8: blanca\nA8: negra\n"
+    },
+    {
+      "stdin": "4\nB2\nD3\nE5\nG1\n",
+      "stdout": "  1 2 3 4 5 6 7 8\nA B N B N B N B N \nB N B N B N B N B \nC B N B N B N B N \nD N B N B N B N B \nE B N B N B N B N \nF N B N B N B N B \nG B N B N B N B N \nH N B N B N B N B \nB2: blanca\nD3: negra\nE5: blanca\nG1: blanca\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "  1 2 3 4 5 6 7 8\nA B N B N B N B N \nB N B N B N B N B \nC B N B N B N B N \nD N B N B N B N B \nE B N B N B N B N \nF N B N B N B N B \nG B N B N B N B N \nH N B N B N B N B \n"
+    }
+  ]
+}

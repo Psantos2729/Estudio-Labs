@@ -1,0 +1,59 @@
+{
+  "id": "M07-E02",
+  "title": "Suma por fila y por columna",
+  "statement": "Lee una matriz de enteros e imprime la suma de cada fila y luego la de cada columna:\n\n```\nFila 0: <s>\nFila 1: <s>\n...\nColumna 0: <s>\n...\n```\n\nLa matriz viene así: el número de filas, el de columnas, y luego **una línea por fila** con los valores separados por espacios. Crea la matriz de tamaño fijo (cada fila con `[0] * cols`), sin `append`.\n\nEjemplo: con la matriz `3 8 1` / `6 0 7` / `2 4 9` imprime `Fila 0: 12`, `Fila 1: 13`, `Fila 2: 15`, `Columna 0: 11`, `Columna 1: 12` y `Columna 2: 17`.",
+  "starter": "def leer_matriz():\n    filas = int(input())\n    cols = int(input())\n    m = [None] * filas\n    for i in range(filas):\n        partes = input().split()\n        m[i] = [0] * cols\n        for j in range(cols):\n            m[i][j] = int(partes[j])\n    return m\n\n\nm = leer_matriz()\n",
+  "predict": [
+    {
+      "question": "¿Dónde va `suma = 0` para sumar cada fila?",
+      "options": [
+        "Antes de los dos ciclos",
+        "Dentro del ciclo de las filas, antes del ciclo de las columnas",
+        "Dentro del ciclo de las columnas"
+      ],
+      "answer": 1,
+      "why": "Cada fila empieza su suma en 0; si va antes de los dos ciclos, arrastra la fila anterior."
+    },
+    {
+      "question": "Para sumar columnas, ¿qué ciclo va afuera?",
+      "options": [
+        "El de las filas (i)",
+        "Da igual",
+        "El de las columnas (j)"
+      ],
+      "answer": 2,
+      "why": "Afuera va lo que se suma por separado: cada columna. Adentro se baja por sus filas."
+    }
+  ],
+  "hints": [
+    "Filas: `for i in range(len(m))`, `suma = 0`, y adentro `for j` acumulando `m[i][j]`.",
+    "Columnas: `for j in range(len(m[0]))` afuera y `for i in range(len(m))` adentro.",
+    "El índice sigue siendo `m[i][j]` en los dos casos; solo cambia el orden de los ciclos."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n3\n3 8 1\n6 0 7\n2 4 9\n",
+      "stdout": "Fila 0: 12\nFila 1: 13\nFila 2: 15\nColumna 0: 11\nColumna 1: 12\nColumna 2: 17\n"
+    },
+    {
+      "stdin": "1\n1\n5\n",
+      "stdout": "Fila 0: 5\nColumna 0: 5\n"
+    },
+    {
+      "stdin": "1\n3\n1 2 3\n",
+      "stdout": "Fila 0: 6\nColumna 0: 1\nColumna 1: 2\nColumna 2: 3\n"
+    },
+    {
+      "stdin": "3\n1\n1\n2\n3\n",
+      "stdout": "Fila 0: 1\nFila 1: 2\nFila 2: 3\nColumna 0: 6\n"
+    },
+    {
+      "stdin": "5\n3\n45 12 98\n1 12 65\n7 15 76\n54 23 1\n65 2 84\n",
+      "stdout": "Fila 0: 155\nFila 1: 78\nFila 2: 98\nFila 3: 78\nFila 4: 151\nColumna 0: 172\nColumna 1: 64\nColumna 2: 324\n"
+    },
+    {
+      "stdin": "3\n5\n9 9 3 -8 -2\n-8 8 18 -5 0\n4 -5 8 -6 9\n",
+      "stdout": "Fila 0: 11\nFila 1: 13\nFila 2: 10\nColumna 0: 5\nColumna 1: 12\nColumna 2: 29\nColumna 3: -19\nColumna 4: 7\n"
+    }
+  ]
+}

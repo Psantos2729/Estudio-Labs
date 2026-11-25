@@ -1,0 +1,54 @@
+{
+  "id": "M07-E09",
+  "title": "Reto: cuadrado mágico",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee una matriz **cuadrada**. Es un **cuadrado mágico** si todas sus filas, todas sus columnas y las dos diagonales suman lo mismo. Imprime `Es mágico, suma <s>` o `No es mágico`.\n\nLa matriz viene así: el número de filas, el de columnas, y luego **una línea por fila** con los valores separados por espacios. Crea la matriz de tamaño fijo (cada fila con `[0] * cols`), sin `append`.",
+  "starter": "def leer_matriz():\n    filas = int(input())\n    cols = int(input())\n    m = [None] * filas\n    for i in range(filas):\n        partes = input().split()\n        m[i] = [0] * cols\n        for j in range(cols):\n            m[i][j] = int(partes[j])\n    return m\n\n\nm = leer_matriz()\nn = len(m)\n",
+  "predict": [
+    {
+      "question": "¿Cuántas sumas hay que revisar en un cuadrado de 3 × 3?",
+      "options": [
+        "3",
+        "8: 3 filas, 3 columnas y 2 diagonales",
+        "9"
+      ],
+      "answer": 1,
+      "why": "Cada fila, cada columna y las dos diagonales."
+    }
+  ],
+  "hints": [
+    "Toma como referencia la suma de la fila 0.",
+    "Revisa cada fila, cada columna y las dos diagonales; si alguna es distinta, apaga una bandera.",
+    "Las diagonales: `m[i][i]` y `m[i][n - 1 - i]`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n3\n2 7 6\n9 5 1\n4 3 8\n",
+      "stdout": "Es mágico, suma 15\n"
+    },
+    {
+      "stdin": "2\n2\n1 2\n3 4\n",
+      "stdout": "No es mágico\n"
+    },
+    {
+      "stdin": "1\n1\n5\n",
+      "stdout": "Es mágico, suma 5\n"
+    },
+    {
+      "stdin": "4\n4\n16 3 2 13\n5 10 11 8\n9 6 7 12\n4 15 14 1\n",
+      "stdout": "Es mágico, suma 34\n"
+    },
+    {
+      "stdin": "2\n2\n1 1\n1 1\n",
+      "stdout": "Es mágico, suma 2\n"
+    },
+    {
+      "stdin": "3\n3\n2 7 6\n9 5 1\n4 8 3\n",
+      "stdout": "No es mágico\n"
+    },
+    {
+      "stdin": "3\n3\n4 9 2\n3 5 7\n8 1 6\n",
+      "stdout": "Es mágico, suma 15\n"
+    }
+  ]
+}
