@@ -2,7 +2,7 @@
   "0": "Variables y tipos",
   "1": "ExerciseFlow.tsx",
   "2": "steps",
-  "3": "HomePage.tsx",
+  "3": "ExerciseFlow.tsx",
   "4": "Publicar pylab en Cloudflare",
   "5": "compilerOptions",
   "6": "exam-bank.mjs",
@@ -13,7 +13,7 @@
   "11": "Continuar pylab en otra sesión",
   "12": "rls_phase1.sql",
   "13": "steps",
-  "14": "masteryView.ts",
+  "14": "HomePage.tsx",
   "15": "ADR-001: React + Vite + TypeScript en Cloudflare Pages",
   "16": "scripts",
   "17": "package.json",
@@ -34,8 +34,6 @@
   "32": "vite",
   "33": "20261124000008_read_grants.sql",
   "34": "rls_exam_submit.sql",
-  "35": "README.md",
-  "36": "1. Supabase (base de datos e inicio de sesión)",
   "37": "package.json",
   "38": "adr/README.md",
   "39": "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker",
@@ -46,9 +44,5 @@
   "44": "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz",
   "45": "rls_exam.sql",
   "46": "ADR-009: ReactBits con carga diferida y movimiento reducido",
-  "47": "ADR-010: Ningún archivo de más de 250 líneas",
-  "48": "Publicar pylab en GitHub Pages",
-  "49": "main.tsx",
-  "50": "Reglas del proyecto pylab (Estudio-Labs)",
-  "51": "setup.md"
+  "47": "ADR-010: Ningún archivo de más de 250 líneas"
 }
