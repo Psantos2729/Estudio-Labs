@@ -12,7 +12,7 @@ do $$
 declare r record;
 begin
   select * into r from public.my_gear();
-  assert r.unlocked = array['hoja', 'rama'], 'gana las piezas del bosque y nada más (nivel 1): ' || r.unlocked::text;
+  assert r.unlocked = array['hoja', 'rama', 'casco_cuero', 'peto_cuero'], 'gana las piezas del bosque y la armadura de cuero (nivel 1): ' || r.unlocked::text;
   assert r.gear = '{}'::jsonb, 'empieza sin nada puesto';
 
   perform public.set_avatar_gear('{"cabeza": "hoja", "mano": "rama"}');

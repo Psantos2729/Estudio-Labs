@@ -4,7 +4,7 @@ import { exercisesOf, lessonsOf } from '@/content/lessons';
 import { useReadLessons } from '@/features/lesson/useLessonProgress';
 import { LockedNotice } from './LockedNotice';
 import { PixelSprite } from '@/ui/primitives/PixelSprite';
-import { islandOf } from '@/features/game/islands';
+import { MINI_BOSSES } from '@/features/game/minibosses';
 import type { ModuleView } from './masteryView';
 
 const STEPS = [
@@ -17,6 +17,7 @@ const STEPS = [
 
 export function ModuleDetail({ view }: { view: ModuleView }) {
   const { module: m } = view;
+  const boss = MINI_BOSSES[Number(m.id.slice(1))];
   const lessons = lessonsOf(m.id);
   const { read } = useReadLessons();
   const exercises = exercisesOf(m.id);
@@ -86,10 +87,13 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
             {m.realTasks.length > 0 ? m.realTasks.map((t) => <li key={t}>· {t}</li>) : <li>· ejercicios propios</li>}
           </ul>
           <p className="muted small">jefe final</p>
-          <p className="warn boss-line">
-            <PixelSprite name={islandOf(Number(m.id.slice(1))).minion} size={26} />
-            <span>{m.boss.title} <span className="muted small">({m.boss.source})</span></span>
-          </p>
+          <div className="boss-line">
+            <PixelSprite name={boss.sprite} size={40} title={boss.name} />
+            <div>
+              <p className="warn">{boss.name}: {m.boss.title} <span className="muted small">({m.boss.source})</span></p>
+              <p className="muted small">{boss.meaning}</p>
+            </div>
+          </div>
         </section>
       </div>
     </main>

@@ -16,8 +16,6 @@ const RAW = {
   kraken: { pal: { p: '#8a5cff', P: '#c4a8ff' }, g: [
     '.....kkkkkk.....', '....kppppppk....', '...kppPPPPppk...', '..kpppppppppPk..', '..kppwwppwwppk..', '..kppwkppwkppk..', '..kpppppppppk...', '...kppprrpppk...',
     '..kpkpppppkpk...', '.kpk.kpkpk.kpk..', 'kpk..kpkpk..kpk.', 'kpk.kpk.kpk..kpk', '.kpkpk...kpk.kpk', '..kk.......kk.k.'] },
-  cangrejo: { pal: { r: '#ff6b4a' }, g: [
-    'kk........kk', 'krk......krk', '.krk.ww.krk.', '..krkkkkrk..', '.krrrrrrrrk.', 'krrrrrrrrrrk', '.krrrrrrrrk.', 'k.kk.kk.kk.k'] },
   pluma: { pal: { o: '#9c6b3c', O: '#ead9b5', g: '#ffc94a', B: '#b8402f', y: '#ff9a2e' }, g: [
     '.kk......kk.', '.kokkkkkkok.', '.kooooooook.', 'kogggoogggok', 'kogegoogegok', 'kogggoogggok', '.koooyyoook.', '.kOOOOOOOOk.',
     '.koBBBBBBok.', '.koBwwwwBok.', '.koBBBBBBok.', '..kyk..kyk..', '..kk....kk..'] },
@@ -32,8 +30,39 @@ const RAW = {
   sierpe: { pal: { p: '#5b6cff', P: '#a8b4ff', y: '#ffe14a', r: '#ff4fa3' }, g: [
     '....kk.....k....', '...kppk...kyk...', '..kpppppk.kyk...', '..kpwkpppkyyk...', '..kpppppppkk....', '...kprrpppk.....', '....kkkpppk.....', '......kpppk.....',
     '.....kpppk......', '....kpppk..kk...', '...kpPpk..kppk..', '...kpppkkkpPpk..', '....kpppppppk...', '.....kkpppkk....', '......kpPk......', '.......kk.......'] },
-  nube: { pal: { w: '#b9c3dd' }, g: [
-    '...kkk......', '..kwwwkkk...', '.kwwwwwwwk..', 'kwwwwwwwwwk.', 'kwwkwwwkwwk.', 'kwwwwwwwwwk.', '.kkkkkkkkk..', '...ky..yk...', '....y..y....'] }
+  // Mini jefes de cada módulo (ver src/features/game/minibosses.ts).
+  esfinge: { pal: { s: '#e0b860', S: '#a87a32', b: '#3a6fd8' }, g: [
+    '..kkkkk.......', '.kbyyybk......', '.kbsssbk......', '.kbesebk......', '.kbsssbk......', '.kbsrsbkkkkkk.', '..kssssssssssk', '..kSsssssssssk',
+    '.ksskSsssskssk', '.kkkk.kkkk.kkk'] },
+  uroboros: { pal: { g: '#3fae4a', G: '#2a7a3d' }, g: [
+    '....kkkkk...', '..kkgggggkk.', '.kggkkkkgewk', 'kgk.....kgrk', 'kgk......kk.', 'kgk.....kgk.', 'kgk.....kgk.', 'kgGk...kGgk.',
+    '.kggkkkkggk.', '..kkggggkk..', '....kkkk....'] },
+  termita: { pal: { t: '#e8c89a', T: '#b07a3a', j: '#7a4a2a' }, g: [
+    '.k........k.', '..k......k..', '...kkkkkk...', '..kTeTTeTk..', '.jkTTTTTTkj.', '..jkkkkkkj..', '.kttttttttk.', 'ktkttttttktk',
+    'k.kttttttk.k', '...kkkkkk...'] },
+  ermitano: { pal: { r: '#ff6b4a', s: '#e9c99a', S: '#b07a3a' }, g: [
+    '...kkkkkk...', '..kssSSssk..', '.ksSkkkkSsk.', '.kSkssssSsk.', '.ksSSSSSssk.', '.krekrrekrk.', 'krrrrrrrrrrk', 'k.krrkkrrk.k',
+    '..kk....kk..'] },
+  cardumen: { pal: { f: '#4fb3ff', F: '#ffb547' }, g: [
+    '...k.kkk....', '...kkffek...', '...k.kkk....', '............', 'k.kkk.k.kkk.', 'kkFFekkkffek', 'k.kkk.k.kkk.'] },
+  burbuja: { pal: { p: '#ffc94a', P: '#e09a2a', b: '#9fdcff' }, g: [
+    '..........b.', '...kkkkk..b.', '..kpppppk...', '.kpppepppk.b', 'kkpppppppk..', 'kPkpprrppk..', 'kkpppppppk..', '.kPpPpPpk...',
+    '..kkkkkk....'] },
+  muralla: { pal: { b: '#b8402f', m: '#d9c2a0' }, g: [
+    'kkkkkkkkkkkk', 'kbbbmbbbmbbk', 'kmmmmmmmmmmk', 'kbmwebbbwebk', 'kmmmmmmmmmmk', 'kbbbmbkkkbbk', 'kmmmmmmmmmmk', 'kbmbbbmbbbmk',
+    'kkkkkkkkkkkk'] },
+  mimico: { pal: { o: '#9c6b3c', O: '#6b4423' }, g: [
+    '.kkkkkkkkkk.', 'koOooyyooOok', 'kOOOOyyOOOOk', 'kwkwkwkwkwkk', 'kkrrrrrrrrkk', 'kwkwkwkwkwkk', 'kooooyyooook', 'kOOOOOOOOOOk',
+    'kkkkkkkkkkkk'] },
+  nubarron: { pal: { w: '#b9c3dd', W: '#8a95b5' }, g: [
+    '....kkkk....', '...kwwwwk...', '..kkkkkkkk..', '..kWWWWWWk..', '.kkkkkkkkkk.', '.kwwewwewwk.', 'kkkkkkkkkkkk', 'kWWWWWWWWWWk',
+    'kkkkkkkkkkkk', '...y....y...'] },
+  cuervo: { pal: { c: '#3a4060', C: '#5a6290' }, g: [
+    '...kkkk.....', '..kccccck...', '.kcwecccyy..', '.kcccccck...', '..kcCCcccck.', 'kcCCCccccck.', '.kcCCcccck..', '..kccccck...',
+    '...y..y.....'] },
+  panda: { pal: {}, g: [
+    '.kk......kk.', '.kkkwwwwkkk.', '.kwwwwwwwwk.', '.kwkkwwkkwk.', '.kwkwwwwkwk.', '.kwwwkkwwwk.', '..kwwwwwwk.y', 'kkkkwwwwkkyy',
+    'kkkwwwwwwkky', '.kkkk..kkkk.'] }
 };
 
 export type SpriteName = keyof typeof RAW;
