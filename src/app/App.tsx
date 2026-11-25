@@ -10,6 +10,7 @@ import { ExercisePage } from '@/features/exercise/ExercisePage';
 import { ExamPage } from '@/features/exam/ExamPage';
 import { ReviewPage } from '@/features/exam/ReviewPage';
 import { ReviewListPage } from '@/features/exam/ReviewListPage';
+import { HistoryPage } from '@/features/history/HistoryPage';
 
 export function App() {
   return (
@@ -25,6 +26,7 @@ export function App() {
             <Route path="examen/:moduleId" element={<ExamPage />} />
             <Route path="repaso" element={<ReviewListPage />} />
             <Route path="repaso/:moduleId" element={<ReviewPage />} />
+            <Route path="historial" element={<HistoryPage />} />
             <Route path="privacidad" element={<PrivacyPage />} />
             <Route path="*" element={<p className="center muted">404 · esa ruta no existe</p>} />
           </Route>
