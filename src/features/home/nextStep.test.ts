@@ -15,7 +15,7 @@ describe('nextStep', () => {
     expect(nextStep(lessons, exercises, allRead, new Set()).to).toBe('/ejercicio/M00-E01');
     expect(nextStep(lessons, exercises, allRead, new Set(['M00-E01'])).to).toBe('/ejercicio/M00-E02');
   });
-  it('todo listo lleva al mapa', () => {
-    expect(nextStep(lessons, exercises, allRead, new Set(['M00-E01', 'M00-E02'])).kind).toBe('mapa');
+  it('todo listo lleva al examen del módulo', () => {
+    expect(nextStep(lessons, exercises, allRead, new Set(['M00-E01', 'M00-E02'])).to).toBe('/examen/M00');
   });
 });
