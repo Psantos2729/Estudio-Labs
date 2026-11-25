@@ -1,6 +1,6 @@
 {
   "0": "Variables y tipos",
-  "1": "App.tsx",
+  "1": "CodeStep.tsx",
   "2": "steps",
   "3": "HomePage.tsx",
   "4": "Publicar pylab en Cloudflare",
@@ -13,8 +13,8 @@
   "11": "Continuar pylab en otra sesión",
   "12": "rls_phase1.sql",
   "13": "steps",
-  "14": "execute.test.ts",
-  "15": "adr/README.md",
+  "14": "package.json",
+  "15": "ADR-001: React + Vite + TypeScript en Cloudflare Pages",
   "16": "scripts",
   "17": "package.json",
   "18": "Leer datos con input",
@@ -32,5 +32,17 @@
   "30": "Operadores aritméticos",
   "31": "eslint.config.js",
   "32": "vite",
-  "33": "20261124000008_read_grants.sql"
+  "33": "20261124000008_read_grants.sql",
+  "34": "ADR-005: Contenido como archivos en `content/`",
+  "35": "mapStore.ts",
+  "36": "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker",
+  "37": "ADR-003: Supabase como base de datos y autenticación",
+  "38": "ADR-004: El navegador enseña, el servidor certifica",
+  "39": "ADR-006: Desbloqueo por dominio con 85% y repasos espaciados",
+  "40": "ADR-007: Modo invitado sin Supabase",
+  "41": "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz",
+  "42": "ADR-009: ReactBits con carga diferida y movimiento reducido",
+  "43": "ADR-010: Ningún archivo de más de 250 líneas",
+  "44": "adr/README.md",
+  "45": "rls_exam.sql"
 }
