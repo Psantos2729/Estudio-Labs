@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-25)
 
 ## Corpus Check
-- 142 files · ~26,846 words
+- 142 files · ~26,890 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 12 file(s) not represented in the graph (top: .css 6, (none) 3, .example 1)
+- Unclassified: 13 file(s) not represented in the graph (top: .css 6, (none) 3, .example 1)
 
 ## Summary
-- 625 nodes · 1104 edges · 52 communities (42 shown, 10 thin omitted)
+- 625 nodes · 1105 edges · 52 communities (42 shown, 10 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 5 edges (avg confidence: 0.89)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `533b98e1`
+- Built from commit: `472bc9fa`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -83,8 +83,8 @@
   tools/exam-bank.mjs → src/features/runner/execute.ts
 - `Props` --references--> `ExerciseDef`  [EXTRACTED]
   src/features/exercise/CodeStep.tsx → src/content/types.ts
-- `Props` --references--> `ExerciseDef`  [EXTRACTED]
-  src/features/exercise/ExerciseFlow.tsx → src/content/types.ts
+- `ExerciseFlow()` --calls--> `CodeStep()`  [EXTRACTED]
+  src/features/exercise/ExerciseFlow.tsx → src/features/exercise/CodeStep.tsx
 
 ## Import Cycles
 - None detected.
@@ -97,7 +97,7 @@ Nodes (4): El orden importa, Los tres tipos del módulo, Nombres de variables, V
 
 ### Community 1 - "ExerciseFlow.tsx"
 Cohesion: 0.07
-Nodes (40): ADR-0004, marked, react, TestCase, buildAnswers(), Run, exam, ExamProblemCard() (+32 more)
+Nodes (44): ADR-0004, marked, react, TestCase, buildAnswers(), Run, exam, ExamProblemCard() (+36 more)
 
 ### Community 2 - "steps"
 Cohesion: 0.08
@@ -140,8 +140,8 @@ Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
 ### Community 14 - "masteryView.ts"
-Cohesion: 0.12
-Nodes (22): ADR-0008, displayId(), ExamResult(), PrivacyPage(), GateCard(), MapPage(), MapState, useMapStore (+14 more)
+Cohesion: 0.16
+Nodes (18): ADR-0008, displayId(), GateCard(), MapPage(), MapState, useMapStore, buildModuleViews(), currentModule() (+10 more)
 
 ### Community 15 - "ADR-001: React + Vite + TypeScript en Cloudflare Pages"
 Cohesion: 0.40
@@ -260,7 +260,7 @@ Cohesion: 0.40
 Nodes (5): Comandos, Contexto con graphify, Dónde está cada cosa, Reglas del proyecto pylab (Estudio-Labs), Reglas que no se rompen
 
 ## Knowledge Gaps
-- **7 isolated node(s):** `ADR-0004`, `ADR-0005`, `ADR-0008`, `ADR-0006`, `ADR-0006` (+2 more)
+- **7 isolated node(s):** `ADR-0004`, `ADR-0008`, `ADR-0006`, `ADR-0005`, `ADR-0006` (+2 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 278 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -269,15 +269,15 @@ _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Consecuencias` connect `types.ts` to `adr/README.md`?**
   _High betweenness centrality (0.168) - this node is a cross-community bridge._
-- **What connects `ADR-0004`, `ADR-0005`, `ADR-0008` to the rest of the system?**
+- **What connects `ADR-0004`, `ADR-0008`, `ADR-0006` to the rest of the system?**
   _7 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ExerciseFlow.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.075 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06768388106416276 - nodes in this community are weakly interconnected._
 - **Why does `ADR-005: Contenido como archivos en `content/`` connect `adr/README.md` to `types.ts`?**
   _High betweenness centrality (0.167) - this node is a cross-community bridge._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
 - **Why does `ExerciseDef` connect `types.ts` to `ExerciseFlow.tsx`, `HomePage.tsx`?**
-  _High betweenness centrality (0.158) - this node is a cross-community bridge._
+  _High betweenness centrality (0.159) - this node is a cross-community bridge._
 - **Should `HomePage.tsx` be split into smaller, more focused modules?**
   _Cohesion score 0.06593406593406594 - nodes in this community are weakly interconnected._

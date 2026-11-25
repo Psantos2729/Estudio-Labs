@@ -29,3 +29,12 @@
 .tests__grid pre { margin: 0; white-space: pre-wrap; background: var(--bg-code); padding: 4px 8px; border-radius: 4px; }
 .predict code { background: var(--bg-code); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
 .lesson .panel > .btn { align-self: flex-start; }
+
+/* Enunciado a la izquierda y editor a la derecha; en pantallas angostas se apilan. */
+.lesson:has(.split) { width: min(1280px, 100%); }
+.split__read, .split__code { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+@media (min-width: 960px) {
+  .panel.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); align-items: start; gap: 24px; }
+  .split .editor, .split .editor .cm-editor { min-height: 360px; }
+  .split__read { position: sticky; top: 56px; max-height: calc(100vh - 72px); overflow-y: auto; }
+}
