@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "src/features/map/ModuleDetail.tsx": {
-    "mtime": 1795640903.735207,
-    "seen": 1795641132.9328034,
-    "ast_hash": "d8e3d52e6c158f14e4b31360bc9701f7",
+    "mtime": 1795645476.7152426,
+    "seen": 1795645542.6195517,
+    "ast_hash": "99c20936db8ffd1c37b26b9aab8c8b14",
     "semantic_hash": ""
   },
   "src/features/map/ModuleList.tsx": {
@@ -2196,15 +2196,15 @@
     "semantic_hash": ""
   },
   "src/features/game/game.test.ts": {
-    "mtime": 1795640811.9512126,
-    "seen": 1795641132.932776,
-    "ast_hash": "c2e911237cb08afbc5ea7619da5495a8",
+    "mtime": 1795645514.0848458,
+    "seen": 1795645542.619519,
+    "ast_hash": "8a01380d63a350e51a8139475126de7c",
     "semantic_hash": ""
   },
   "src/features/game/game.ts": {
-    "mtime": 1795640811.9482205,
-    "seen": 1795641132.9327772,
-    "ast_hash": "2600a7a22ad69dcbfeb9d910bcc7b430",
+    "mtime": 1795645389.2115152,
+    "seen": 1795645542.6195204,
+    "ast_hash": "a2412e024a60e937d5368bbea6b5c9f2",
     "semantic_hash": ""
   },
   "src/features/game/useGame.ts": {
@@ -2220,9 +2220,9 @@
     "semantic_hash": ""
   },
   "src/ui/primitives/Robot.tsx": {
-    "mtime": 1795640850.5151768,
-    "seen": 1795641132.9328256,
-    "ast_hash": "bf446920ce9468371b9aacf093027d4b",
+    "mtime": 1795645529.4448571,
+    "seen": 1795645542.6195767,
+    "ast_hash": "47b06d2fc7ca6d63789ef15695534671",
     "semantic_hash": ""
   },
   "supabase/migrations/20261125000016_xp_ranking.sql": {
@@ -2244,9 +2244,9 @@
     "semantic_hash": ""
   },
   "src/features/game/islands.ts": {
-    "mtime": 1795640811.9498656,
-    "seen": 1795641132.9327784,
-    "ast_hash": "e6352292c1682d32fdbe8cb2521a5eb0",
+    "mtime": 1795645476.700658,
+    "seen": 1795645542.6195216,
+    "ast_hash": "3025ce699d421735b3400e4fdb1b9a81",
     "semantic_hash": ""
   },
   "src/features/map/IslandArt.tsx": {
@@ -2262,9 +2262,9 @@
     "semantic_hash": ""
   },
   "src/ui/sprites.ts": {
-    "mtime": 1795640821.4472725,
-    "seen": 1795641132.9328263,
-    "ast_hash": "79d628948d51a314df42ac75923e4a1a",
+    "mtime": 1795645476.7004087,
+    "seen": 1795645542.6195784,
+    "ast_hash": "abbdcc99c4eed2d042c9cf805c79af33",
     "semantic_hash": ""
   },
   "supabase/migrations/20261125000017_avatar_gear.sql": {
@@ -2274,9 +2274,33 @@
     "semantic_hash": ""
   },
   "supabase/tests/rls_gear.sql": {
-    "mtime": 1795640770.9959178,
-    "seen": 1795641132.9328501,
-    "ast_hash": "0cc3cdcfca154cec86d99db1a4f9b8e5",
+    "mtime": 1795645312.7495778,
+    "seen": 1795645542.6196346,
+    "ast_hash": "d9c4ad8c1c0cd0f3480b215aec238649",
+    "semantic_hash": ""
+  },
+  "src/features/game/minibosses.ts": {
+    "mtime": 1795645476.7050333,
+    "seen": 1795645542.6195228,
+    "ast_hash": "99d7e8b97ad252a1200894308a0970be",
+    "semantic_hash": ""
+  },
+  "src/ui/primitives/gearArt.tsx": {
+    "mtime": 1795645389.215652,
+    "seen": 1795645542.6195774,
+    "ast_hash": "cf1616caceef15794cc1d50e767e7416",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261125000018_more_gear.sql": {
+    "mtime": 1795645299.317078,
+    "seen": 1795645542.619627,
+    "ast_hash": "1c902e17f5399d5f4bba34009bb73215",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_gear_more.sql": {
+    "mtime": 1795645322.341578,
+    "seen": 1795645542.6196358,
+    "ast_hash": "e372ae448807af422c7909afad368215",
     "semantic_hash": ""
   },
   "package-lock.json": {
