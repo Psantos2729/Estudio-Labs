@@ -3,21 +3,20 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/ui/primitives/Button';
 import { ProgressBar } from '@/ui/primitives/ProgressBar';
 import { Robot } from '@/ui/primitives/Robot';
-import { gearOf, levelOf, ROBOT_COLORS, XP_PER_LEVEL, ZONES } from './game';
+import { levelOf, ROBOT_COLORS, XP_PER_LEVEL } from './game';
 import { useUpdateCharacter, type RankRow } from './useGame';
 
-/** Tarjeta del personaje en la portada: robot, nivel, accesorios y edición de nombre y color. */
+/** Tarjeta del personaje en la portada: robot, nivel y edición de nombre y color. */
 export function CharacterCard({ me }: { me: RankRow }) {
   const [name, setName] = useState(me.name === 'Estudiante' ? '' : me.name);
   const [color, setColor] = useState(me.color);
   const save = useUpdateCharacter();
-  const gear = gearOf(me.mastered);
   const { level, into } = levelOf(me.xp);
   const changed = name.trim() !== (me.name === 'Estudiante' ? '' : me.name) || color !== me.color;
 
   return (
     <section className="panel character" aria-label="Tu personaje">
-      <Robot color={color} gear={gear} size={96} title="Tu robot" className="character__robot" />
+      <Robot color={color} gear={me.gear} size={96} title="Tu robot" className="character__robot" />
       <div className="character__info">
         <p className="small accent">tu personaje · Nv {level}</p>
         <ProgressBar value={into} max={XP_PER_LEVEL} label="XP del nivel" />
@@ -47,9 +46,7 @@ export function CharacterCard({ me }: { me: RankRow }) {
           </Button>
           {save.isError && <span className="warn small">No se pudo guardar. Intenta de nuevo.</span>}
         </form>
-        <p className="muted small">
-          accesorios: {ZONES.map((z, i) => <span key={z.name} className={i < gear ? 'ok' : ''}>{i < gear ? '✓' : '○'} {z.gear} </span>)}
-        </p>
+        <p className="small"><Link to="/taller">vestir a tu robot en el taller →</Link></p>
       </div>
     </section>
   );

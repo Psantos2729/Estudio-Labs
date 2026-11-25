@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Robot } from '@/ui/primitives/Robot';
-import { gearOf, levelOf, XP_RULES } from './game';
+import { levelOf, XP_RULES } from './game';
 import { useLeaderboard, type Period } from './useGame';
 import './game.css';
 
@@ -39,7 +39,7 @@ export function RankingPage() {
             {rows.map((r) => (
               <li key={`${r.rank}-${r.name}-${r.is_me}`} className={`board__row${r.is_me ? ' board__row--me' : ''}`}>
                 <span className={r.rank <= 3 ? 'warn strong' : 'muted'}>{r.rank}</span>
-                <Robot color={r.color} gear={gearOf(r.mastered)} size={26} />
+                <Robot color={r.color} gear={r.gear} size={26} />
                 <span className="board__name">{r.name}{r.is_me && <span className="muted small"> · tú</span>}</span>
                 <span className="muted small">Nv {levelOf(r.xp).level} · {r.station}</span>
                 <span className="board__xp">{r.xp} XP</span>
@@ -54,7 +54,7 @@ export function RankingPage() {
         <ul className="xp-rules">
           {XP_RULES.map((r) => <li key={r.label}><span>{r.label}</span><span className="ok">+{r.xp}</span></li>)}
         </ul>
-        <p className="muted small">Cada 500 XP subes un nivel. Al completar una zona del mapa tu robot gana un accesorio.</p>
+        <p className="muted small">Cada 500 XP subes un nivel. Al vencer al jefe de cada isla y al subir de nivel ganas piezas para vestir a tu robot en el <Link to="/taller">taller</Link>.</p>
       </section>
     </main>
   );

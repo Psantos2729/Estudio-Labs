@@ -7,6 +7,8 @@ import { runTests, type TestResult } from '@/features/runner/check';
 import { CodeEditor } from './CodeEditor';
 import { TestResults } from './TestResults';
 import { GivenFiles, OutFiles } from './FilesPanel';
+import { PixelSprite } from '@/ui/primitives/PixelSprite';
+import { islandOf } from '@/features/game/islands';
 
 /** Pasos 4 y 5: escribir el código, correrlo con entrada propia y pasar las pruebas públicas. */
 interface Props {
@@ -24,6 +26,7 @@ export function CodeStep({ exercise, initialCode, onTested }: Props) {
   const [run, setRun] = useState<RunResult | null>(null);
   const [results, setResults] = useState<TestResult[] | null>(null);
   const [hintsShown, setHintsShown] = useState(0);
+  const buddy = islandOf(Number(exercise.id.slice(1, 3))).companion;
 
   const busyWhile = async (work: () => Promise<void>) => {
     setBusy(true);
@@ -38,7 +41,10 @@ export function CodeStep({ exercise, initialCode, onTested }: Props) {
         <div className="prose" dangerouslySetInnerHTML={{ __html: marked.parse(exercise.statement, { async: false }) }} />
         <div className="hints">
           {exercise.hints.slice(0, hintsShown).map((h, i) => (
-            <p key={i} className="hints__item"><span className="warn">pista {i + 1}:</span> {h}</p>
+            <p key={i} className="hints__item">
+              <PixelSprite name={buddy.sprite} size={28} title={buddy.name} />
+              <span><span className="warn">{buddy.name} · pista {i + 1}:</span> {h}</span>
+            </p>
           ))}
           {hintsShown < exercise.hints.length && (
             <Button variant="ghost" onClick={() => setHintsShown(hintsShown + 1)}>

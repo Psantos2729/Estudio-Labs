@@ -11,7 +11,7 @@
 }
 .map > .gate { grid-column: 2; grid-row: 1 / span 2; }
 
-.panel.expedition { display: block; width: 100%; height: auto; padding: 8px; font-family: var(--mono); }
+.panel.expedition { display: block; width: 100%; height: auto; padding: 8px; font-family: var(--sans); }
 .station { cursor: pointer; outline: none; }
 .station:hover circle, .station:focus-visible circle { filter: drop-shadow(0 0 6px var(--accent)); }
 .station--now { animation: hud-pulse-svg 2s ease-in-out infinite; }
@@ -33,13 +33,13 @@
   border: 1px solid transparent;
   border-radius: 6px;
   color: var(--text);
-  font: 13px var(--mono);
+  font: 13px var(--sans);
   text-align: left;
   cursor: pointer;
 }
 .route__item { transition: background 0.2s, border-color 0.2s, box-shadow 0.2s, transform 0.15s; }
-.route__item:hover { background: rgba(25, 211, 255, 0.07); transform: translateX(2px); }
-.route__item[aria-current='true'] { border-color: var(--accent); background: rgba(25, 211, 255, 0.12); box-shadow: var(--glow); }
+.route__item:hover { background: rgba(111, 155, 255, 0.07); transform: translateX(2px); }
+.route__item[aria-current='true'] { border-color: var(--accent); background: rgba(111, 155, 255, 0.12); box-shadow: var(--glow); }
 .route__icon { color: var(--muted); }
 .route__id { color: var(--muted); }
 .route__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -69,7 +69,7 @@
   padding: 10px;
   border: 1px solid var(--line-strong);
   border-radius: 8px;
-  background: rgba(25, 211, 255, 0.04);
+  background: rgba(111, 155, 255, 0.04);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .steps__item:not(.steps__item--locked):hover { border-color: var(--accent); box-shadow: var(--glow); }
@@ -91,3 +91,8 @@
   .steps { grid-template-columns: minmax(0, 1fr); }
   .detail__grid { grid-template-columns: minmax(0, 1fr); }
 }
+
+.boss-line { display: flex; gap: 10px; align-items: center; }
+.boss-line svg { flex: none; }
+.gate__boss { display: flex; gap: 12px; align-items: center; }
+.gate__boss svg { flex: none; filter: drop-shadow(0 0 8px rgba(255, 146, 87, 0.45)); }

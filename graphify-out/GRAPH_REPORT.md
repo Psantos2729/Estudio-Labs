@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-25)
 
 ## Corpus Check
-- 371 files · ~136,164 words
+- 378 files · ~139,805 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 14 file(s) not represented in the graph (top: .css 8, (none) 3, .example 1)
 
 ## Summary
-- 1186 nodes · 1950 edges · 120 communities (106 shown, 14 thin omitted)
+- 1221 nodes · 2046 edges · 123 communities (108 shown, 15 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9dafa211`
+- Built from commit: `268fe6dd`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -76,9 +76,9 @@
 - Funciones con vectores y programas con menú
 - Ordenar: intercambios y el método de selección
 - LessonPage.tsx
-- anon
+- public.record_practice
 - exam_attempts
-- CharacterCard.tsx
+- ExpeditionMap.tsx
 - public.modules
 - Expresiones regulares (2): separar, validar y reemplazar
 - Conteos carácter por carácter
@@ -125,18 +125,19 @@
 - ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz
 - ADR-009: ReactBits con carga diferida y movimiento reducido
 - ADR-010: Ningún archivo de más de 250 líneas
-- @codemirror/commands
+- main.tsx
+- mapStore.ts
 
 ## God Nodes (most connected - your core abstractions)
-1. `displayId()` - 28 edges
-2. `Button()` - 27 edges
-3. `react` - 27 edges
-4. `useAuth()` - 22 edges
+1. `Button()` - 29 edges
+2. `react` - 29 edges
+3. `displayId()` - 28 edges
+4. `useAuth()` - 23 edges
 5. `useModuleViews()` - 22 edges
-6. `react-router-dom` - 21 edges
-7. `HomePage()` - 17 edges
-8. `compilerOptions` - 17 edges
-9. `App()` - 16 edges
+6. `react-router-dom` - 22 edges
+7. `App()` - 17 edges
+8. `HomePage()` - 17 edges
+9. `compilerOptions` - 17 edges
 10. `LockedNotice()` - 16 edges
 
 ## Surprising Connections (you probably didn't know these)
@@ -148,13 +149,13 @@
   tools/exam-bank.mjs → src/features/runner/execute.ts
 - `App()` --calls--> `RankingPage()`  [EXTRACTED]
   src/app/App.tsx → src/features/game/RankingPage.tsx
-- `App()` --calls--> `MapPage()`  [EXTRACTED]
-  src/app/App.tsx → src/features/map/MapPage.tsx
+- `App()` --calls--> `WorkshopPage()`  [EXTRACTED]
+  src/app/App.tsx → src/features/game/WorkshopPage.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (120 total, 14 thin omitted)
+## Communities (123 total, 15 thin omitted)
 
 ### Community 0 - "Variables y tipos"
 Cohesion: 0.40
@@ -181,8 +182,8 @@ Cohesion: 0.11
 Nodes (18): compilerOptions, baseUrl, isolatedModules, jsx, lib, module, moduleResolution, noEmit (+10 more)
 
 ### Community 6 - "exam-bank.mjs"
-Cohesion: 0.15
-Nodes (14): ADR-0002, ADR-0006, pyodide, cleanTraceback(), collect(), execute(), hex(), ready (+6 more)
+Cohesion: 0.08
+Nodes (26): ADR-0002, ADR-0006, pyodide, mod(), cleanTraceback(), collect(), execute(), hex() (+18 more)
 
 ### Community 7 - "¿Qué es un programa?"
 Cohesion: 0.50
@@ -193,8 +194,8 @@ Cohesion: 0.22
 Nodes (8): run, check-lines, lint, glob, run, pre-commit, commands, parallel
 
 ### Community 9 - "public.submit_exam"
-Cohesion: 0.22
-Nodes (3): public.submit_exam(), public.submit_exam(), public.submit_exam()
+Cohesion: 0.19
+Nodes (7): public.submit_exam(), public.submit_exam(), public.submit_exam(), public.leaderboard(), public.leaderboard(), public.my_gear(), public.set_avatar_gear()
 
 ### Community 11 - "Continuar pylab en otra sesión"
 Cohesion: 0.17
@@ -205,8 +206,8 @@ Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
 ### Community 14 - "public.submit_exam"
-Cohesion: 0.23
-Nodes (4): public.start_exam(), public.start_exam(), public.start_review(), public.submit_exam()
+Cohesion: 0.25
+Nodes (3): public.start_exam(), public.start_review(), public.submit_exam()
 
 ### Community 15 - "ADR-001: React + Vite + TypeScript en Cloudflare Pages"
 Cohesion: 0.40
@@ -229,8 +230,8 @@ Cohesion: 0.33
 Nodes (5): Aplicar un descuento, Decimales al mostrar, Decisión + porcentaje, Ponderaciones, Porcentajes y descuentos
 
 ### Community 21 - "auth.users"
-Cohesion: 0.17
-Nodes (8): public.profiles, public.module_mastery, on_auth_user_created, public.handle_new_user(), public.fill_missing_mastery(), auth.users, pg_temp.make_due(), pg_temp.master_and_wait()
+Cohesion: 0.14
+Nodes (10): public.profiles, public.module_mastery, on_auth_user_created, public.handle_new_user(), public.lesson_progress, public.mark_lesson_read(), public.fill_missing_mastery(), auth.users (+2 more)
 
 ### Community 22 - "Tomar decisiones con if y else"
 Cohesion: 0.40
@@ -253,16 +254,16 @@ Cohesion: 0.40
 Nodes (4): Controlar los decimales, Dentro de las llaves puede ir una cuenta, Mostrar resultados con f-strings, print con comas vs. f-string
 
 ### Community 29 - "dependencies"
-Cohesion: 0.10
-Nodes (20): dependencies, codemirror@6.0.2, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, marked@18.2.0, pyodide@314.0.7, react@^19.3.1 (+12 more)
+Cohesion: 0.12
+Nodes (17): dependencies, codemirror@6.0.2, @codemirror/commands@6.11.1, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, marked@18.2.0, pyodide@314.0.7 (+9 more)
 
 ### Community 31 - "eslint.config.js"
-Cohesion: 0.22
-Nodes (8): @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, typescript-eslint@^8.74.0, @eslint/js, eslint-plugin-react-hooks, globals, typescript-eslint
+Cohesion: 0.15
+Nodes (15): devDependencies, eslint@^9.39.5, @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, @types/node@^22.20.5, typescript@~5.8.3, typescript-eslint@^8.74.0 (+7 more)
 
 ### Community 32 - "line-limit.test.mjs"
-Cohesion: 0.05
-Nodes (44): ADR-0005, Consecuencias, vitest@^3.2.7, vitest, root, files, MODULES, modules (+36 more)
+Cohesion: 0.06
+Nodes (49): ADR-0005, Consecuencias, vitest@^3.2.7, vitest, exerciseFiles, EXERCISES, exercisesOf(), lessonFiles (+41 more)
 
 ### Community 35 - "Funciones: def, parámetros y return"
 Cohesion: 0.20
@@ -273,8 +274,8 @@ Cohesion: 0.29
 Nodes (6): Banderas, break y continue, Banderas: recordar si algo pasó, break: salir del ciclo ya, Contador o bandera, continue: saltar a la siguiente vuelta, Probar menos divisores
 
 ### Community 37 - "package.json"
-Cohesion: 0.14
-Nodes (19): devDependencies, eslint@^9.39.5, lefthook@^1.13.6, @types/node@^22.20.5, @types/react@^19.3.0, @types/react-dom@^19.3.0, typescript@~5.8.3, wrangler@^4.168.0 (+11 more)
+Cohesion: 0.15
+Nodes (12): lefthook@^1.13.6, @types/react@^19.3.0, @types/react-dom@^19.3.0, wrangler@^4.168.0, name, private, type, version (+4 more)
 
 ### Community 38 - "Búsqueda binaria"
 Cohesion: 0.20
@@ -329,8 +330,8 @@ Cohesion: 0.40
 Nodes (4): Centinela: leer hasta una señal, El ciclo infinito, for o while, Repetir mientras algo sea cierto: while
 
 ### Community 53 - "App.tsx"
-Cohesion: 0.06
-Nodes (73): ADR-0004, react-router-dom, @tanstack/react-query, App(), Layout(), Providers(), exerciseFiles, EXERCISES (+65 more)
+Cohesion: 0.07
+Nodes (59): ADR-0004, react-router-dom, @supabase/supabase-js, @tanstack/react-query, App(), Layout(), Providers(), getExercise() (+51 more)
 
 ### Community 54 - "Binario y decimal"
 Cohesion: 0.22
@@ -381,24 +382,24 @@ Cohesion: 0.29
 Nodes (6): Antes de seguir, ¿Cuánto trabajo hace?, ¿Está ordenado?, La pieza básica: intercambiar, Ordenar: intercambios y el método de selección, Selección: el mayor al final
 
 ### Community 67 - "LessonPage.tsx"
-Cohesion: 0.24
-Nodes (9): Block, Grid, GridStep, parseGrid(), parseSteps(), splitBlocks(), Step, GRID_LEGEND (+1 more)
+Cohesion: 0.20
+Nodes (15): getLesson(), Block, Grid, GridStep, parseGrid(), parseSteps(), splitBlocks(), Step (+7 more)
 
-### Community 68 - "anon"
-Cohesion: 0.24
-Nodes (6): practice_attempts_user_exercise, public.practice_attempts, public.record_practice(), public.lesson_progress, public.mark_lesson_read(), public.leaderboard()
+### Community 68 - "public.record_practice"
+Cohesion: 0.60
+Nodes (3): practice_attempts_user_exercise, public.practice_attempts, public.record_practice()
 
 ### Community 69 - "exam_attempts"
-Cohesion: 0.23
-Nodes (4): public.exam_review(), public.exam_payload(), public.exam_review(), public.xp_of()
+Cohesion: 0.22
+Nodes (5): public.exam_review(), public.exam_payload(), public.exam_review(), public.xp_of(), public.gear_unlocked()
 
-### Community 70 - "CharacterCard.tsx"
-Cohesion: 0.12
-Nodes (30): ADR-0008, CharacterCard(), gearOf(), levelOf(), ROBOT_COLORS, XP_PER_LEVEL, XP_RULES, ZONES (+22 more)
+### Community 70 - "ExpeditionMap.tsx"
+Cohesion: 0.09
+Nodes (41): CharacterCard(), Gear, levelOf(), PIECES, ROBOT_COLORS, Slot, SLOTS, XP_PER_LEVEL (+33 more)
 
 ### Community 71 - "public.modules"
-Cohesion: 0.38
-Nodes (8): public.exercises, public.modules, exam_attempts_user_module, exam_items_module, public.exam_attempts, public.exam_items, public.exam_payload(), public.exam_problems
+Cohesion: 0.29
+Nodes (9): public.exercises, public.modules, exam_attempts_user_module, exam_items_module, public.exam_attempts, public.exam_items, public.exam_payload(), public.exam_problems (+1 more)
 
 ### Community 72 - "Expresiones regulares (2): separar, validar y reemplazar"
 Cohesion: 0.22
@@ -580,25 +581,33 @@ Nodes (4): ADR-009: ReactBits con carga diferida y movimiento reducido, Consecue
 Cohesion: 0.40
 Nodes (4): ADR-010: Ningún archivo de más de 250 líneas, Consecuencias, Contexto, Decisión
 
+### Community 118 - "main.tsx"
+Cohesion: 0.33
+Nodes (3): react-dom@^19.3.1, react-dom, root
+
+### Community 120 - "mapStore.ts"
+Cohesion: 0.40
+Nodes (4): ADR-0008, zustand@^5.1.0, zustand, MapState
+
 ## Knowledge Gaps
-- **5 isolated node(s):** `ADR-0004`, `ADR-0008`, `ADR-0002`, `ADR-0006`, `ADR-0005`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 670 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 isolated node(s):** `ADR-0005`, `ADR-0004`, `ADR-0006`, `ADR-0002`, `ADR-0008`
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 676 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `Consecuencias` connect `line-limit.test.mjs` to `adr/README.md`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
-- **What connects `ADR-0004`, `ADR-0008`, `ADR-0002` to the rest of the system?**
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+- **What connects `ADR-0005`, `ADR-0004`, `ADR-0006` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ExerciseFlow.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.0700152207001522 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06812291743798593 - nodes in this community are weakly interconnected._
 - **Why does `ADR-005: Contenido como archivos en `content/`` connect `adr/README.md` to `line-limit.test.mjs`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+  _High betweenness centrality (0.068) - this node is a cross-community bridge._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
-- **Why does `ExerciseDef` connect `line-limit.test.mjs` to `ExerciseFlow.tsx`, `App.tsx`?**
-  _High betweenness centrality (0.068) - this node is a cross-community bridge._
+- **Why does `ExerciseDef` connect `line-limit.test.mjs` to `ExerciseFlow.tsx`?**
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
