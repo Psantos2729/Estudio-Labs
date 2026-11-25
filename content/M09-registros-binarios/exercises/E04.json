@@ -1,0 +1,55 @@
+{
+  "id": "M09-E04",
+  "title": "Agenda de contactos",
+  "statement": "El ejercicio 27 del PDF. El programa lee primero el **nombre del archivo**. **Valida si existe** con `os.path.exists`: si no existe, imprime `El archivo <nombre> no existe. ¿Desea crearlo? (s/n)` y lee la respuesta. Con `s` lo crea vacío e imprime `Archivo <nombre> creado`; con otra cosa imprime `No se creó el archivo` y termina.\n\nDespués, un menú que lee opciones hasta `0`:\n\n- **1 Ingresar:** lee nombre, dirección, móvil, teléfono de casa y correo (una línea cada uno). El **número de contacto es el número de registro** (el siguiente libre, desde 1). Imprime `Contacto <n> guardado`.\n- **2 Consulta individual:** lee un número y muestra el contacto con `seek`, así:\n\n```\nContacto: <n>\nNombre: ...\nDirección: ...\nMóvil: ...\nCasa: ...\nCorreo: ...\n```\n\n  **Valida el número:** si no existe, `No existe el contacto <n>`.\n- **3 Consulta general:** una línea por contacto: `<n> | <nombre> | <móvil> | <correo>`.\n- Otra opción: `Opción inválida`.\n\nAl salir con `0`, imprime `Contactos: <total>`.\n\nFormato del registro: **`'<i30s40s8s8s30s'`** (número, nombre, dirección, móvil, casa, correo; 120 bytes). Los textos siempre caben.",
+  "starter": "import os\nimport struct\n\nFORMATO = '<i30s40s8s8s30s'\nTAM = struct.calcsize(FORMATO)\narchivo = input()\n",
+  "predict": [
+    {
+      "question": "Si el contacto es el número de registro y ya hay 4, ¿qué número recibe el siguiente?",
+      "options": [
+        "5",
+        "0",
+        "4"
+      ],
+      "answer": 0,
+      "why": "Es `total() + 1`: el siguiente lugar libre al final del archivo."
+    },
+    {
+      "question": "¿Qué hace `open(nombre, 'wb').close()`?",
+      "options": [
+        "Nada",
+        "Crea el archivo vacío (o lo vacía si existía)",
+        "Lo borra del disco"
+      ],
+      "answer": 1,
+      "why": "Abrir con `'wb'` crea el archivo; cerrarlo enseguida lo deja con 0 bytes."
+    }
+  ],
+  "hints": [
+    "Primero la validación del archivo; si no se creó, el menú no corre.",
+    "El número del contacto nuevo es `os.path.getsize(archivo) // TAM + 1`; guárdalo también en el registro.",
+    "Para empacar, cada texto con `.encode('utf-8')`; para mostrar, `rstrip(b'\\x00').decode('utf-8')`."
+  ],
+  "tests": [
+    {
+      "stdin": "agenda.dat\ns\n1\nAna López\n5a avenida 3-20 zona 1\n55551234\n22334455\nana@correo.com\n1\nLuis Pérez\nCalle Real 8, Antigua\n44449876\n78321234\nluis.p@uni.edu\n3\n2\n2\n0\n",
+      "stdout": "El archivo agenda.dat no existe. ¿Desea crearlo? (s/n)\nArchivo agenda.dat creado\nContacto 1 guardado\nContacto 2 guardado\n1 | Ana López | 55551234 | ana@correo.com\n2 | Luis Pérez | 44449876 | luis.p@uni.edu\nContacto: 2\nNombre: Luis Pérez\nDirección: Calle Real 8, Antigua\nMóvil: 44449876\nCasa: 78321234\nCorreo: luis.p@uni.edu\nContactos: 2\n"
+    },
+    {
+      "stdin": "contactos.bin\nn\n0\n",
+      "stdout": "El archivo contactos.bin no existe. ¿Desea crearlo? (s/n)\nNo se creó el archivo\n"
+    },
+    {
+      "stdin": "a.dat\ns\n2\n1\n1\nAna López\n5a avenida 3-20 zona 1\n55551234\n22334455\nana@correo.com\n2\n1\n2\n2\n2\n0\n9\n3\n0\n",
+      "stdout": "El archivo a.dat no existe. ¿Desea crearlo? (s/n)\nArchivo a.dat creado\nNo existe el contacto 1\nContacto 1 guardado\nContacto: 1\nNombre: Ana López\nDirección: 5a avenida 3-20 zona 1\nMóvil: 55551234\nCasa: 22334455\nCorreo: ana@correo.com\nNo existe el contacto 2\nNo existe el contacto 0\nOpción inválida\n1 | Ana López | 55551234 | ana@correo.com\nContactos: 1\n"
+    },
+    {
+      "stdin": "mi_agenda.dat\ns\n3\n0\n",
+      "stdout": "El archivo mi_agenda.dat no existe. ¿Desea crearlo? (s/n)\nArchivo mi_agenda.dat creado\nContactos: 0\n"
+    },
+    {
+      "stdin": "x.dat\ns\n1\nAna López\n16 calle 8-71 zona 16\n40464027\n22360226\nana19@correo.com\n1\nAna López\n11 calle 12-43 zona 16\n57811771\n24902696\nana21@correo.com\n1\nSofía Gómez\n1 calle 4-77 zona 12\n34919164\n24894353\nsofía70@correo.com\n1\nAna López\n17 calle 5-92 zona 3\n53360487\n23095196\nana67@correo.com\n3\n2\n3\n2\n5\n0\n",
+      "stdout": "El archivo x.dat no existe. ¿Desea crearlo? (s/n)\nArchivo x.dat creado\nContacto 1 guardado\nContacto 2 guardado\nContacto 3 guardado\nContacto 4 guardado\n1 | Ana López | 40464027 | ana19@correo.com\n2 | Ana López | 57811771 | ana21@correo.com\n3 | Sofía Gómez | 34919164 | sofía70@correo.com\n4 | Ana López | 53360487 | ana67@correo.com\nContacto: 3\nNombre: Sofía Gómez\nDirección: 1 calle 4-77 zona 12\nMóvil: 34919164\nCasa: 24894353\nCorreo: sofía70@correo.com\nNo existe el contacto 5\nContactos: 4\n"
+    }
+  ]
+}

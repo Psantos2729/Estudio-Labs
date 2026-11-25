@@ -8,10 +8,15 @@
     "M08"
   ],
   "concepts": [
-    "registros con struct",
-    "archivos binarios",
-    "acceso directo por número de registro",
-    "alta, consulta y modificación"
+    "registros de tamaño fijo y acceso directo",
+    "bytes, encode y decode (las tildes ocupan 2 bytes)",
+    "struct: pack, unpack y calcsize",
+    "modos wb, ab, rb y r+b; read, tell y getsize",
+    "seek: consulta individual y modificación",
+    "validar si el archivo y el registro existen",
+    "menú con ingreso, consulta general, consulta individual y modificación",
+    "campos calculados y recalcular",
+    "retos: baja lógica, buscar por nombre, ordenar dentro del archivo y reporte a texto"
   ],
   "pdfExercises": [
     27,

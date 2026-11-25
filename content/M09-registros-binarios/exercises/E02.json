@@ -1,0 +1,55 @@
+{
+  "id": "M09-E02",
+  "title": "Grabar productos y consulta general",
+  "statement": "Graba **N** productos en `productos.dat` y después, **leyendo el archivo** (no lo que guardaste en variables), imprime\n\n```\nTamaño del archivo: <s> bytes\nRegistros: <r>\n```\n\ny la **consulta general**: todos los productos en orden, numerados desde 1.\n\nCada producto se escribe con `struct.pack` y el formato **`'<i20sdi'`** (código, nombre en 20 bytes, precio, existencias): 36 bytes por registro. La entrada es **N** y luego, por cada producto, su código, nombre, precio y existencias, uno por línea. Los nombres caben en 20 bytes.\n\nUn producto se muestra así (precio con 2 decimales):\n\n```\n<n>. <código> | <nombre> | <precio> | <existencias>\n```",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'productos.dat'\nFORMATO = '<i20sdi'\nTAM = struct.calcsize(FORMATO)\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "Si `productos.dat` mide 180 bytes y cada registro 36, ¿cuántos registros hay?",
+      "options": [
+        "180",
+        "5",
+        "6"
+      ],
+      "answer": 1,
+      "why": "180 ÷ 36 = 5. Así se sabe sin leerlos."
+    },
+    {
+      "question": "¿Qué devuelve `f.read(36)` cuando ya no quedan registros?",
+      "options": [
+        "None",
+        "b'' (vacío)",
+        "Un error"
+      ],
+      "answer": 1,
+      "why": "Un `bytes` vacío: es la señal para terminar el ciclo."
+    }
+  ],
+  "hints": [
+    "Abre con `'wb'` y, en un `for`, lee los 4 datos y escribe `struct.pack(FORMATO, c, nom.encode('utf-8'), p, e)`.",
+    "`os.path.getsize(ARCHIVO)` da el tamaño; dividido entre `TAM` (con `//`), los registros.",
+    "Para la consulta: abre con `'rb'` y repite `f.read(TAM)` + `struct.unpack` tantas veces como registros haya."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n",
+      "stdout": "Tamaño del archivo: 108 bytes\nRegistros: 3\n1. 10 | Lápiz | 2.50 | 100\n2. 20 | Cuaderno | 15.75 | 40\n3. 30 | Borrador | 1.00 | 7\n"
+    },
+    {
+      "stdin": "1\n1\nÑ\n0.5\n0\n",
+      "stdout": "Tamaño del archivo: 36 bytes\nRegistros: 1\n1. 1 | Ñ | 0.50 | 0\n"
+    },
+    {
+      "stdin": "2\n5\nCompás\n33.333\n12\n6\nTinta\n9.999\n1\n",
+      "stdout": "Tamaño del archivo: 72 bytes\nRegistros: 2\n1. 5 | Compás | 33.33 | 12\n2. 6 | Tinta | 10.00 | 1\n"
+    },
+    {
+      "stdin": "5\n138\nCuaderno\n108.69\n17\n346\nCuaderno\n137.99\n15\n946\nCalculadora\n31.39\n57\n745\nMochila\n145.96\n15\n690\nCalculadora\n99.47\n56\n",
+      "stdout": "Tamaño del archivo: 180 bytes\nRegistros: 5\n1. 138 | Cuaderno | 108.69 | 17\n2. 346 | Cuaderno | 137.99 | 15\n3. 946 | Calculadora | 31.39 | 57\n4. 745 | Mochila | 145.96 | 15\n5. 690 | Calculadora | 99.47 | 56\n"
+    },
+    {
+      "stdin": "6\n147\nEngrapadora\n214.69\n74\n529\nBorrador\n135.4\n146\n415\nEngrapadora\n204.12\n46\n205\nCalculadora\n143.02\n48\n481\nCuaderno\n137.16\n16\n677\nLápiz\n154.94\n127\n",
+      "stdout": "Tamaño del archivo: 216 bytes\nRegistros: 6\n1. 147 | Engrapadora | 214.69 | 74\n2. 529 | Borrador | 135.40 | 146\n3. 415 | Engrapadora | 204.12 | 46\n4. 205 | Calculadora | 143.02 | 48\n5. 481 | Cuaderno | 137.16 | 16\n6. 677 | Lápiz | 154.94 | 127\n"
+    }
+  ]
+}

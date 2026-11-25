@@ -1,0 +1,51 @@
+{
+  "id": "M09-E05",
+  "title": "Modificar el precio",
+  "statement": "Graba **N** productos. Luego lee **K** modificaciones: cada una es un número de registro y un precio nuevo (dos líneas). Para cada una, abre el archivo con `'r+b'`, lee el registro, cambia **solo** el precio y vuelve a escribirlo en su lugar. Imprime\n\n```\nRegistro <n>: <precio viejo> → <precio nuevo>\n```\n\n(los dos con 2 decimales). **Valida el número:** si no existe, imprime `No existe el registro <n>`. Al final imprime la consulta general leyendo el archivo.\n\nCada producto se escribe con `struct.pack` y el formato **`'<i20sdi'`** (código, nombre en 20 bytes, precio, existencias): 36 bytes por registro. La entrada es **N** y luego, por cada producto, su código, nombre, precio y existencias, uno por línea. Los nombres caben en 20 bytes.\n\nUn producto se muestra así (precio con 2 decimales):\n\n```\n<n>. <código> | <nombre> | <precio> | <existencias>\n```",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'productos.dat'\nFORMATO = '<i20sdi'\nTAM = struct.calcsize(FORMATO)\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "Después de `f.read(TAM)`, ¿dónde queda el cursor?",
+      "options": [
+        "Al final de ese registro (inicio del siguiente)",
+        "Al inicio del registro",
+        "Al final del archivo"
+      ],
+      "answer": 0,
+      "why": "Por eso, antes de escribir, hay que hacer `seek` otra vez al inicio del registro."
+    },
+    {
+      "question": "¿Qué modo sirve para leer y sobrescribir sin borrar?",
+      "options": [
+        "'r+b'",
+        "'ab'",
+        "'wb'"
+      ],
+      "answer": 0,
+      "why": "`'wb'` borra todo y `'ab'` escribe solo al final."
+    }
+  ],
+  "hints": [
+    "`f.seek((n - 1) * TAM)`, `f.read(TAM)` y `struct.unpack` para tener los 4 campos.",
+    "Cambia el precio y vuelve con `f.seek((n - 1) * TAM)` antes de `f.write(struct.pack(...))`.",
+    "El nombre ya son bytes: empácalo tal cual, sin `encode`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n2\n2\n18\n1\n3.25\n",
+      "stdout": "Registro 2: 15.75 → 18.00\nRegistro 1: 2.50 → 3.25\n1. 10 | Lápiz | 3.25 | 100\n2. 20 | Cuaderno | 18.00 | 40\n3. 30 | Borrador | 1.00 | 7\n"
+    },
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n3\n4\n1\n0\n5\n3\n0.5\n",
+      "stdout": "No existe el registro 4\nNo existe el registro 0\nRegistro 3: 1.00 → 0.50\n1. 10 | Lápiz | 2.50 | 100\n2. 20 | Cuaderno | 15.75 | 40\n3. 30 | Borrador | 0.50 | 7\n"
+    },
+    {
+      "stdin": "1\n9\nFolder\n1.5\n30\n2\n1\n2\n1\n2.5\n",
+      "stdout": "Registro 1: 1.50 → 2.00\nRegistro 1: 2.00 → 2.50\n1. 9 | Folder | 2.50 | 30\n"
+    },
+    {
+      "stdin": "5\n784\nPegamento\n6.13\n118\n463\nBorrador\n152.92\n126\n160\nRegla\n192.17\n33\n856\nRegla\n99.78\n127\n182\nBorrador\n112.57\n140\n4\n2\n87.57\n6\n43.19\n4\n28.29\n3\n97.67\n",
+      "stdout": "Registro 2: 152.92 → 87.57\nNo existe el registro 6\nRegistro 4: 99.78 → 28.29\nRegistro 3: 192.17 → 97.67\n1. 784 | Pegamento | 6.13 | 118\n2. 463 | Borrador | 87.57 | 126\n3. 160 | Regla | 97.67 | 33\n4. 856 | Regla | 28.29 | 127\n5. 182 | Borrador | 112.57 | 140\n"
+    }
+  ]
+}

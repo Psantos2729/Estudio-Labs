@@ -1,0 +1,49 @@
+{
+  "id": "M09-E08",
+  "title": "Reporte del inventario",
+  "statement": "Graba **N** productos (N ≥ 1). Después, **recorriendo el archivo**, calcula e imprime\n\n```\nValor del inventario: <suma de precio × existencias>\nMás caro: <nombre> (<precio>)\nPocas existencias: <k>\nPrecio promedio: <p>\n```\n\nTodos los montos con 2 decimales. \"Pocas existencias\" cuenta los productos con **menos de 10**. Si hay empate en el más caro, el primero.\n\nCada producto se escribe con `struct.pack` y el formato **`'<i20sdi'`** (código, nombre en 20 bytes, precio, existencias): 36 bytes por registro. La entrada es **N** y luego, por cada producto, su código, nombre, precio y existencias, uno por línea. Los nombres caben en 20 bytes.",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'productos.dat'\nFORMATO = '<i20sdi'\nTAM = struct.calcsize(FORMATO)\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Por qué conviene calcular leyendo el archivo y no las variables del ingreso?",
+      "options": [
+        "Porque así compruebas que lo grabado está bien, y es lo que hace un reporte real",
+        "Porque es más rápido",
+        "Da igual"
+      ],
+      "answer": 0,
+      "why": "Un reporte se hace sobre el archivo, que puede venir de otra ejecución."
+    }
+  ],
+  "hints": [
+    "Recorre los registros con `for n in range(total())` y `f.read(TAM)`.",
+    "Acumula `p * e` para el valor y `p` para el promedio.",
+    "Para el más caro guarda precio y nombre, y compara con `>`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n10\nLápiz\n2.5\n100\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n",
+      "stdout": "Valor del inventario: 887.00\nMás caro: Cuaderno (15.75)\nPocas existencias: 1\nPrecio promedio: 6.42\n"
+    },
+    {
+      "stdin": "1\n1\nTinta\n5.0\n9\n",
+      "stdout": "Valor del inventario: 45.00\nMás caro: Tinta (5.00)\nPocas existencias: 1\nPrecio promedio: 5.00\n"
+    },
+    {
+      "stdin": "2\n1\nA\n3.0\n1\n2\nB\n3.0\n20\n",
+      "stdout": "Valor del inventario: 63.00\nMás caro: A (3.00)\nPocas existencias: 1\nPrecio promedio: 3.00\n"
+    },
+    {
+      "stdin": "5\n336\nBorrador\n21.2\n38\n337\nMochila\n58.72\n124\n951\nCalculadora\n45.99\n72\n104\nBorrador\n105.03\n94\n724\nCalculadora\n79.99\n32\n",
+      "stdout": "Valor del inventario: 23830.66\nMás caro: Borrador (105.03)\nPocas existencias: 0\nPrecio promedio: 62.19\n"
+    },
+    {
+      "stdin": "6\n807\nSacapuntas\n129.12\n13\n567\nTinta\n217.81\n143\n501\nMarcador\n100.05\n26\n593\nMochila\n100.41\n48\n168\nRegla\n110.44\n28\n448\nCalculadora\n13.62\n0\n",
+      "stdout": "Valor del inventario: 43338.69\nMás caro: Tinta (217.81)\nPocas existencias: 1\nPrecio promedio: 111.91\n"
+    },
+    {
+      "stdin": "3\n680\nBorrador\n134.39\n93\n728\nLápiz\n18.04\n53\n728\nMarcador\n37.56\n64\n",
+      "stdout": "Valor del inventario: 15858.23\nMás caro: Borrador (134.39)\nPocas existencias: 0\nPrecio promedio: 63.33\n"
+    }
+  ]
+}

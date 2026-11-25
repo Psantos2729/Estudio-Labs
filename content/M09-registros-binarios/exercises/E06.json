@@ -1,0 +1,51 @@
+{
+  "id": "M09-E06",
+  "title": "Notas de estudiantes",
+  "statement": "El ejercicio 29 del PDF. `notas.dat` empieza vacío y un menú lee opciones hasta `0`:\n\n- **1 Ingresar:** lee carné, nombres, grado, carrera, jornada y las 5 notas (Matemáticas, Inglés, Computación, Programación y Práctica Supervisada), una línea cada dato. **Calcula** el promedio y el tipo, y graba todo. Imprime `Registro <n>: promedio <p> (<tipo>)`.\n- **2 Consulta general:** `<n>. <carné> | <nombre> | <promedio> | <tipo>` por registro.\n- **3 Consulta individual:** lee el número de registro y muestra:\n\n```\nCarné: ...\nNombre: ...\nGrado: ...\nCarrera: ...\nJornada: ...\nMatemáticas: <nota>\nInglés: <nota>\nComputación: <nota>\nProgramación: <nota>\nPráctica Supervisada: <nota>\nPromedio: <p>\nTipo: <tipo>\n```\n- **4 Modificar una nota:** lee el número de registro, el número de materia (1 a 5, en el orden de arriba) y la nota nueva. **Recalcula** el promedio y el tipo, graba el registro e imprime `Registro <n>: promedio <p> (<tipo>)`.\n- Otra opción: `Opción inválida`.\n\nEn las opciones 3 y 4, **valida el número de registro**: si no existe, `No existe el registro <n>` (en la 4, después de leer los tres datos). Notas y promedio con 2 decimales.\n\n**Tipo de promedio:** menos de 60 `BAJO`, menos de 80 `ACEPTABLE`, menos de 90 `BUENO`, y si no `EXCELENTE`.\n\nFormato: **`'<i30si20s10s5dd10s'`** (carné, nombre, grado, carrera, jornada, 5 notas, promedio, tipo).",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'notas.dat'\nFORMATO = '<i30si20s10s5dd10s'\nTAM = struct.calcsize(FORMATO)\nopen(ARCHIVO, 'wb').close()\nop = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué guarda `5d` en un formato de `struct`?",
+      "options": [
+        "Un texto de 5 letras",
+        "5 decimales seguidos (40 bytes)",
+        "Un decimal de 5 bytes"
+      ],
+      "answer": 1,
+      "why": "Un número antes de la letra repite el campo; antes de `s` es el largo del texto."
+    },
+    {
+      "question": "Si se modifica una nota, ¿qué más hay que volver a grabar?",
+      "options": [
+        "Todo el archivo",
+        "El promedio y el tipo, recalculados",
+        "Nada más"
+      ],
+      "answer": 1,
+      "why": "Son campos calculados: si no se recalculan, quedan viejos."
+    }
+  ],
+  "hints": [
+    "Con 12 campos, desempaca a una lista: `r = list(struct.unpack(FORMATO, datos))`. Las notas son `r[5]` a `r[9]`, el promedio `r[10]` y el tipo `r[11]`.",
+    "Escribe una función `tipo(p)` y otra que recalcule `r[10]` y `r[11]` desde las notas.",
+    "Para modificar: `'r+b'`, `seek`, leer, cambiar `r[4 + materia]`, recalcular, `seek` otra vez y `struct.pack(FORMATO, *r)`."
+  ],
+  "tests": [
+    {
+      "stdin": "1\n2026001\nAna López\n5\nBachillerato\nMatutina\n85\n90\n78\n92\n88\n1\n2026002\nLuis Pérez\n5\nPerito\nVespertina\n55\n60\n58\n62\n50\n2\n3\n1\n4\n2\n1\n95\n2\n0\n",
+      "stdout": "Registro 1: promedio 86.60 (BUENO)\nRegistro 2: promedio 57.00 (BAJO)\n1. 2026001 | Ana López | 86.60 | BUENO\n2. 2026002 | Luis Pérez | 57.00 | BAJO\nCarné: 2026001\nNombre: Ana López\nGrado: 5\nCarrera: Bachillerato\nJornada: Matutina\nMatemáticas: 85.00\nInglés: 90.00\nComputación: 78.00\nProgramación: 92.00\nPráctica Supervisada: 88.00\nPromedio: 86.60\nTipo: BUENO\nRegistro 2: promedio 65.00 (ACEPTABLE)\n1. 2026001 | Ana López | 86.60 | BUENO\n2. 2026002 | Luis Pérez | 65.00 | ACEPTABLE\n"
+    },
+    {
+      "stdin": "1\n2026001\nAna López\n5\nBachillerato\nMatutina\n85\n90\n78\n92\n88\n3\n2\n4\n0\n1\n50\n7\n3\n1\n0\n",
+      "stdout": "Registro 1: promedio 86.60 (BUENO)\nNo existe el registro 2\nNo existe el registro 0\nOpción inválida\nCarné: 2026001\nNombre: Ana López\nGrado: 5\nCarrera: Bachillerato\nJornada: Matutina\nMatemáticas: 85.00\nInglés: 90.00\nComputación: 78.00\nProgramación: 92.00\nPráctica Supervisada: 88.00\nPromedio: 86.60\nTipo: BUENO\n"
+    },
+    {
+      "stdin": "2\n1\n2026555\nSofía Gómez\n6\nPerito\nMatutina\n60\n60\n60\n60\n60\n1\n2026831\nSofía Gómez\n4\nBachillerato\nVespertina\n89\n90\n89\n90\n89\n2\n4\n2\n5\n100\n2\n0\n",
+      "stdout": "Registro 1: promedio 60.00 (ACEPTABLE)\nRegistro 2: promedio 89.40 (BUENO)\n1. 2026555 | Sofía Gómez | 60.00 | ACEPTABLE\n2. 2026831 | Sofía Gómez | 89.40 | BUENO\nRegistro 2: promedio 91.60 (EXCELENTE)\n1. 2026555 | Sofía Gómez | 60.00 | ACEPTABLE\n2. 2026831 | Sofía Gómez | 91.60 | EXCELENTE\n"
+    },
+    {
+      "stdin": "1\n2026029\nDiego Ávila\n5\nPerito\nVespertina\n64\n60\n98\n80\n38\n1\n2026226\nLuis Pérez\n4\nBachillerato\nVespertina\n79\n92\n79\n81\n45\n1\n2026932\nLuis Pérez\n6\nPerito\nMatutina\n78\n61\n96\n35\n96\n1\n2026445\nDiego Ávila\n6\nPerito\nMatutina\n50\n84\n60\n96\n57\n2\n3\n3\n4\n4\n3\n20\n2\n0\n",
+      "stdout": "Registro 1: promedio 68.00 (ACEPTABLE)\nRegistro 2: promedio 75.20 (ACEPTABLE)\nRegistro 3: promedio 73.20 (ACEPTABLE)\nRegistro 4: promedio 69.40 (ACEPTABLE)\n1. 2026029 | Diego Ávila | 68.00 | ACEPTABLE\n2. 2026226 | Luis Pérez | 75.20 | ACEPTABLE\n3. 2026932 | Luis Pérez | 73.20 | ACEPTABLE\n4. 2026445 | Diego Ávila | 69.40 | ACEPTABLE\nCarné: 2026932\nNombre: Luis Pérez\nGrado: 6\nCarrera: Perito\nJornada: Matutina\nMatemáticas: 78.00\nInglés: 61.00\nComputación: 96.00\nProgramación: 35.00\nPráctica Supervisada: 96.00\nPromedio: 73.20\nTipo: ACEPTABLE\nRegistro 4: promedio 61.40 (ACEPTABLE)\n1. 2026029 | Diego Ávila | 68.00 | ACEPTABLE\n2. 2026226 | Luis Pérez | 75.20 | ACEPTABLE\n3. 2026932 | Luis Pérez | 73.20 | ACEPTABLE\n4. 2026445 | Diego Ávila | 61.40 | ACEPTABLE\n"
+    }
+  ]
+}

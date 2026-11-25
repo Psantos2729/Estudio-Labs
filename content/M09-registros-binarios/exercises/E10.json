@@ -1,0 +1,38 @@
+{
+  "id": "M09-E10",
+  "title": "Reto: buscar por nombre",
+  "challenge": true,
+  "statement": "**Reto opcional.** Graba N productos. Luego lee **K** textos a buscar. Para cada uno, recorre el archivo e imprime `Buscando '<texto>':` y debajo cada producto cuyo nombre **contiene** ese texto, sin distinguir mayúsculas (con su número de registro, como en la consulta general). Si ninguno, imprime `Sin resultados`.\n\nCada producto se escribe con `struct.pack` y el formato **`'<i20sdi'`** (código, nombre en 20 bytes, precio, existencias): 36 bytes por registro. La entrada es **N** y luego, por cada producto, su código, nombre, precio y existencias, uno por línea. Los nombres caben en 20 bytes.\n\nUn producto se muestra así (precio con 2 decimales):\n\n```\n<n>. <código> | <nombre> | <precio> | <existencias>\n```",
+  "starter": "import os\nimport struct\n\nARCHIVO = 'productos.dat'\nFORMATO = '<i20sdi'\nTAM = struct.calcsize(FORMATO)\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "¿`'la' in 'Lápiz de color'.lower()` es True?",
+      "options": [
+        "No: tiene tilde, es `lá`",
+        "Sí",
+        "Da error"
+      ],
+      "answer": 0,
+      "why": "`'lápiz de color'` contiene `lá`, no `la`. Las tildes cuentan como letras distintas."
+    }
+  ],
+  "hints": [
+    "Abre el archivo una vez por búsqueda y recorre todos los registros.",
+    "Compara `texto.lower() in nombre.lower()`.",
+    "Usa una bandera para saber si imprimir `Sin resultados`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n10\nLápiz\n2.5\n100\n11\nLápiz de color\n4.0\n30\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n31\nSacapuntas\n3.5\n12\n4\nlápiz\nPUNTAS\nregla\nr\n",
+      "stdout": "Buscando 'lápiz':\n1. 10 | Lápiz | 2.50 | 100\n2. 11 | Lápiz de color | 4.00 | 30\nBuscando 'PUNTAS':\n5. 31 | Sacapuntas | 3.50 | 12\nBuscando 'regla':\nSin resultados\nBuscando 'r':\n2. 11 | Lápiz de color | 4.00 | 30\n3. 20 | Cuaderno | 15.75 | 40\n4. 30 | Borrador | 1.00 | 7\n"
+    },
+    {
+      "stdin": "5\n10\nLápiz\n2.5\n100\n11\nLápiz de color\n4.0\n30\n20\nCuaderno\n15.75\n40\n30\nBorrador\n1.0\n7\n31\nSacapuntas\n3.5\n12\n2\n\nxyz\n",
+      "stdout": "Buscando '':\n1. 10 | Lápiz | 2.50 | 100\n2. 11 | Lápiz de color | 4.00 | 30\n3. 20 | Cuaderno | 15.75 | 40\n4. 30 | Borrador | 1.00 | 7\n5. 31 | Sacapuntas | 3.50 | 12\nBuscando 'xyz':\nSin resultados\n"
+    },
+    {
+      "stdin": "6\n563\nEngrapadora\n133.55\n122\n619\nRegla\n174.95\n66\n672\nTinta\n235.85\n114\n240\nMarcador\n30.84\n113\n423\nCuaderno\n167.95\n109\n174\nRegla\n167.53\n31\n3\na\nTa\nñ\n",
+      "stdout": "Buscando 'a':\n1. 563 | Engrapadora | 133.55 | 122\n2. 619 | Regla | 174.95 | 66\n3. 672 | Tinta | 235.85 | 114\n4. 240 | Marcador | 30.84 | 113\n5. 423 | Cuaderno | 167.95 | 109\n6. 174 | Regla | 167.53 | 31\nBuscando 'Ta':\n3. 672 | Tinta | 235.85 | 114\nBuscando 'ñ':\nSin resultados\n"
+    }
+  ]
+}

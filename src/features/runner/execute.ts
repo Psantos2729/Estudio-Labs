@@ -67,11 +67,12 @@ function collect(py: PyodideAPI, dir: string): OutFile[] {
     if (name === '.' || name === '..' || !py.FS.isFile(py.FS.stat(path).mode)) continue;
     const bytes = py.FS.readFile(path) as Uint8Array;
     py.FS.unlink(path);
-    try {
-      files.push({ name, text: new TextDecoder('utf-8', { fatal: true }).decode(bytes) });
-    } catch {
-      files.push({ name, text: hex(bytes), binary: true });
-    }
+    let text: string | null = null;
+    try { text = new TextDecoder('utf-8', { fatal: true }).decode(bytes); } catch { /* no es UTF-8 */ }
+    // Un registro con enteros pequeños puede ser UTF-8 válido: si trae caracteres de control, es binario.
+    const control = bytes.some((b) => b < 32 && b !== 9 && b !== 10 && b !== 13);
+    if (text === null || control) files.push({ name, text: hex(bytes), binary: true });
+    else files.push({ name, text });
   }
   py.FS.chdir('/');
   try { py.FS.rmdir(dir); } catch { /* quedó una subcarpeta: no importa */ }

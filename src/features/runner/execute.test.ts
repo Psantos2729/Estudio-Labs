@@ -44,6 +44,8 @@ describe('execute', () => {
   it('muestra los archivos binarios en hexadecimal', async () => {
     const r = await execute(py, "open('r.dat', 'wb').write(bytes([0, 26, 255]))", '');
     expect(r.files).toEqual([{ name: 'r.dat', text: '00 1a ff', binary: true }]);
+    const chico = await execute(py, "open('n.dat', 'wb').write(bytes([7, 0, 65]))", '');
+    expect(chico.files).toEqual([{ name: 'n.dat', text: '07 00 41', binary: true }]);
   });
 
   it('da EOFError si se piden más datos de los que hay', async () => {
