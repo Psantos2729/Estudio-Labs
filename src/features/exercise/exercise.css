@@ -1,9 +1,9 @@
 /* Pantalla de ejercicio (diseño D1) */
 .stepper { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; font-size: 12px; }
-.stepper li { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--muted); transition: all 0.3s; }
-.stepper .stepper__now { border-color: var(--accent); color: var(--text); background: rgba(111, 155, 255, 0.12); animation: hud-pulse 2s ease-in-out infinite; }
+.stepper li { border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; color: var(--muted); transition: border-color 0.2s, background-color 0.2s, color 0.2s; }
+.stepper .stepper__now { border-color: var(--accent); color: var(--text); background: rgba(111, 155, 255, 0.12); }
 .stepper .stepper__done { border-color: var(--green); background: rgba(62, 240, 160, 0.1); }
-.step-panel { animation: hud-enter 0.3s ease-out; }
+.step-panel { animation: hud-enter 0.2s var(--ease-out); }
 .stepper__back { background: none; border: 0; color: var(--green-hi); font: inherit; cursor: pointer; padding: 0; }
 
 .predict { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; margin: 0; display: grid; gap: 6px; }
