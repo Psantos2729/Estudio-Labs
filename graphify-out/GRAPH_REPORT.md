@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-25)
 
 ## Corpus Check
-- 305 files · ~104,679 words
+- 361 files · ~133,266 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 13 file(s) not represented in the graph (top: .css 7, (none) 3, .example 1)
 
 ## Summary
-- 1023 nodes · 1710 edges · 92 communities (80 shown, 12 thin omitted)
+- 1150 nodes · 1819 edges · 118 communities (106 shown, 12 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8c87def8`
+- Built from commit: `042e196b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -30,12 +30,12 @@
 - Continuar pylab en otra sesión
 - steps
 - LockedNotice.tsx
-- adr/README.md
+- ADR-001: React + Vite + TypeScript en Cloudflare Pages
 - scripts
 - vite
 - Leer datos con input
 - Porcentajes y descuentos
-- MapPage.tsx
+- mapStore.ts
 - Tomar decisiones con if y else
 - Más de dos caminos con elif
 - Combinar condiciones: and, or, not
@@ -79,7 +79,7 @@
 - supabase.ts
 - masteryView.ts
 - HomePage.tsx
-- content/types.ts
+- LessonPage.tsx
 - Expresiones regulares (2): separar, validar y reemplazar
 - Conteos carácter por carácter
 - Expresiones regulares (1): patrones
@@ -98,7 +98,33 @@
 - Multiplicación de matrices
 - Frecuencia de letras (PDF #22)
 - Registros y acceso directo
-- main.tsx
+- Símbolos balanceados
+- Salir de un laberinto
+- Varias cifras, negativos y errores
+- numpy: operar con todo el vector a la vez
+- DataFrame: una tabla
+- Qué es una pila
+- Clases desde cero
+- La pila con un vector y un puntero
+- Infix, prefix y postfix
+- Evaluar postfix con una pila
+- De infix a postfix
+- Expresiones con x y despejar x
+- Filtros
+- Leer archivos CSV y resumir
+- Usos: invertir, cambiar de base y reemplazar
+- Jerarquía de operadores
+- Series: un vector con nombres
+- Regex y pandas: de texto suelto a tabla
+- adr/README.md
+- ADR-002: Python en el navegador con Pyodide dentro de un Web Worker
+- ADR-003: Supabase como base de datos y autenticación
+- ADR-004: El navegador enseña, el servidor certifica
+- ADR-006: Desbloqueo por dominio con 85% y repasos espaciados
+- ADR-007: Modo invitado sin Supabase
+- ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz
+- ADR-009: ReactBits con carga diferida y movimiento reducido
+- ADR-010: Ningún archivo de más de 250 líneas
 
 ## God Nodes (most connected - your core abstractions)
 1. `displayId()` - 26 edges
@@ -109,8 +135,8 @@
 6. `react-router-dom` - 18 edges
 7. `compilerOptions` - 17 edges
 8. `LockedNotice()` - 16 edges
-9. `LessonPage()` - 15 edges
-10. `HomePage()` - 15 edges
+9. `App()` - 15 edges
+10. `LessonPage()` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `Consecuencias` --references--> `ExerciseDef`  [INFERRED]
@@ -119,15 +145,15 @@
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
 - `run()` --calls--> `execute()`  [EXTRACTED]
   tools/exam-bank.mjs → src/features/runner/execute.ts
-- `ModuleView` --references--> `ModuleDef`  [EXTRACTED]
-  src/features/map/masteryView.ts → src/content/types.ts
-- `ExamPage()` --calls--> `displayId()`  [EXTRACTED]
-  src/features/exam/ExamPage.tsx → src/content/types.ts
+- `ExamPage()` --calls--> `warmUp()`  [EXTRACTED]
+  src/features/exam/ExamPage.tsx → src/features/runner/runner.ts
+- `ReviewPage()` --calls--> `warmUp()`  [EXTRACTED]
+  src/features/exam/ReviewPage.tsx → src/features/runner/runner.ts
 
 ## Import Cycles
 - None detected.
 
-## Communities (92 total, 12 thin omitted)
+## Communities (118 total, 12 thin omitted)
 
 ### Community 0 - "Variables y tipos"
 Cohesion: 0.40
@@ -135,7 +161,7 @@ Nodes (4): El orden importa, Los tres tipos del módulo, Nombres de variables, V
 
 ### Community 1 - "ExerciseFlow.tsx"
 Cohesion: 0.06
-Nodes (61): ADR-0004, marked, react, ExerciseDef, TestCase, buildAnswers(), Run, exam (+53 more)
+Nodes (56): ADR-0004, marked, react, TestCase, buildAnswers(), Run, exam, ExamProblemCard() (+48 more)
 
 ### Community 2 - "steps"
 Cohesion: 0.08
@@ -178,12 +204,12 @@ Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
 ### Community 14 - "LockedNotice.tsx"
-Cohesion: 0.17
-Nodes (16): vitest@^3.2.7, vitest, attemptResult(), AttemptRow, base, now, HistoryPage(), when() (+8 more)
+Cohesion: 0.19
+Nodes (14): attemptResult(), AttemptRow, base, now, HistoryPage(), when(), useAttempts(), hour() (+6 more)
 
-### Community 15 - "adr/README.md"
-Cohesion: 0.04
-Nodes (37): ADR-001: React + Vite + TypeScript en Cloudflare Pages, Consecuencias, Contexto, Decisión, ADR-002: Python en el navegador con Pyodide dentro de un Web Worker, Consecuencias, Contexto, Decisión (+29 more)
+### Community 15 - "ADR-001: React + Vite + TypeScript en Cloudflare Pages"
+Cohesion: 0.40
+Nodes (4): ADR-001: React + Vite + TypeScript en Cloudflare Pages, Consecuencias, Contexto, Decisión
 
 ### Community 16 - "scripts"
 Cohesion: 0.18
@@ -201,9 +227,9 @@ Nodes (4): Convertir entre tipos, input() siempre devuelve texto, Leer datos con
 Cohesion: 0.33
 Nodes (5): Aplicar un descuento, Decimales al mostrar, Decisión + porcentaje, Ponderaciones, Porcentajes y descuentos
 
-### Community 21 - "MapPage.tsx"
-Cohesion: 0.20
-Nodes (12): ADR-0008, PrivacyPage(), GateCard(), MapPage(), MapState, useMapStore, currentModule(), ModuleView (+4 more)
+### Community 21 - "mapStore.ts"
+Cohesion: 0.40
+Nodes (4): ADR-0008, zustand@^5.1.0, zustand, MapState
 
 ### Community 22 - "Tomar decisiones con if y else"
 Cohesion: 0.40
@@ -230,12 +256,12 @@ Cohesion: 0.11
 Nodes (19): dependencies, codemirror@6.0.2, @codemirror/commands@6.11.1, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, marked@18.2.0, pyodide@314.0.7 (+11 more)
 
 ### Community 31 - "eslint.config.js"
-Cohesion: 0.22
-Nodes (8): @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, typescript-eslint@^8.74.0, @eslint/js, eslint-plugin-react-hooks, globals, typescript-eslint
+Cohesion: 0.15
+Nodes (15): devDependencies, eslint@^9.39.5, @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, @types/react-dom@^19.3.0, typescript-eslint@^8.74.0, wrangler@^4.168.0 (+7 more)
 
 ### Community 32 - "line-limit.test.mjs"
-Cohesion: 0.08
-Nodes (25): ADR-005: Contenido como archivos en `content/`, Consecuencias, Contexto, Decisión, exerciseFiles, EXERCISES, lessonFiles, LESSONS (+17 more)
+Cohesion: 0.07
+Nodes (29): Consecuencias, vitest@^3.2.7, vitest, LESSONS, parseLesson(), root, modules, root (+21 more)
 
 ### Community 35 - "Funciones: def, parámetros y return"
 Cohesion: 0.20
@@ -246,8 +272,8 @@ Cohesion: 0.29
 Nodes (6): Banderas, break y continue, Banderas: recordar si algo pasó, break: salir del ciclo ya, Contador o bandera, continue: saltar a la siguiente vuelta, Probar menos divisores
 
 ### Community 37 - "package.json"
-Cohesion: 0.14
-Nodes (19): devDependencies, eslint@^9.39.5, lefthook@^1.13.6, @types/node@^22.20.5, @types/react@^19.3.0, @types/react-dom@^19.3.0, typescript@~5.8.3, wrangler@^4.168.0 (+11 more)
+Cohesion: 0.15
+Nodes (12): lefthook@^1.13.6, @types/node@^22.20.5, @types/react@^19.3.0, typescript@~5.8.3, name, private, type, version (+4 more)
 
 ### Community 38 - "Búsqueda binaria"
 Cohesion: 0.20
@@ -302,8 +328,8 @@ Cohesion: 0.40
 Nodes (4): Centinela: leer hasta una señal, El ciclo infinito, for o while, Repetir mientras algo sea cierto: while
 
 ### Community 53 - "App.tsx"
-Cohesion: 0.22
-Nodes (12): react-router-dom, App(), Layout(), getExercise(), useAuth(), LoginPage(), ExercisePage(), useLastAttempt() (+4 more)
+Cohesion: 0.17
+Nodes (15): react-router-dom, App(), Layout(), LoginPage(), ExamPage(), ExamResult(), ReviewPage(), PrivacyPage() (+7 more)
 
 ### Community 54 - "Binario y decimal"
 Cohesion: 0.22
@@ -354,24 +380,24 @@ Cohesion: 0.29
 Nodes (6): Antes de seguir, ¿Cuánto trabajo hace?, ¿Está ordenado?, La pieza básica: intercambiar, Ordenar: intercambios y el método de selección, Selección: el mayor al final
 
 ### Community 67 - "LessonPage.tsx"
-Cohesion: 0.18
-Nodes (16): getLesson(), Block, Grid, GridStep, parseGrid(), parseSteps(), splitBlocks(), Step (+8 more)
+Cohesion: 0.20
+Nodes (12): Block, Grid, GridStep, parseGrid(), parseSteps(), splitBlocks(), Step, GRID_LEGEND (+4 more)
 
 ### Community 68 - "supabase.ts"
-Cohesion: 0.16
-Nodes (13): @supabase/supabase-js, @tanstack/react-query, Providers(), AuthContext, AuthProvider(), AuthState, usePracticeSummary(), anonKey (+5 more)
+Cohesion: 0.15
+Nodes (17): @supabase/supabase-js, @tanstack/react-query, Providers(), AuthContext, AuthProvider(), AuthState, useAuth(), ExamReview (+9 more)
 
 ### Community 69 - "masteryView.ts"
-Cohesion: 0.21
-Nodes (14): files, MODULES, ModuleDef, ReviewListPage(), buildModuleViews(), daysUntil(), dueReviews(), globalMastery() (+6 more)
+Cohesion: 0.16
+Nodes (18): ADR-0005, files, MODULES, BossChallenge, ModuleDef, PredictQuestion, ReviewListPage(), buildModuleViews() (+10 more)
 
 ### Community 70 - "HomePage.tsx"
-Cohesion: 0.28
-Nodes (10): exercisesOf(), lessonsOf(), displayId(), HomePage(), ProgressRing(), TIPS, tipsOfTheDay(), useReadLessons() (+2 more)
+Cohesion: 0.22
+Nodes (14): exercisesOf(), lessonsOf(), displayId(), HomePage(), ProgressRing(), TIPS, tipsOfTheDay(), useReadLessons() (+6 more)
 
-### Community 71 - "content/types.ts"
-Cohesion: 0.24
-Nodes (9): ADR-0005, BossChallenge, LessonDef, PredictQuestion, NextStep, nextStep(), allRead, exercises (+1 more)
+### Community 71 - "LessonPage.tsx"
+Cohesion: 0.29
+Nodes (9): exerciseFiles, EXERCISES, getExercise(), getLesson(), lessonFiles, ExercisePage(), LessonPage(), useMarkLessonRead() (+1 more)
 
 ### Community 72 - "Expresiones regulares (2): separar, validar y reemplazar"
 Cohesion: 0.22
@@ -445,29 +471,133 @@ Nodes (5): Contar y mostrar, El alfabeto como texto, Frecuencia de letras (PDF #
 Cohesion: 0.33
 Nodes (5): La cuenta del acceso directo, Lo que vas a hacer en este módulo, ¿Por qué "binario"?, Registro y campo, Registros y acceso directo
 
-### Community 90 - "main.tsx"
+### Community 90 - "Símbolos balanceados"
+Cohesion: 0.25
+Nodes (7): Decir dónde falla, El algoritmo, El programa, Los tres errores, Parejas sin muchos `if`, Por qué una pila, Símbolos balanceados
+
+### Community 92 - "Salir de un laberinto"
+Cohesion: 0.25
+Nodes (7): Dibujar el camino, El algoritmo, El laberinto como matriz, El programa, Errores típicos, Míralo paso a paso, Salir de un laberinto
+
+### Community 93 - "Varias cifras, negativos y errores"
+Cohesion: 0.25
+Nodes (7): 1. Separar en tokens, 2. El menos que no resta, 3. Validar antes de convertir, 4. Dividir entre 0, 5. Decimales que casi son enteros, Todo junto, Varias cifras, negativos y errores
+
+### Community 94 - "numpy: operar con todo el vector a la vez"
+Cohesion: 0.25
+Nodes (7): Comparar todo el arreglo: máscaras, Estadísticas en una línea, Importar, Mostrar números de numpy, numpy: operar con todo el vector a la vez, Operar con todo el arreglo, Un arreglo es un vector de tamaño fijo
+
+### Community 95 - "DataFrame: una tabla"
+Cohesion: 0.25
+Nodes (7): Agregar filas leídas, Columnas calculadas, Crear una tabla desde un diccionario, DataFrame: una tabla, ¿Por qué no `print(df)`?, Recorrer filas, Una columna, una fila, una casilla
+
+### Community 96 - "Qué es una pila"
+Cohesion: 0.29
+Nodes (6): ¿Dónde se usan las pilas?, Las cuatro operaciones, Lo que vas a hacer en este módulo, Los dos errores de una pila, Míralo paso a paso, Qué es una pila
+
+### Community 97 - "Clases desde cero"
+Cohesion: 0.29
+Nodes (6): Clase y objeto, Clases desde cero, El problema, Errores típicos, Mirar dentro de un objeto, Un método que devuelve algo
+
+### Community 98 - "La pila con un vector y un puntero"
+Cohesion: 0.29
+Nodes (6): El código, La idea, La pila con un vector y un puntero, Mostrar la pila, `raise`: avisar que algo salió mal, `try` / `except`: atrapar el error
+
+### Community 99 - "Infix, prefix y postfix"
+Cohesion: 0.29
+Nodes (6): El plan del módulo, Infix, prefix y postfix, Leer postfix a mano, Pasar de infix a postfix a mano, Tres formas de escribir lo mismo, ¿Y prefix?
+
+### Community 100 - "Evaluar postfix con una pila"
+Cohesion: 0.29
+Nodes (6): Cuándo una expresión no se puede evaluar, El orden importa, Evaluar postfix con una pila, Mostrar el resultado, Un carácter por dato, Varias cifras: separar con espacios
+
+### Community 101 - "De infix a postfix"
+Cohesion: 0.29
+Nodes (6): Con paréntesis y potencias: `(a+b)*c^2^d`, De infix a postfix, Diferencias con tu tarea, El programa, Las reglas, Míralo con `a+b*c-d`
+
+### Community 102 - "Expresiones con x y despejar x"
+Cohesion: 0.29
+Nodes (6): Despejar x en una ecuación lineal, El programa completo, Expresiones con x y despejar x, La x es un operando más, Los casos raros, ¿Y si no es lineal?
+
+### Community 103 - "Filtros"
+Cohesion: 0.29
+Nodes (6): Filtrar y luego calcular, Filtros, Ordenar, Si el filtro no deja nada, Una condición, Varias condiciones: `&`, `|` y `~`
+
+### Community 104 - "Leer archivos CSV y resumir"
+Cohesion: 0.29
+Nodes (6): Escribir un CSV, La posición dentro de un filtro, Las estadísticas de siempre, Leer archivos CSV y resumir, `read_csv`, Resumir por grupo: `groupby`
+
+### Community 105 - "Usos: invertir, cambiar de base y reemplazar"
 Cohesion: 0.33
-Nodes (3): react-dom@^19.3.1, react-dom, root
+Nodes (5): Decimal a binario, El patrón de la pila auxiliar, Invertir, Reemplazar (ejercicio 32 del PDF), Usos: invertir, cambiar de base y reemplazar
+
+### Community 106 - "Jerarquía de operadores"
+Cohesion: 0.33
+Nodes (5): Jerarquía de operadores, La jerarquía como función, La tabla, Misma jerarquía: ¿quién va primero?, Practica a mano
+
+### Community 107 - "Series: un vector con nombres"
+Cohesion: 0.33
+Nodes (5): Leer casillas, Lo mismo que numpy, y más, Ordenar y contar, Recorrer una Series, Series: un vector con nombres
+
+### Community 108 - "Regex y pandas: de texto suelto a tabla"
+Cohesion: 0.33
+Nodes (5): El plan, Grupos con nombre de columna, Promedio por fila, Regex y pandas: de texto suelto a tabla, Resumen del módulo
+
+### Community 109 - "adr/README.md"
+Cohesion: 0.33
+Nodes (4): ADR-005: Contenido como archivos en `content/`, Contexto, Decisión, Decisiones de arquitectura (ADR)
+
+### Community 110 - "ADR-002: Python en el navegador con Pyodide dentro de un Web Worker"
+Cohesion: 0.40
+Nodes (4): ADR-002: Python en el navegador con Pyodide dentro de un Web Worker, Consecuencias, Contexto, Decisión
+
+### Community 111 - "ADR-003: Supabase como base de datos y autenticación"
+Cohesion: 0.40
+Nodes (4): ADR-003: Supabase como base de datos y autenticación, Consecuencias, Contexto, Decisión
+
+### Community 112 - "ADR-004: El navegador enseña, el servidor certifica"
+Cohesion: 0.40
+Nodes (4): ADR-004: El navegador enseña, el servidor certifica, Consecuencias, Contexto, Decisión
+
+### Community 113 - "ADR-006: Desbloqueo por dominio con 85% y repasos espaciados"
+Cohesion: 0.40
+Nodes (4): ADR-006: Desbloqueo por dominio con 85% y repasos espaciados, Consecuencias, Contexto, Decisión
+
+### Community 114 - "ADR-007: Modo invitado sin Supabase"
+Cohesion: 0.40
+Nodes (4): ADR-007: Modo invitado sin Supabase, Consecuencias, Contexto, Decisión
+
+### Community 115 - "ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz"
+Cohesion: 0.40
+Nodes (4): ADR-008: Estado: TanStack Query para el servidor, Zustand para la interfaz, Consecuencias, Contexto, Decisión
+
+### Community 116 - "ADR-009: ReactBits con carga diferida y movimiento reducido"
+Cohesion: 0.40
+Nodes (4): ADR-009: ReactBits con carga diferida y movimiento reducido, Consecuencias, Contexto, Decisión
+
+### Community 117 - "ADR-010: Ningún archivo de más de 250 líneas"
+Cohesion: 0.40
+Nodes (4): ADR-010: Ningún archivo de más de 250 líneas, Consecuencias, Contexto, Decisión
 
 ## Knowledge Gaps
-- **5 isolated node(s):** `ADR-0005`, `ADR-0002`, `ADR-0004`, `ADR-0006`, `ADR-0008`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 552 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **5 isolated node(s):** `ADR-0002`, `ADR-0004`, `ADR-0008`, `ADR-0006`, `ADR-0005`
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 661 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **12 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `ExerciseDef` connect `ExerciseFlow.tsx` to `line-limit.test.mjs`, `content/types.ts`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
-- **What connects `ADR-0005`, `ADR-0002`, `ADR-0004` to the rest of the system?**
+- **Why does `Consecuencias` connect `line-limit.test.mjs` to `adr/README.md`?**
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
+- **What connects `ADR-0002`, `ADR-0004`, `ADR-0008` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `ExerciseFlow.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.06452455590386624 - nodes in this community are weakly interconnected._
-- **Why does `Consecuencias` connect `line-limit.test.mjs` to `ExerciseFlow.tsx`?**
-  _High betweenness centrality (0.073) - this node is a cross-community bridge._
+  _Cohesion score 0.06397016637980493 - nodes in this community are weakly interconnected._
+- **Why does `ADR-005: Contenido como archivos en `content/`` connect `adr/README.md` to `line-limit.test.mjs`?**
+  _High betweenness centrality (0.045) - this node is a cross-community bridge._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
+- **Why does `ExerciseDef` connect `line-limit.test.mjs` to `ExerciseFlow.tsx`, `masteryView.ts`, `LessonPage.tsx`?**
+  _High betweenness centrality (0.043) - this node is a cross-community bridge._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `exam-bank.mjs` be split into smaller, more focused modules?**
-  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
