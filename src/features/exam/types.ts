@@ -21,3 +21,15 @@ export interface ExamOutcome {
   problems: { id: string; passed: number; total: number }[];
   questions: { passed: number; total: number };
 }
+
+/** Lo que devuelve exam_review (migración 014): tu entrega con ✓/×, sin respuestas correctas. */
+export interface ExamReview {
+  attempt_id: number;
+  module_id: string;
+  kind: 'exam' | 'review';
+  started_at: string;
+  score: number;
+  passed: boolean;
+  problems: (Omit<ExamProblem, 'cases'> & { code: string | null; cases: (ExamCase & { given: string | null; good: boolean })[] })[];
+  questions: (ExamQuestion & { picked: string | null; good: boolean })[];
+}

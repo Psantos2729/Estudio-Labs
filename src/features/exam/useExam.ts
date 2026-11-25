@@ -30,8 +30,9 @@ export function useStartReview(moduleId: string) {
 export function useSubmitExam() {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: async ({ attemptId, answers }: { attemptId: number; answers: Record<string, string> }) => {
-      const { data, error } = await supabase!.rpc('submit_exam', { p_attempt_id: attemptId, p_answers: answers });
+    mutationFn: async ({ attemptId, answers, code }: { attemptId: number; answers: Record<string, string>; code: Record<string, string> }) => {
+      // El código se guarda para revisar el intento después (migración 014).
+      const { data, error } = await supabase!.rpc('submit_exam', { p_attempt_id: attemptId, p_answers: answers, p_code: code });
       if (error) throw new Error(error.message);
       return data as ExamOutcome;
     },

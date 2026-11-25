@@ -6,8 +6,8 @@ import { CodeEditor } from '@/features/exercise/CodeEditor';
 import type { ExamProblem } from './types';
 
 /** Un problema del examen: enunciado, editor y "Correr" con entrada propia. Sin pistas ni pruebas. */
-export function ExamProblemCard({ problem, n, initial, onChange }: {
-  problem: ExamProblem; n: number; initial: string; onChange: (code: string) => void;
+export function ExamProblemCard({ problem, n, initial, onChange, note }: {
+  problem: Pick<ExamProblem, 'title' | 'statement'>; n: number; initial: string; onChange?: (code: string) => void; note: string;
 }) {
   const [code, setCode] = useState(initial);
   const [first] = useState(initial); // el editor solo toma el texto inicial una vez
@@ -23,7 +23,7 @@ export function ExamProblemCard({ problem, n, initial, onChange }: {
         <div className="prose" dangerouslySetInnerHTML={{ __html: marked.parse(problem.statement, { async: false }) }} />
       </div>
       <div className="split__code">
-        <CodeEditor initial={first} onChange={(c) => { setCode(c); onChange(c); }} />
+        <CodeEditor initial={first} onChange={(c) => { setCode(c); onChange?.(c); }} />
         <label className="field">
           <span className="muted small">entrada para probar tú mismo (una línea por cada input())</span>
           <textarea className="input field__text" rows={2} value={stdin} onChange={(e) => setStdin(e.target.value)} />
@@ -34,7 +34,7 @@ export function ExamProblemCard({ problem, n, initial, onChange }: {
             setRun(await runPython(code, stdin));
             setBusy(false);
           }}>▶ Correr</Button>
-          <span className="muted small">Al entregar, tu código corre con {problem.cases.length} entradas ocultas.</span>
+          <span className="muted small">{note}</span>
         </div>
         {run && (
           <pre className="runnable__out" aria-live="polite">
