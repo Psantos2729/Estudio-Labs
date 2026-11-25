@@ -1,0 +1,67 @@
+{
+  "id": "M03-E03",
+  "title": "Al revés y ¿capicúa?",
+  "statement": "Lee un entero **N** (N ≥ 0). Imprime el número al revés y si es capicúa (se lee igual en los dos sentidos):\n\n```\nAl revés: <r>\n<N> es capicúa\n```\n\no `<N> no es capicúa`.\n\nEl revés es un **número**: el revés de `120` es `21`. Resuélvelo con `%` y `//`, sin convertir a texto.\n\nEjemplo: con `4071` imprime `Al revés: 1704` y `4071 no es capicúa`; con `121`, `Al revés: 121` y `121 es capicúa`.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "Con `reves = 17` y el siguiente dígito `0`, ¿cuánto vale `reves * 10 + 0`?",
+      "options": [
+        "170",
+        "71",
+        "17"
+      ],
+      "answer": 0,
+      "why": "Multiplicar por 10 corre las cifras a la izquierda y deja lugar para pegar el dígito nuevo a la derecha."
+    },
+    {
+      "question": "¿Por qué hay que guardar una copia del número antes del ciclo?",
+      "options": [
+        "Porque `%` cambia la variable",
+        "Porque el ciclo lo deja en 0",
+        "No hace falta"
+      ],
+      "answer": 1,
+      "why": "`n = n // 10` va gastando el número hasta 0. Para compararlo con el revés al final necesitas el valor original guardado aparte."
+    }
+  ],
+  "hints": [
+    "Guarda `original = n` antes del ciclo.",
+    "En cada vuelta: `reves = reves * 10 + n % 10` y luego `n = n // 10`.",
+    "Al final compara `original == reves`. El 0 sale bien solo: su revés es 0 y es capicúa."
+  ],
+  "tests": [
+    {
+      "stdin": "4071\n",
+      "stdout": "Al revés: 1704\n4071 no es capicúa\n"
+    },
+    {
+      "stdin": "121\n",
+      "stdout": "Al revés: 121\n121 es capicúa\n"
+    },
+    {
+      "stdin": "120\n",
+      "stdout": "Al revés: 21\n120 no es capicúa\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "Al revés: 7\n7 es capicúa\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Al revés: 0\n0 es capicúa\n"
+    },
+    {
+      "stdin": "4334\n",
+      "stdout": "Al revés: 4334\n4334 es capicúa\n"
+    },
+    {
+      "stdin": "4335\n",
+      "stdout": "Al revés: 5334\n4335 no es capicúa\n"
+    },
+    {
+      "stdin": "1000001\n",
+      "stdout": "Al revés: 1000001\n1000001 es capicúa\n"
+    }
+  ]
+}

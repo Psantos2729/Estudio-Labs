@@ -1,0 +1,72 @@
+{
+  "id": "M03-E07",
+  "title": "De binario a decimal",
+  "pdf": 17,
+  "statement": "Lee un número binario como **texto** (por ejemplo `10110`) e imprime su valor en decimal:\n\n```\nDecimal: <n>\n```\n\nSi el texto tiene algún carácter que no sea `0` o `1`, imprime `No es binario`.\n\nHazlo tú, sin `int(texto, 2)`.\n\nEjemplo: con `10110` imprime `Decimal: 22`; con `102`, `No es binario`.",
+  "starter": "bits = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `v = 0`, luego `for c in '101': v = v * 2 + int(c)` y `print(v)`?",
+      "options": [
+        "101",
+        "5",
+        "3"
+      ],
+      "answer": 1,
+      "why": "`v` vale 1, luego 1×2+0 = 2, luego 2×2+1 = 5. Cada bit nuevo duplica lo que llevas y se suma."
+    },
+    {
+      "question": "¿Cuánto vale la posición más a la izquierda de `1000` en binario?",
+      "options": [
+        "1000",
+        "4",
+        "8"
+      ],
+      "answer": 2,
+      "why": "Las posiciones valen 1, 2, 4 y 8 desde la derecha. `1000` tiene un 1 solo en la del 8."
+    }
+  ],
+  "hints": [
+    "Recorre el texto con `for c in bits:`.",
+    "Usa una bandera `valido` que empiece en `True` y pase a `False` si `c` no es `'0'` ni `'1'`.",
+    "Para el valor: `valor = valor * 2 + int(c)`. Calcúlalo solo si el carácter es válido, y al final imprime según la bandera."
+  ],
+  "tests": [
+    {
+      "stdin": "10110\n",
+      "stdout": "Decimal: 22\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Decimal: 0\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "Decimal: 1\n"
+    },
+    {
+      "stdin": "11111111\n",
+      "stdout": "Decimal: 255\n"
+    },
+    {
+      "stdin": "102\n",
+      "stdout": "No es binario\n"
+    },
+    {
+      "stdin": "1a\n",
+      "stdout": "No es binario\n"
+    },
+    {
+      "stdin": "10000000000\n",
+      "stdout": "Decimal: 1024\n"
+    },
+    {
+      "stdin": "0011\n",
+      "stdout": "Decimal: 3\n"
+    },
+    {
+      "stdin": "2\n",
+      "stdout": "No es binario\n"
+    }
+  ]
+}

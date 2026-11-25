@@ -1,0 +1,63 @@
+{
+  "id": "M03-E10",
+  "title": "Días para el cumpleaños",
+  "statement": "Lee la **fecha de nacimiento** y la **fecha de hoy** en formato `dd/mm/aaaa`, una por línea. Imprime cuántos días faltan para el próximo cumpleaños:\n\n```\nFaltan <n> días\n```\n\nSi hoy es el cumpleaños, imprime `¡Feliz cumpleaños!`. Si el cumpleaños de este año ya pasó, cuenta hasta el del año siguiente. (Nadie de las pruebas nació un 29 de febrero.)\n\nPuedes usar `date` del módulo `datetime`.\n\nEjemplo: con `25/12/2005` y `24/11/2026` imprime `Faltan 31 días`.",
+  "starter": "from datetime import date\n\nnacimiento = input()\nhoy = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `print((date(2026, 12, 25) - date(2026, 12, 20)).days)`?",
+      "options": [
+        "5",
+        "25",
+        "-5"
+      ],
+      "answer": 0,
+      "why": "Restar dos fechas da la diferencia; `.days` es el número de días entre ellas."
+    },
+    {
+      "question": "Si el cumpleaños fue el 10 de marzo y hoy es 24 de noviembre, ¿de qué año es el próximo cumpleaños?",
+      "options": [
+        "Del año de nacimiento",
+        "De este año",
+        "Del año siguiente"
+      ],
+      "answer": 2,
+      "why": "El de este año ya pasó, así que el próximo es el 10 de marzo del año que viene."
+    }
+  ],
+  "hints": [
+    "Separa las fechas con `split('/')` y arma `hoy = date(a, m, d)`.",
+    "Arma el cumpleaños de **este** año: `date(anio_hoy, mes_nac, dia_nac)`. Si es menor que hoy, usa el año siguiente.",
+    "Si el cumpleaños es igual a hoy, felicita; si no, imprime `(cumple - hoy).days`."
+  ],
+  "tests": [
+    {
+      "stdin": "25/12/2005\n24/11/2026\n",
+      "stdout": "Faltan 31 días\n"
+    },
+    {
+      "stdin": "24/11/2005\n24/11/2026\n",
+      "stdout": "¡Feliz cumpleaños!\n"
+    },
+    {
+      "stdin": "23/11/2005\n24/11/2026\n",
+      "stdout": "Faltan 364 días\n"
+    },
+    {
+      "stdin": "25/11/2005\n24/11/2026\n",
+      "stdout": "Faltan 1 días\n"
+    },
+    {
+      "stdin": "01/01/1999\n31/12/2026\n",
+      "stdout": "Faltan 1 días\n"
+    },
+    {
+      "stdin": "01/03/2010\n28/02/2027\n",
+      "stdout": "Faltan 1 días\n"
+    },
+    {
+      "stdin": "01/03/2010\n28/02/2028\n",
+      "stdout": "Faltan 2 días\n"
+    }
+  ]
+}

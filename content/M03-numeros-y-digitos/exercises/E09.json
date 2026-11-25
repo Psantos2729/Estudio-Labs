@@ -1,0 +1,68 @@
+{
+  "id": "M03-E09",
+  "title": "La edad de una persona",
+  "pdf": 9,
+  "statement": "Lee dos fechas en formato `dd/mm/aaaa`, una por línea: primero la **fecha de nacimiento** y después la **fecha de hoy**. Imprime la edad en años cumplidos:\n\n```\nEdad: <años>\n```\n\nRecuerda: si el cumpleaños de este año todavía no llega, tiene un año menos que la resta de los años. El mismo día del cumpleaños ya cuenta como cumplido.\n\nEjemplo: con `14/03/2005` y `24/11/2026` imprime `Edad: 21`; con `25/12/2005` y `24/11/2026`, `Edad: 20`.",
+  "starter": "nacimiento = input()\nhoy = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué da `(11, 24) < (12, 25)`?",
+      "options": [
+        "True",
+        "False",
+        "Error"
+      ],
+      "answer": 0,
+      "why": "Python compara primero los meses: 11 < 12, así que ya es `True` sin mirar los días."
+    },
+    {
+      "question": "¿Qué da `(3, 14) < (3, 9)`?",
+      "options": [
+        "False",
+        "True",
+        "Error"
+      ],
+      "answer": 0,
+      "why": "Los meses son iguales, así que decide el día: 14 no es menor que 9."
+    }
+  ],
+  "hints": [
+    "Separa cada fecha con `split('/')` y convierte las tres partes a `int`.",
+    "La edad empieza como `anio_hoy - anio_nac`.",
+    "Réstale 1 si `(mes_hoy, dia_hoy) < (mes_nac, dia_nac)`: el cumpleaños de este año todavía no llega."
+  ],
+  "tests": [
+    {
+      "stdin": "14/03/2005\n24/11/2026\n",
+      "stdout": "Edad: 21\n"
+    },
+    {
+      "stdin": "25/12/2005\n24/11/2026\n",
+      "stdout": "Edad: 20\n"
+    },
+    {
+      "stdin": "24/11/2005\n24/11/2026\n",
+      "stdout": "Edad: 21\n"
+    },
+    {
+      "stdin": "25/11/2005\n24/11/2026\n",
+      "stdout": "Edad: 20\n"
+    },
+    {
+      "stdin": "23/11/2005\n24/11/2026\n",
+      "stdout": "Edad: 21\n"
+    },
+    {
+      "stdin": "01/01/2000\n31/12/2026\n",
+      "stdout": "Edad: 26\n"
+    },
+    {
+      "stdin": "31/12/2000\n01/01/2027\n",
+      "stdout": "Edad: 26\n"
+    },
+    {
+      "stdin": "10/06/2026\n24/11/2026\n",
+      "stdout": "Edad: 0\n"
+    }
+  ]
+}

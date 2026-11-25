@@ -1,0 +1,64 @@
+{
+  "id": "M03-E05",
+  "title": "Reto: máximo común divisor",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee dos enteros positivos **A** y **B**, uno por línea, e imprime su máximo común divisor con el **algoritmo de Euclides**:\n\n```\nMCD: <m>\n```\n\nEuclides: mientras B no sea 0, cambia el par (A, B) por (B, A % B). Cuando B llega a 0, el MCD es A.\n\nEjemplo: con `48` y `18` imprime `MCD: 6`.",
+  "starter": "a = int(input())\nb = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime `a, b = 48, 18` seguido de `a, b = b, a % b` y `print(a, b)`?",
+      "options": [
+        "12 18",
+        "18 12",
+        "18 0"
+      ],
+      "answer": 1,
+      "why": "Los dos valores de la derecha se calculan con los `a` y `b` de antes: `b` es 18 y `48 % 18` es 12. Después se guardan."
+    },
+    {
+      "question": "¿Qué pasa si escribes `a = b` y en la siguiente línea `b = a % b`?",
+      "options": [
+        "Lo mismo que la asignación doble",
+        "Da error",
+        "`b` queda en 0 porque `a` ya cambió"
+      ],
+      "answer": 2,
+      "why": "Después de `a = b` los dos valen lo mismo, y un número módulo sí mismo es 0. Por eso se usa la asignación doble o una variable auxiliar."
+    }
+  ],
+  "hints": [
+    "Usa `while b != 0:`.",
+    "Dentro del ciclo: `a, b = b, a % b`.",
+    "Al salir del ciclo, el MCD está en `a`."
+  ],
+  "tests": [
+    {
+      "stdin": "48\n18\n",
+      "stdout": "MCD: 6\n"
+    },
+    {
+      "stdin": "18\n48\n",
+      "stdout": "MCD: 6\n"
+    },
+    {
+      "stdin": "17\n5\n",
+      "stdout": "MCD: 1\n"
+    },
+    {
+      "stdin": "100\n75\n",
+      "stdout": "MCD: 25\n"
+    },
+    {
+      "stdin": "7\n7\n",
+      "stdout": "MCD: 7\n"
+    },
+    {
+      "stdin": "1\n999\n",
+      "stdout": "MCD: 1\n"
+    },
+    {
+      "stdin": "1071\n462\n",
+      "stdout": "MCD: 21\n"
+    }
+  ]
+}

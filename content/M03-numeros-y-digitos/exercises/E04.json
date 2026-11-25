@@ -1,0 +1,72 @@
+{
+  "id": "M03-E04",
+  "title": "Reto: números de Armstrong",
+  "challenge": true,
+  "statement": "**Reto opcional.** Un número es de **Armstrong** si es igual a la suma de sus cifras elevadas a la cantidad de cifras que tiene.\n\n153 tiene 3 cifras y 1³ + 5³ + 3³ = 1 + 125 + 27 = 153, así que es de Armstrong. 154 no: 1³ + 5³ + 4³ = 190.\n\nLee un entero **N** (N ≥ 1) e imprime `<N> es de Armstrong` o `<N> no es de Armstrong`.",
+  "starter": "n = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué da `5 ** 3`?",
+      "options": [
+        "8",
+        "15",
+        "125"
+      ],
+      "answer": 2,
+      "why": "`**` es la potencia: 5 × 5 × 5 = 125."
+    },
+    {
+      "question": "¿Es 7 de Armstrong?",
+      "options": [
+        "Sí: tiene 1 cifra y 7¹ = 7",
+        "No: 7² = 49",
+        "No: es primo"
+      ],
+      "answer": 0,
+      "why": "Con una sola cifra se eleva a la 1, y cualquier número a la 1 es él mismo. Todos los números de 1 a 9 son de Armstrong."
+    }
+  ],
+  "hints": [
+    "Necesitas dos datos: cuántas cifras tiene y la suma de las cifras elevadas a esa cantidad.",
+    "Haz un primer ciclo sobre una copia para contar cifras, y un segundo ciclo sobre otra copia para sumar `(n % 10) ** cifras`.",
+    "Al final compara la suma con el número original."
+  ],
+  "tests": [
+    {
+      "stdin": "153\n",
+      "stdout": "153 es de Armstrong\n"
+    },
+    {
+      "stdin": "154\n",
+      "stdout": "154 no es de Armstrong\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "7 es de Armstrong\n"
+    },
+    {
+      "stdin": "10\n",
+      "stdout": "10 no es de Armstrong\n"
+    },
+    {
+      "stdin": "370\n",
+      "stdout": "370 es de Armstrong\n"
+    },
+    {
+      "stdin": "371\n",
+      "stdout": "371 es de Armstrong\n"
+    },
+    {
+      "stdin": "9474\n",
+      "stdout": "9474 es de Armstrong\n"
+    },
+    {
+      "stdin": "9475\n",
+      "stdout": "9475 no es de Armstrong\n"
+    },
+    {
+      "stdin": "548834\n",
+      "stdout": "548834 es de Armstrong\n"
+    }
+  ]
+}

@@ -21,7 +21,7 @@ export function HomePage() {
   const current = currentModule(views) ?? views[0];
   const m = current.module;
   const lessons = lessonsOf(m.id);
-  const exercises = exercisesOf(m.id);
+  const exercises = exercisesOf(m.id).filter((e) => !e.challenge);
   const solvedHere = exercises.filter((e) => practice.passed.has(e.id)).length;
   const readHere = lessons.filter((l) => lessonsRead.read.has(l.id)).length;
   const steps = lessons.length + exercises.length;
