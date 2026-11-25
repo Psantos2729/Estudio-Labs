@@ -1,0 +1,92 @@
+{
+  "id": "M04-E06",
+  "title": "De decimal a romano",
+  "pdf": 20,
+  "statement": "Lee un entero **N** entre 1 y 3999 e imprime su número romano. Usa una función `a_romano(n)` y dos listas paralelas con los valores y los símbolos (incluye las restas como `CM`, `XC` o `IV`).\n\nEjemplo: con `1994` imprime `MCMXCIV`; con `2026`, `MMXXVI`.",
+  "starter": "VALORES = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]\nSIMBOLOS = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']\n\n\ndef a_romano(n):\n    pass\n\n\nn = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Cómo se escribe 40 en romano?",
+      "options": [
+        "LX",
+        "XXXX",
+        "XL"
+      ],
+      "answer": 2,
+      "why": "Un símbolo menor a la izquierda de uno mayor se resta: XL = 50 − 10. LX sería 60, y nunca se repiten cuatro símbolos iguales."
+    },
+    {
+      "question": "¿Por qué la conversión usa `while n >= VALORES[i]` y no `if`?",
+      "options": [
+        "Porque `if` no funciona con listas",
+        "Porque un símbolo puede repetirse, como en MMM",
+        "Da igual, los dos funcionan"
+      ],
+      "answer": 1,
+      "why": "Con `if` solo se pegaría una M en 3000. El `while` pega el símbolo mientras su valor siga cabiendo."
+    }
+  ],
+  "hints": [
+    "Recorre las posiciones de la tabla con `for i in range(len(VALORES)):`.",
+    "Mientras `n >= VALORES[i]`, pega `SIMBOLOS[i]` y resta `VALORES[i]` a `n`.",
+    "La función devuelve el texto armado; el programa principal lo imprime."
+  ],
+  "tests": [
+    {
+      "stdin": "1994\n",
+      "stdout": "MCMXCIV\n"
+    },
+    {
+      "stdin": "2026\n",
+      "stdout": "MMXXVI\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "I\n"
+    },
+    {
+      "stdin": "4\n",
+      "stdout": "IV\n"
+    },
+    {
+      "stdin": "9\n",
+      "stdout": "IX\n"
+    },
+    {
+      "stdin": "14\n",
+      "stdout": "XIV\n"
+    },
+    {
+      "stdin": "40\n",
+      "stdout": "XL\n"
+    },
+    {
+      "stdin": "90\n",
+      "stdout": "XC\n"
+    },
+    {
+      "stdin": "400\n",
+      "stdout": "CD\n"
+    },
+    {
+      "stdin": "444\n",
+      "stdout": "CDXLIV\n"
+    },
+    {
+      "stdin": "999\n",
+      "stdout": "CMXCIX\n"
+    },
+    {
+      "stdin": "3999\n",
+      "stdout": "MMMCMXCIX\n"
+    },
+    {
+      "stdin": "3000\n",
+      "stdout": "MMM\n"
+    },
+    {
+      "stdin": "1666\n",
+      "stdout": "MDCLXVI\n"
+    }
+  ]
+}

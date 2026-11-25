@@ -1,0 +1,63 @@
+{
+  "id": "M06-E04",
+  "title": "Burbuja pasada por pasada",
+  "statement": "Lee **N** (N ≥ 2) y N enteros. Ordénalos con **burbuja normal** (sin bandera). Burbuja: `for i in range(n - 1)` y adentro `for j in range(n - 1 - i)`. Cada vez que se evalúa `v[j] > v[j + 1]` es una **comparación**; cada vez que se cambian es un **intercambio**.\n\nDespués de cada pasada imprime el vector y al final los totales:\n\n```\nPasada 1: <vector>\n...\nPasada <N-1>: <vector>\nComparaciones: <c>\nIntercambios: <t>\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.\n\nEjemplo: con `5 1 4 2 8` la primera línea es `Pasada 1: 1 4 2 5 8`, y al final `Comparaciones: 10` e `Intercambios: 4`.",
+  "starter": "def mostrar(v):\n    for i in range(len(v)):\n        print(v[i], end=' ')\n    print()\n\n\nn = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "Después de la primera pasada de burbuja, ¿qué se puede asegurar?",
+      "options": [
+        "Que el mayor quedó en la última posición",
+        "Que el vector ya está ordenado",
+        "Que el menor quedó al inicio"
+      ],
+      "answer": 0,
+      "why": "El mayor \"sube\" comparándose con cada vecino hasta llegar al final. El menor solo avanza una posición por pasada."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nn = 4\nc = 0\nfor i in range(n - 1):\n    for j in range(n - 1 - i):\n        c = c + 1\nprint(c)\n```",
+      "options": [
+        "3",
+        "9",
+        "6"
+      ],
+      "answer": 2,
+      "why": "Con n = 4: 3 + 2 + 1 = 6. Cada pasada compara una pareja menos."
+    }
+  ],
+  "hints": [
+    "`for i in range(n - 1):` y adentro `for j in range(n - 1 - i):`.",
+    "Suma 1 a `comp` antes del `if`; suma 1 a `inter` dentro del `if`, al intercambiar.",
+    "Imprime la pasada al terminar el `for j`, todavía dentro del `for i`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n5\n1\n4\n2\n8\n",
+      "stdout": "Pasada 1: 1 4 2 5 8 \nPasada 2: 1 2 4 5 8 \nPasada 3: 1 2 4 5 8 \nPasada 4: 1 2 4 5 8 \nComparaciones: 10\nIntercambios: 4\n"
+    },
+    {
+      "stdin": "4\n1\n2\n3\n4\n",
+      "stdout": "Pasada 1: 1 2 3 4 \nPasada 2: 1 2 3 4 \nPasada 3: 1 2 3 4 \nComparaciones: 6\nIntercambios: 0\n"
+    },
+    {
+      "stdin": "4\n4\n3\n2\n1\n",
+      "stdout": "Pasada 1: 3 2 1 4 \nPasada 2: 2 1 3 4 \nPasada 3: 1 2 3 4 \nComparaciones: 6\nIntercambios: 6\n"
+    },
+    {
+      "stdin": "2\n2\n1\n",
+      "stdout": "Pasada 1: 1 2 \nComparaciones: 1\nIntercambios: 1\n"
+    },
+    {
+      "stdin": "3\n3\n3\n1\n",
+      "stdout": "Pasada 1: 3 1 3 \nPasada 2: 1 3 3 \nComparaciones: 3\nIntercambios: 2\n"
+    },
+    {
+      "stdin": "6\n24\n53\n7\n75\n9\n93\n",
+      "stdout": "Pasada 1: 24 7 53 9 75 93 \nPasada 2: 7 24 9 53 75 93 \nPasada 3: 7 9 24 53 75 93 \nPasada 4: 7 9 24 53 75 93 \nPasada 5: 7 9 24 53 75 93 \nComparaciones: 15\nIntercambios: 5\n"
+    },
+    {
+      "stdin": "8\n76\n11\n9\n93\n8\n35\n19\n30\n",
+      "stdout": "Pasada 1: 11 9 76 8 35 19 30 93 \nPasada 2: 9 11 8 35 19 30 76 93 \nPasada 3: 9 8 11 19 30 35 76 93 \nPasada 4: 8 9 11 19 30 35 76 93 \nPasada 5: 8 9 11 19 30 35 76 93 \nPasada 6: 8 9 11 19 30 35 76 93 \nPasada 7: 8 9 11 19 30 35 76 93 \nComparaciones: 28\nIntercambios: 15\n"
+    }
+  ]
+}

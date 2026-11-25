@@ -1,0 +1,63 @@
+{
+  "id": "M04-E03",
+  "title": "Invertir un texto a mano",
+  "statement": "Lee una línea de texto e imprímela **al revés**, sin usar `[::-1]` ni `reversed()`: arma el texto nuevo con un ciclo.\n\nEjemplo: con `hola mundo` imprime `odnum aloh`.",
+  "starter": "texto = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nr = ''\nfor c in 'abc':\n    r = c + r\nprint(r)\n```",
+      "options": [
+        "a",
+        "cba",
+        "abc"
+      ],
+      "answer": 1,
+      "why": "Cada letra se pega **delante** de lo que ya había: a, luego ba, luego cba."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nr = ''\nfor c in 'abc':\n    r = r + c\nprint(r)\n```",
+      "options": [
+        "cba",
+        "c",
+        "abc"
+      ],
+      "answer": 2,
+      "why": "Si se pega **detrás** (`r + c`) solo se copia el texto en el mismo orden."
+    }
+  ],
+  "hints": [
+    "Empieza con un texto vacío: `reves = ''`.",
+    "Recorre letra por letra y pega cada una delante: `reves = c + reves`.",
+    "Otra forma: recorre los índices de atrás hacia adelante con `range(len(texto) - 1, -1, -1)`."
+  ],
+  "tests": [
+    {
+      "stdin": "hola mundo\n",
+      "stdout": "odnum aloh\n"
+    },
+    {
+      "stdin": "a\n",
+      "stdout": "a\n"
+    },
+    {
+      "stdin": "Python\n",
+      "stdout": "nohtyP\n"
+    },
+    {
+      "stdin": "reconocer\n",
+      "stdout": "reconocer\n"
+    },
+    {
+      "stdin": "12345\n",
+      "stdout": "54321\n"
+    },
+    {
+      "stdin": "Lab C5\n",
+      "stdout": "5C baL\n"
+    },
+    {
+      "stdin": "ab\n",
+      "stdout": "ba\n"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "M05-E10",
+  "title": "Reto: rotar un vector",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee **N** (N ≥ 1), N enteros y un entero **k** (k ≥ 0). Rota el vector k posiciones **a la derecha**: lo que se sale por el final entra por el inicio. Guarda el resultado en un vector nuevo de tamaño N e imprímelo separado por espacios.\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.\n\nEjemplo: con `1 2 3 4 5` y `k = 2` imprime `4 5 1 2 3`.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "Al rotar 2 a la derecha un vector de 5, ¿a qué posición va el elemento de la posición 4?",
+      "options": [
+        "6",
+        "2",
+        "1"
+      ],
+      "answer": 2,
+      "why": "(4 + 2) % 5 = 1: el `%` hace que \"dé la vuelta\", como el César de M4."
+    },
+    {
+      "question": "Rotar un vector de 5 elementos 5 posiciones, ¿qué da?",
+      "options": [
+        "Puros ceros",
+        "El vector al revés",
+        "El mismo vector"
+      ],
+      "answer": 2,
+      "why": "Cada elemento da la vuelta completa y regresa a su lugar."
+    }
+  ],
+  "hints": [
+    "Crea `r = [0] * n`.",
+    "Cada `v[i]` va a la posición `(i + k) % n` de `r`.",
+    "Imprime `r` separado por espacios."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n1\n2\n3\n4\n5\n2\n",
+      "stdout": "4 5 1 2 3 \n"
+    },
+    {
+      "stdin": "5\n1\n2\n3\n4\n5\n0\n",
+      "stdout": "1 2 3 4 5 \n"
+    },
+    {
+      "stdin": "5\n1\n2\n3\n4\n5\n7\n",
+      "stdout": "4 5 1 2 3 \n"
+    },
+    {
+      "stdin": "1\n9\n3\n",
+      "stdout": "9 \n"
+    },
+    {
+      "stdin": "6\n-23\n89\n75\n76\n40\n-5\n1\n",
+      "stdout": "-5 -23 89 75 76 40 \n"
+    }
+  ]
+}

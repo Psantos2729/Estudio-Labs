@@ -1,0 +1,67 @@
+{
+  "id": "M04-E01",
+  "title": "Mayor de tres con una función",
+  "statement": "Escribe una función `mayor(a, b, c)` que **devuelva** (con `return`) el mayor de tres números. Luego lee tres enteros, uno por línea, y usa la función para imprimir:\n\n```\nMayor: <m>\n```\n\nEjemplo: con `4`, `9` y `2` imprime `Mayor: 9`. Si hay empate, el mayor es ese valor repetido.",
+  "starter": "def mayor(a, b, c):\n    # devuelve el mayor de los tres\n    pass\n\n\nx = int(input())\ny = int(input())\nz = int(input())\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\ndef f(x):\n    x * 2\n\nr = f(7)\nprint(r)\n```",
+      "options": [
+        "0",
+        "None",
+        "7"
+      ],
+      "answer": 1,
+      "why": "La función calcula `x * 2` pero no lo devuelve (no hay `return`), así que el resultado se pierde y `r` queda en `None`."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\ndef mayor(a, b, c):\n    if a >= b and a >= c:\n        return a\n    if b >= c:\n        return b\n    return c\n\nprint(mayor(4, 9, 2))\n```",
+      "options": [
+        "9",
+        "4",
+        "2"
+      ],
+      "answer": 0,
+      "why": "`return` termina la función con el primer valor que cumple. 9 es mayor que 4 y que 2, así que se devuelve 9."
+    }
+  ],
+  "hints": [
+    "Compara `a` con los otros dos: si es mayor o igual que ambos, `return a`.",
+    "Si no fue `a`, el mayor está entre `b` y `c`: una comparación más.",
+    "En el programa principal: `print(f'Mayor: {mayor(x, y, z)}')`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n9\n2\n",
+      "stdout": "Mayor: 9\n"
+    },
+    {
+      "stdin": "10\n3\n1\n",
+      "stdout": "Mayor: 10\n"
+    },
+    {
+      "stdin": "1\n2\n30\n",
+      "stdout": "Mayor: 30\n"
+    },
+    {
+      "stdin": "5\n5\n5\n",
+      "stdout": "Mayor: 5\n"
+    },
+    {
+      "stdin": "-4\n-9\n-2\n",
+      "stdout": "Mayor: -2\n"
+    },
+    {
+      "stdin": "7\n7\n3\n",
+      "stdout": "Mayor: 7\n"
+    },
+    {
+      "stdin": "0\n-1\n0\n",
+      "stdout": "Mayor: 0\n"
+    },
+    {
+      "stdin": "100\n250\n249\n",
+      "stdout": "Mayor: 250\n"
+    }
+  ]
+}

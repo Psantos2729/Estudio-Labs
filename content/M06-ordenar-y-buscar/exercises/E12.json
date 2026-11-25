@@ -1,0 +1,60 @@
+{
+  "id": "M06-E12",
+  "title": "Jefe: burbuja normal contra mejorada",
+  "pdf": 37,
+  "statement": "**Jefe del módulo** (PDF #37). Lee una **semilla** y **N** (N ≥ 1). Con `random.seed(semilla)` genera el vector original con N valores `random.randint(1, 100)`, en orden. Ordena **una copia** con burbuja normal y **otra copia del mismo original** con burbuja mejorada (la que para tras una pasada sin intercambios). Burbuja: `for i in range(n - 1)` y adentro `for j in range(n - 1 - i)`. Cada vez que se evalúa `v[j] > v[j + 1]` es una **comparación**; cada vez que se cambian es un **intercambio**. Imprime:\n\n```\nOriginal: <vector>\nOrdenado: <vector>\nBurbuja normal: <c1> comparaciones, <i1> intercambios\nBurbuja mejorada: <c2> comparaciones, <i2> intercambios\nComparaciones de menos: <c1 - c2>\nIntercambios de menos: <i1 - i2>\n```\n\nSi quieres mostrar el tiempo de cada uno con `time.perf_counter()`, hazlo **después** de estas líneas: cambia en cada corrida y no se califica. Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "import random\n\nsemilla = int(input())\nn = int(input())\nrandom.seed(semilla)\n",
+  "predict": [
+    {
+      "question": "¿Cuántos intercambios menos hace la burbuja mejorada que la normal con el mismo vector?",
+      "options": [
+        "Depende del vector",
+        "La mitad",
+        "0, siempre"
+      ],
+      "answer": 2,
+      "why": "La bandera solo se salta pasadas en las que no había nada que intercambiar, así que los intercambios son idénticos. Lo que ahorra son comparaciones."
+    },
+    {
+      "question": "¿Por qué cada método debe ordenar su propia copia del original?",
+      "options": [
+        "Para ahorrar memoria",
+        "Porque si no, el segundo recibe un vector ya ordenado",
+        "Porque `random` cambia el vector"
+      ],
+      "answer": 1,
+      "why": "Si la normal ordena el original y luego se lo pasas a la mejorada, esta hace una sola pasada y la comparación queda falsa."
+    }
+  ],
+  "hints": [
+    "Haz **una** función `burbuja(v, mejorada)` que devuelva `comp, inter`; con `mejorada=True` aplica el `break` de la bandera.",
+    "Copias: `a = list(original)` y `b = list(original)`.",
+    "Llama `burbuja(a, False)` y `burbuja(b, True)`, y resta los resultados."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n5\n",
+      "stdout": "Original: 42 20 51 84 7 \nOrdenado: 7 20 42 51 84 \nBurbuja normal: 10 comparaciones, 5 intercambios\nBurbuja mejorada: 10 comparaciones, 5 intercambios\nComparaciones de menos: 0\nIntercambios de menos: 0\n"
+    },
+    {
+      "stdin": "2027\n10\n",
+      "stdout": "Original: 14 60 11 2 84 42 52 81 24 52 \nOrdenado: 2 11 14 24 42 52 52 60 81 84 \nBurbuja normal: 45 comparaciones, 18 intercambios\nBurbuja mejorada: 39 comparaciones, 18 intercambios\nComparaciones de menos: 6\nIntercambios de menos: 0\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "Original: 18 \nOrdenado: 18 \nBurbuja normal: 0 comparaciones, 0 intercambios\nBurbuja mejorada: 0 comparaciones, 0 intercambios\nComparaciones de menos: 0\nIntercambios de menos: 0\n"
+    },
+    {
+      "stdin": "42\n2\n",
+      "stdout": "Original: 82 15 \nOrdenado: 15 82 \nBurbuja normal: 1 comparaciones, 1 intercambios\nBurbuja mejorada: 1 comparaciones, 1 intercambios\nComparaciones de menos: 0\nIntercambios de menos: 0\n"
+    },
+    {
+      "stdin": "3\n8\n",
+      "stdout": "Original: 31 76 70 17 48 78 61 81 \nOrdenado: 17 31 48 61 70 76 78 81 \nBurbuja normal: 28 comparaciones, 9 intercambios\nBurbuja mejorada: 22 comparaciones, 9 intercambios\nComparaciones de menos: 6\nIntercambios de menos: 0\n"
+    },
+    {
+      "stdin": "99\n20\n",
+      "stdout": "Original: 52 49 26 77 23 30 32 18 98 12 33 94 50 68 88 90 69 12 80 63 \nOrdenado: 12 12 18 23 26 30 32 33 49 50 52 63 68 69 77 80 88 90 94 98 \nBurbuja normal: 190 comparaciones, 78 intercambios\nBurbuja mejorada: 187 comparaciones, 78 intercambios\nComparaciones de menos: 3\nIntercambios de menos: 0\n"
+    }
+  ]
+}

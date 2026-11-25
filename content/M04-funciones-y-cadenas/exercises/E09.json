@@ -1,0 +1,68 @@
+{
+  "id": "M04-E09",
+  "title": "Reto: de romano a decimal",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee un número romano válido (en mayúsculas, de I a MMMCMXCIX) e imprime su valor decimal. Recorre el texto: si un símbolo vale menos que el siguiente, se resta; si no, se suma.\n\nEjemplo: con `MCMXCIV` imprime `1994`.",
+  "starter": "VALOR = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\n\ntexto = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nVALOR = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}\nprint(VALOR['C'])\n```",
+      "options": [
+        "100",
+        "1",
+        "C"
+      ],
+      "answer": 0,
+      "why": "Un diccionario guarda pares clave → valor. `VALOR['C']` da el valor que corresponde a la clave `'C'`."
+    },
+    {
+      "question": "En `XIV`, ¿qué se hace con la `I`?",
+      "options": [
+        "Se ignora",
+        "Se resta, porque vale menos que la V que le sigue",
+        "Se suma, como todos"
+      ],
+      "answer": 1,
+      "why": "X + (V − I) = 10 + 4 = 14."
+    }
+  ],
+  "hints": [
+    "Recorre con índices: `for i in range(len(texto)):`.",
+    "Compara `VALOR[texto[i]]` con el siguiente, solo si `i + 1 < len(texto)`.",
+    "Si el actual es menor que el siguiente, resta; en cualquier otro caso, suma."
+  ],
+  "tests": [
+    {
+      "stdin": "MCMXCIV\n",
+      "stdout": "1994\n"
+    },
+    {
+      "stdin": "I\n",
+      "stdout": "1\n"
+    },
+    {
+      "stdin": "IV\n",
+      "stdout": "4\n"
+    },
+    {
+      "stdin": "XIV\n",
+      "stdout": "14\n"
+    },
+    {
+      "stdin": "MMXXVI\n",
+      "stdout": "2026\n"
+    },
+    {
+      "stdin": "MMMCMXCIX\n",
+      "stdout": "3999\n"
+    },
+    {
+      "stdin": "XL\n",
+      "stdout": "40\n"
+    },
+    {
+      "stdin": "CDXLIV\n",
+      "stdout": "444\n"
+    }
+  ]
+}

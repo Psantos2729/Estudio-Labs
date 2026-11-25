@@ -1,0 +1,56 @@
+{
+  "id": "M06-E13",
+  "title": "Reto: radix sort",
+  "challenge": true,
+  "statement": "**Reto opcional** (como tu `Leetcode_1.py`). Lee **N** (N ≥ 1) y N enteros **positivos**. Ordénalos con **radix sort**: una ronda por cada cifra del mayor, empezando por las unidades. En cada ronda ordena por esa cifra **manteniendo el orden** de los que tienen la misma cifra (counting sort por dígito, o 10 cubetas). Después de cada ronda imprime:\n\n```\nRonda 1: <vector>\nRonda 2: <vector>\n...\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.\n\nEjemplo: con `170 45 75 90 802 24 2 66`, la ronda 1 da `170 90 802 2 24 45 75 66`.",
+  "starter": "def mostrar(v):\n    for i in range(len(v)):\n        print(v[i], end=' ')\n    print()\n\n\nn = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué da `802 // 10 % 10`?",
+      "options": [
+        "0",
+        "2",
+        "80"
+      ],
+      "answer": 0,
+      "why": "`802 // 10` es 80 y `80 % 10` es 0: la cifra de las decenas, como en M3."
+    },
+    {
+      "question": "¿Cuántas rondas hace radix sort si el mayor es 802?",
+      "options": [
+        "8",
+        "3",
+        "802"
+      ],
+      "answer": 1,
+      "why": "Una por cada cifra del mayor: unidades, decenas y centenas."
+    }
+  ],
+  "hints": [
+    "La cifra de cada número en la ronda es `v[i] // exp % 10`, con `exp` = 1, 10, 100…",
+    "Una forma simple: para cada dígito `d` de 0 a 9, recorre el vector y copia a `salida` los que tienen esa cifra, en orden.",
+    "Repite mientras `mayor // exp > 0`, multiplicando `exp` por 10."
+  ],
+  "tests": [
+    {
+      "stdin": "8\n170\n45\n75\n90\n802\n24\n2\n66\n",
+      "stdout": "Ronda 1: 170 90 802 2 24 45 75 66 \nRonda 2: 802 2 24 45 66 170 75 90 \nRonda 3: 2 24 45 66 75 90 170 802 \n"
+    },
+    {
+      "stdin": "1\n5\n",
+      "stdout": "Ronda 1: 5 \n"
+    },
+    {
+      "stdin": "3\n3\n1\n2\n",
+      "stdout": "Ronda 1: 1 2 3 \n"
+    },
+    {
+      "stdin": "3\n100\n10\n1\n",
+      "stdout": "Ronda 1: 100 10 1 \nRonda 2: 100 1 10 \nRonda 3: 1 10 100 \n"
+    },
+    {
+      "stdin": "9\n7849\n4965\n750\n4083\n8622\n1877\n8780\n5200\n3413\n",
+      "stdout": "Ronda 1: 750 8780 5200 8622 4083 3413 4965 1877 7849 \nRonda 2: 5200 3413 8622 7849 750 4965 1877 8780 4083 \nRonda 3: 4083 5200 3413 8622 750 8780 7849 1877 4965 \nRonda 4: 750 1877 3413 4083 4965 5200 7849 8622 8780 \n"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "id": "M06-E15",
+  "title": "Reto: búsqueda binaria recursiva",
+  "challenge": true,
+  "statement": "**Reto opcional.** Escribe una función **recursiva** `binaria(v, x, izq, der)` que devuelva la posición de `x` o -1, sin ciclos: revisa el medio `(izq + der) // 2` y, si no es, se llama a sí misma con la mitad que queda. Lee **N** (N ≥ 1), N enteros ordenados y **x**. Imprime `Encontrado en la posición <p>` o `No está`. Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.",
+  "starter": "def binaria(v, x, izq, der):\n    pass\n\n\nn = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el caso base de la binaria recursiva?",
+      "options": [
+        "Que `izq > der`: el pedazo quedó vacío",
+        "Que `x` sea negativo",
+        "Que `medio` sea 0"
+      ],
+      "answer": 0,
+      "why": "Si no queda nada que revisar, el valor no está: se devuelve -1 sin llamarse otra vez."
+    },
+    {
+      "question": "Si `v[medio] < x`, ¿cómo sigue?",
+      "options": [
+        "`return binaria(v, x, medio + 1, der)`",
+        "`return medio + 1`",
+        "`return binaria(v, x, izq, medio - 1)`"
+      ],
+      "answer": 0,
+      "why": "Solo queda la mitad derecha: desde `medio + 1` hasta `der`."
+    }
+  ],
+  "hints": [
+    "Caso base: si `izq > der`, `return -1`.",
+    "Calcula el medio; si `v[medio] == x`, devuélvelo.",
+    "Si no, `return` la llamada con la mitad que corresponde. La primera llamada es `binaria(v, x, 0, n - 1)`."
+  ],
+  "tests": [
+    {
+      "stdin": "10\n2\n5\n8\n12\n16\n23\n38\n56\n72\n91\n23\n",
+      "stdout": "Encontrado en la posición 5\n"
+    },
+    {
+      "stdin": "10\n2\n5\n8\n12\n16\n23\n38\n56\n72\n91\n40\n",
+      "stdout": "No está\n"
+    },
+    {
+      "stdin": "1\n7\n7\n",
+      "stdout": "Encontrado en la posición 0\n"
+    },
+    {
+      "stdin": "2\n1\n3\n0\n",
+      "stdout": "No está\n"
+    },
+    {
+      "stdin": "12\n10\n14\n23\n24\n27\n28\n33\n41\n50\n53\n70\n98\n50\n",
+      "stdout": "Encontrado en la posición 8\n"
+    }
+  ]
+}

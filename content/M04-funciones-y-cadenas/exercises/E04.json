@@ -1,0 +1,75 @@
+{
+  "id": "M04-E04",
+  "title": "¿Es palíndromo?",
+  "statement": "Escribe una función `es_palindromo(texto)` que devuelva `True` o `False` comparando cada letra con su espejo (sin usar `[::-1]`). Lee una frase y responde si es palíndromo **sin tomar en cuenta mayúsculas ni espacios**:\n\n```\nEs palíndromo\n```\n\no `No es palíndromo`. Las frases solo traen letras sin tilde y espacios.\n\nEjemplo: `Anita lava la tina` es palíndromo; `Hola` no.",
+  "starter": "def es_palindromo(texto):\n    pass\n\n\nfrase = input()\n",
+  "predict": [
+    {
+      "question": "Con `t = 'reconocer'` (9 letras), ¿cuál es el espejo de `t[2]`?",
+      "options": [
+        "`t[-2]`",
+        "`t[6]`",
+        "`t[7]`"
+      ],
+      "answer": 1,
+      "why": "El espejo de `i` es `n - 1 - i` = 9 - 1 - 2 = 6. Con negativos es `t[-3]`."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint('Anita lava la tina'.lower().replace(' ', ''))\n```",
+      "options": [
+        "anitalavalatina",
+        "anita lava la tina",
+        "Anitalavalatina"
+      ],
+      "answer": 0,
+      "why": "`lower()` pasa todo a minúscula y `replace(' ', '')` quita los espacios. Así la frase queda lista para comparar."
+    }
+  ],
+  "hints": [
+    "Primero limpia la frase: `frase.lower().replace(' ', '')`.",
+    "Recorre `for i in range(n // 2):` y compara `texto[i]` con `texto[n - 1 - i]`.",
+    "En cuanto una pareja sea distinta, `return False`. Si el ciclo termina, `return True`."
+  ],
+  "tests": [
+    {
+      "stdin": "Anita lava la tina\n",
+      "stdout": "Es palíndromo\n"
+    },
+    {
+      "stdin": "Hola\n",
+      "stdout": "No es palíndromo\n"
+    },
+    {
+      "stdin": "reconocer\n",
+      "stdout": "Es palíndromo\n"
+    },
+    {
+      "stdin": "a\n",
+      "stdout": "Es palíndromo\n"
+    },
+    {
+      "stdin": "ab\n",
+      "stdout": "No es palíndromo\n"
+    },
+    {
+      "stdin": "Oso\n",
+      "stdout": "Es palíndromo\n"
+    },
+    {
+      "stdin": "Dabale arroz a la zorra el abad\n",
+      "stdout": "Es palíndromo\n"
+    },
+    {
+      "stdin": "recorrer\n",
+      "stdout": "No es palíndromo\n"
+    },
+    {
+      "stdin": "abca\n",
+      "stdout": "No es palíndromo\n"
+    },
+    {
+      "stdin": "Yo hago yoga hoy\n",
+      "stdout": "Es palíndromo\n"
+    }
+  ]
+}

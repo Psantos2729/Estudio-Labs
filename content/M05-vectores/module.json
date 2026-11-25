@@ -8,11 +8,13 @@
     "M04"
   ],
   "concepts": [
-    "listas e índices",
-    "random",
+    "vectores de tamaño fijo con [0] * n (sin append ni pop)",
+    "suma, promedio, mayor y menor con posiciones",
     "búsqueda lineal",
-    "mayor, menor e índices",
-    "suma y producto escalar"
+    "A + B, B − A y producto escalar",
+    "random con semilla",
+    "funciones con vectores y menús",
+    "retos: producto vectorial, rotar, quitar repetidos y moda"
   ],
   "pdfExercises": [
     31,

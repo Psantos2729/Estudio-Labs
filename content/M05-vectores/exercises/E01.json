@@ -1,0 +1,59 @@
+{
+  "id": "M05-E01",
+  "title": "Mostrar un vector al revés",
+  "statement": "Lee **N** (N ≥ 1) y luego N enteros, uno por línea, y guárdalos en un vector. Muéstralo al revés, en una sola línea separada por espacios.\n\nUsa un vector de tamaño fijo (`[0] * n`): **no uses `append`, `pop` ni `insert`**.\n\nEjemplo: con `4` y luego `10`, `20`, `30`, `40` imprime `40 30 20 10`.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint([0] * 3)\n```",
+      "options": [
+        "[3]",
+        "[0, 0, 0]",
+        "[]"
+      ],
+      "answer": 1,
+      "why": "`[0] * 3` crea un vector con 3 posiciones, cada una con 0."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nv = [10, 20, 30]\nfor i in range(2, 0, -1):\n    print(v[i], end=' ')\n```",
+      "options": [
+        "30 20 ",
+        "30 20 10 ",
+        "20 10 "
+      ],
+      "answer": 0,
+      "why": "`range(2, 0, -1)` da 2 y 1: se detiene **antes** del 0. Para incluir la posición 0 el final debe ser -1."
+    }
+  ],
+  "hints": [
+    "Llena el vector con `for i in range(n): v[i] = int(input())`.",
+    "Recorre al revés con `range(n - 1, -1, -1)`.",
+    "Imprime cada valor con `print(v[i], end=' ')` y al final un `print()`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n10\n20\n30\n40\n",
+      "stdout": "40 30 20 10 \n"
+    },
+    {
+      "stdin": "1\n7\n",
+      "stdout": "7 \n"
+    },
+    {
+      "stdin": "2\n1\n2\n",
+      "stdout": "2 1 \n"
+    },
+    {
+      "stdin": "6\n-23\n-23\n2\n-25\n30\n5\n",
+      "stdout": "5 30 -25 2 -23 -23 \n"
+    },
+    {
+      "stdin": "9\n-28\n-31\n14\n3\n33\n35\n-39\n59\n98\n",
+      "stdout": "98 59 -39 35 33 3 14 -31 -28 \n"
+    },
+    {
+      "stdin": "3\n-5\n0\n5\n",
+      "stdout": "5 0 -5 \n"
+    }
+  ]
+}

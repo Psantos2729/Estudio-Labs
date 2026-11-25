@@ -1,0 +1,60 @@
+{
+  "id": "M04-E11",
+  "title": "Reto: anagramas",
+  "challenge": true,
+  "statement": "**Reto opcional.** Lee dos palabras o frases, una por línea. Imprime `Son anagramas` si tienen exactamente las mismas letras (sin contar mayúsculas ni espacios) y `No son anagramas` si no.\n\nEjemplo: `Roma` y `amor` son anagramas.",
+  "starter": "a = input()\nb = input()\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint(sorted('roma'))\n```",
+      "options": [
+        "['r', 'o', 'm', 'a']",
+        "amor",
+        "['a', 'm', 'o', 'r']"
+      ],
+      "answer": 2,
+      "why": "`sorted` devuelve una lista con los caracteres ordenados alfabéticamente."
+    },
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nprint(sorted('amor') == sorted('mora'))\n```",
+      "options": [
+        "False",
+        "Error",
+        "True"
+      ],
+      "answer": 2,
+      "why": "Las dos listas ordenadas son iguales: tienen las mismas letras con las mismas repeticiones."
+    }
+  ],
+  "hints": [
+    "Limpia cada texto con `lower()` y `replace(' ', '')`.",
+    "Ordena las letras de cada uno con `sorted(...)`.",
+    "Si las dos listas ordenadas son iguales, son anagramas."
+  ],
+  "tests": [
+    {
+      "stdin": "Roma\namor\n",
+      "stdout": "Son anagramas\n"
+    },
+    {
+      "stdin": "hola\nadios\n",
+      "stdout": "No son anagramas\n"
+    },
+    {
+      "stdin": "enfriamiento\nrefinamiento\n",
+      "stdout": "Son anagramas\n"
+    },
+    {
+      "stdin": "aab\nabb\n",
+      "stdout": "No son anagramas\n"
+    },
+    {
+      "stdin": "Lima\nmail\n",
+      "stdout": "Son anagramas\n"
+    },
+    {
+      "stdin": "ab\nabc\n",
+      "stdout": "No son anagramas\n"
+    }
+  ]
+}

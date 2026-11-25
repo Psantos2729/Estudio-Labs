@@ -1,0 +1,63 @@
+{
+  "id": "M06-E01",
+  "title": "¿Está ordenado?",
+  "statement": "Lee **N** (N ≥ 1) y N enteros, uno por línea. Si el vector está ordenado de menor a mayor (cada valor ≤ el siguiente), imprime `Está ordenado`. Si no, imprime la **primera** pareja que está al revés:\n\n```\nNo está ordenado: <a> > <b> en las posiciones <i> y <i+1>\n``` Usa vectores de tamaño fijo, sin `append` ni `pop`, y **no uses `sort()` ni `sorted()`**.\n\nEjemplo: con `12 25 40 38 50` imprime `No está ordenado: 40 > 38 en las posiciones 2 y 3`.",
+  "starter": "n = int(input())\nv = [0] * n\n",
+  "predict": [
+    {
+      "question": "¿Qué imprime este código?\n\n```python\nv = [1, 9, 4, 12]\nok = True\nfor i in range(len(v) - 1):\n    if v[i] > v[i + 1]:\n        ok = False\nprint(ok)\n```",
+      "options": [
+        "Error",
+        "False",
+        "True"
+      ],
+      "answer": 1,
+      "why": "Basta una pareja al revés (9 > 4) para que no esté ordenado."
+    },
+    {
+      "question": "¿Por qué el ciclo es `range(len(v) - 1)` y no `range(len(v))`?",
+      "options": [
+        "Porque en la última vuelta `v[i + 1]` se saldría del vector",
+        "Para ir más rápido",
+        "Porque la última posición nunca importa"
+      ],
+      "answer": 0,
+      "why": "Con `range(len(v))`, cuando `i = n - 1` se pide `v[n]`, que no existe."
+    }
+  ],
+  "hints": [
+    "Recorre `for i in range(n - 1)` comparando `v[i]` con `v[i + 1]`.",
+    "En cuanto encuentres `v[i] > v[i + 1]`, imprime el mensaje y usa `break`.",
+    "Con una bandera sabes al final si nunca encontraste una pareja al revés."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n12\n25\n40\n38\n50\n",
+      "stdout": "No está ordenado: 40 > 38 en las posiciones 2 y 3\n"
+    },
+    {
+      "stdin": "3\n1\n2\n3\n",
+      "stdout": "Está ordenado\n"
+    },
+    {
+      "stdin": "1\n7\n",
+      "stdout": "Está ordenado\n"
+    },
+    {
+      "stdin": "3\n5\n5\n5\n",
+      "stdout": "Está ordenado\n"
+    },
+    {
+      "stdin": "4\n3\n1\n2\n0\n",
+      "stdout": "No está ordenado: 3 > 1 en las posiciones 0 y 1\n"
+    },
+    {
+      "stdin": "7\n1\n2\n3\n4\n5\n6\n0\n",
+      "stdout": "No está ordenado: 6 > 0 en las posiciones 5 y 6\n"
+    },
+    {
+      "stdin": "8\n14\n14\n27\n13\n41\n84\n28\n12\n",
+      "stdout": "No está ordenado: 27 > 13 en las posiciones 2 y 3\n"
+    }
+  ]
+}
