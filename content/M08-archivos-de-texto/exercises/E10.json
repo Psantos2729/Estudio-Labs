@@ -1,0 +1,70 @@
+{
+  "id": "M08-E10",
+  "title": "Validar registros con regex",
+  "statement": "`registros.txt` tiene una línea por estudiante: `carné;correo;teléfono`, separados por `;` y sin espacios. **Valida cada campo** con `re.fullmatch`:\n\n- **carné:** exactamente 8 dígitos.\n- **correo:** `usuario@dominio.ext`, donde el usuario tiene letras, dígitos, `_` o puntos (al menos uno), el dominio solo letras, y la extensión de 2 a 4 letras.\n- **teléfono:** 4 dígitos, un guion **opcional** y 4 dígitos (`5555-1234` o `55551234`).\n\nPara cada línea imprime `Línea <i>: válida` o `Línea <i>: inválida (<campos>)` con los campos malos en orden y separados por coma (`inválida (carné, teléfono)`). Al final `Válidas: <v> de <n>`.\n\nEl archivo `registros.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "import re\n\nwith open('registros.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Por qué validar con `re.fullmatch` y no con `re.search`?",
+      "options": [
+        "Porque `search` acepta si el patrón aparece en cualquier parte, aunque sobre texto",
+        "Porque `search` no existe",
+        "Es lo mismo"
+      ],
+      "answer": 0,
+      "why": "`re.search(r'\\d{8}', '123456789')` encuentra 8 dígitos adentro; `fullmatch` exige que sea todo el texto."
+    },
+    {
+      "question": "¿Qué significa `-?` en `\\d{4}-?\\d{4}`?",
+      "options": [
+        "Un guion opcional",
+        "Cualquier carácter",
+        "Un guion o más"
+      ],
+      "answer": 0,
+      "why": "`?` es 0 o 1 vez de lo que tiene antes."
+    }
+  ],
+  "hints": [
+    "Separa con `linea.rstrip('\\n').split(';')`.",
+    "Patrones: `r'\\d{8}'`, `r'[\\w.]+@[a-zA-Z]+\\.[a-zA-Z]{2,4}'` y `r'\\d{4}-?\\d{4}'`.",
+    "Guarda los nombres de los campos malos en un vector de 3 con un contador, y únelos con `', '`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "registros.txt": "20261234;ana.lopez@correo.com;5555-1234\n2026123;ana@correo;5555 1234\n12345678;luis_g@uni.edu;44449876\n87654321;maria@sitio.guate;1234-56789\n"
+      },
+      "stdout": "Línea 1: válida\nLínea 2: inválida (carné, correo, teléfono)\nLínea 3: válida\nLínea 4: inválida (correo, teléfono)\nVálidas: 2 de 4\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "registros.txt": "11112222;a@b.cc;12345678\n"
+      },
+      "stdout": "Línea 1: válida\nVálidas: 1 de 1\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "registros.txt": "1;2;3\n"
+      },
+      "stdout": "Línea 1: inválida (carné, correo, teléfono)\nVálidas: 0 de 1\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "registros.txt": "83673221;luis.p@uni.org;3396-6785\n67482753;@uni.com;55551234x\n534577691;m_r@correo.edu;19342397\n8590031;m_r@co.rreo.c;555-1234\n75236829;x@correo;42339101\n71814632;paolo8@uni.org;555-1234\n"
+      },
+      "stdout": "Línea 1: válida\nLínea 2: inválida (correo, teléfono)\nLínea 3: inválida (carné)\nLínea 4: inválida (carné, correo, teléfono)\nLínea 5: inválida (correo)\nLínea 6: inválida (teléfono)\nVálidas: 1 de 6\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "registros.txt": "37289025;@uni.com;55551234x\n2500905;ana@gt.edu;33671555\n15578834;paolo8@uni.edu;18635737\n84853715;luis.p@co.rreo.c;30902434\n890641003;paolo8@gt.org;555-1234\n9130721;luis.p@correo;26481219\n84426050;paolo8@correo;5555--1234\n69671069;x@gt.com;77579991\n"
+      },
+      "stdout": "Línea 1: inválida (correo, teléfono)\nLínea 2: inválida (carné)\nLínea 3: válida\nLínea 4: inválida (correo)\nLínea 5: inválida (carné, teléfono)\nLínea 6: inválida (carné, correo)\nLínea 7: inválida (correo, teléfono)\nLínea 8: válida\nVálidas: 2 de 8\n"
+    }
+  ]
+}

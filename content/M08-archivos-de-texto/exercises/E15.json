@@ -1,0 +1,61 @@
+{
+  "id": "M08-E15",
+  "title": "Reto: extraer correos y fechas",
+  "challenge": true,
+  "statement": "**Reto opcional.** Busca en `texto.txt`, con `re.findall`, todos los **correos** (`usuario@dominio.ext`, usuario con letras, dígitos, `_` o puntos, dominio de letras y extensión de 2 a 4 letras) y todas las **fechas** `dd/mm/aaaa` con día y mes de **exactamente dos dígitos**. Imprime, en el orden en que aparecen:\n\n```\nCorreos: <c>\n<correo>\n...\nFechas: <f>\n<fecha>\n...\n```\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "import re\n\nwith open('texto.txt', 'r', encoding='utf-8') as f:\n    t = f.read()\n",
+  "predict": [
+    {
+      "question": "¿Encuentra `\\d{2}/\\d{2}/\\d{4}` la fecha `2/1/2027`?",
+      "options": [
+        "Solo el año",
+        "No: el día y el mes tienen un solo dígito",
+        "Sí"
+      ],
+      "answer": 1,
+      "why": "`\\d{2}` pide exactamente dos dígitos."
+    }
+  ],
+  "hints": [
+    "Lee todo con `read()` y usa `re.findall` una vez para cada cosa.",
+    "Correo: `r'[\\w.]+@[a-zA-Z]+\\.[a-zA-Z]{2,4}'`.",
+    "Fecha: `r'\\b\\d{2}/\\d{2}/\\d{4}\\b'`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Escribe a ana.lopez@correo.com antes del 25/11/2026.\nCopia: luis_g@uni.edu; fecha límite 01/12/2026 o 2/1/2027.\nSin datos aquí.\n"
+      },
+      "stdout": "Correos: 2\nana.lopez@correo.com\nluis_g@uni.edu\nFechas: 2\n25/11/2026\n01/12/2026\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "nada\n"
+      },
+      "stdout": "Correos: 0\nFechas: 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "el Python; gato 9/1/2023 03/04/2029\nla: mar? examen\n"
+      },
+      "stdout": "Correos: 0\nFechas: 1\n03/04/2029\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "los p_s@gt.com 7/7/2028\nuna\nsalas maíz Python:\n"
+      },
+      "stdout": "Correos: 1\np_s@gt.com\nFechas: 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Python; 1/1/1992 p_s@uni.org\nlos 2/8/2027 m.r@correo.com\ncasa 8/9/2009 4/4/2022\n¡maíz; luna río casa,! x9@uni.com\n"
+      },
+      "stdout": "Correos: 3\np_s@uni.org\nm.r@correo.com\nx9@uni.com\nFechas: 0\n"
+    }
+  ]
+}

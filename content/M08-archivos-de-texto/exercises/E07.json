@@ -1,0 +1,84 @@
+{
+  "id": "M08-E07",
+  "title": "Sumar por fila y por columna",
+  "statement": "El ejercicio 25 del PDF: `datos1.txt` tiene números enteros separados por espacios, **la misma cantidad en cada línea**. Escribe dos funciones que reciben el nombre del archivo:\n\n- `sumar_por_linea(nombre)`: devuelve una lista con la suma de cada línea.\n- `sumar_por_columna(nombre)`: devuelve una lista con la suma de cada columna.\n\nLas listas son de tamaño fijo (cuenta antes las líneas o las columnas), sin `append`. Imprime:\n\n```\nPor línea: 155, 78, 98, 78, 151\nPor columna: 172, 64, 324\n```\n\n(los valores separados por coma y espacio).\n\nEl archivo `datos1.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "def sumar_por_linea(nombre):\n    with open(nombre, 'r', encoding='utf-8') as f:\n        lineas = f.readlines()\n    return []\n\n\ndef sumar_por_columna(nombre):\n    return []\n\n\nprint('Por línea:', sumar_por_linea('datos1.txt'))\n",
+  "predict": [
+    {
+      "question": "¿Qué devuelve `', '.join(['155', '78'])`?",
+      "options": [
+        "'155,78'",
+        "['155, 78']",
+        "'155, 78'"
+      ],
+      "answer": 2,
+      "why": "`join` pega los textos de la lista con el separador; los números hay que pasarlos a `str`."
+    },
+    {
+      "question": "Para la lista de sumas por columna, ¿de qué tamaño la creas?",
+      "options": [
+        "Con la cantidad de números de la primera línea",
+        "Con la cantidad de líneas",
+        "De tamaño 3 siempre"
+      ],
+      "answer": 0,
+      "why": "Cada línea tiene la misma cantidad de números: esa es la cantidad de columnas."
+    }
+  ],
+  "hints": [
+    "`readlines()` te da las líneas: con `len(lineas)` creas `[0] * len(lineas)`.",
+    "Cada línea: `partes = linea.split()` y suma `int(p)` de cada parte.",
+    "Para imprimir: arma `', '.join(str(x) for x in lista)` o imprime cada valor con `end=', '` cuidando el último."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "45 12 98\n1 12 65\n7 15 76\n54 23 1\n65 2 84\n"
+      },
+      "stdout": "Por línea: 155, 78, 98, 78, 151\nPor columna: 172, 64, 324\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "5\n"
+      },
+      "stdout": "Por línea: 5\nPor columna: 5\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "1 2 3 4\n"
+      },
+      "stdout": "Por línea: 10\nPor columna: 1, 2, 3, 4\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "1\n2\n3\n"
+      },
+      "stdout": "Por línea: 1, 2, 3\nPor columna: 6\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "10 -5\n-10 5\n"
+      },
+      "stdout": "Por línea: 5, -5\nPor columna: 0, 0\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "27 4 47 43\n18 5 26 32\n4 76 93 83\n26 1 41 52\n86 47 23 79\n39 9 26 4\n"
+      },
+      "stdout": "Por línea: 121, 81, 256, 120, 235, 78\nPor columna: 200, 142, 256, 293\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "datos1.txt": "63 70 61 8 52 12 50\n84 70 19 81 68 11 83\n20 50 89 34 52 36 85\n"
+      },
+      "stdout": "Por línea: 316, 416, 366\nPor columna: 167, 190, 169, 123, 172, 59, 218\n"
+    }
+  ]
+}

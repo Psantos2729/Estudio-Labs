@@ -1,0 +1,84 @@
+{
+  "id": "M08-E08",
+  "title": "Frecuencia de letras",
+  "statement": "El ejercicio 22 del PDF: cuenta cuántas veces aparece cada letra de `entrada.txt` e imprime una línea `<LETRA>: <n>` por letra, **de la A a la Z** (con la `Ñ` después de la `N`), en mayúscula. Reglas:\n\n- Mayúsculas y minúsculas cuentan igual.\n- `á`, `Á`, `a` y `A` son la misma letra; igual las demás vocales con tilde, y `ü` cuenta como `U`.\n- `ñ` y `Ñ` son una sola letra.\n- Si una letra no aparece, no la muestres.\n\nEscribe las mismas líneas en `salida.txt`. Al final, vuelve a abrir `salida.txt` e imprime `salida.txt: <k> líneas`.\n\nEl archivo `entrada.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "ALFABETO = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'\nCON = 'ÁÉÍÓÚÜ'\nSIN = 'AEIOUU'\ncuenta = [0] * len(ALFABETO)\n",
+  "predict": [
+    {
+      "question": "Con `ALFABETO = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'`, ¿qué da `ALFABETO.index('Ñ')`?",
+      "options": [
+        "14",
+        "26",
+        "13"
+      ],
+      "answer": 0,
+      "why": "A es 0, …, N es 13 y Ñ va justo después: 14."
+    },
+    {
+      "question": "¿Qué da `'é'.upper()`?",
+      "options": [
+        "'é'",
+        "'E'",
+        "'É'"
+      ],
+      "answer": 2,
+      "why": "`upper` conserva la tilde; para quitarla usa la tabla `CON` / `SIN`."
+    }
+  ],
+  "hints": [
+    "Para cada carácter: `c = c.upper()`; si `c in CON`, cámbialo por `SIN[CON.index(c)]`.",
+    "Si `c in ALFABETO`, suma 1 en `cuenta[ALFABETO.index(c)]`.",
+    "Recorre `k` de 0 a 26 y, si `cuenta[k] > 0`, imprime y escribe la línea. Cuenta cuántas escribiste o léelas otra vez con `readlines()`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "¡Ñandú, árbol!\nAna y el niño.\n"
+      },
+      "stdout": "A: 4\nB: 1\nD: 1\nE: 1\nI: 1\nL: 2\nN: 3\nÑ: 2\nO: 2\nR: 1\nU: 1\nY: 1\nsalida.txt: 12 líneas\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "a\n"
+      },
+      "stdout": "A: 1\nsalida.txt: 1 líneas\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "ÁáAa éÉ ÜüU\n"
+      },
+      "stdout": "A: 4\nE: 2\nU: 3\nsalida.txt: 3 líneas\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "123 ... !!!\n"
+      },
+      "stdout": "salida.txt: 0 líneas\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "Murciélago\n"
+      },
+      "stdout": "A: 1\nC: 1\nE: 1\nG: 1\nI: 1\nL: 1\nM: 1\nO: 1\nR: 1\nU: 1\nsalida.txt: 10 líneas\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "¿la volcán maíz 1185 volcán 1291?\n¿46 árbol oso los una niña corazón camión archivo.?\n3 gato? pingüino perro año Ana?\n¡aérea archivo 1187 año: 1111 Ñandú, ÉXITO 72!\n¿camión piña archivo?\n"
+      },
+      "stdout": "A: 22\nB: 1\nC: 8\nD: 1\nE: 4\nG: 2\nH: 3\nI: 11\nL: 5\nM: 3\nN: 11\nÑ: 5\nO: 19\nP: 3\nR: 8\nS: 2\nT: 2\nU: 3\nV: 5\nX: 1\nZ: 2\nsalida.txt: 21 líneas\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "entrada.txt": "maíz;\nmar? 5 reconocer\n¡volcán ama. 939 nivel ÉXITO,!\n¡una. los, perro; azúcar radar corazón piña!\n¿mar 2322 Python el? 2?\nPython güero código\n"
+      },
+      "stdout": "A: 13\nC: 6\nD: 2\nE: 7\nG: 2\nH: 2\nI: 5\nL: 4\nM: 4\nN: 7\nÑ: 1\nO: 13\nP: 4\nR: 11\nS: 1\nT: 3\nU: 3\nV: 2\nX: 1\nY: 2\nZ: 3\nsalida.txt: 21 líneas\n"
+    }
+  ]
+}

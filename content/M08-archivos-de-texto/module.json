@@ -8,11 +8,15 @@
     "M07"
   ],
   "concepts": [
-    "open y with",
-    "leer línea por línea",
-    "escribir archivos",
-    "contar y clasificar caracteres",
-    "expresiones regulares básicas"
+    "open, modos r, w y a, y with",
+    "escribir con write y print(file=)",
+    "leer con read, for línea y readlines",
+    "conteos carácter por carácter: vocales, consonantes, dígitos, mayúsculas, signos",
+    "palabras y números armados dentro del texto",
+    "frecuencia de letras con tildes y ñ",
+    "expresiones regulares: findall, clases y cuantificadores",
+    "expresiones regulares: split, fullmatch, grupos y sub",
+    "retos: censurar, palabra más larga, extraer correos y fechas, mezclar archivos"
   ],
   "pdfExercises": [
     21,

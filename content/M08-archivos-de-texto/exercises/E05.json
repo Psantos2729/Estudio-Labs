@@ -1,0 +1,77 @@
+{
+  "id": "M08-E05",
+  "title": "Números dentro del texto",
+  "statement": "Como tu `Práctica_Examen_2-1.py`: `texto.txt` tiene texto con números metidos (`Compré 3 libros a 125`). Un **número** es una secuencia seguida de dígitos. Para cada línea imprime\n\n```\nSuma línea <i> = <s>\n```\n\ny al final\n\n```\nCantidades de 3 dígitos = <t>\nTotal de cantidades = <n>\nSuma total = <S>\n```\n\nLas \"cantidades de 3 dígitos\" son los números entre 100 y 999. Arma los números dígito por dígito (o usa `re.findall(r'\\d+', linea)` si ya viste la lección 7).\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
+  "starter": "with open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
+  "predict": [
+    {
+      "question": "¿Qué números hay en `'a12b3 45'`?",
+      "options": [
+        "1234 y 5",
+        "12, 3 y 45",
+        "1, 2, 3, 4 y 5"
+      ],
+      "answer": 1,
+      "why": "Cada grupo de dígitos seguidos es un número; una letra o un espacio lo termina."
+    },
+    {
+      "question": "Si la línea termina en un dígito, ¿qué falta al armar los números?",
+      "options": [
+        "Cerrar y sumar el último número al terminar",
+        "Nada",
+        "Restarlo"
+      ],
+      "answer": 0,
+      "why": "Igual que con las palabras: recorre `linea + ' '` o revisa `numero` después del ciclo."
+    }
+  ],
+  "hints": [
+    "Usa `numero = ''`: si el carácter es dígito, pégalo; si no y `numero != ''`, conviértelo con `int`, súmalo y vacíalo.",
+    "Recorre `linea + ' '` para cerrar el último número.",
+    "Los totales se acumulan fuera del `for linea`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "Compré 3 libros a 125 y 240 quetzales\nSin números aquí\n"
+      },
+      "stdout": "Suma línea 1 = 368\nSuma línea 2 = 0\nCantidades de 3 dígitos = 2\nTotal de cantidades = 3\nSuma total = 368\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "2026\n"
+      },
+      "stdout": "Suma línea 1 = 2026\nCantidades de 3 dígitos = 0\nTotal de cantidades = 1\nSuma total = 2026\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "a12b3 45\n007 y 100\n"
+      },
+      "stdout": "Suma línea 1 = 60\nSuma línea 2 = 107\nCantidades de 3 dígitos = 1\nTotal de cantidades = 5\nSuma total = 167\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "999 1000 99 100\n"
+      },
+      "stdout": "Suma línea 1 = 2198\nCantidades de 3 dígitos = 2\nTotal de cantidades = 4\nSuma total = 2198\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "corazón! maíz 423 5 casa 1738 una 252\nlápiz pingüino ojo una camión casa\nGuatemala Ómnibus güero\n2025 cuaderno\n¿luna; gato salas?\n"
+      },
+      "stdout": "Suma línea 1 = 2418\nSuma línea 2 = 0\nSuma línea 3 = 0\nSuma línea 4 = 2025\nSuma línea 5 = 0\nCantidades de 3 dígitos = 2\nTotal de cantidades = 5\nSuma total = 4443\n"
+    },
+    {
+      "stdin": "",
+      "files": {
+        "texto.txt": "¡río 83 2322 perro la! archivo niño Python luna!\n¿ÉXITO examen?\nperro\ncanción; nivel; acción? examen luna luna! perro.\n95 señor mañana 1420 perro examen casa?\naño? 16 ÁRBOL! ÁRBOL\n"
+      },
+      "stdout": "Suma línea 1 = 2405\nSuma línea 2 = 0\nSuma línea 3 = 0\nSuma línea 4 = 0\nSuma línea 5 = 1515\nSuma línea 6 = 16\nCantidades de 3 dígitos = 0\nTotal de cantidades = 5\nSuma total = 3936\n"
+    }
+  ]
+}
