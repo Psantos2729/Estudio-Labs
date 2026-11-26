@@ -13,3 +13,21 @@
 .review__row { display: flex; align-items: center; gap: 12px; padding: 8px 0; border-bottom: 1px solid var(--line); }
 .review__row:last-child { border-bottom: 0; }
 .review__name { flex: 1; min-width: 0; }
+
+/* Pelea con el jefe: cada punto acertado le quita vida. */
+.battle { align-items: center; padding: 14px; }
+.battle__hud { display: grid; gap: 6px; text-align: center; }
+.battle__hud p { margin: 0; }
+.battle__life { height: 10px; border-radius: 999px; background: rgba(255, 90, 122, 0.12); overflow: hidden; border: 1px solid rgba(255, 90, 122, 0.3); }
+.battle__life > span { display: block; height: 100%; background: linear-gradient(90deg, var(--red), var(--amber)); box-shadow: 0 0 10px rgba(255, 90, 122, 0.6); transition: width 0.25s var(--ease-out); }
+.battle__boss { position: relative; }
+.battle--fight .battle__sprite { animation: boss-hit 0.25s ease-out; }
+.battle--fight .battle__robot { animation: robot-hop 0.26s ease-out infinite; }
+.battle__hit { position: absolute; top: -6px; right: 0; font: 700 16px var(--display); color: var(--red); animation: hit-float 0.5s ease-out both; }
+.battle--won .scene__robot { animation: robot-hop 0.6s ease-out 2; }
+.battle--won .battle__sprite { transform: rotate(14deg) translateY(6px); opacity: 0.45; filter: grayscale(0.8); }
+.battle--won .battle__hud .muted:last-child { color: var(--green); }
+.battle--lost .battle__sprite { animation: robot-hop 0.6s ease-out 2; }
+@keyframes boss-hit { 30% { transform: translateX(6px); filter: brightness(2.2) drop-shadow(0 0 10px var(--red)); } }
+@keyframes hit-float { from { opacity: 1; transform: translateY(0); } to { opacity: 0; transform: translateY(-18px); } }
+@media (prefers-reduced-motion: reduce) { .battle * { animation: none !important; transition: none !important; } }

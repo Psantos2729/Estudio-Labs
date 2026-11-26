@@ -34,7 +34,7 @@ export function ReviewPage() {
       <span className="accent small">{displayId(m.id)} · repaso</span>
       <h1 className="display">{m.title}</h1>
       {result && exam ? <ExamResult exam={exam} result={result} />
-        : exam ? <ExamRun exam={exam} onDone={setResult} />
+        : exam ? <ExamRun exam={exam} passScore={m.passScore} onDone={setResult} />
         : (
           <section className="panel">
             <ul className="plain">
