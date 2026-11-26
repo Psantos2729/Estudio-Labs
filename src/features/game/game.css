@@ -96,3 +96,4 @@ a.board__row:hover { background: rgba(111, 155, 255, 0.07); text-shadow: none; }
 .missions__week { margin-top: 10px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .medal__prog { display: grid; gap: 3px; width: 100%; padding: 0 6px; }
 .medal:has(.medal__prog) { opacity: 0.8; }
+.character__links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0; }
