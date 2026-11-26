@@ -26,7 +26,7 @@ export function useMarkLessonRead() {
       const { error } = await supabase!.rpc('mark_lesson_read', { p_lesson_id: lessonId });
       if (error) throw error;
     },
-    onSuccess: () => Promise.all([qc.invalidateQueries({ queryKey: ['lessons_read'] }), qc.invalidateQueries({ queryKey: ['leaderboard'] })]),
+    onSuccess: () => Promise.all([qc.invalidateQueries({ queryKey: ['lessons_read'] }), qc.invalidateQueries({ queryKey: ['leaderboard'] }), qc.invalidateQueries({ queryKey: ['my-gear'] })]),
     // alert y no un aviso en la página: al guardar ya navegamos a la siguiente lección.
     onError: (e) => alert(`No se pudo guardar tu avance en esta lección: ${e.message}`),
   });

@@ -167,6 +167,8 @@ p { margin: 0; }
 @media (max-width: 640px) {
   :root { --topbar-h: 0px; }
   .topbar { gap: 12px; padding: 10px 16px; flex-wrap: wrap; position: static; }
+  .topbar__nav { order: 3; width: 100%; overflow-x: auto; scrollbar-width: none; padding-bottom: 10px; }
+  .topbar__nav a { flex: none; }
   .topbar__user .small { display: none; }
   .display { font-size: 26px; }
 }

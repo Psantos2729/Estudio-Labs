@@ -78,3 +78,18 @@
 a.board__row { color: var(--text); transition: background 0.15s; }
 a.board__row:hover { background: rgba(111, 155, 255, 0.07); text-shadow: none; }
 @media (max-width: 760px) { .panel.profile { flex-direction: column; align-items: flex-start; } }
+
+/* «¡Logro completado!» */
+.achv { position: fixed; inset: 0; z-index: 50; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 16px; background: rgba(3, 5, 12, 0.72); backdrop-filter: blur(6px); animation: hud-enter 0.2s var(--ease-out); }
+.panel.achv__card { position: relative; overflow: hidden; width: min(520px, 100%); max-height: calc(100vh - 32px); overflow-y: auto; align-items: center; text-align: center; gap: 12px; padding: 28px 20px;
+  border-color: rgba(255, 146, 87, 0.5); box-shadow: 0 0 40px rgba(255, 146, 87, 0.25), var(--glow); animation: achv-pop 0.45s var(--ease-out); }
+.achv__burst { position: absolute; inset: -40%; z-index: -1; background: repeating-conic-gradient(from 0deg, rgba(255, 181, 71, 0.12) 0 10deg, transparent 10deg 30deg); animation: hud-spin 18s linear infinite; }
+.achv__title { font-size: 34px; background: linear-gradient(90deg, #ffd34a, var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.achv__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.achv__item { display: grid; justify-items: center; gap: 6px; width: 150px; padding: 12px 8px; border-radius: 14px; border: 1px solid rgba(255, 146, 87, 0.35); background: rgba(0, 0, 0, 0.25); }
+.achv__robot { filter: drop-shadow(0 0 12px rgba(255, 181, 71, 0.5)); animation: robot-hop 0.6s ease-out 0.4s 2; }
+.achv__actions { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+@keyframes achv-pop { from { opacity: 0; transform: scale(0.8) translateY(12px); } }
+@keyframes robot-hop { 40% { transform: translateY(-10px); } }
+@media (prefers-reduced-motion: reduce) { .achv, .achv * { animation: none !important; } }
+@media (max-width: 760px) { .achv__title { font-size: 26px; } .achv__item { width: 130px; } }

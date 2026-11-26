@@ -4,6 +4,7 @@ import { useAuth } from '@/features/auth/AuthProvider';
 import { Button } from '@/ui/primitives/Button';
 import { Logo } from '@/ui/primitives/Logo';
 import { XpBadge } from '@/features/game/XpBadge';
+import { AchievementPopup } from '@/features/game/AchievementPopup';
 
 export function Layout() {
   const { session, signOut } = useAuth();
@@ -49,6 +50,7 @@ export function Layout() {
       <div className="page" key={pathname}>
         <Outlet />
       </div>
+      {session && <AchievementPopup />}
       <footer className="footer muted small">
         <NavLink to="/privacidad">privacidad</NavLink>
       </footer>

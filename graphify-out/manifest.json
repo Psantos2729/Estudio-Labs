@@ -108,9 +108,9 @@
     "semantic_hash": ""
   },
   "src/app/Layout.tsx": {
-    "mtime": 1795669780.4365277,
-    "seen": 1795670167.3128715,
-    "ast_hash": "e513ba8a2b43ad75f4ed2cf72a5bc825",
+    "mtime": 1795671430.2299511,
+    "seen": 1795671586.7395349,
+    "ast_hash": "d65fb1fad730068585f4c2e24ed95326",
     "semantic_hash": ""
   },
   "src/app/Providers.tsx": {
@@ -216,9 +216,9 @@
     "semantic_hash": ""
   },
   "src/ui/primitives/Button.tsx": {
-    "mtime": 1795553868.5446584,
-    "seen": 1795565146.0346153,
-    "ast_hash": "999a0e540fa4757dfb88f9d1dd71bb43",
+    "mtime": 1795671430.2295766,
+    "seen": 1795671586.741713,
+    "ast_hash": "29adbb52310595ae06604be7933f2eb2",
     "semantic_hash": ""
   },
   "src/ui/primitives/Panel.tsx": {
@@ -606,9 +606,9 @@
     "semantic_hash": ""
   },
   "src/features/exercise/usePractice.ts": {
-    "mtime": 1795669374.7486534,
-    "seen": 1795670167.312968,
-    "ast_hash": "9310aea913c681ecc83161ff6961e368",
+    "mtime": 1795671416.5759292,
+    "seen": 1795671586.7402685,
+    "ast_hash": "64fc88c9f20b88931d231a87cd91d924",
     "semantic_hash": ""
   },
   "supabase/migrations/20261124000005_practice.sql": {
@@ -738,9 +738,9 @@
     "semantic_hash": ""
   },
   "src/features/lesson/useLessonProgress.ts": {
-    "mtime": 1795669374.7502246,
-    "seen": 1795670167.3130167,
-    "ast_hash": "2f2cd743f65b92be5c4653c4fc561a2c",
+    "mtime": 1795671416.5761743,
+    "seen": 1795671586.7410483,
+    "ast_hash": "62287bc795166cac5a3843e3c4c7056b",
     "semantic_hash": ""
   },
   "supabase/migrations/20261124000006_lesson_progress.sql": {
@@ -852,9 +852,9 @@
     "semantic_hash": ""
   },
   "src/features/exam/useExam.ts": {
-    "mtime": 1795669374.7482455,
-    "seen": 1795670167.3129544,
-    "ast_hash": "56b07959bf4d3c19115ad354324aade4",
+    "mtime": 1795671416.575594,
+    "seen": 1795671586.740039,
+    "ast_hash": "e374560034fb36b297ee63daa6788f01",
     "semantic_hash": ""
   },
   "src/ui/primitives/Logo.tsx": {
@@ -2745,6 +2745,24 @@
     "mtime": 1795669374.7502246,
     "seen": 1795670167.3130093,
     "ast_hash": "0c15d267472f362e55322d9136a17f9f",
+    "semantic_hash": ""
+  },
+  "src/features/game/AchievementPopup.tsx": {
+    "mtime": 1795671416.5856879,
+    "seen": 1795671586.7402709,
+    "ast_hash": "64e6705f343bc7e95bec3bb1c430a72a",
+    "semantic_hash": ""
+  },
+  "src/features/game/newAchievements.test.ts": {
+    "mtime": 1795671416.583911,
+    "seen": 1795671586.7405915,
+    "ast_hash": "64dc4811609708f699bea44042491505",
+    "semantic_hash": ""
+  },
+  "src/features/game/newAchievements.ts": {
+    "mtime": 1795671416.5823386,
+    "seen": 1795671586.7405934,
+    "ast_hash": "a253c6b5b5308c88b1734c4641a347ab",
     "semantic_hash": ""
   },
   "package-lock.json": {
