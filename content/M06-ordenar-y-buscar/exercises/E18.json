@@ -1,0 +1,42 @@
+{
+  "id": "M06-E18",
+  "title": "De Python a pseudocódigo: búsqueda binaria",
+  "language": "pseudo",
+  "statement": "Pasa este programa a **pseudocódigo**. El vector ya viene **ordenado**:\n\n```python\nn = int(input())\nv = [0] * n\nfor i in range(n):\n    v[i] = int(input())\ndato = int(input())\nizq = 0\nder = n - 1\npos = -1\nwhile izq <= der and pos == -1:\n    medio = (izq + der) // 2\n    if v[medio] == dato:\n        pos = medio\n    elif v[medio] < dato:\n        izq = medio + 1\n    else:\n        der = medio - 1\nprint(f\"Posición: {pos}\")\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cómo se escribe `(izq + der) // 2` en pseudocódigo?",
+      "options": [
+        "(izq + der) / 2",
+        "(izq + der) div 2",
+        "(izq + der) mod 2"
+      ],
+      "answer": 1,
+      "why": "`//` es la división entera: `div`."
+    }
+  ],
+  "hints": [
+    "`and` y `!=` se escriben igual; `==` es `=`.",
+    "`elif` → `else if`, y un solo `end if`.",
+    "`while … :` → `while …` y `end while`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n1\n3\n5\n7\n9\n7\n",
+      "stdout": "Posición: 3\n"
+    },
+    {
+      "stdin": "5\n1\n3\n5\n7\n9\n4\n",
+      "stdout": "Posición: -1\n"
+    },
+    {
+      "stdin": "1\n8\n8\n",
+      "stdout": "Posición: 0\n"
+    },
+    {
+      "stdin": "6\n2\n4\n6\n8\n10\n12\n2\n",
+      "stdout": "Posición: 0\n"
+    }
+  ]
+}

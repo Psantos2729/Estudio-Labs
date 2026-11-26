@@ -1,0 +1,56 @@
+{
+  "id": "M03-E13",
+  "title": "Pseudocódigo: suma de dígitos",
+  "language": "pseudo",
+  "statement": "Lee un entero **n** (n ≥ 0) y muestra `Suma: <s>` con la suma de sus dígitos.\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar. Usa `mod 10` y `div 10`.\n\nEjemplo: con `472` muestra `Suma: 13`.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "Si `n ← 472`, ¿cuánto vale `n mod 10`?",
+      "options": [
+        "47",
+        "2",
+        "4"
+      ],
+      "answer": 1,
+      "why": "`mod 10` es el residuo al dividir entre 10: el último dígito."
+    },
+    {
+      "question": "Si `n ← 472`, ¿cuánto vale `n div 10`?",
+      "options": [
+        "47",
+        "47.2",
+        "2"
+      ],
+      "answer": 0,
+      "why": "`div` es la división entera: quita el último dígito."
+    }
+  ],
+  "hints": [
+    "Repite mientras `n > 0`.",
+    "En cada vuelta: `suma ← suma + n mod 10` y `n ← n div 10`.",
+    "Con n = 0 la suma es 0: el while ni entra."
+  ],
+  "tests": [
+    {
+      "stdin": "472\n",
+      "stdout": "Suma: 13\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Suma: 0\n"
+    },
+    {
+      "stdin": "9\n",
+      "stdout": "Suma: 9\n"
+    },
+    {
+      "stdin": "1000\n",
+      "stdout": "Suma: 1\n"
+    },
+    {
+      "stdin": "98765\n",
+      "stdout": "Suma: 35\n"
+    }
+  ]
+}

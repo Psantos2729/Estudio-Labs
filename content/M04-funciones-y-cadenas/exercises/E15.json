@@ -1,0 +1,41 @@
+{
+  "id": "M04-E15",
+  "title": "De pseudocódigo a Python: contar una letra",
+  "statement": "Escribe **en Python** este pseudocódigo (con la función):\n\n```text\nFunction contar(texto, letra)\n    cuenta ← 0\n    for i ← 0 to len(texto) - 1\n        if texto[i] = letra\n            cuenta ← cuenta + 1\n        end if\n    end for\n    return cuenta\nEnd function\n\nBegin\n    read texto\n    read letra\n    write \"La letra \", letra, \" aparece \", contar(texto, letra), \" veces\"\nEnd\n```\n\nEjemplo: con `banana` y `a` muestra `La letra a aparece 3 veces`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Qué posiciones recorre `for i ← 0 to len(texto) - 1`?",
+      "options": [
+        "de 0 a len(texto) - 1, todas las letras",
+        "de 0 a len(texto)",
+        "de 1 a len(texto)"
+      ],
+      "answer": 0,
+      "why": "Incluye el final, así que llega hasta len(texto) - 1: la última letra. En Python es `range(len(texto))`."
+    }
+  ],
+  "hints": [
+    "`Function contar(texto, letra)` → `def contar(texto, letra):`.",
+    "`for i ← 0 to len(texto) - 1` → `for i in range(len(texto)):`.",
+    "Aquí `read` lee texto: `texto = input()`, sin `int()`."
+  ],
+  "tests": [
+    {
+      "stdin": "banana\na\n",
+      "stdout": "La letra a aparece 3 veces\n"
+    },
+    {
+      "stdin": "hola\nz\n",
+      "stdout": "La letra z aparece 0 veces\n"
+    },
+    {
+      "stdin": "aaa\na\n",
+      "stdout": "La letra a aparece 3 veces\n"
+    },
+    {
+      "stdin": "Mississippi\ns\n",
+      "stdout": "La letra s aparece 4 veces\n"
+    }
+  ]
+}

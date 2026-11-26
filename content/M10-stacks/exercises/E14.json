@@ -1,0 +1,60 @@
+{
+  "id": "M10-E14",
+  "title": "De Python a pseudocódigo: signos balanceados",
+  "language": "pseudo",
+  "statement": "Pasa este programa a **pseudocódigo**, usando `new Stack()` en lugar de la lista:\n\n```python\ndef balanceado(s):\n    pila = []\n    for c in s:\n        if c in \"([\":\n            pila.append(c)\n        elif c in \")]\":\n            if len(pila) == 0:\n                return False\n            abre = pila.pop()\n            if (abre == \"(\" and c != \")\") or (abre == \"[\" and c != \"]\"):\n                return False\n    return len(pila) == 0\n\ns = input()\nif balanceado(s):\n    print(\"Balanceado\")\nelse:\n    print(\"No balanceado\")\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Function balanceado(s)\n    \nEnd function\n\nBegin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el pseudocódigo de `pila.append(c)`?",
+      "options": [
+        "pila.push(c)",
+        "pila ← c",
+        "push(c)"
+      ],
+      "answer": 0,
+      "why": "Con `p ← new Stack()`, meter es `p.push(c)`, sacar `p.pop()` y preguntar si está vacío `p.empty()`."
+    },
+    {
+      "question": "¿Cómo recorres cada letra si el pseudocódigo no tiene `for c in s`?",
+      "options": [
+        "for c ← s",
+        "for i ← 0 to len(s) - 1 y c ← s[i]",
+        "while s"
+      ],
+      "answer": 1,
+      "why": "En pseudocódigo el for cuenta: recorre las posiciones y toma la letra con `s[i]`."
+    }
+  ],
+  "hints": [
+    "`len(pila) == 0` → `p.empty()`.",
+    "`elif` → `else if`; cada `if` necesita su `end if`.",
+    "`return p.empty()` al final de la función."
+  ],
+  "tests": [
+    {
+      "stdin": "([a+b]*c)\n",
+      "stdout": "Balanceado\n"
+    },
+    {
+      "stdin": "(a+b))\n",
+      "stdout": "No balanceado\n"
+    },
+    {
+      "stdin": "([)]\n",
+      "stdout": "No balanceado\n"
+    },
+    {
+      "stdin": "((\n",
+      "stdout": "No balanceado\n"
+    },
+    {
+      "stdin": "sin signos\n",
+      "stdout": "Balanceado\n"
+    },
+    {
+      "stdin": "[(1+2)*(3-4)]\n",
+      "stdout": "Balanceado\n"
+    }
+  ]
+}

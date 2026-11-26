@@ -3,20 +3,20 @@ export type Grid = { label: string; rows: string[][] };
 export type GridStep = { grids: Grid[]; marks: Record<string, string>; note: string };
 export type Block =
   | { kind: 'md'; text: string }
-  | { kind: 'python'; code: string }
+  | { kind: 'python' | 'pseudo'; code: string }
   | { kind: 'steps'; steps: Step[] }
   | { kind: 'grid'; steps: GridStep[] };
 
-/** Separa la lección en markdown, bloques ```python que se corren y bloques ```pasos o ```matriz que se recorren paso a paso. */
+/** Separa la lección en markdown, bloques ```python y ```pseudo que se corren y bloques ```pasos o ```matriz que se recorren paso a paso. */
 export function splitBlocks(body: string): Block[] {
   const blocks: Block[] = [];
-  const parts = body.split(/^```(python|pasos|matriz)[ \t]*\n([\s\S]*?)^```[ \t]*$/m);
+  const parts = body.split(/^```(python|pseudo|pasos|matriz)[ \t]*\n([\s\S]*?)^```[ \t]*$/m);
   for (let i = 0; i < parts.length; i += 3) {
     if (parts[i].trim()) blocks.push({ kind: 'md', text: parts[i] });
     if (i + 2 >= parts.length) break;
     const code = parts[i + 2].trimEnd();
     const kind = parts[i + 1];
-    blocks.push(kind === 'python' ? { kind: 'python', code } : kind === 'pasos' ? { kind: 'steps', steps: parseSteps(code) } : { kind: 'grid', steps: parseGrid(code) });
+    blocks.push(kind === 'python' || kind === 'pseudo' ? { kind, code } : kind === 'pasos' ? { kind: 'steps', steps: parseSteps(code) } : { kind: 'grid', steps: parseGrid(code) });
   }
   return blocks;
 }

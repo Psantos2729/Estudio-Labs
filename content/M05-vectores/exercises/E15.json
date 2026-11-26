@@ -1,0 +1,41 @@
+{
+  "id": "M05-E15",
+  "title": "De pseudocódigo a Python: producto escalar",
+  "statement": "Este es el pseudocódigo de **Producto escalar** de tu tarea Vectores. Escríbelo **en Python** (vectores de tamaño fijo, sin `append`):\n\n```text\nBegin\n    read n\n    a ← new Array(n)\n    b ← new Array(n)\n    for i ← 0 to n - 1\n        read a[i]\n    end for\n    for i ← 0 to n - 1\n        read b[i]\n    end for\n    suma ← 0\n    for i ← 0 to n - 1\n        suma ← suma + a[i] * b[i]\n    end for\n    write \"Producto escalar: \", suma\nEnd\n```\n\nEjemplo: con `3`, luego `1`, `2`, `3` y luego `4`, `5`, `6` muestra `Producto escalar: 32`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Qué es `a ← new Array(n)` en Python, con la regla del curso?",
+      "options": [
+        "a = []",
+        "a = [0] * n",
+        "a = list(n)"
+      ],
+      "answer": 1,
+      "why": "El vector se crea con su tamaño: `[0] * n`."
+    }
+  ],
+  "hints": [
+    "`new Array(n)` → `[0] * n`.",
+    "`for i ← 0 to n - 1` → `for i in range(n):`.",
+    "`read a[i]` → `a[i] = int(input())`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n1\n2\n3\n4\n5\n6\n",
+      "stdout": "Producto escalar: 32\n"
+    },
+    {
+      "stdin": "1\n5\n-2\n",
+      "stdout": "Producto escalar: -10\n"
+    },
+    {
+      "stdin": "4\n1\n0\n1\n0\n0\n1\n0\n1\n",
+      "stdout": "Producto escalar: 0\n"
+    },
+    {
+      "stdin": "2\n-3\n4\n2\n5\n",
+      "stdout": "Producto escalar: 14\n"
+    }
+  ]
+}

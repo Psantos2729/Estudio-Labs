@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { marked } from 'marked';
 import type { ExerciseDef } from '@/content/types';
 import { Button } from '@/ui/primitives/Button';
-import { runPython, type RunResult } from '@/features/runner/runner';
+import type { RunResult } from '@/features/runner/runner';
+import { preview, runCode } from '@/features/pseudo/run';
+import { PythonPreview } from '@/features/pseudo/PythonPreview';
 import { runTests, type TestResult } from '@/features/runner/check';
 import { CodeEditor } from './CodeEditor';
 import { TestResults } from './TestResults';
@@ -54,16 +56,19 @@ export function CodeStep({ exercise, initialCode, onTested }: Props) {
         </div>
       </div>
       <div className="split__code">
-        <CodeEditor initial={initialCode} onChange={setCode} />
+        <CodeEditor initial={initialCode} onChange={setCode} pseudo={exercise.language === 'pseudo'} />
         <label className="field">
-          <span className="muted small">entrada para Correr (una línea por cada input())</span>
+          <span className="muted small">entrada para Correr (una línea por cada {exercise.language === 'pseudo' ? 'read' : 'input()'})</span>
           <textarea className="input field__text" rows={2} value={stdin} onChange={(e) => setStdin(e.target.value)} />
         </label>
         {usesFiles && <GivenFiles files={files} onChange={setFiles} />}
         <div className="runnable__bar">
-          <Button variant="ghost" disabled={busy} onClick={() => busyWhile(async () => setRun(await runPython(code, stdin, { files })))}>▶ Correr</Button>
+          <Button variant="ghost" disabled={busy} onClick={() => busyWhile(async () => setRun(await runCode(code, exercise.language, stdin, { files })))}>▶ Correr</Button>
           <Button disabled={busy} onClick={() => busyWhile(async () => {
-                const r = await runTests(code, exercise.tests);
+                // Pseudocódigo que no cierra: un solo aviso con su línea, en vez del mismo error en cada prueba.
+                const broken = exercise.language === 'pseudo' ? preview(code).error : undefined;
+                if (broken) return (setResults(null), setRun({ stdout: '', error: broken }));
+                const r = await runTests(code, exercise.tests, exercise.language);
                 setResults(r);
                 onTested(code, r);
               })}>Probar ({exercise.tests.length} pruebas)</Button>
@@ -77,6 +82,7 @@ export function CodeStep({ exercise, initialCode, onTested }: Props) {
           </pre>
         )}
         {run && <OutFiles files={run.files} given={files} />}
+        {exercise.language === 'pseudo' && <PythonPreview code={code} />}
         {results && <TestResults results={results} />}
       </div>
     </section>

@@ -1,0 +1,55 @@
+{
+  "id": "M00-E08",
+  "title": "De pseudocódigo a Python: segundos a minutos",
+  "statement": "Este pseudocódigo convierte segundos en minutos y segundos:\n\n```text\nBegin\n    read total\n    minutos ← total div 60\n    segundos ← total mod 60\n    write minutos, \" min \", segundos, \" s\"\nEnd\n```\n\nEscríbelo **en Python**. Debe mostrar exactamente lo mismo.\n\nEjemplo: con `200` muestra `3 min 20 s`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Qué es `total div 60` en Python?",
+      "options": [
+        "total / 60",
+        "total // 60",
+        "total % 60"
+      ],
+      "answer": 1,
+      "why": "`div` es la división entera: `//`. `mod` es el residuo: `%`."
+    },
+    {
+      "question": "¿Qué es `read total` en Python, si total es un número?",
+      "options": [
+        "total = input()",
+        "total = int(input())",
+        "read(total)"
+      ],
+      "answer": 1,
+      "why": "`input()` da texto; para hacer cuentas hay que convertirlo con `int()`."
+    }
+  ],
+  "hints": [
+    "`read total` → `total = int(input())`.",
+    "`div` es `//` y `mod` es `%`.",
+    "Para pegar sin espacios usa una f-string: `print(f\"{minutos} min {segundos} s\")`."
+  ],
+  "tests": [
+    {
+      "stdin": "200\n",
+      "stdout": "3 min 20 s\n"
+    },
+    {
+      "stdin": "59\n",
+      "stdout": "0 min 59 s\n"
+    },
+    {
+      "stdin": "60\n",
+      "stdout": "1 min 0 s\n"
+    },
+    {
+      "stdin": "3601\n",
+      "stdout": "60 min 1 s\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "0 min 0 s\n"
+    }
+  ]
+}

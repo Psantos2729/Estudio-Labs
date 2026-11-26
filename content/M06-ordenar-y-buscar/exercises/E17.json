@@ -1,0 +1,42 @@
+{
+  "id": "M06-E17",
+  "title": "Pseudocódigo: burbuja",
+  "language": "pseudo",
+  "statement": "Lee **N** y luego N enteros, uno por línea. Ordénalos de menor a mayor con el **método de burbuja** y muéstralos en una línea separados por espacios.\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar. Para intercambiar usa una variable `aux`.\n\nEjemplo: con `4` y luego `5`, `1`, `4`, `2` muestra `1 2 4 5`.",
+  "starter": "Begin\n    read n\n    v ← new Array(n)\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Por qué no basta con `v[j] ← v[j + 1]` y luego `v[j + 1] ← v[j]`?",
+      "options": [
+        "sí basta",
+        "la primera línea borra v[j]; hace falta guardarlo antes en aux",
+        "porque el for no lo permite"
+      ],
+      "answer": 1,
+      "why": "Al hacer `v[j] ← v[j + 1]` se pierde el valor viejo de v[j]. Se guarda primero: `aux ← v[j]`."
+    }
+  ],
+  "hints": [
+    "Dos for: `for pasada ← 1 to n - 1` y adentro `for j ← 0 to n - 1 - pasada`.",
+    "Si `v[j] > v[j + 1]`, intercambia con `aux`.",
+    "Para mostrar todo en una línea, arma un texto: `linea ← linea + str(v[i]) + \" \"` y al final `write linea`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n5\n1\n4\n2\n",
+      "stdout": "1 2 4 5\n"
+    },
+    {
+      "stdin": "1\n9\n",
+      "stdout": "9\n"
+    },
+    {
+      "stdin": "5\n3\n3\n1\n2\n1\n",
+      "stdout": "1 1 2 3 3\n"
+    },
+    {
+      "stdin": "6\n-1\n10\n0\n-7\n4\n2\n",
+      "stdout": "-7 -1 0 2 4 10\n"
+    }
+  ]
+}

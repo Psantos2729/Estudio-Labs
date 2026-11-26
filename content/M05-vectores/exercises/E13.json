@@ -1,0 +1,52 @@
+{
+  "id": "M05-E13",
+  "title": "Pseudocódigo: suma y mayor de un vector",
+  "language": "pseudo",
+  "statement": "Lee **N** y luego N enteros, uno por línea, y guárdalos en un vector creado con `new Array(n)`. Muestra `Suma: <s>` y `Mayor: <m>`.\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.\n\nEjemplo: con `3` y luego `4`, `9`, `-1` muestra `Suma: 12` y `Mayor: 9`.",
+  "starter": "Begin\n    read n\n    v ← new Array(n)\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Qué posiciones tiene `v ← new Array(4)`?",
+      "options": [
+        "1, 2, 3, 4",
+        "0, 1, 2, 3",
+        "0, 1, 2, 3, 4"
+      ],
+      "answer": 1,
+      "why": "Un arreglo de tamaño 4 va de la posición 0 a la 3 (n - 1)."
+    },
+    {
+      "question": "¿Con qué valor empieza `mayor` para que funcione aunque todos sean negativos?",
+      "options": [
+        "0",
+        "v[0]",
+        "-1"
+      ],
+      "answer": 1,
+      "why": "Si empiezas en 0 y todos son negativos, el 0 se queda como mayor sin estar en el vector. Empieza con el primer elemento."
+    }
+  ],
+  "hints": [
+    "Llena con `for i ← 0 to n - 1` y `read v[i]`.",
+    "`mayor ← v[0]` antes del recorrido.",
+    "En el recorrido: suma todo y, `if v[i] > mayor`, actualiza."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n4\n9\n-1\n",
+      "stdout": "Suma: 12\nMayor: 9\n"
+    },
+    {
+      "stdin": "1\n7\n",
+      "stdout": "Suma: 7\nMayor: 7\n"
+    },
+    {
+      "stdin": "4\n-5\n-2\n-9\n-3\n",
+      "stdout": "Suma: -19\nMayor: -2\n"
+    },
+    {
+      "stdin": "5\n1\n2\n3\n4\n5\n",
+      "stdout": "Suma: 15\nMayor: 5\n"
+    }
+  ]
+}

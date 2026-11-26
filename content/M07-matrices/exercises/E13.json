@@ -1,0 +1,38 @@
+{
+  "id": "M07-E13",
+  "title": "Pseudocódigo: suma de cada fila",
+  "language": "pseudo",
+  "statement": "Lee **f** y **c**, y luego una matriz de f × c enteros, **uno por línea** (fila por fila). Guárdala en `new Array(f, c)` y muestra la suma de cada fila con el formato `Fila <i>: <suma>` (filas desde 0).\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.\n\nEjemplo: con `2`, `3` y luego `1 2 3 4 5 6` (uno por línea) muestra `Fila 0: 6` y `Fila 1: 15`.",
+  "starter": "Begin\n    read f\n    read c\n    m ← new Array(f, c)\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "En `m ← new Array(2, 3)`, ¿cuál es la última casilla?",
+      "options": [
+        "m[2][3]",
+        "m[1][2]",
+        "m[3][2]"
+      ],
+      "answer": 1,
+      "why": "Filas 0 y 1, columnas 0, 1 y 2: la última es m[1][2]."
+    }
+  ],
+  "hints": [
+    "Llena con dos for anidados y `read m[i][j]`.",
+    "Para cada fila: `suma ← 0` antes del for de columnas.",
+    "Después del for de columnas (pero dentro del de filas) va el `write`."
+  ],
+  "tests": [
+    {
+      "stdin": "2\n3\n1\n2\n3\n4\n5\n6\n",
+      "stdout": "Fila 0: 6\nFila 1: 15\n"
+    },
+    {
+      "stdin": "1\n1\n7\n",
+      "stdout": "Fila 0: 7\n"
+    },
+    {
+      "stdin": "3\n2\n-1\n1\n0\n0\n5\n5\n",
+      "stdout": "Fila 0: 0\nFila 1: 0\nFila 2: 10\n"
+    }
+  ]
+}

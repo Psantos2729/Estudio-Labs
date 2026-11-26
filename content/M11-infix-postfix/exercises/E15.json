@@ -1,0 +1,60 @@
+{
+  "id": "M11-E15",
+  "title": "De Python a pseudocódigo: infix a postfix",
+  "language": "pseudo",
+  "statement": "Este es tu laboratorio **Infix a postfix** en Python. Pásalo a **pseudocódigo**, con las dos funciones y un stack:\n\n```python\ndef jer(s):\n    if s == \"^\":\n        return 3\n    elif s == \"*\" or s == \"/\":\n        return 2\n    elif s == \"+\" or s == \"-\":\n        return 1\n    return 0\n\ndef convertir(expresion):\n    signos = []\n    postfix = \"\"\n    for c in expresion:\n        if c in \"+-*/^\":\n            while len(signos) > 0 and jer(signos[-1]) >= jer(c):\n                postfix = postfix + signos.pop()\n            signos.append(c)\n        elif c == \"(\":\n            signos.append(c)\n        elif c == \")\":\n            while signos[-1] != \"(\":\n                postfix = postfix + signos.pop()\n            signos.pop()\n        else:\n            postfix = postfix + c\n    while len(signos) > 0:\n        postfix = postfix + signos.pop()\n    return postfix\n\nprint(convertir(input()))\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Function jer(s)\n    \nEnd function\n\nFunction convertir(expresion)\n    \nEnd function\n\nBegin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el pseudocódigo de `signos[-1]` si `signos` es un stack?",
+      "options": [
+        "signos.top()",
+        "signos.pop()",
+        "signos[0]"
+      ],
+      "answer": 0,
+      "why": "`top()` mira el de arriba sin sacarlo; `pop()` lo saca."
+    },
+    {
+      "question": "¿Qué está mal en `postfix ← signos.pop()` (sin `postfix +`)?",
+      "options": [
+        "nada",
+        "borra todo lo que ya tenía postfix",
+        "no compila"
+      ],
+      "answer": 1,
+      "why": "Hay que **pegar** al texto: `postfix ← postfix + signos.pop()`. Así estaba en la entrega original y perdía lo anterior."
+    }
+  ],
+  "hints": [
+    "`signos = []` → `signos ← new Stack()`; `append` → `push`.",
+    "`len(signos) > 0` → `not signos.empty()`, y `signos[-1]` → `signos.top()`.",
+    "`for c in expresion` → `for i ← 0 to len(expresion) - 1` con `c ← expresion[i]`."
+  ],
+  "tests": [
+    {
+      "stdin": "a+b*c\n",
+      "stdout": "abc*+\n"
+    },
+    {
+      "stdin": "(a+b)*c\n",
+      "stdout": "ab+c*\n"
+    },
+    {
+      "stdin": "a*b+c\n",
+      "stdout": "ab*c+\n"
+    },
+    {
+      "stdin": "a+b-c\n",
+      "stdout": "ab+c-\n"
+    },
+    {
+      "stdin": "a^b*(c-d)/e\n",
+      "stdout": "ab^cd-*e/\n"
+    },
+    {
+      "stdin": "x\n",
+      "stdout": "x\n"
+    }
+  ]
+}

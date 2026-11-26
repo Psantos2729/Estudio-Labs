@@ -1,0 +1,50 @@
+{
+  "id": "M04-E14",
+  "title": "De Python a pseudocódigo: ¿es primo?",
+  "language": "pseudo",
+  "statement": "Pasa este programa a **pseudocódigo**, con la función incluida:\n\n```python\ndef es_primo(n):\n    if n < 2:\n        return False\n    d = 2\n    while d * d <= n:\n        if n % d == 0:\n            return False\n        d = d + 1\n    return True\n\nn = int(input())\nif es_primo(n):\n    print(f\"{n} es primo\")\nelse:\n    print(f\"{n} no es primo\")\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Function es_primo(n)\n    \nEnd function\n\nBegin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el pseudocódigo de `def es_primo(n):`?",
+      "options": [
+        "Function es_primo(n)",
+        "def es_primo(n)",
+        "Begin es_primo(n)"
+      ],
+      "answer": 0,
+      "why": "Las funciones empiezan con `Function nombre(parámetros)` y terminan con `End function`."
+    }
+  ],
+  "hints": [
+    "`def` → `Function`, y al final `End function`.",
+    "`n % d == 0` → `n mod d = 0`.",
+    "El programa principal va en `Begin` … `End`, después de la función."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n",
+      "stdout": "7 es primo\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "1 no es primo\n"
+    },
+    {
+      "stdin": "2\n",
+      "stdout": "2 es primo\n"
+    },
+    {
+      "stdin": "91\n",
+      "stdout": "91 no es primo\n"
+    },
+    {
+      "stdin": "97\n",
+      "stdout": "97 es primo\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "0 no es primo\n"
+    }
+  ]
+}

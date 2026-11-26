@@ -1,0 +1,37 @@
+{
+  "id": "M07-E15",
+  "title": "De pseudocódigo a Python: diagonal",
+  "statement": "Escribe **en Python** este pseudocódigo. Lee una matriz cuadrada de n × n (un número por línea, fila por fila):\n\n```text\nBegin\n    read n\n    m ← new Array(n, n)\n    for i ← 0 to n - 1\n        for j ← 0 to n - 1\n            read m[i][j]\n        end for\n    end for\n    principal ← 0\n    secundaria ← 0\n    for i ← 0 to n - 1\n        principal ← principal + m[i][i]\n        secundaria ← secundaria + m[i][n - 1 - i]\n    end for\n    write \"Principal: \", principal\n    write \"Secundaria: \", secundaria\nEnd\n```\n\nEjemplo: con `2` y luego `1`, `2`, `3`, `4` muestra `Principal: 5` y `Secundaria: 5`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "En una matriz de 3 × 3, ¿qué casillas suma `m[i][n - 1 - i]`?",
+      "options": [
+        "m[0][0], m[1][1], m[2][2]",
+        "m[0][2], m[1][1], m[2][0]",
+        "m[2][2], m[1][1], m[0][0]"
+      ],
+      "answer": 1,
+      "why": "Con n = 3: i = 0 da columna 2, i = 1 da 1, i = 2 da 0. Es la diagonal secundaria."
+    }
+  ],
+  "hints": [
+    "`new Array(n, n)` → `[[0] * n for _ in range(n)]`.",
+    "Cada `read m[i][j]` → `m[i][j] = int(input())`.",
+    "Los dos acumuladores se llenan en el mismo for."
+  ],
+  "tests": [
+    {
+      "stdin": "2\n1\n2\n3\n4\n",
+      "stdout": "Principal: 5\nSecundaria: 5\n"
+    },
+    {
+      "stdin": "1\n7\n",
+      "stdout": "Principal: 7\nSecundaria: 7\n"
+    },
+    {
+      "stdin": "3\n1\n2\n3\n4\n5\n6\n7\n8\n9\n",
+      "stdout": "Principal: 15\nSecundaria: 15\n"
+    }
+  ]
+}
