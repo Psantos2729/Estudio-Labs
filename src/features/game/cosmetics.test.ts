@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PIECES, howOf } from './cosmetics';
 
-const RULES = ['nivel', 'ejercicios', 'repasos', 'modulos', 'islas', 'jefe'];
+const RULES = ['nivel', 'ejercicios', 'repasos', 'modulos', 'islas', 'jefe', 'lecciones', 'curso', 'xp', 'reintentos', 'perfectos', 'rapidos', 'noche', 'seguidas', 'primero'];
 
 describe('content/cosmeticos.json', () => {
   it('no repite ids', () => {
@@ -23,5 +23,7 @@ describe('content/cosmeticos.json', () => {
     expect(howOf(['jefe', 'M03'])).toBe('Vence a Gólem de Musgo');
     expect(howOf(['modulos', 1])).toBe('Domina 1 módulo');
     expect(howOf(['islas', 4])).toBe('Vence a todos los jefes de isla');
+    expect(howOf(['jefe', 'M00'])).toBe('Vence a Piedra Eco');
+    for (const p of PIECES) expect(howOf(p.unlock)).not.toBe('');
   });
 });
