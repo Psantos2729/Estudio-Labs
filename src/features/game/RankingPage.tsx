@@ -33,16 +33,22 @@ export function RankingPage() {
               </button>
             ))}
           </div>
+          <p className="muted small">
+            {period === 'week' ? 'XP ganado desde el lunes. Se reinicia cada lunes a medianoche (hora de Guatemala), así cualquiera puede quedar primero.' : 'Todo el XP desde que empezaste.'}
+            {' '}Toca a alguien para ver su perfil.
+          </p>
           {isLoading && <p className="muted">cargando…</p>}
           {error && <p className="warn">No se pudo cargar el ranking. Intenta de nuevo.</p>}
           <ol className="board">
             {rows.map((r) => (
-              <li key={`${r.rank}-${r.name}-${r.is_me}`} className={`board__row${r.is_me ? ' board__row--me' : ''}`}>
-                <span className={r.rank <= 3 ? 'warn strong' : 'muted'}>{r.rank}</span>
-                <Robot color={r.color} gear={r.gear} size={26} />
-                <span className="board__name">{r.name}{r.is_me && <span className="muted small"> · tú</span>}</span>
-                <span className="muted small">Nv {levelOf(r.xp).level} · {r.station}</span>
-                <span className="board__xp">{r.xp} XP</span>
+              <li key={r.handle}>
+                <Link to={`/perfil/${r.handle}`} className={`board__row${r.is_me ? ' board__row--me' : ''}`}>
+                  <span className={r.rank <= 3 ? 'warn strong' : 'muted'}>{r.rank}</span>
+                  <Robot color={r.color} gear={r.gear} size={26} />
+                  <span className="board__name">{r.name}{r.is_me && <span className="muted small"> · tú</span>}</span>
+                  <span className="muted small">Nv {levelOf(r.xp).level} · {r.station}</span>
+                  <span className="board__xp">{r.xp} XP</span>
+                </Link>
               </li>
             ))}
           </ol>

@@ -7,6 +7,8 @@ export type Period = 'week' | 'all';
 
 export interface RankRow {
   rank: number;
+  /** Para abrir /perfil/:handle; no es el id (migración 024). */
+  handle: string;
   name: string;
   color: string;
   gear: Gear;
@@ -93,6 +95,26 @@ export function useQuests() {
       const { data, error } = await supabase!.rpc('my_quests');
       if (error) throw error;
       return data as Quests;
+    },
+  });
+}
+
+export interface PublicProfile {
+  name: string; color: string; gear: Gear; xp: number; mastered: number; station: string;
+  streak: number; best: number; unlocked: string[]; is_me: boolean;
+}
+
+/** Perfil público de alguien del ranking (RPC public_profile, migración 024). */
+export function useProfile(handle: string) {
+  const userId = useAuth().session?.user.id;
+  return useQuery({
+    queryKey: ['profile', handle, userId],
+    enabled: Boolean(supabase && userId && handle),
+    retry: false,
+    queryFn: async (): Promise<PublicProfile> => {
+      const { data, error } = await supabase!.rpc('public_profile', { p_handle: handle });
+      if (error) throw error;
+      return data as PublicProfile;
     },
   });
 }

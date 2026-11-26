@@ -28,6 +28,7 @@ export function Layout() {
           <NavLink to="/historial">historial</NavLink>
           <NavLink to="/ranking">ranking</NavLink>
           <NavLink to="/taller">taller</NavLink>
+          <NavLink to="/logros">logros</NavLink>
         </nav>
         <div className="topbar__user">
           {email ? (
