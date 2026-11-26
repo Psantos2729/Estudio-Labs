@@ -11,7 +11,7 @@ export function LessonScene({ moduleId, end = false }: { moduleId: string; end?:
   const index = Number(moduleId.slice(1));
   const mini = MINI_BOSSES[index];
   const island = islandOf(index);
-  // El jefe de isla es el examen del último módulo de la isla: solo aparece en ese módulo.
+  // El jefe de sector es el examen del último módulo del sector: solo aparece en ese módulo.
   const bosses = [mini, ...(island.last === index ? [island.boss] : [])].filter(Boolean);
   const ref = useRef<HTMLDivElement>(null);
   const [cheer, setCheer] = useState(false);

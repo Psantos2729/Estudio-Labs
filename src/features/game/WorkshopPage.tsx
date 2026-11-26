@@ -27,7 +27,7 @@ function Workshop({ color, unlocked, initial }: { color: string; unlocked: strin
       <header className="detail__head">
         <span className="accent small">taller del robot</span>
         <h1 className="display">Viste a tu robot</h1>
-        <p className="muted">Cada jefe de isla regala dos piezas de su ambiente; los niveles y las metas dan más. Tu robot sale así en la portada, el mapa y el ranking.</p>
+        <p className="muted">Cada jefe de sector regala dos piezas de su ambiente; los niveles y las metas dan más. Tu robot sale así en la portada, el mapa y el ranking.</p>
       </header>
       <div className="workshop__grid">
         <section className="panel workshop__preview" aria-label="Vista previa">

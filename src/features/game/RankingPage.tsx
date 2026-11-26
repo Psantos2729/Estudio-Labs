@@ -60,7 +60,7 @@ export function RankingPage() {
         <ul className="xp-rules">
           {XP_RULES.map((r) => <li key={r.label}><span>{r.label}</span><span className="ok">+{r.xp}</span></li>)}
         </ul>
-        <p className="muted small">Cada 500 XP subes un nivel. Al vencer al jefe de cada isla y al subir de nivel ganas piezas para vestir a tu robot en el <Link to="/taller">taller</Link>.</p>
+        <p className="muted small">Cada 500 XP subes un nivel. Al vencer al jefe de cada sector y al subir de nivel ganas piezas para vestir a tu robot en el <Link to="/taller">taller</Link>.</p>
       </section>
     </main>
   );
