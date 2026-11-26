@@ -324,7 +324,25 @@ values
   ('casco_diamante', 'cabeza', 'modulos', '10', 27),
   ('peto_diamante', 'cuerpo', 'modulos', '10', 28),
   ('casco_amatista', 'cabeza', 'modulos', '13', 29),
-  ('peto_amatista', 'cuerpo', 'modulos', '13', 30)
+  ('peto_amatista', 'cuerpo', 'modulos', '13', 30),
+  ('pokeball', 'mano', 'lecciones', '1', 31),
+  ('masterball', 'mano', 'curso', '100', 32),
+  ('snorlax', 'cabeza', 'xp', '500', 33),
+  ('mini', 'mano', 'reintentos', '1', 34),
+  ('escudo_grande', 'brazo', 'perfectos', '1', 35),
+  ('karambit', 'mano', 'rapidos', '1', 36),
+  ('lentes_edwin', 'cara', 'primero', '1', 37),
+  ('examen_nacho', 'mano', 'xp', '120', 38),
+  ('master_chief', 'cabeza', 'repasos', '1', 39),
+  ('hollow_knight', 'cabeza', 'repasos', '10', 40),
+  ('batman', 'cara', 'noche', '1', 41),
+  ('regla_vladi', 'mano', 'jefe', 'M00', 42),
+  ('bebida', 'mano', 'seguidas', '3', 43),
+  ('jordan', 'pies', 'xp', '2300', 44),
+  ('capi', 'cabeza', 'modulos', '7', 45),
+  ('rubius_cabeza', 'cabeza', 'lecciones', '20', 46),
+  ('rubius_sudadera', 'cuerpo', 'lecciones', '40', 47),
+  ('rubius_pantalon', 'piernas', 'lecciones', '60', 48)
 on conflict (id) do update set
   slot = excluded.slot, rule = excluded.rule, need = excluded.need, position = excluded.position;
-delete from public.gear_items where id not in ('hoja', 'rama', 'marinero', 'bufanda', 'lentes', 'pergamino', 'gafas', 'capa', 'visor', 'crack', 'audifonos', 'estelar', 'corona', 'llave', 'fernan', 'espada_diamante', 'mascara', 'escudo', 'espada_maestra', 'casco_cuero', 'peto_cuero', 'casco_malla', 'peto_malla', 'casco_hierro', 'peto_hierro', 'casco_oro', 'peto_oro', 'casco_diamante', 'peto_diamante', 'casco_amatista', 'peto_amatista');
+delete from public.gear_items where id not in ('hoja', 'rama', 'marinero', 'bufanda', 'lentes', 'pergamino', 'gafas', 'capa', 'visor', 'crack', 'audifonos', 'estelar', 'corona', 'llave', 'fernan', 'espada_diamante', 'mascara', 'escudo', 'espada_maestra', 'casco_cuero', 'peto_cuero', 'casco_malla', 'peto_malla', 'casco_hierro', 'peto_hierro', 'casco_oro', 'peto_oro', 'casco_diamante', 'peto_diamante', 'casco_amatista', 'peto_amatista', 'pokeball', 'masterball', 'snorlax', 'mini', 'escudo_grande', 'karambit', 'lentes_edwin', 'examen_nacho', 'master_chief', 'hollow_knight', 'batman', 'regla_vladi', 'bebida', 'jordan', 'capi', 'rubius_cabeza', 'rubius_sudadera', 'rubius_pantalon');

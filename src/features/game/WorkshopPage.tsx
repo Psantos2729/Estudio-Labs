@@ -55,6 +55,7 @@ function Workshop({ color, unlocked, initial }: { color: string; unlocked: strin
                     >
                       <Robot color="#5c6a80" gear={{ [slot]: p.id }} size={36} />
                       <span className="strong">{p.name}</span>
+                      {p.desc && <span className="muted small">{p.desc}</span>}
                       <span className="muted small">{owned ? 'ganada' : `🔒 ${howOf(p.unlock)}`}</span>
                     </button>
                   );
