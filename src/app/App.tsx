@@ -13,6 +13,8 @@ import { ReviewListPage } from '@/features/exam/ReviewListPage';
 import { HistoryPage } from '@/features/history/HistoryPage';
 import { RankingPage } from '@/features/game/RankingPage';
 import { WorkshopPage } from '@/features/game/WorkshopPage';
+import { AchievementsPage } from '@/features/game/AchievementsPage';
+import { ProfilePage } from '@/features/game/ProfilePage';
 import { AttemptReviewPage } from '@/features/history/AttemptReviewPage';
 import { GuidePage } from '@/features/pseudo/GuidePage';
 
@@ -34,6 +36,8 @@ export function App() {
             <Route path="historial/:attemptId" element={<AttemptReviewPage />} />
             <Route path="ranking" element={<RankingPage />} />
             <Route path="taller" element={<WorkshopPage />} />
+            <Route path="logros" element={<AchievementsPage />} />
+            <Route path="perfil/:handle" element={<ProfilePage />} />
             <Route path="pseudocodigo" element={<GuidePage />} />
             <Route path="privacidad" element={<PrivacyPage />} />
             <Route path="*" element={<p className="center muted">404 · esa ruta no existe</p>} />

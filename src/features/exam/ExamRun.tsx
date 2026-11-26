@@ -5,6 +5,7 @@ import { buildAnswers } from './answers';
 import { ExamProblemCard } from './ExamProblemCard';
 import { ExamQuestions } from './ExamQuestions';
 import { useSubmitExam } from './useExam';
+import { BossBattle } from './BossBattle';
 import type { Exam, ExamOutcome } from './types';
 
 interface Draft { code: Record<string, string>; picked: Record<number, number> }
@@ -19,7 +20,7 @@ function loadDraft(exam: Exam): Draft {
   }
 }
 
-export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome) => void }) {
+export function ExamRun({ exam, passScore, onDone }: { exam: Exam; passScore: number; onDone: (r: ExamOutcome) => void }) {
   const [draft, setDraft] = useState<Draft>(() => loadDraft(exam));
   const [now, setNow] = useState(Date.now());
   const [running, setRunning] = useState(false);
@@ -58,8 +59,10 @@ export function ExamRun({ exam, onDone }: { exam: Exam; onDone: (r: ExamOutcome)
   });
 
   const busy = running || submit.isPending;
+  const points = exam.questions.length + exam.problems.reduce((n, p) => n + p.cases.length, 0);
   return (
     <>
+      <BossBattle moduleId={exam.module_id} total={points} passScore={passScore} />
       <div className="exam__bar">
         <span className={`exam__clock ${left < 300 ? 'exam__clock--low' : ''}`} aria-live="off">
           ⏱ {Math.floor(left / 60)}:{String(left % 60).padStart(2, '0')}

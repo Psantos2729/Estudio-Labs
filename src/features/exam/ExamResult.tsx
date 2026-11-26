@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { Panel } from '@/ui/primitives/Panel';
 import { daysUntil } from '@/features/map/masteryView';
 import type { Exam, ExamOutcome } from './types';
+import { BossBattle } from './BossBattle';
+import { pointsOf } from './battle';
 
 /** Nota y cuántos puntos sacaste en cada parte. No muestra las respuestas ocultas. */
 export function ExamResult({ exam, result }: { exam: Exam; result: ExamOutcome }) {
@@ -12,8 +14,10 @@ export function ExamResult({ exam, result }: { exam: Exam; result: ExamOutcome }
     : !result.passed ? 'No aprobaste el repaso: el módulo se reabrió.'
     : result.next_review_at ? `✓ Repaso aprobado. El próximo es ${daysUntil(result.next_review_at)}.`
     : '✓ Repaso aprobado. Módulo consolidado: ya no pide más repasos.';
+  const { hits, total } = pointsOf(result);
   return (
     <Panel tone={result.passed ? 'default' : 'warn'}>
+      <BossBattle moduleId={exam.module_id} total={total} passScore={result.pass_score} hits={hits} passed={result.passed} />
       <p className={`exam__score ${result.passed ? 'ok' : 'warn'}`}>{result.score}%</p>
       <p className="strong">{headline}</p>
       <ul className="plain small">

@@ -19,8 +19,9 @@ begin
   perform public.record_practice('M00-E01', 'print(1)', '{}', 2, 2);
   perform public.record_practice('M00-E02', 'x', '{}', 1, 3);
   select * into r from public.leaderboard('all') where is_me;
-  assert r.xp = 35 and r.rank = 1 and r.name = 'Ana Pérez' and r.station = 'M00', 'fila propia: ' || r::text;
-  assert (select xp from public.leaderboard('week') where is_me) = 35, 'lo de hoy cuenta en la semana';
+  -- + 15 de la misión «Lee una lección» del día (migración 023).
+  assert r.xp = 50 and r.rank = 1 and r.name = 'Ana Pérez' and r.station = 'M00', 'fila propia: ' || r::text;
+  assert (select xp from public.leaderboard('week') where is_me) = 50, 'lo de hoy cuenta en la semana';
 
   update public.profiles set avatar_color = '#ff5470' where id = auth.uid();
   assert (select color from public.leaderboard('all') where is_me) = '#ff5470', 'cambia su color';

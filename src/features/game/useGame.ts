@@ -7,6 +7,8 @@ export type Period = 'week' | 'all';
 
 export interface RankRow {
   rank: number;
+  /** Para abrir /perfil/:handle; no es el id (migración 024). */
+  handle: string;
   name: string;
   color: string;
   gear: Gear;
@@ -76,6 +78,43 @@ export function useSetGear() {
     onSuccess: () => {
       void qc.invalidateQueries({ queryKey: ['my-gear'] });
       void qc.invalidateQueries({ queryKey: ['leaderboard'] });
+    },
+  });
+}
+
+export interface Mission { id: string; label: string; goal: number; done: number; xp: number }
+export interface Quests { streak: number; best: number; today: boolean; missions: Mission[] }
+
+/** Racha y misiones de hoy (hora de Guatemala), calculadas en el servidor (RPC my_quests, migración 023). */
+export function useQuests() {
+  const userId = useAuth().session?.user.id;
+  return useQuery({
+    queryKey: ['my-quests', userId],
+    enabled: Boolean(supabase && userId),
+    queryFn: async (): Promise<Quests> => {
+      const { data, error } = await supabase!.rpc('my_quests');
+      if (error) throw error;
+      return data as Quests;
+    },
+  });
+}
+
+export interface PublicProfile {
+  name: string; color: string; gear: Gear; xp: number; mastered: number; station: string;
+  streak: number; best: number; unlocked: string[]; is_me: boolean;
+}
+
+/** Perfil público de alguien del ranking (RPC public_profile, migración 024). */
+export function useProfile(handle: string) {
+  const userId = useAuth().session?.user.id;
+  return useQuery({
+    queryKey: ['profile', handle, userId],
+    enabled: Boolean(supabase && userId && handle),
+    retry: false,
+    queryFn: async (): Promise<PublicProfile> => {
+      const { data, error } = await supabase!.rpc('public_profile', { p_handle: handle });
+      if (error) throw error;
+      return data as PublicProfile;
     },
   });
 }

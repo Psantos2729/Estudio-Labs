@@ -345,7 +345,9 @@ values
   ('rubius_pantalon', 'piernas', 'lecciones', '60', 48),
   ('vinito', 'mano', 'fallos', '1', 49),
   ('mjolnir', 'mano', 'retos', '1', 50),
-  ('claude_feliz', 'mascota', 'fallos', '3', 51)
+  ('claude_feliz', 'mascota', 'fallos', '3', 51),
+  ('fueguito', 'mascota', 'racha', '7', 52),
+  ('corona_llamas', 'cabeza', 'racha', '30', 53)
 on conflict (id) do update set
   slot = excluded.slot, rule = excluded.rule, need = excluded.need, position = excluded.position;
-delete from public.gear_items where id not in ('hoja', 'rama', 'marinero', 'bufanda', 'lentes', 'pergamino', 'gafas', 'capa', 'visor', 'crack', 'audifonos', 'estelar', 'corona', 'llave', 'fernan', 'espada_diamante', 'mascara', 'escudo', 'espada_maestra', 'casco_cuero', 'peto_cuero', 'casco_malla', 'peto_malla', 'casco_hierro', 'peto_hierro', 'casco_oro', 'peto_oro', 'casco_diamante', 'peto_diamante', 'casco_amatista', 'peto_amatista', 'pokeball', 'masterball', 'snorlax', 'mini', 'escudo_grande', 'karambit', 'lentes_edwin', 'examen_nacho', 'master_chief', 'hollow_knight', 'batman', 'regla_vladi', 'bebida', 'jordan', 'capi', 'rubius_cabeza', 'rubius_sudadera', 'rubius_pantalon', 'vinito', 'mjolnir', 'claude_feliz');
+delete from public.gear_items where id not in ('hoja', 'rama', 'marinero', 'bufanda', 'lentes', 'pergamino', 'gafas', 'capa', 'visor', 'crack', 'audifonos', 'estelar', 'corona', 'llave', 'fernan', 'espada_diamante', 'mascara', 'escudo', 'espada_maestra', 'casco_cuero', 'peto_cuero', 'casco_malla', 'peto_malla', 'casco_hierro', 'peto_hierro', 'casco_oro', 'peto_oro', 'casco_diamante', 'peto_diamante', 'casco_amatista', 'peto_amatista', 'pokeball', 'masterball', 'snorlax', 'mini', 'escudo_grande', 'karambit', 'lentes_edwin', 'examen_nacho', 'master_chief', 'hollow_knight', 'batman', 'regla_vladi', 'bebida', 'jordan', 'capi', 'rubius_cabeza', 'rubius_sudadera', 'rubius_pantalon', 'vinito', 'mjolnir', 'claude_feliz', 'fueguito', 'corona_llamas');
