@@ -8,16 +8,18 @@ import { OutFiles } from '@/features/exercise/FilesPanel';
 
 /** Ejemplo editable de una lección (Python o pseudocódigo): el estudiante lo cambia y lo corre para comprobar su predicción. */
 export function RunnableCode({ initial: block, pseudo = false }: { initial: string; pseudo?: boolean }) {
-  // Un bloque puede empezar con `// entrada: 4 5`: es la entrada de ejemplo para sus read.
+  // Un bloque puede empezar con `// entrada: 4 5`: la entrada de ejemplo, un valor por cada read o input().
   const [, sample = '', initial = block] = block.match(/^\/\/ entrada: (.*)\n([\s\S]*)$/) ?? [];
   const [code, setCode] = useState(initial);
   const [result, setResult] = useState<RunResult | null>(null);
   const [running, setRunning] = useState(false);
-  const [stdin, setStdin] = useState(sample); // un valor por cada read, separados por espacios
+  // read toma un valor por espacio; input() toma una línea entera (puede traer espacios), como en los ejercicios.
+  const [stdin, setStdin] = useState(pseudo ? sample : sample.split(/\s+/).join('\n'));
+  const usesInput = !pseudo && /^[^#\n]*\binput\s*\(/m.test(code);
 
   async function run() {
     setRunning(true);
-    setResult(await runCode(code, pseudo ? 'pseudo' : 'python', stdin.trim().split(/\s+/).join('\n') + '\n'));
+    setResult(await runCode(code, pseudo ? 'pseudo' : 'python', (pseudo ? stdin.trim().split(/\s+/).join('\n') : stdin) + '\n'));
     setRunning(false);
   }
 
@@ -34,6 +36,12 @@ export function RunnableCode({ initial: block, pseudo = false }: { initial: stri
       />
       {pseudo && (
         <input className="input runnable__stdin" aria-label="Entrada para read, separada por espacios" placeholder="entrada para read (separada por espacios)" value={stdin} onChange={(e) => setStdin(e.target.value)} />
+      )}
+      {usesInput && (
+        <label className="runnable__stdin">
+          <span className="muted small">entrada para Correr (una línea por cada input())</span>
+          <textarea className="input field__text" rows={Math.max(2, stdin.split('\n').length)} spellCheck={false} value={stdin} onChange={(e) => setStdin(e.target.value)} />
+        </label>
       )}
       <div className="runnable__bar">
         <Button onClick={run} disabled={running}>{running ? 'corriendo…' : '▶ Correr'}</Button>

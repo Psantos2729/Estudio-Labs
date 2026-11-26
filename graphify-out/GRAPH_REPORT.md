@@ -1,17 +1,17 @@
 # Graph Report - estudio-labs  (2026-11-26)
 
 ## Corpus Check
-- 465 files · ~171,326 words
+- 465 files · ~171,498 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 15 file(s) not represented in the graph (top: .css 9, (none) 3, .example 1)
 
 ## Summary
-- 1424 nodes · 2561 edges · 147 communities (129 shown, 18 thin omitted)
+- 1466 nodes · 2650 edges · 140 communities (119 shown, 21 thin omitted)
 - Extraction: 100% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.88)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `30fa024a`
+- Built from commit: `5beb9434`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -29,7 +29,7 @@
 - test-db.sh
 - Continuar pylab en otra sesión
 - steps
-- LessonPage.tsx
+- public.missions_of
 - ADR-001: React + Vite + TypeScript en Cloudflare Pages
 - scripts
 - vite
@@ -44,10 +44,10 @@
 - dependencies
 - Operadores aritméticos
 - eslint.config.js
-- App.tsx
+- ExpeditionMap.tsx
 - Funciones: def, parámetros y return
 - Banderas, break y continue
-- blocks.ts
+- LessonPage.tsx
 - Búsqueda binaria
 - Recorrer cadenas de texto
 - Palíndromos: comparar los extremos
@@ -68,14 +68,12 @@
 - Sacar los dígitos de un número con un ciclo
 - Desglose en cascada: posiciones y billetes
 - exam_attempts
-- masteryView.ts
 - Tu primer pseudocódigo
 - Decisiones en pseudocódigo
 - Tablas de conversión: romanos y números a letras
 - Recorrer un vector: sumar, el mayor y buscar
 - Funciones con vectores y programas con menú
 - Ordenar: intercambios y el método de selección
-- Guía de pseudocódigo
 - Ciclos en pseudocódigo
 - Vectores en pseudocódigo
 - public.submit_exam
@@ -126,9 +124,7 @@
 - ADR-009: ReactBits con carga diferida y movimiento reducido
 - ADR-010: Ningún archivo de más de 250 líneas
 - ExamPage.tsx
-- LessonPage.tsx
 - Cómo agregar un cosmético al taller
-- vitest
 - content/types.ts
 - Ordenar y buscar en pseudocódigo
 - Matrices en pseudocódigo
@@ -136,18 +132,11 @@
 - El algoritmo detrás de pandas, en pseudocódigo
 - Stacks en pseudocódigo
 - Infix a postfix en pseudocódigo
-- HistoryPage.tsx
 - HomePage.tsx
-- mapStore.ts
-- 1. Supabase (base de datos e inicio de sesión)
 - ADR-005: Contenido como archivos en `content/`
 - public.start_exam
 - public.record_practice
 - package.json
-- Publicar pylab en GitHub Pages
-- Reglas del proyecto pylab (Estudio-Labs)
-- main.tsx
-- setup.md
 - anon
 
 ## God Nodes (most connected - your core abstractions)
@@ -169,23 +158,23 @@
   docs/adr/005-contenido-archivos.md → src/content/validate.ts
 - `run()` --calls--> `execute()`  [EXTRACTED]
   tools/exam-bank.mjs → src/features/runner/execute.ts
-- `GuidePage()` --indirect_call--> `warmUp()`  [INFERRED]
-  src/features/pseudo/GuidePage.tsx → src/features/runner/runner.ts
-- `errorOf()` --calls--> `toPython()`  [EXTRACTED]
-  src/features/pseudo/translate.test.ts → src/features/pseudo/translate.ts
+- `LessonBody()` --calls--> `RunnableCode()`  [EXTRACTED]
+  src/features/lesson/LessonBody.tsx → src/features/lesson/RunnableCode.tsx
+- `RunnableCode()` --calls--> `Button()`  [EXTRACTED]
+  src/features/lesson/RunnableCode.tsx → src/ui/primitives/Button.tsx
 
 ## Import Cycles
 - None detected.
 
-## Communities (147 total, 18 thin omitted)
+## Communities (140 total, 21 thin omitted)
 
 ### Community 0 - "Variables y tipos"
 Cohesion: 0.40
 Nodes (4): El orden importa, Los tres tipos del módulo, Nombres de variables, Variables y tipos
 
 ### Community 1 - "react"
-Cohesion: 0.06
-Nodes (59): marked, react, ExerciseDef, TestCase, buildAnswers(), Run, exam, ExamProblemCard() (+51 more)
+Cohesion: 0.09
+Nodes (33): TestCase, CodeEditor(), Props, CodeStep(), Props, ANALYSIS, ExerciseFlow(), Props (+25 more)
 
 ### Community 2 - "steps"
 Cohesion: 0.08
@@ -196,16 +185,16 @@ Cohesion: 0.25
 Nodes (7): Acumulador: ¿cuánto suman?, Acumulador de multiplicación, Acumuladores y contadores, Acumular texto, Contador: ¿cuántos hay?, Los tres errores típicos, Promedio
 
 ### Community 4 - "Publicar pylab en Cloudflare"
-Cohesion: 0.17
-Nodes (12): Antes de empezar, Cómo se actualiza, Paso 1. Entrar a Workers & Pages, Paso 2. Crear la aplicación desde GitHub, Paso 3. Configurar el proyecto, Paso 4. Variables de compilación, Paso 5. Publicar, Paso 6. (Opcional) Si tu panel sí muestra Pages (+4 more)
+Cohesion: 0.07
+Nodes (26): 1.1 Crear el proyecto, 1.2 Crear las tablas, 1.3 Activar el inicio de sesión, 1.4 Copiar las llaves, 1.5 Ojo con el plan gratis, 1. Supabase (base de datos e inicio de sesión), 2. Publicar la web, Antes de empezar (+18 more)
 
 ### Community 5 - "compilerOptions"
 Cohesion: 0.11
 Nodes (18): compilerOptions, baseUrl, isolatedModules, jsx, lib, module, moduleResolution, noEmit (+10 more)
 
 ### Community 6 - "translate.ts"
-Cohesion: 0.18
-Nodes (22): arrowAt(), CALLS, expr(), join(), PseudoError, splitArgs(), tokens(), WORDS (+14 more)
+Cohesion: 0.07
+Nodes (43): ADR-0002, ADR-0006, pyodide, mod(), blocks, files, inputs, root (+35 more)
 
 ### Community 7 - "¿Qué es un programa?"
 Cohesion: 0.50
@@ -227,9 +216,9 @@ Nodes (12): Banco oculto del examen, Comandos útiles, Continuar pylab en otra s
 Cohesion: 0.06
 Nodes (34): runs-on, steps, concurrency, cancel-in-progress, group, environment, needs, runs-on (+26 more)
 
-### Community 14 - "LessonPage.tsx"
-Cohesion: 0.27
-Nodes (8): exerciseFiles, EXERCISES, getExercise(), lessonFiles, LESSONS, parseLesson(), ExercisePage(), useLastAttempt()
+### Community 14 - "public.missions_of"
+Cohesion: 0.13
+Nodes (15): public.gear_unlocked(), public.missions_of(), public.my_quests(), public.study_days(), public.xp_of(), public.leaderboard(), public.public_profile(), public.station_of() (+7 more)
 
 ### Community 15 - "ADR-001: React + Vite + TypeScript en Cloudflare Pages"
 Cohesion: 0.40
@@ -277,15 +266,15 @@ Nodes (4): Controlar los decimales, Dentro de las llaves puede ir una cuenta, Mo
 
 ### Community 29 - "dependencies"
 Cohesion: 0.12
-Nodes (16): dependencies, @codemirror/commands@6.11.1, @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @codemirror/view@6.43.15, marked@18.2.0, pyodide@314.0.7, react@^19.3.1 (+8 more)
+Nodes (17): dependencies, codemirror@6.0.2, @codemirror/commands@6.11.1, @codemirror/view@6.43.15, marked@18.2.0, pyodide@314.0.7, react@^19.3.1, react-dom@^19.3.1 (+9 more)
 
 ### Community 31 - "eslint.config.js"
 Cohesion: 0.22
 Nodes (8): @eslint/js@^9.39.5, eslint-plugin-react-hooks@^5.2.0, globals@^16.5.0, typescript-eslint@^8.74.0, @eslint/js, eslint-plugin-react-hooks, globals, typescript-eslint
 
-### Community 32 - "App.tsx"
-Cohesion: 0.19
-Nodes (12): App(), Providers(), AuthContext, AuthProvider(), AuthState, LoginPage(), PrivacyPage(), GuidePage() (+4 more)
+### Community 32 - "ExpeditionMap.tsx"
+Cohesion: 0.16
+Nodes (16): Island, islandOf(), ISLANDS, MINI_BOSSES, LessonScene(), CENTERS, COLOR, SPOTS (+8 more)
 
 ### Community 35 - "Funciones: def, parámetros y return"
 Cohesion: 0.20
@@ -295,9 +284,9 @@ Nodes (9): Antes de seguir, Definir y llamar, Funciones: def, parámetros y retu
 Cohesion: 0.29
 Nodes (6): Banderas, break y continue, Banderas: recordar si algo pasó, break: salir del ciclo ya, Contador o bandera, continue: saltar a la siguiente vuelta, Probar menos divisores
 
-### Community 37 - "blocks.ts"
-Cohesion: 0.21
-Nodes (13): Block, Grid, GridStep, parseGrid(), parseSteps(), splitBlocks(), Step, LessonBody() (+5 more)
+### Community 37 - "LessonPage.tsx"
+Cohesion: 0.09
+Nodes (31): Asignar con ← y comparar con =, Begin, read y write, Errores comunes (pylab te los marca), for: de un número a otro, Funciones, Guía de pseudocódigo, if, else if y else, La sangría es obligatoria (+23 more)
 
 ### Community 38 - "Búsqueda binaria"
 Cohesion: 0.20
@@ -353,7 +342,7 @@ Nodes (4): Centinela: leer hasta una señal, El ciclo infinito, for o while, Rep
 
 ### Community 53 - "cosmetics.ts"
 Cohesion: 0.06
-Nodes (79): Layout(), useAuth(), bossLife(), pointsOf(), BossBattle(), Props, reduced(), AchievementPopup() (+71 more)
+Nodes (67): react, react-router-dom, App(), Layout(), Providers(), AuthProvider(), LoginPage(), AchievementPopup() (+59 more)
 
 ### Community 54 - "Binario y decimal"
 Cohesion: 0.22
@@ -364,8 +353,8 @@ Cohesion: 0.25
 Nodes (7): Antes de seguir, Contar días entre dos fechas, Fechas y edades, La trampa del cumpleaños, Leer una fecha en una sola línea, ¿Por qué pedir también la fecha de hoy?, Reto: años bisiestos
 
 ### Community 56 - "README.md"
-Cohesion: 0.29
-Nodes (4): Documentación, Empezar, Estado, pylab · Estudio-Labs
+Cohesion: 0.17
+Nodes (9): Comandos, Contexto con graphify, Dónde está cada cosa, Reglas del proyecto pylab (Estudio-Labs), Reglas que no se rompen, Documentación, Empezar, Estado (+1 more)
 
 ### Community 57 - "Sacar los dígitos de un número con un ciclo"
 Cohesion: 0.29
@@ -378,10 +367,6 @@ Nodes (6): Antes de seguir, Centenas, decenas y unidades, Desglose en cascada: p
 ### Community 59 - "exam_attempts"
 Cohesion: 0.33
 Nodes (4): public.gear_unlocked(), public.gear_items, public.gear_slot(), public.gear_unlocked()
-
-### Community 60 - "masteryView.ts"
-Cohesion: 0.20
-Nodes (13): files, MODULES, ModuleDef, ReviewListPage(), buildModuleViews(), dueReviews(), globalMastery(), guestMastery() (+5 more)
 
 ### Community 61 - "Tu primer pseudocódigo"
 Cohesion: 0.29
@@ -406,10 +391,6 @@ Nodes (6): Antes de seguir, Funciones con vectores y programas con menú, Imprim
 ### Community 66 - "Ordenar: intercambios y el método de selección"
 Cohesion: 0.29
 Nodes (6): Antes de seguir, ¿Cuánto trabajo hace?, ¿Está ordenado?, La pieza básica: intercambiar, Ordenar: intercambios y el método de selección, Selección: el mayor al final
-
-### Community 67 - "Guía de pseudocódigo"
-Cohesion: 0.15
-Nodes (12): Asignar con ← y comparar con =, Begin, read y write, Errores comunes (pylab te los marca), for: de un número a otro, Funciones, Guía de pseudocódigo, if, else if y else, La sangría es obligatoria (+4 more)
 
 ### Community 68 - "Ciclos en pseudocódigo"
 Cohesion: 0.33
@@ -608,20 +589,12 @@ Cohesion: 0.40
 Nodes (4): ADR-010: Ningún archivo de más de 250 líneas, Consecuencias, Contexto, Decisión
 
 ### Community 118 - "ExamPage.tsx"
-Cohesion: 0.15
-Nodes (19): ADR-0004, react-router-dom, ExamPage(), ExamResult(), ReviewPage(), ExamOutcome, localTime(), useStartExam() (+11 more)
+Cohesion: 0.10
+Nodes (37): ADR-0004, marked, buildAnswers(), Run, exam, bossLife(), pointsOf(), BossBattle() (+29 more)
 
-### Community 119 - "LessonPage.tsx"
-Cohesion: 0.23
-Nodes (10): getLesson(), LessonPage(), useMarkLessonRead(), hour(), LockedNotice(), examToUnlock(), examWaitUntil(), mods (+2 more)
-
-### Community 123 - "vitest"
-Cohesion: 0.05
-Nodes (42): ADR-0002, ADR-0006, Consecuencias, pyodide, vitest, root, modules, root (+34 more)
-
-### Community 125 - "content/types.ts"
-Cohesion: 0.24
-Nodes (9): ADR-0005, BossChallenge, LessonDef, PredictQuestion, NextStep, nextStep(), allRead, exercises (+1 more)
+### Community 123 - "content/types.ts"
+Cohesion: 0.07
+Nodes (36): ADR-0005, Consecuencias, vitest, exerciseFiles, EXERCISES, lessonFiles, LESSONS, parseLesson() (+28 more)
 
 ### Community 126 - "Ordenar y buscar en pseudocódigo"
 Cohesion: 0.40
@@ -633,7 +606,7 @@ Nodes (4): Matrices en pseudocódigo, Multiplicar matrices, Recorrer una matriz,
 
 ### Community 128 - "devDependencies"
 Cohesion: 0.14
-Nodes (14): devDependencies, eslint@^9.39.5, lefthook@^1.13.6, @types/node@^22.20.5, @types/react@^19.3.0, typescript@~5.8.3, vitest@^3.2.7, wrangler@^4.168.0 (+6 more)
+Nodes (14): devDependencies, eslint@^9.39.5, lefthook@^1.13.6, @types/node@^22.20.5, @types/react-dom@^19.3.0, typescript@~5.8.3, vitest@^3.2.7, wrangler@^4.168.0 (+6 more)
 
 ### Community 130 - "El algoritmo detrás de pandas, en pseudocódigo"
 Cohesion: 0.40
@@ -647,21 +620,9 @@ Nodes (3): Invertir un texto, Paréntesis balanceados, Stacks en pseudocódigo
 Cohesion: 0.50
 Nodes (3): Evaluar postfix, Infix a postfix en pseudocódigo, Qué se corrigió de la entrega original
 
-### Community 134 - "HistoryPage.tsx"
-Cohesion: 0.30
-Nodes (8): @tanstack/react-query, attemptResult(), AttemptRow, base, now, HistoryPage(), when(), useAttempts()
-
 ### Community 135 - "HomePage.tsx"
-Cohesion: 0.17
-Nodes (19): exercisesOf(), lessonsOf(), displayId(), usePracticeSummary(), HomePage(), ProgressRing(), TIPS, tipsOfTheDay() (+11 more)
-
-### Community 136 - "mapStore.ts"
-Cohesion: 0.40
-Nodes (4): ADR-0008, zustand@^5.1.0, zustand, MapState
-
-### Community 137 - "1. Supabase (base de datos e inicio de sesión)"
-Cohesion: 0.33
-Nodes (6): 1.1 Crear el proyecto, 1.2 Crear las tablas, 1.3 Activar el inicio de sesión, 1.4 Copiar las llaves, 1.5 Ojo con el plan gratis, 1. Supabase (base de datos e inicio de sesión)
+Cohesion: 0.06
+Nodes (67): ADR-0008, @supabase/supabase-js, @tanstack/react-query, exercisesOf(), getExercise(), lessonsOf(), files, MODULES (+59 more)
 
 ### Community 138 - "ADR-005: Contenido como archivos en `content/`"
 Cohesion: 0.33
@@ -676,44 +637,32 @@ Cohesion: 0.29
 Nodes (6): practice_attempts_user_exercise, public.practice_attempts, public.record_practice(), public.catalog_items, public.mark_lesson_read(), public.record_practice()
 
 ### Community 141 - "package.json"
-Cohesion: 0.22
-Nodes (8): codemirror@6.0.2, @types/react-dom@^19.3.0, name, private, type, version, codemirror, @types/react-dom
-
-### Community 142 - "Publicar pylab en GitHub Pages"
-Cohesion: 0.33
-Nodes (6): Paso 1. Activar GitHub Pages (una sola vez), Paso 2. Guardar las llaves de Supabase (una sola vez), Paso 3. Publicar, Paso 4. Avisarle a Supabase, Publicar pylab en GitHub Pages, Si algo falla
-
-### Community 143 - "Reglas del proyecto pylab (Estudio-Labs)"
-Cohesion: 0.40
-Nodes (5): Comandos, Contexto con graphify, Dónde está cada cosa, Reglas del proyecto pylab (Estudio-Labs), Reglas que no se rompen
-
-### Community 144 - "main.tsx"
-Cohesion: 0.33
-Nodes (3): react-dom@^19.3.1, react-dom, root
+Cohesion: 0.18
+Nodes (10): @codemirror/lang-python@6.2.1, @codemirror/theme-one-dark@6.1.3, @types/react@^19.3.0, name, private, type, version, @codemirror/lang-python (+2 more)
 
 ### Community 146 - "anon"
 Cohesion: 0.15
 Nodes (11): public.leaderboard(), public.xp_of(), public.gear_unlocked(), public.leaderboard(), public.my_gear(), public.set_avatar_gear(), public.gear_unlocked(), public.is_first_place() (+3 more)
 
 ## Knowledge Gaps
-- **5 isolated node(s):** `ADR-0004`, `ADR-0002`, `ADR-0005`, `ADR-0006`, `ADR-0008`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 755 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **18 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **5 isolated node(s):** `ADR-0004`, `ADR-0006`, `ADR-0002`, `ADR-0005`, `ADR-0008`
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 765 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **21 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `Consecuencias` connect `vitest` to `react`, `ADR-005: Contenido como archivos en `content/``?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
-- **What connects `ADR-0004`, `ADR-0002`, `ADR-0005` to the rest of the system?**
+- **Why does `Consecuencias` connect `content/types.ts` to `ADR-005: Contenido como archivos en `content/``?**
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
+- **What connects `ADR-0004`, `ADR-0006`, `ADR-0002` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `react` be split into smaller, more focused modules?**
-  _Cohesion score 0.06265389876880985 - nodes in this community are weakly interconnected._
-- **Why does `ADR-005: Contenido como archivos en `content/`` connect `ADR-005: Contenido como archivos en `content/`` to `vitest`?**
-  _High betweenness centrality (0.040) - this node is a cross-community bridge._
+  _Cohesion score 0.08705882352941176 - nodes in this community are weakly interconnected._
+- **Why does `ADR-005: Contenido como archivos en `content/`` connect `ADR-005: Contenido como archivos en `content/`` to `content/types.ts`?**
+  _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **Should `steps` be split into smaller, more focused modules?**
   _Cohesion score 0.07635467980295567 - nodes in this community are weakly interconnected._
-- **Why does `ExerciseDef` connect `react` to `vitest`, `content/types.ts`, `LessonPage.tsx`?**
-  _High betweenness centrality (0.039) - this node is a cross-community bridge._
-- **Should `compilerOptions` be split into smaller, more focused modules?**
-  _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
+- **Why does `ExerciseDef` connect `content/types.ts` to `react`, `cosmetics.ts`?**
+  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+- **Should `Publicar pylab en Cloudflare` be split into smaller, more focused modules?**
+  _Cohesion score 0.06896551724137931 - nodes in this community are weakly interconnected._

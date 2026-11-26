@@ -62,6 +62,7 @@ print(reves)   # 1704
 Un número es **capicúa** (o palíndromo) si se lee igual al derecho y al revés: 121, 4334, 7. Para saberlo, guarda una copia del original **antes** del ciclo, porque el ciclo lo deja en 0:
 
 ```python
+// entrada: 12321
 n = int(input())
 original = n
 reves = 0

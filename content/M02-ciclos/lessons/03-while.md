@@ -34,6 +34,7 @@ Regla: dentro de un `while` siempre debe haber algo que **acerque** la condició
 Un **valor centinela** es una entrada especial que indica "ya terminé". Por ejemplo, sumar números hasta que se ingrese 0:
 
 ```python
+// entrada: 5 3 8 0
 suma = 0
 n = int(input())
 while n != 0:

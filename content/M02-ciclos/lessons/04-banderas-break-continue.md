@@ -47,6 +47,7 @@ Lo que está después del `break` dentro del ciclo ya no se ejecuta, y el progra
 `break` también es útil con `while True`, un ciclo que "nunca termina" salvo que lo cortes:
 
 ```python
+// entrada: hola adiós Fin
 while True:
     r = input()
     if r == "Fin":

@@ -7,6 +7,7 @@ Dos patrones aparecen en casi todos los ejercicios con ciclos. Si los dominas, l
 Un **contador** es una variable que empieza en 0 y **suma 1** cada vez que pasa algo.
 
 ```python
+// entrada: 4 -2 0 7 1
 positivos = 0
 for i in range(5):
     n = int(input())
