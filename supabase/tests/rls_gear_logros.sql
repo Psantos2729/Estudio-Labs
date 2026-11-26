@@ -23,7 +23,8 @@ begin
   u := (select unlocked from public.my_gear());
   assert u @> array['pokeball', 'examen_nacho', 'mini', 'escudo_grande', 'karambit', 'batman', 'regla_vladi', 'bebida', 'lentes_edwin'],
     'logros de Lu: ' || u::text;
-  assert not u && array['masterball', 'snorlax', 'jordan', 'master_chief', 'capi', 'rubius_cabeza'], 'nada de más: ' || u::text;
+  -- Snorlax (500 XP) ya no va aquí: los 2 exámenes aprobados cumplen la misión semanal (+120, migración 025).
+  assert not u && array['masterball', 'jordan', 'master_chief', 'capi', 'rubius_cabeza'], 'nada de más: ' || u::text;
   perform public.set_avatar_gear('{"mano": "karambit", "cara": "lentes_edwin"}');
 end $$;
 

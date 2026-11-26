@@ -46,7 +46,7 @@ export function RankingPage() {
                   <span className={r.rank <= 3 ? 'warn strong' : 'muted'}>{r.rank}</span>
                   <Robot color={r.color} gear={r.gear} size={26} />
                   <span className="board__name">{r.name}{r.is_me && <span className="muted small"> · tú</span>}</span>
-                  <span className="muted small">Nv {levelOf(r.xp).level} · {r.station}</span>
+                  <span className="muted small">Nv {levelOf(r.total_xp ?? r.xp).level} · {r.station}</span>
                   <span className="board__xp">{r.xp} XP</span>
                 </Link>
               </li>

@@ -2,13 +2,13 @@ import { ProgressBar } from '@/ui/primitives/ProgressBar';
 import { Robot } from '@/ui/primitives/Robot';
 import { PIECES } from './cosmetics';
 import { STREAK_BONUS, STREAK_EVERY } from './game';
-import { useQuests } from './useGame';
+import { useQuests, type Mission } from './useGame';
 
 /** Portada: días seguidos estudiando y las 3 misiones de hoy. */
 export function QuestsCard() {
   const { data } = useQuests();
   if (!data) return null;
-  const { streak, best, today, missions } = data;
+  const { streak, best, today, missions, weekly } = data;
   const toBonus = STREAK_EVERY - (streak % STREAK_EVERY);
   const prize = PIECES.find((p) => p.unlock[0] === 'racha' && best < Number(p.unlock[1]));
   const allDone = missions.every((m) => m.done >= m.goal);
@@ -31,21 +31,34 @@ export function QuestsCard() {
       </div>
       <div className="panel missions">
         <p className="small accent">misiones de hoy {allDone && <span className="ok">· ✓ todas cumplidas</span>}</p>
-        <ul className="plain missions__list">
-          {missions.map((m) => {
-            const done = m.done >= m.goal;
-            return (
-              <li key={m.id} className={`mission${done ? ' mission--done' : ''}`}>
-                <span className={done ? 'ok' : 'muted'} aria-hidden="true">{done ? '✓' : '○'}</span>
-                <span className="mission__label">{m.label}</span>
-                <span className="mission__xp">+{m.xp} XP</span>
-                <ProgressBar value={m.done} max={m.goal} label={`${m.label}: ${m.done} de ${m.goal}`} />
-              </li>
-            );
-          })}
-        </ul>
+        <MissionList missions={missions} />
         <p className="muted small">Cambian a medianoche (hora de Guatemala). La tercera rota cada día.</p>
+        {weekly && (
+          <>
+            <p className="small accent missions__week">misiones de la semana {weekly.every((m) => m.done >= m.goal) && <span className="ok">· ✓ todas cumplidas</span>}</p>
+            <MissionList missions={weekly} />
+            <p className="muted small">Se reinician el lunes a medianoche.</p>
+          </>
+        )}
       </div>
     </section>
+  );
+}
+
+function MissionList({ missions }: { missions: Mission[] }) {
+  return (
+    <ul className="plain missions__list">
+      {missions.map((m) => {
+        const done = m.done >= m.goal;
+        return (
+          <li key={m.id} className={`mission${done ? ' mission--done' : ''}`}>
+            <span className={done ? 'ok' : 'muted'} aria-hidden="true">{done ? '✓' : '○'}</span>
+            <span className="mission__label">{m.label}{m.goal > 1 && <span className="muted small"> · {m.done}/{m.goal}</span>}</span>
+            <span className="mission__xp">+{m.xp} XP</span>
+            <ProgressBar value={m.done} max={m.goal} label={`${m.label}: ${m.done} de ${m.goal}`} />
+          </li>
+        );
+      })}
+    </ul>
   );
 }

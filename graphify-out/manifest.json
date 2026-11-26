@@ -2184,9 +2184,9 @@
     "semantic_hash": ""
   },
   "src/features/game/RankingPage.tsx": {
-    "mtime": 1795669816.8274465,
-    "seen": 1795670167.3129764,
-    "ast_hash": "67b115fd0b3a3c43305a7298ee23ebce",
+    "mtime": 1795672025.3013928,
+    "seen": 1795672095.579212,
+    "ast_hash": "aaa6aebe7d27697184f9ee1a15c12b50",
     "semantic_hash": ""
   },
   "src/features/game/XpBadge.tsx": {
@@ -2202,15 +2202,15 @@
     "semantic_hash": ""
   },
   "src/features/game/game.ts": {
-    "mtime": 1795669638.3250482,
-    "seen": 1795670167.312986,
-    "ast_hash": "2dbb6fee133e201eb09ded7c64ce3a34",
+    "mtime": 1795672056.1305015,
+    "seen": 1795672095.5793276,
+    "ast_hash": "ae305f2cde991d9323915cc1c01128d9",
     "semantic_hash": ""
   },
   "src/features/game/useGame.ts": {
-    "mtime": 1795669812.3722658,
-    "seen": 1795670167.3129904,
-    "ast_hash": "ad76d383fa129fb2a884bc2c8dcd705a",
+    "mtime": 1795672025.2994776,
+    "seen": 1795672095.5794156,
+    "ast_hash": "4aa312ec0674eddab9183e21b021d617",
     "semantic_hash": ""
   },
   "src/features/map/ExpeditionMap.tsx": {
@@ -2684,7 +2684,7 @@
   "supabase/tests/rls_gear_logros.sql": {
     "mtime": 1795669374.7524347,
     "seen": 1795670167.3133907,
-    "ast_hash": "181bc99aa555111383ff5e21b44372ba",
+    "ast_hash": "",
     "semantic_hash": ""
   },
   "supabase/migrations/20261126000022_more_achievements.sql": {
@@ -2718,15 +2718,15 @@
     "semantic_hash": ""
   },
   "src/features/game/AchievementsPage.tsx": {
-    "mtime": 1795669812.3781676,
-    "seen": 1795670167.3129692,
-    "ast_hash": "620caa323f34db806af8064000cb11d7",
+    "mtime": 1795672025.3055441,
+    "seen": 1795672095.579147,
+    "ast_hash": "d791d58a55f41118c084d6a5fc6c77ae",
     "semantic_hash": ""
   },
   "src/features/game/MedalGrid.tsx": {
-    "mtime": 1795669812.376637,
-    "seen": 1795670167.312972,
-    "ast_hash": "a6c67a84213edd4a736b5fce7ed2a063",
+    "mtime": 1795672025.3050861,
+    "seen": 1795672095.57918,
+    "ast_hash": "ff31a55dace9a1fab713f63081ab1a46",
     "semantic_hash": ""
   },
   "src/features/game/ProfilePage.tsx": {
@@ -2736,9 +2736,9 @@
     "semantic_hash": ""
   },
   "src/features/game/QuestsCard.tsx": {
-    "mtime": 1795669638.3047082,
-    "seen": 1795670167.3129747,
-    "ast_hash": "181c6ffc8a6778b42f777cd472c92da9",
+    "mtime": 1795672025.3022287,
+    "seen": 1795672095.5792089,
+    "ast_hash": "69274ed761e2d74d042943fbaef52dca",
     "semantic_hash": ""
   },
   "src/features/lesson/LessonScene.tsx": {
