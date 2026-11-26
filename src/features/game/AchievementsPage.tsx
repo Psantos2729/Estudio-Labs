@@ -20,7 +20,7 @@ export function AchievementsPage() {
         <ProgressBar value={got} max={PIECES.length} label="Medallas ganadas" />
         <p className="muted">Cada medalla trae una pieza para tu robot. Póntela en el <Link to="/taller">taller</Link>.</p>
       </header>
-      <MedalGrid unlocked={mine.data.unlocked} />
+      <MedalGrid unlocked={mine.data.unlocked} stats={mine.data.stats} />
     </main>
   );
 }

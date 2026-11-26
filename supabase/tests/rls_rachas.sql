@@ -52,3 +52,22 @@ exception when insufficient_privilege then null;
 end $$;
 reset role;
 select 'OK: pruebas de rachas y misiones pasaron' as resultado;
+
+-- Misiones semanales, avance de medallas y nivel en la semana (migraciones 025 y 026).
+set role authenticated;
+set request.jwt.claim.sub = '00000000-0000-0000-0000-00000000c301';
+do $$
+declare
+  q jsonb := public.my_quests();
+  st jsonb := (select stats from public.my_gear());
+  r record;
+begin
+  assert jsonb_array_length(q -> 'weekly') = 3 and q -> 'weekly' -> 0 ->> 'id' = 'dias', 'tres semanales: ' || q::text;
+  assert (q -> 'weekly' -> 0 ->> 'done')::int between 0 and 5, 'días de esta semana: ' || q::text;
+  assert (st ->> 'racha')::int = 7 and (st ->> 'lecciones')::int = 8 and st ? 'nivel' and not st ? 'beaten', 'cuentas: ' || st::text;
+  select * into r from public.leaderboard('week') where is_me;
+  assert r.total_xp = (select xp from public.leaderboard('all') where is_me) and r.total_xp >= r.xp, 'total en la semana: ' || r::text;
+end $$;
+reset request.jwt.claim.sub;
+reset role;
+select 'OK: misiones semanales y avance de medallas' as resultado;

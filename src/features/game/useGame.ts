@@ -13,6 +13,8 @@ export interface RankRow {
   color: string;
   gear: Gear;
   xp: number;
+  /** XP de siempre (para el nivel, también en la pestaña semanal; migración 025). */
+  total_xp: number;
   mastered: number;
   station: string;
   is_me: boolean;
@@ -59,10 +61,10 @@ export function useMyGear() {
   return useQuery({
     queryKey: ['my-gear', userId],
     enabled: Boolean(supabase && userId),
-    queryFn: async (): Promise<{ unlocked: string[]; gear: Gear }> => {
+    queryFn: async (): Promise<{ unlocked: string[]; gear: Gear; stats: Record<string, number | boolean> }> => {
       const { data, error } = await supabase!.rpc('my_gear');
       if (error) throw error;
-      return data[0] ?? { unlocked: [], gear: {} };
+      return data[0] ?? { unlocked: [], gear: {}, stats: {} };
     },
   });
 }
@@ -83,7 +85,7 @@ export function useSetGear() {
 }
 
 export interface Mission { id: string; label: string; goal: number; done: number; xp: number }
-export interface Quests { streak: number; best: number; today: boolean; missions: Mission[] }
+export interface Quests { streak: number; best: number; today: boolean; missions: Mission[]; weekly: Mission[] }
 
 /** Racha y misiones de hoy (hora de Guatemala), calculadas en el servidor (RPC my_quests, migración 023). */
 export function useQuests() {

@@ -8,6 +8,7 @@ export const XP_RULES = [
   { label: 'Examen de dominio', xp: 200 },
   { label: 'Repaso aprobado', xp: 100 },
   { label: 'Misión del día', xp: '15 a 50' },
+  { label: 'Misión de la semana', xp: '80 a 120' },
   { label: 'Cada 7 días de racha', xp: 70 },
 ];
 
