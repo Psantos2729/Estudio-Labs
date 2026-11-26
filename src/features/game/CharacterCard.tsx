@@ -46,7 +46,10 @@ export function CharacterCard({ me }: { me: RankRow }) {
           </Button>
           {save.isError && <span className="warn small">No se pudo guardar. Intenta de nuevo.</span>}
         </form>
-        <p className="small"><Link to="/taller">vestir a tu robot en el taller →</Link></p>
+        <p className="small character__links">
+          <Link to="/taller">vestir a tu robot en el taller →</Link>
+          {me.handle && <Link to={`/perfil/${me.handle}`}>ver mi perfil público →</Link>}
+        </p>
       </div>
     </section>
   );
