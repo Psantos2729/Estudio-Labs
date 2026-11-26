@@ -1,0 +1,52 @@
+{
+  "id": "M00-E06",
+  "title": "Pseudocódigo: saludo y suma",
+  "language": "pseudo",
+  "statement": "Lee un **nombre** y luego dos enteros **a** y **b**. Muestra `Hola, <nombre>` y en otra línea `Suma: <a + b>`.\n\nEscríbelo en **pseudocódigo** (Begin … End, `read`, `write`, `←`). pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.\n\nEjemplo: con `Ana`, `3` y `4` muestra:\n\n```text\nHola, Ana\nSuma: 7\n```",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "En pseudocódigo, ¿cómo se guarda el 5 en la variable `x`?",
+      "options": [
+        "x = 5",
+        "x ← 5",
+        "x == 5"
+      ],
+      "answer": 1,
+      "why": "La flecha `←` asigna. El `=` en pseudocódigo **compara**, como en matemáticas."
+    },
+    {
+      "question": "¿Qué muestra `write \"Suma: \", 3 + 4`?",
+      "options": [
+        "Suma: 7",
+        "Suma:7",
+        "Suma: 3 + 4"
+      ],
+      "answer": 0,
+      "why": "`write` pega sus partes sin agregar espacios; el espacio ya va dentro de las comillas. `3 + 4` se calcula: 7."
+    }
+  ],
+  "hints": [
+    "Lee los tres datos con `read nombre`, `read a` y `read b`.",
+    "`write \"Hola, \", nombre` pega el texto y el nombre.",
+    "La suma puede ir directo en el write: `write \"Suma: \", a + b`."
+  ],
+  "tests": [
+    {
+      "stdin": "Ana\n3\n4\n",
+      "stdout": "Hola, Ana\nSuma: 7\n"
+    },
+    {
+      "stdin": "Luis\n-2\n10\n",
+      "stdout": "Hola, Luis\nSuma: 8\n"
+    },
+    {
+      "stdin": "Sofía\n0\n0\n",
+      "stdout": "Hola, Sofía\nSuma: 0\n"
+    },
+    {
+      "stdin": "Paolo\n120\n35\n",
+      "stdout": "Hola, Paolo\nSuma: 155\n"
+    }
+  ]
+}

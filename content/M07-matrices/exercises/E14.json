@@ -1,0 +1,38 @@
+{
+  "id": "M07-E14",
+  "title": "De Python a pseudocódigo: transpuesta",
+  "language": "pseudo",
+  "statement": "Pasa este programa a **pseudocódigo**:\n\n```python\nf = int(input())\nc = int(input())\nm = [[0] * c for _ in range(f)]\nfor i in range(f):\n    for j in range(c):\n        m[i][j] = int(input())\nt = [[0] * f for _ in range(c)]\nfor i in range(f):\n    for j in range(c):\n        t[j][i] = m[i][j]\nfor i in range(c):\n    print(t[i])\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el pseudocódigo de `[[0] * c for _ in range(f)]`?",
+      "options": [
+        "new Array(c, f)",
+        "new Array(f, c)",
+        "new Array(f * c)"
+      ],
+      "answer": 1,
+      "why": "f filas y c columnas: `new Array(f, c)`."
+    }
+  ],
+  "hints": [
+    "La transpuesta tiene c filas y f columnas: `t ← new Array(c, f)`.",
+    "`t[j][i] ← m[i][j]` dentro de los dos for.",
+    "`print(t[i])` → `write t[i]`."
+  ],
+  "tests": [
+    {
+      "stdin": "2\n3\n1\n2\n3\n4\n5\n6\n",
+      "stdout": "[1, 4]\n[2, 5]\n[3, 6]\n"
+    },
+    {
+      "stdin": "1\n1\n9\n",
+      "stdout": "[9]\n"
+    },
+    {
+      "stdin": "3\n1\n7\n8\n9\n",
+      "stdout": "[7, 8, 9]\n"
+    }
+  ]
+}

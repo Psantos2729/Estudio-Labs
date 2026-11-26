@@ -1,0 +1,52 @@
+{
+  "id": "M05-E14",
+  "title": "De Python a pseudocódigo: Encontrar",
+  "language": "pseudo",
+  "statement": "Este es el problema **Encontrar** de tus tareas. Pasa este programa a **pseudocódigo**, con la función:\n\n```python\ndef encontrar(v, dato):\n    for i in range(len(v)):\n        if v[i] == dato:\n            return i\n    return -1\n\nn = int(input())\nv = [0] * n\nfor i in range(n):\n    v[i] = int(input())\ndato = int(input())\npos = encontrar(v, dato)\nif pos == -1:\n    print(\"No está\")\nelse:\n    print(f\"Está en la posición {pos}\")\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Function encontrar(v, dato)\n    \nEnd function\n\nBegin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el pseudocódigo de `v = [0] * n`?",
+      "options": [
+        "v ← new Array(n)",
+        "v ← [0] * n",
+        "read v"
+      ],
+      "answer": 0,
+      "why": "En pseudocódigo el arreglo se crea con su tamaño: `new Array(n)`."
+    },
+    {
+      "question": "¿Cuál es el pseudocódigo de `for i in range(len(v)):`?",
+      "options": [
+        "for i ← 0 to len(v)",
+        "for i ← 0 to len(v) - 1",
+        "for i ← 1 to len(v)"
+      ],
+      "answer": 1,
+      "why": "`range(len(v))` termina antes de len(v); el for del pseudocódigo incluye el final, por eso `- 1`."
+    }
+  ],
+  "hints": [
+    "`range(n)` es `0 to n - 1`.",
+    "`return i` dentro del if termina la función en cuanto lo encuentra.",
+    "`if pos = -1` compara; en el else, `write \"Está en la posición \", pos`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n8\n3\n5\n3\n3\n",
+      "stdout": "Está en la posición 1\n"
+    },
+    {
+      "stdin": "3\n1\n2\n3\n9\n",
+      "stdout": "No está\n"
+    },
+    {
+      "stdin": "1\n7\n7\n",
+      "stdout": "Está en la posición 0\n"
+    },
+    {
+      "stdin": "5\n10\n20\n30\n40\n50\n50\n",
+      "stdout": "Está en la posición 4\n"
+    }
+  ]
+}

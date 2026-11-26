@@ -1,0 +1,45 @@
+{
+  "id": "M10-E15",
+  "title": "De pseudocódigo a Python: decimal a binario",
+  "statement": "Escribe **en Python** este pseudocódigo (el stack puede ser una lista con `append` y `pop`):\n\n```text\nBegin\n    read n\n    p ← new Stack()\n    if n = 0\n        p.push(0)\n    end if\n    while n > 0\n        p.push(n mod 2)\n        n ← n div 2\n    end while\n    binario ← \"\"\n    while not p.empty()\n        binario ← binario + str(p.pop())\n    end while\n    write binario\nEnd\n```\n\nEjemplo: con `10` muestra `1010`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Por qué se usa un stack para pasar a binario?",
+      "options": [
+        "los residuos salen al revés: el último es el primer dígito",
+        "para que sea más rápido",
+        "porque n puede ser negativo"
+      ],
+      "answer": 0,
+      "why": "Dividir entre 2 da los bits del último al primero; el stack los devuelve en el orden correcto."
+    }
+  ],
+  "hints": [
+    "`p ← new Stack()` → `p = []`; `push` → `append`.",
+    "`not p.empty()` → `len(p) > 0`.",
+    "`n mod 2` → `n % 2` y `n div 2` → `n // 2`."
+  ],
+  "tests": [
+    {
+      "stdin": "10\n",
+      "stdout": "1010\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "0\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "1\n"
+    },
+    {
+      "stdin": "255\n",
+      "stdout": "11111111\n"
+    },
+    {
+      "stdin": "64\n",
+      "stdout": "1000000\n"
+    }
+  ]
+}

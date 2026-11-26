@@ -1,0 +1,45 @@
+{
+  "id": "M02-E11",
+  "title": "De pseudocódigo a Python: datos hasta el 0",
+  "statement": "Escribe **en Python** este pseudocódigo. Lee números hasta que llegue un 0 (el 0 no cuenta) y muestra cuántos fueron y el mayor:\n\n```text\nBegin\n    cuantos ← 0\n    mayor ← 0\n    read x\n    while x != 0\n        cuantos ← cuantos + 1\n        if cuantos = 1 or x > mayor\n            mayor ← x\n        end if\n        read x\n    end while\n    write \"Datos: \", cuantos\n    write \"Mayor: \", mayor\nEnd\n```\n\nEjemplo: con `5`, `-3`, `8` y `0` muestra `Datos: 3` y `Mayor: 8`. Si el primero es 0, muestra `Datos: 0` y `Mayor: 0`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Por qué hay un `read x` antes del while y otro al final del ciclo?",
+      "options": [
+        "es un error, sobra uno",
+        "el primero da el valor para la primera pregunta; el segundo, el de la siguiente vuelta",
+        "porque el while lee solo"
+      ],
+      "answer": 1,
+      "why": "Es el patrón de **lectura adelantada**: el while pregunta por x, así que x ya debe tener valor antes de entrar, y se lee el siguiente al final de cada vuelta."
+    }
+  ],
+  "hints": [
+    "`while x != 0:` funciona igual en Python (con dos puntos).",
+    "`if cuantos == 1 or x > mayor:` – el `=` de comparar es `==`.",
+    "Cada `read x` es `x = int(input())`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n-3\n8\n0\n",
+      "stdout": "Datos: 3\nMayor: 8\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Datos: 0\nMayor: 0\n"
+    },
+    {
+      "stdin": "-4\n-9\n0\n",
+      "stdout": "Datos: 2\nMayor: -4\n"
+    },
+    {
+      "stdin": "7\n0\n",
+      "stdout": "Datos: 1\nMayor: 7\n"
+    },
+    {
+      "stdin": "1\n2\n3\n4\n0\n",
+      "stdout": "Datos: 4\nMayor: 4\n"
+    }
+  ]
+}

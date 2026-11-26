@@ -1,0 +1,42 @@
+{
+  "id": "M00-E07",
+  "title": "De Python a pseudocódigo: área y perímetro",
+  "language": "pseudo",
+  "statement": "Este programa en Python lee la base y la altura de un rectángulo:\n\n```python\nbase = int(input())\naltura = int(input())\narea = base * altura\nperimetro = 2 * (base + altura)\nprint(f\"Área: {area}\")\nprint(f\"Perímetro: {perimetro}\")\n```\n\nEscribe **el mismo programa en pseudocódigo**. Debe mostrar exactamente lo mismo.\n\nEscríbelo en **pseudocódigo** (Begin … End, `read`, `write`, `←`). pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cuál es el pseudocódigo de `base = int(input())`?",
+      "options": [
+        "read base",
+        "base ← read()",
+        "read int(base)"
+      ],
+      "answer": 0,
+      "why": "En pseudocódigo `read` ya guarda el número: no hace falta `int()` ni `input()`."
+    }
+  ],
+  "hints": [
+    "`int(input())` es `read`.",
+    "`area = base * altura` es `area ← base * altura`.",
+    "`print(f\"Área: {area}\")` es `write \"Área: \", area`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n5\n",
+      "stdout": "Área: 20\nPerímetro: 18\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "Área: 1\nPerímetro: 4\n"
+    },
+    {
+      "stdin": "10\n3\n",
+      "stdout": "Área: 30\nPerímetro: 26\n"
+    },
+    {
+      "stdin": "7\n12\n",
+      "stdout": "Área: 84\nPerímetro: 38\n"
+    }
+  ]
+}

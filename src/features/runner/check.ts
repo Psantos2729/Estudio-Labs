@@ -1,5 +1,6 @@
 import type { TestCase } from '@/content/types';
-import { runPython, type RunResult } from './runner';
+import type { RunResult } from './runner';
+import { runCode, type Lang } from '@/features/pseudo/run';
 
 export interface TestResult {
   test: TestCase;
@@ -17,10 +18,10 @@ export function sameOutput(actual: string, expected: string): boolean {
 }
 
 /** Corre el código contra cada prueba pública, en orden. Los mensajes de input("...") no cuentan. */
-export async function runTests(code: string, tests: TestCase[]): Promise<TestResult[]> {
+export async function runTests(code: string, tests: TestCase[], lang?: Lang): Promise<TestResult[]> {
   const results: TestResult[] = [];
   for (const test of tests) {
-    const run = await runPython(code, test.stdin, { quietPrompts: true, files: test.files });
+    const run = await runCode(code, lang, test.stdin, { quietPrompts: true, files: test.files });
     results.push({ test, run, passed: !run.error && sameOutput(run.stdout, test.stdout) });
   }
   return results;

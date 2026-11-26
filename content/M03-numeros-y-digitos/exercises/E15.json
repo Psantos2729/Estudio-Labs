@@ -1,0 +1,45 @@
+{
+  "id": "M03-E15",
+  "title": "De pseudocódigo a Python: dígitos pares",
+  "statement": "Escribe **en Python** este pseudocódigo:\n\n```text\nBegin\n    read n\n    pares ← 0\n    repeat ← True\n    while repeat\n        if (n mod 10) mod 2 = 0\n            pares ← pares + 1\n        end if\n        n ← n div 10\n        repeat ← n > 0\n    end while\n    write \"Dígitos pares: \", pares\nEnd\n```\n\nCuenta los dígitos pares de n (n ≥ 0). El ciclo da al menos una vuelta, así que `0` tiene un dígito par.\n\nEjemplo: con `2468` muestra `Dígitos pares: 4`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "Con `n ← 0`, ¿cuántas vueltas da el while?",
+      "options": [
+        "ninguna",
+        "una",
+        "infinitas"
+      ],
+      "answer": 1,
+      "why": "`repeat` empieza en True, así que entra una vez; al final `repeat ← n > 0` vale False y se detiene."
+    }
+  ],
+  "hints": [
+    "`True` y `False` son iguales en Python.",
+    "`(n mod 10) mod 2 = 0` es `(n % 10) % 2 == 0`.",
+    "`repeat = n > 0` guarda True o False."
+  ],
+  "tests": [
+    {
+      "stdin": "2468\n",
+      "stdout": "Dígitos pares: 4\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Dígitos pares: 1\n"
+    },
+    {
+      "stdin": "13579\n",
+      "stdout": "Dígitos pares: 0\n"
+    },
+    {
+      "stdin": "102\n",
+      "stdout": "Dígitos pares: 2\n"
+    },
+    {
+      "stdin": "8\n",
+      "stdout": "Dígitos pares: 1\n"
+    }
+  ]
+}

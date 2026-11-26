@@ -1,0 +1,49 @@
+{
+  "id": "M11-E16",
+  "title": "De pseudocódigo a Python: ¿postfix válido?",
+  "statement": "Escribe **en Python** este pseudocódigo. Revisa si una expresión postfix de letras y signos `+ - * /` está bien formada, contando cuántos operandos habría en el stack:\n\n```text\nBegin\n    read expresion\n    altura ← 0\n    valido ← True\n    for i ← 0 to len(expresion) - 1\n        if expresion[i] in \"+-*/\"\n            altura ← altura - 1\n            if altura < 1\n                valido ← False\n            end if\n        else\n            altura ← altura + 1\n        end if\n    end for\n    if valido and altura = 1\n        write \"Válida\"\n    else\n        write \"Inválida\"\n    end if\nEnd\n```\n\nEjemplo: con `ab+c*` muestra `Válida`; con `a+b` muestra `Inválida`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Por qué cada signo resta 1 a la altura?",
+      "options": [
+        "saca dos operandos y mete un resultado: queda uno menos",
+        "porque es un error",
+        "porque los signos no cuentan"
+      ],
+      "answer": 0,
+      "why": "Un signo hace pop dos veces y push una vez: el stack baja en 1."
+    }
+  ],
+  "hints": [
+    "`expresion[i] in \"+-*/\"` se escribe igual en Python.",
+    "`altura = 1` del if final → `altura == 1`.",
+    "`True` y `and` son iguales en Python."
+  ],
+  "tests": [
+    {
+      "stdin": "ab+c*\n",
+      "stdout": "Válida\n"
+    },
+    {
+      "stdin": "a+b\n",
+      "stdout": "Inválida\n"
+    },
+    {
+      "stdin": "abc\n",
+      "stdout": "Inválida\n"
+    },
+    {
+      "stdin": "a\n",
+      "stdout": "Válida\n"
+    },
+    {
+      "stdin": "ab*cd/-\n",
+      "stdout": "Válida\n"
+    },
+    {
+      "stdin": "+\n",
+      "stdout": "Inválida\n"
+    }
+  ]
+}

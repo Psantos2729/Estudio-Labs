@@ -1,0 +1,56 @@
+{
+  "id": "M01-E09",
+  "title": "De Python a pseudocódigo: temperatura",
+  "language": "pseudo",
+  "statement": "Pasa este programa a **pseudocódigo**:\n\n```python\nt = int(input())\nif t < 15:\n    print(\"Frío\")\nelif t <= 25:\n    print(\"Agradable\")\nelse:\n    print(\"Calor\")\n```\n\nEscríbelo en **pseudocódigo** (Begin … End, `read`, `write`, `←`). pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cómo se escribe `elif` en pseudocódigo?",
+      "options": [
+        "elif",
+        "else if",
+        "end if"
+      ],
+      "answer": 1,
+      "why": "`elif` es Python. En pseudocódigo es `else if`, dentro del mismo bloque."
+    },
+    {
+      "question": "¿Cuántos `end if` lleva un `if` con un `else if` y un `else`?",
+      "options": [
+        "uno",
+        "dos",
+        "tres"
+      ],
+      "answer": 0,
+      "why": "Un solo `end if` cierra todo el bloque, con todos sus `else if` y su `else`."
+    }
+  ],
+  "hints": [
+    "`if t < 15` sin dos puntos.",
+    "`elif t <= 25:` es `else if t <= 25`.",
+    "Cierra con un solo `end if` y luego `End`."
+  ],
+  "tests": [
+    {
+      "stdin": "10\n",
+      "stdout": "Frío\n"
+    },
+    {
+      "stdin": "15\n",
+      "stdout": "Agradable\n"
+    },
+    {
+      "stdin": "25\n",
+      "stdout": "Agradable\n"
+    },
+    {
+      "stdin": "26\n",
+      "stdout": "Calor\n"
+    },
+    {
+      "stdin": "-3\n",
+      "stdout": "Frío\n"
+    }
+  ]
+}

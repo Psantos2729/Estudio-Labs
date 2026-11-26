@@ -14,6 +14,7 @@ import { HistoryPage } from '@/features/history/HistoryPage';
 import { RankingPage } from '@/features/game/RankingPage';
 import { WorkshopPage } from '@/features/game/WorkshopPage';
 import { AttemptReviewPage } from '@/features/history/AttemptReviewPage';
+import { GuidePage } from '@/features/pseudo/GuidePage';
 
 export function App() {
   return (
@@ -33,6 +34,7 @@ export function App() {
             <Route path="historial/:attemptId" element={<AttemptReviewPage />} />
             <Route path="ranking" element={<RankingPage />} />
             <Route path="taller" element={<WorkshopPage />} />
+            <Route path="pseudocodigo" element={<GuidePage />} />
             <Route path="privacidad" element={<PrivacyPage />} />
             <Route path="*" element={<p className="center muted">404 · esa ruta no existe</p>} />
           </Route>

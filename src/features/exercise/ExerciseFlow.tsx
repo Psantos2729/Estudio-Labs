@@ -10,6 +10,8 @@ import { useSavePractice, type Attempt } from './usePractice';
 import { ProgressBar } from '@/ui/primitives/ProgressBar';
 
 const STEPS = ['entender', 'analizar', 'pseudocódigo', 'código y pruebas'];
+// En un ejercicio de pseudocódigo, el pseudocódigo ES el código: se escribe y se prueba en el editor.
+const PSEUDO_STEPS = ['entender', 'analizar', 'pseudocódigo y pruebas'];
 
 const ANALYSIS: Field[] = [
   { key: 'input', label: 'Entrada', hint: '¿Qué datos recibe el programa y de qué tipo son?' },
@@ -17,7 +19,7 @@ const ANALYSIS: Field[] = [
   { key: 'process', label: 'Proceso', hint: '¿Qué cálculos o decisiones hay entre la entrada y la salida?' },
   { key: 'edge', label: 'Casos especiales', hint: '¿Qué entradas raras podrían romperlo? (cero, negativos, texto vacío…)' },
 ];
-const PSEUDO: Field[] = [{ key: 'pseudo', label: 'Pseudocódigo', hint: 'Los pasos en español, uno por línea: Leer…, Calcular…, Si…, Mostrar…' }];
+const PSEUDO: Field[] = [{ key: 'pseudo', label: 'Pseudocódigo', hint: 'Como en los labs, en inglés: Begin, read n, if … end if, for i ← 0 to n-1 … end for, write …, End. Las reglas están en la guía de pseudocódigo.' }];
 
 interface Props {
   exercise: ExerciseDef;
@@ -27,7 +29,9 @@ interface Props {
 
 /** Los pasos del ejercicio (diseño D1). Al probar, guarda el intento si hay sesión. */
 export function ExerciseFlow({ exercise, saved, canSave }: Props) {
-  const [step, setStep] = useState(saved ? 3 : 0);
+  const steps = exercise.language === 'pseudo' ? PSEUDO_STEPS : STEPS;
+  const codeStep = steps.length - 1;
+  const [step, setStep] = useState(saved ? codeStep : 0);
   const [notes, setNotes] = useState<Record<string, string>>(saved?.notes ?? {});
   const note = (k: string, v: string) => setNotes({ ...notes, [k]: v });
   const save = useSavePractice(exercise.id);
@@ -46,9 +50,9 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
 
   return (
     <>
-      <ProgressBar value={passed ? STEPS.length : step} max={STEPS.length} label="Pasos completados del ejercicio" />
+      <ProgressBar value={passed ? steps.length : step} max={steps.length} label="Pasos completados del ejercicio" />
       <ol className="stepper" aria-label="Pasos del ejercicio">
-        {STEPS.map((s, i) => (
+        {steps.map((s, i) => (
           <li key={s} className={i === step ? 'stepper__now' : i < step ? 'stepper__done' : ''}>
             {i < step ? (
               <button type="button" className="stepper__back" onClick={() => setStep(i)}>✓ {s}</button>
@@ -60,9 +64,9 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
       </ol>
       <div className="step-panel" key={step}>
         {step === 0 && <UnderstandStep exercise={exercise} onDone={() => setStep(1)} />}
-        {step === 1 && <TextStep fields={ANALYSIS} values={notes} onChange={note} next="Al pseudocódigo" onDone={() => setStep(2)} />}
-        {step === 2 && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
-        {step === 3 && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
+        {step === 1 && <TextStep fields={ANALYSIS} values={notes} onChange={note} next={codeStep === 2 ? 'Abrir el editor' : 'Al pseudocódigo'} onDone={() => setStep(2)} />}
+        {step === 2 && step !== codeStep && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
+        {step === codeStep && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
       </div>
       {passed && (
         <Link className="btn btn--primary enter" to={next ? `/ejercicio/${next.id}` : '/'}>

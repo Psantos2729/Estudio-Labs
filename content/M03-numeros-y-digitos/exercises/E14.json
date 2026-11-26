@@ -1,0 +1,56 @@
+{
+  "id": "M03-E14",
+  "title": "De Python a pseudocódigo: ¿es capicúa?",
+  "language": "pseudo",
+  "statement": "Pasa este programa a **pseudocódigo**:\n\n```python\nn = int(input())\noriginal = n\ninvertido = 0\nwhile n > 0:\n    invertido = invertido * 10 + n % 10\n    n = n // 10\nif invertido == original:\n    print(\"Capicúa\")\nelse:\n    print(\"No es capicúa\")\n```\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cómo se escribe `n % 10` en pseudocódigo?",
+      "options": [
+        "n div 10",
+        "n mod 10",
+        "n / 10"
+      ],
+      "answer": 1,
+      "why": "`%` (residuo) es `mod`; `//` (división entera) es `div`."
+    },
+    {
+      "question": "¿Cómo se escribe `if invertido == original:`?",
+      "options": [
+        "if invertido = original",
+        "if invertido == original",
+        "if invertido ← original"
+      ],
+      "answer": 0,
+      "why": "En pseudocódigo se compara con un solo `=` y sin dos puntos."
+    }
+  ],
+  "hints": [
+    "`%` es `mod` y `//` es `div`.",
+    "`==` es `=`, y las asignaciones usan `←`.",
+    "Cierra el while con `end while` y el if con `end if`."
+  ],
+  "tests": [
+    {
+      "stdin": "121\n",
+      "stdout": "Capicúa\n"
+    },
+    {
+      "stdin": "123\n",
+      "stdout": "No es capicúa\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "Capicúa\n"
+    },
+    {
+      "stdin": "1221\n",
+      "stdout": "Capicúa\n"
+    },
+    {
+      "stdin": "10\n",
+      "stdout": "No es capicúa\n"
+    }
+  ]
+}

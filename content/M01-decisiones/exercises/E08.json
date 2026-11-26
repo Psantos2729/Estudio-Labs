@@ -1,0 +1,56 @@
+{
+  "id": "M01-E08",
+  "title": "Pseudocódigo: el mayor de tres",
+  "language": "pseudo",
+  "statement": "Lee tres enteros y muestra `Mayor: <n>` con el mayor de los tres.\n\nEscríbelo en **pseudocódigo** (Begin … End, `read`, `write`, `←`). pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar. Usa `if` … `else if` … `else` … `end if`.\n\nEjemplo: con `4`, `9` y `2` muestra `Mayor: 9`.",
+  "starter": "Begin\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "¿Cómo se cierra un `if` en pseudocódigo?",
+      "options": [
+        "con dos puntos",
+        "con `end if`",
+        "con la sangría"
+      ],
+      "answer": 1,
+      "why": "En pseudocódigo la sangría es solo para leer mejor: cada `if` termina con su `end if`."
+    },
+    {
+      "question": "¿Qué significa `if a = b` en pseudocódigo?",
+      "options": [
+        "guarda b en a",
+        "pregunta si a y b son iguales",
+        "es un error"
+      ],
+      "answer": 1,
+      "why": "En pseudocódigo `=` compara. Para guardar se usa `←`."
+    }
+  ],
+  "hints": [
+    "Lee con `read a`, `read b`, `read c`.",
+    "`if a >= b and a >= c` cubre el caso en que a es el mayor.",
+    "Luego `else if b >= c` … `else` … y un solo `end if` al final."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n9\n2\n",
+      "stdout": "Mayor: 9\n"
+    },
+    {
+      "stdin": "7\n7\n1\n",
+      "stdout": "Mayor: 7\n"
+    },
+    {
+      "stdin": "-5\n-2\n-9\n",
+      "stdout": "Mayor: -2\n"
+    },
+    {
+      "stdin": "1\n2\n3\n",
+      "stdout": "Mayor: 3\n"
+    },
+    {
+      "stdin": "10\n3\n10\n",
+      "stdout": "Mayor: 10\n"
+    }
+  ]
+}

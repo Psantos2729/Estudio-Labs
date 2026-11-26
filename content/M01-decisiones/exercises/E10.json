@@ -1,0 +1,45 @@
+{
+  "id": "M01-E10",
+  "title": "De pseudocódigo a Python: año bisiesto",
+  "statement": "Escribe **en Python** este pseudocódigo:\n\n```text\nBegin\n    read anio\n    if anio mod 400 = 0 or (anio mod 4 = 0 and anio mod 100 != 0)\n        write anio, \" es bisiesto\"\n    else\n        write anio, \" no es bisiesto\"\n    end if\nEnd\n```\n\nEjemplo: con `2024` muestra `2024 es bisiesto`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Qué es `anio mod 4 = 0` en Python?",
+      "options": [
+        "anio % 4 = 0",
+        "anio % 4 == 0",
+        "anio // 4 == 0"
+      ],
+      "answer": 1,
+      "why": "`mod` es `%`, y la comparación `=` del pseudocódigo es `==` en Python."
+    }
+  ],
+  "hints": [
+    "`mod` es `%`; el `=` de comparar es `==`.",
+    "`or`, `and` y `!=` se escriben igual.",
+    "`print(f\"{anio} es bisiesto\")` muestra el año pegado al texto."
+  ],
+  "tests": [
+    {
+      "stdin": "2024\n",
+      "stdout": "2024 es bisiesto\n"
+    },
+    {
+      "stdin": "1900\n",
+      "stdout": "1900 no es bisiesto\n"
+    },
+    {
+      "stdin": "2000\n",
+      "stdout": "2000 es bisiesto\n"
+    },
+    {
+      "stdin": "2023\n",
+      "stdout": "2023 no es bisiesto\n"
+    },
+    {
+      "stdin": "2100\n",
+      "stdout": "2100 no es bisiesto\n"
+    }
+  ]
+}

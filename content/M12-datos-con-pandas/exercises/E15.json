@@ -1,0 +1,41 @@
+{
+  "id": "M12-E15",
+  "title": "De pseudocódigo a Python: conteo por sección",
+  "statement": "Escribe **en Python** este pseudocódigo. Puedes usar pandas (`value_counts`) o un vector de contadores, como prefieras: lo que cuenta es la salida.\n\n```text\nBegin\n    read n\n    cuenta ← new Array(3)\n    for i ← 1 to n\n        read seccion\n        cuenta[seccion - 1] ← cuenta[seccion - 1] + 1\n    end for\n    for s ← 1 to 3\n        write \"Sección \", s, \": \", cuenta[s - 1]\n    end for\nEnd\n```\n\nLas secciones van del 1 al 3. Ejemplo: con `5` y luego `1`, `3`, `1`, `2`, `1` muestra `Sección 1: 3`, `Sección 2: 1` y `Sección 3: 1`.",
+  "starter": "",
+  "predict": [
+    {
+      "question": "¿Por qué se usa `cuenta[seccion - 1]`?",
+      "options": [
+        "porque las secciones empiezan en 1 y el arreglo en 0",
+        "para restar una sección",
+        "es un error"
+      ],
+      "answer": 0,
+      "why": "La sección 1 va en la posición 0, la 2 en la 1 y la 3 en la 2."
+    }
+  ],
+  "hints": [
+    "`new Array(3)` → `[0] * 3`.",
+    "`for s ← 1 to 3` → `for s in range(1, 4):`.",
+    "El write → `print(f\"Sección {s}: {cuenta[s - 1]}\")`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n1\n3\n1\n2\n1\n",
+      "stdout": "Sección 1: 3\nSección 2: 1\nSección 3: 1\n"
+    },
+    {
+      "stdin": "1\n2\n",
+      "stdout": "Sección 1: 0\nSección 2: 1\nSección 3: 0\n"
+    },
+    {
+      "stdin": "3\n3\n3\n3\n",
+      "stdout": "Sección 1: 0\nSección 2: 0\nSección 3: 3\n"
+    },
+    {
+      "stdin": "6\n1\n2\n3\n1\n2\n3\n",
+      "stdout": "Sección 1: 2\nSección 2: 2\nSección 3: 2\n"
+    }
+  ]
+}

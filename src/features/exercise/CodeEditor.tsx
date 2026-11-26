@@ -3,10 +3,11 @@ import { useEffect, useRef } from 'react';
 interface Props {
   initial: string;
   onChange: (code: string) => void;
+  pseudo?: boolean; // pseudocódigo: sin colores de Python y `<-` se vuelve ←
 }
 
 /** Editor de Python (CodeMirror 6). Se carga aparte para no pesar en el mapa ni en las lecciones. */
-export function CodeEditor({ initial, onChange }: Props) {
+export function CodeEditor({ initial, onChange, pseudo = false }: Props) {
   const host = useRef<HTMLDivElement>(null);
   const changed = useRef(onChange);
   changed.current = onChange;
@@ -27,10 +28,15 @@ export function CodeEditor({ initial, onChange }: Props) {
         parent: host.current,
         extensions: [
           basicSetup,
-          python(),
+          pseudo ? [] : python(),
+          pseudo ? EditorView.inputHandler.of((v, from, to, text) => {
+            if (text !== '-' || v.state.sliceDoc(from - 1, from) !== '<') return false;
+            v.dispatch({ changes: { from: from - 1, to, insert: '←' }, selection: { anchor: from } });
+            return true;
+          }) : [],
           oneDark,
           view.keymap.of([indentWithTab]), // Tab indenta (en Python importa); Esc y luego Tab sale del editor
-          EditorView.contentAttributes.of({ 'aria-label': 'Editor de código Python' }),
+          EditorView.contentAttributes.of({ 'aria-label': pseudo ? 'Editor de pseudocódigo' : 'Editor de código Python' }),
           EditorView.updateListener.of((u) => u.docChanged && changed.current(u.state.doc.toString())),
         ],
       });
@@ -40,7 +46,7 @@ export function CodeEditor({ initial, onChange }: Props) {
       cancelled = true;
       destroy();
     };
-  }, [initial]);
+  }, [initial, pseudo]);
 
   return <div ref={host} className="editor" />;
 }

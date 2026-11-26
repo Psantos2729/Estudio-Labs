@@ -1,0 +1,46 @@
+{
+  "id": "M11-E14",
+  "title": "Pseudocódigo: evaluar postfix",
+  "language": "pseudo",
+  "statement": "Lee una expresión **postfix** de dígitos (0 a 9) y los signos `+ - *`, sin espacios, y muestra su resultado. Usa un stack.\n\nEscríbelo en **pseudocódigo**. pylab lo traduce a Python para probarlo; abre *ver en Python* para comparar. `int(c)` convierte un carácter en número.\n\nEjemplo: con `23*4+` muestra `10`.",
+  "starter": "Begin\n    read expresion\n    p ← new Stack()\n    \nEnd\n",
+  "predict": [
+    {
+      "question": "En `82-`, ¿qué sale primero del stack cuando llega el `-`?",
+      "options": [
+        "8",
+        "2",
+        "-"
+      ],
+      "answer": 1,
+      "why": "Sale el último que entró: el 2, que es el operando de la **derecha**. El resultado es 8 - 2 = 6."
+    }
+  ],
+  "hints": [
+    "Recorre con `for i ← 0 to len(expresion) - 1` y `c ← expresion[i]`.",
+    "Si `c in \"+-*\"`: `der ← p.pop()` y luego `izq ← p.pop()`.",
+    "Si no es signo: `p.push(int(c))`. Al final, `write p.pop()`."
+  ],
+  "tests": [
+    {
+      "stdin": "23*4+\n",
+      "stdout": "10\n"
+    },
+    {
+      "stdin": "82-\n",
+      "stdout": "6\n"
+    },
+    {
+      "stdin": "52+\n",
+      "stdout": "7\n"
+    },
+    {
+      "stdin": "93-2*\n",
+      "stdout": "12\n"
+    },
+    {
+      "stdin": "12+34+*\n",
+      "stdout": "21\n"
+    }
+  ]
+}
