@@ -41,7 +41,7 @@ export function CodeStep({ exercise, initialCode, onTested }: Props) {
         <div className="prose" dangerouslySetInnerHTML={{ __html: marked.parse(exercise.statement, { async: false }) }} />
         <div className="hints">
           {exercise.hints.slice(0, hintsShown).map((h, i) => (
-            <p key={i} className="hints__item">
+            <p key={i} className="hints__item enter">
               <PixelSprite name={buddy.sprite} size={28} title={buddy.name} />
               <span><span className="warn">{buddy.name} · pista {i + 1}:</span> {h}</span>
             </p>

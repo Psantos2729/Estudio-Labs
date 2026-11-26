@@ -111,6 +111,8 @@ p { margin: 0; }
 
 /* Cada pantalla entra con un pequeño deslizamiento */
 .page { flex: 1; display: flex; flex-direction: column; animation: hud-enter 0.2s var(--ease-out); }
+/* Algo que aparece por una acción (pista, botón Continuar) */
+.enter { animation: hud-enter 0.2s var(--ease-out); }
 
 .input {
   background: var(--bg-code);
