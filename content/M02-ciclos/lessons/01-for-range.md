@@ -42,6 +42,7 @@ print("¡Despegue!")
 Muchas veces no te importa el valor de la variable, solo repetir. Por ejemplo, leer 3 números:
 
 ```python
+// entrada: 3 7 10
 for i in range(3):
     n = int(input())
     print("Leí", n)
