@@ -11,9 +11,9 @@ Todo vive en `content/cosmeticos.json`: una pieza por línea. Para agregar una:
    | Campo | Qué es |
    |---|---|
    | `id` | Nombre interno, sin espacios ni acentos (`a-z`, `0-9`, `_`). No lo cambies después: es lo que se guarda en cada perfil. |
-   | `slot` | Espacio del robot: `cabeza`, `cara`, `cuerpo`, `mano`, `brazo`, `piernas`, `pies`. Un espacio nuevo aparece solo en el taller. |
+   | `slot` | Espacio del robot: `cabeza`, `cara`, `cuerpo`, `mano`, `brazo`, `piernas`, `pies`, `mascota`. Un espacio nuevo aparece solo en el taller. |
    | `name` | Lo que se ve en el taller. |
-   | `unlock` | Cómo se gana: `["nivel", 5]`, `["ejercicios", 50]`, `["repasos", 3]`, `["modulos", 7]` (dominados), `["islas", 2]` (jefes de isla vencidos) o `["jefe", "M06"]` (aprobar ese examen). Logros (migración 021): `["lecciones", 20]` leídas, `["curso", 100]` (% de lecciones leídas), `["xp", 500]`, `["reintentos", 1]` (exámenes vueltos a presentar), `["perfectos", 1]` (exámenes con 100), `["rapidos", 1]` (aprobados en menos de la mitad del tiempo), `["noche", 1]` (lecciones leídas de 20:00 a 5:59, hora de Guatemala), `["seguidas", 3]` (lecciones leídas en menos de una hora) y `["primero", 1]` (primer lugar del ranking). |
+   | `unlock` | Cómo se gana: `["nivel", 5]`, `["ejercicios", 50]`, `["repasos", 3]`, `["modulos", 7]` (dominados), `["islas", 2]` (jefes de isla vencidos) o `["jefe", "M06"]` (aprobar ese examen). Logros (migración 021): `["lecciones", 20]` leídas, `["curso", 100]` (% de lecciones leídas), `["xp", 500]`, `["reintentos", 1]` (exámenes vueltos a presentar), `["perfectos", 1]` (exámenes con 100), `["rapidos", 1]` (aprobados en menos de la mitad del tiempo), `["noche", 1]` (lecciones leídas de 20:00 a 5:59, hora de Guatemala), `["seguidas", 3]` (lecciones leídas en menos de una hora) `["primero", 1]` (primer lugar del ranking), `["fallos", 3]` (exámenes reprobados) y `["retos", 1]` (ejercicios reto resueltos, migración 022). |
 | `desc` | Opcional: texto corto bajo el nombre en el taller. |
    | `layer` | `back` detrás del cuerpo, `face` reemplaza los ojos, `top` encima de todo. |
    | `hidesAntenna` | `true` si tapa la antena (cascos, gorros, máscaras). |
@@ -30,6 +30,7 @@ Va de x = 0 a 10.5 y de y = −1 a 11 (los decimales valen).
 - Cuerpo: x 3–7, y 6–9. Brazos en x 2 y x 7 (y 6.5–8.5). Pies en y 9–10.
 - Mano: alrededor de x 8, y 6–8 (espadas hacia arriba, hasta y 0.5).
 - Brazo (escudo): x 0–2.6, y 5.6–9.6.
+- Mascota: abajo a la derecha, x 7.3–10.5, y 8.3–10.7 (va junto al robot, no encima).
 - Piernas: y 8.8–9.7. Pies: y 8.9–10.3 (los pies del robot están en x 3 y x 6).
 
 Para ver cómo queda, abre `/taller` con `npm run dev`.

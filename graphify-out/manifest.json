@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "tools/seed-catalog.mjs": {
-    "mtime": 1795663022.7163165,
-    "seen": 1795663469.2150285,
-    "ast_hash": "efdef98cbbea6eed787de18a164edd86",
+    "mtime": 1795664073.4185293,
+    "seen": 1795664147.3721144,
+    "ast_hash": "6ef89bde1d242d74257074d359fbb6f3",
     "semantic_hash": ""
   },
   "tools/test-db.sh": {
@@ -2304,21 +2304,21 @@
     "semantic_hash": ""
   },
   "content/cosmeticos.json": {
-    "mtime": 1795663436.152511,
-    "seen": 1795663469.2148542,
-    "ast_hash": "a9eaecfe5fe55f0c82858adf2ebe2370",
+    "mtime": 1795664102.3053749,
+    "seen": 1795664147.371964,
+    "ast_hash": "3a2ee196dd20790c5610d7e00439d547",
     "semantic_hash": ""
   },
   "src/features/game/cosmetics.test.ts": {
-    "mtime": 1795663303.9348888,
-    "seen": 1795663469.2149107,
-    "ast_hash": "2e63b52b4b3ac62c736570b37966cb4b",
+    "mtime": 1795664102.306456,
+    "seen": 1795664147.3720038,
+    "ast_hash": "2a23d58ceb0e879a5636012e70d98be4",
     "semantic_hash": ""
   },
   "src/features/game/cosmetics.ts": {
-    "mtime": 1795663303.9346411,
-    "seen": 1795663469.214912,
-    "ast_hash": "f30f1fa7ad9996a8aa71b2058674944b",
+    "mtime": 1795664112.8973966,
+    "seen": 1795664147.3720047,
+    "ast_hash": "10daa752c5c23b7152b2c210e237e57c",
     "semantic_hash": ""
   },
   "supabase/migrations/20261125000019_gear_catalog.sql": {
@@ -2334,9 +2334,9 @@
     "semantic_hash": ""
   },
   "docs/cosmeticos.md": {
-    "mtime": 1795663311.0885894,
-    "seen": 1795663469.2151217,
-    "ast_hash": "7d1f3abaf866be995c44e62756cad6d3",
+    "mtime": 1795664102.3066704,
+    "seen": 1795664147.3722727,
+    "ast_hash": "8a680a4024ac7d77a7a07721c4c6b73b",
     "semantic_hash": ""
   },
   "supabase/migrations/20261125000020_audit_fixes.sql": {
@@ -2685,6 +2685,18 @@
     "mtime": 1795663355.9659734,
     "seen": 1795663469.215016,
     "ast_hash": "181bc99aa555111383ff5e21b44372ba",
+    "semantic_hash": ""
+  },
+  "supabase/migrations/20261126000022_more_achievements.sql": {
+    "mtime": 1795664073.4176252,
+    "seen": 1795664147.3720908,
+    "ast_hash": "437ba45b9978ff0a9882326bd434a8ca",
+    "semantic_hash": ""
+  },
+  "supabase/tests/rls_gear_fallos.sql": {
+    "mtime": 1795664112.900829,
+    "seen": 1795664147.3721008,
+    "ast_hash": "89910486e966c0ee3f991b1067806cd7",
     "semantic_hash": ""
   },
   "package-lock.json": {

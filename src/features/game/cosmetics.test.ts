@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { PIECES, howOf } from './cosmetics';
 
-const RULES = ['nivel', 'ejercicios', 'repasos', 'modulos', 'islas', 'jefe', 'lecciones', 'curso', 'xp', 'reintentos', 'perfectos', 'rapidos', 'noche', 'seguidas', 'primero'];
+const RULES = ['nivel', 'ejercicios', 'repasos', 'modulos', 'islas', 'jefe', 'lecciones', 'curso', 'xp', 'reintentos', 'perfectos', 'rapidos', 'noche', 'seguidas', 'primero', 'fallos', 'retos'];
 
 describe('content/cosmeticos.json', () => {
   it('no repite ids', () => {
