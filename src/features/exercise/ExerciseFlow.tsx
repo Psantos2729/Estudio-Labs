@@ -65,7 +65,7 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
         {step === 3 && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
       </div>
       {passed && (
-        <Link className="btn btn--primary" to={next ? `/ejercicio/${next.id}` : '/'}>
+        <Link className="btn btn--primary enter" to={next ? `/ejercicio/${next.id}` : '/'}>
           {next ? `Continuar: ${next.title} →` : 'Terminé los ejercicios →'}
         </Link>
       )}
