@@ -1,6 +1,7 @@
 {
   "id": "M08-E02",
   "title": "Letras, palabras y líneas",
+  "pdf": 23,
   "statement": "El ejercicio 23 del PDF (la \"Revisión\"): lee `texto.txt` e imprime\n\n```\nLetras: <l>\nPalabras: <p>\nLíneas: <n>\n```\n\n**Letras** son los caracteres con `isalpha()` (incluye tildes y ñ). **Palabras** son los pedazos de `linea.split()`. **Líneas** cuenta todas, también las vacías.\n\nEl archivo `texto.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
   "starter": "with open('texto.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
   "predict": [

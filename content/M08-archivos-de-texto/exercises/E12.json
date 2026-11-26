@@ -1,6 +1,7 @@
 {
   "id": "M08-E12",
   "title": "Archivo de números a romanos",
+  "pdf": 26,
   "statement": "**El jefe del módulo**, el ejercicio 26 del PDF. `datos1.txt` tiene números decimales menores a 2000, separados por `*`; alrededor del `*` puede haber espacios o tabuladores. Todas las líneas tienen la misma cantidad de números.\n\n1. Carga los números a una **matriz** de tamaño fijo (una fila por línea).\n2. Recorre la matriz por filas y escribe en `romanos.txt` cada fila con sus números en romano, separados por `; `.\n3. Al final de `romanos.txt` agrega dos líneas: `Número de líneas en el archivo de entrada: <n>` y `Dígitos en el archivo de entrada: <d>`.\n4. Vuelve a abrir `romanos.txt` y muestra todo su contenido.\n\nDebe usar una función tuya `a_romano(n)` que recibe el número y devuelve el texto en romano. Con el ejemplo del PDF:\n\n```\n8\t*525* 15* 20\n1550* 910 * 1995 * 5\n```\n\n`romanos.txt` queda:\n\n```\nVIII; DXXV; XV; XX\nMDL; CMX; MCMXCV; V\nNúmero de líneas en el archivo de entrada: 2\nDígitos en el archivo de entrada: 20\n```",
   "starter": "import re\n\n\ndef a_romano(n):\n    return ''\n\n\nwith open('datos1.txt', 'r', encoding='utf-8') as f:\n    for linea in f:\n        print(linea, end='')\n",
   "predict": [
