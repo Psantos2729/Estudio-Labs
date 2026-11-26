@@ -7,6 +7,7 @@ import { useModuleViews } from '@/features/map/useMastery';
 import { warmUp } from '@/features/runner/runner';
 import { splitBlocks } from './blocks';
 import { LessonBody } from './LessonBody';
+import { LessonScene } from './LessonScene';
 import { ProgressBar } from '@/ui/primitives/ProgressBar';
 import { useMarkLessonRead } from './useLessonProgress';
 import './lesson.css';
@@ -49,7 +50,9 @@ export function LessonPage() {
       <span className="accent small">{displayId(lesson.moduleId)} · lección {i + 1} de {siblings.length}{!moduleOpen && ' · desbloqueada (no cuenta para tu avance)'}</span>
       <ProgressBar value={i + 1} max={siblings.length} label="Avance en las lecciones del módulo" />
       <h1 className="display">{lesson.title}</h1>
+      <LessonScene moduleId={lesson.moduleId} />
       <LessonBody blocks={blocks} />
+      <LessonScene key={lesson.id} moduleId={lesson.moduleId} end />
       <nav className="lesson__nav">
         {prev ? <Link to={`/leccion/${prev.id}${q}`}>← {prev.title}</Link> : <span />}
         {/* Llegar al final y avanzar cuenta como lección leída. */}
