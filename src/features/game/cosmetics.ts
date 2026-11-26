@@ -46,6 +46,8 @@ export function howOf([rule, need]: Piece['unlock']) {
     case 'noche': return 'Lee una lección de noche (8 p. m. a 6 a. m.)';
     case 'seguidas': return `Lee ${need} lecciones en menos de una hora`;
     case 'primero': return 'Llega al primer lugar del ranking';
+    case 'fallos': return Number(need) === 1 ? 'Reprueba un examen' : `Reprueba ${need} exámenes`;
+    case 'retos': return Number(need) === 1 ? 'Resuelve un ejercicio reto' : `Resuelve ${need} ejercicios reto`;
     default: return '';
   }
 }

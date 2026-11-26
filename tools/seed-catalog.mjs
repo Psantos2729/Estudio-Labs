@@ -21,10 +21,10 @@ const rows = modules.map((m) =>
 
 // Lecciones y ejercicios que existen: record_practice y mark_lesson_read rechazan los demás (migración 020).
 const items = readdirSync(root).filter((dir) => /^M\d/.test(dir)).flatMap((dir) => [
-  ...readdirSync(join(root, dir, 'lessons')).map((f) => [`${dir.slice(0, 3)}-L${f.slice(0, 2)}`, 'null']),
+  ...readdirSync(join(root, dir, 'lessons')).map((f) => [`${dir.slice(0, 3)}-L${f.slice(0, 2)}`, 'null', false]),
   ...readdirSync(join(root, dir, 'exercises'))
     .map((f) => JSON.parse(readFileSync(join(root, dir, 'exercises', f), 'utf8')))
-    .map((e) => [e.id, e.tests.length]),
+    .map((e) => [e.id, e.tests.length, Boolean(e.challenge)]),
 ]);
 
 const cosmetics = JSON.parse(readFileSync(join(root, 'cosmeticos.json'), 'utf8'));
@@ -43,10 +43,10 @@ on conflict (id) do update set
 select public.fill_missing_mastery();
 
 -- Lecciones y ejercicios de content/ (migración 020).
-insert into public.catalog_items (id, tests)
+insert into public.catalog_items (id, tests, challenge)
 values
-${items.map(([id, tests]) => `  (${q(id)}, ${tests})`).join(',\n')}
-on conflict (id) do update set tests = excluded.tests;
+${items.map(([id, tests, challenge]) => `  (${q(id)}, ${tests}, ${challenge})`).join(',\n')}
+on conflict (id) do update set tests = excluded.tests, challenge = excluded.challenge;
 delete from public.catalog_items where id not in (${items.map(([id]) => q(id)).join(', ')});
 
 -- Cosméticos del taller: qué espacio ocupan y cómo se ganan (migración 019).
