@@ -1,6 +1,7 @@
 {
   "id": "M09-E04",
   "title": "Agenda de contactos",
+  "pdf": 27,
   "statement": "El ejercicio 27 del PDF. El programa lee primero el **nombre del archivo**. **Valida si existe** con `os.path.exists`: si no existe, imprime `El archivo <nombre> no existe. ¿Desea crearlo? (s/n)` y lee la respuesta. Con `s` lo crea vacío e imprime `Archivo <nombre> creado`; con otra cosa imprime `No se creó el archivo` y termina.\n\nDespués, un menú que lee opciones hasta `0`:\n\n- **1 Ingresar:** lee nombre, dirección, móvil, teléfono de casa y correo (una línea cada uno). El **número de contacto es el número de registro** (el siguiente libre, desde 1). Imprime `Contacto <n> guardado`.\n- **2 Consulta individual:** lee un número y muestra el contacto con `seek`, así:\n\n```\nContacto: <n>\nNombre: ...\nDirección: ...\nMóvil: ...\nCasa: ...\nCorreo: ...\n```\n\n  **Valida el número:** si no existe, `No existe el contacto <n>`.\n- **3 Consulta general:** una línea por contacto: `<n> | <nombre> | <móvil> | <correo>`.\n- Otra opción: `Opción inválida`.\n\nAl salir con `0`, imprime `Contactos: <total>`.\n\nFormato del registro: **`'<i30s40s8s8s30s'`** (número, nombre, dirección, móvil, casa, correo; 120 bytes). Los textos siempre caben.",
   "starter": "import os\nimport struct\n\nFORMATO = '<i30s40s8s8s30s'\nTAM = struct.calcsize(FORMATO)\narchivo = input()\n",
   "predict": [

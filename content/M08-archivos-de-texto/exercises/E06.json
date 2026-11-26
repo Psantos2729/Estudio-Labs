@@ -1,6 +1,7 @@
 {
   "id": "M08-E06",
   "title": "Buscar 5 palabras",
+  "pdf": 24,
   "statement": "El ejercicio 24 del PDF: el párrafo está en `parrafo.txt`. Lee **5 palabras** a buscar (una por línea) en un vector de tamaño 5. Para cada una, en el orden en que se escribieron, imprime `<palabra>: <n>` (cuántas veces está) o `<palabra>: no está`. Las que sí están se copian a un **nuevo vector** (de tamaño 5, con un contador de cuántas lleva) y al final imprime `Encontradas: <p1> <p2> ...` (o solo `Encontradas:` si ninguna).\n\nPara comparar: las palabras del archivo son los pedazos de `split()` sin los signos `.,;:!?¡¿` de los extremos, y **no** importan mayúsculas ni minúsculas (`Sol` = `sol` = `SOL`). Imprime cada palabra buscada como la escribió el usuario.\n\nEl archivo `parrafo.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
   "starter": "buscar = [''] * 5\nfor i in range(5):\n    buscar[i] = input()\n",
   "predict": [

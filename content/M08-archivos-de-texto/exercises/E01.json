@@ -1,6 +1,7 @@
 {
   "id": "M08-E01",
   "title": "Guardar frases hasta Fin",
+  "pdf": 21,
   "statement": "Como el ejercicio 21 del PDF: lee frases (una por línea) hasta que se escriba `Fin` y guárdalas en `frases.txt`, una por línea. **`Fin` no se guarda.**\n\nDespués vuelve a abrir `frases.txt` y muestra lo que quedó:\n\n```\nFrases guardadas: <n>\n1: <frase>\n2: <frase>\n...\n```",
   "starter": "frase = input()\n",
   "predict": [

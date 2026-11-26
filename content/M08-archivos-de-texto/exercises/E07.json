@@ -1,6 +1,7 @@
 {
   "id": "M08-E07",
   "title": "Sumar por fila y por columna",
+  "pdf": 25,
   "statement": "El ejercicio 25 del PDF: `datos1.txt` tiene números enteros separados por espacios, **la misma cantidad en cada línea**. Escribe dos funciones que reciben el nombre del archivo:\n\n- `sumar_por_linea(nombre)`: devuelve una lista con la suma de cada línea.\n- `sumar_por_columna(nombre)`: devuelve una lista con la suma de cada columna.\n\nLas listas son de tamaño fijo (cuenta antes las líneas o las columnas), sin `append`. Imprime:\n\n```\nPor línea: 155, 78, 98, 78, 151\nPor columna: 172, 64, 324\n```\n\n(los valores separados por coma y espacio).\n\nEl archivo `datos1.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
   "starter": "def sumar_por_linea(nombre):\n    with open(nombre, 'r', encoding='utf-8') as f:\n        lineas = f.readlines()\n    return []\n\n\ndef sumar_por_columna(nombre):\n    return []\n\n\nprint('Por línea:', sumar_por_linea('datos1.txt'))\n",
   "predict": [

@@ -1,6 +1,7 @@
 {
   "id": "M08-E08",
   "title": "Frecuencia de letras",
+  "pdf": 22,
   "statement": "El ejercicio 22 del PDF: cuenta cuántas veces aparece cada letra de `entrada.txt` e imprime una línea `<LETRA>: <n>` por letra, **de la A a la Z** (con la `Ñ` después de la `N`), en mayúscula. Reglas:\n\n- Mayúsculas y minúsculas cuentan igual.\n- `á`, `Á`, `a` y `A` son la misma letra; igual las demás vocales con tilde, y `ü` cuenta como `U`.\n- `ñ` y `Ñ` son una sola letra.\n- Si una letra no aparece, no la muestres.\n\nEscribe las mismas líneas en `salida.txt`. Al final, vuelve a abrir `salida.txt` e imprime `salida.txt: <k> líneas`.\n\nEl archivo `entrada.txt` ya está en la carpeta cuando corre tu programa (lo ves y lo puedes cambiar arriba de **Correr**). Ábrelo con `encoding='utf-8'`.",
   "starter": "ALFABETO = 'ABCDEFGHIJKLMNÑOPQRSTUVWXYZ'\nCON = 'ÁÉÍÓÚÜ'\nSIN = 'AEIOUU'\ncuenta = [0] * len(ALFABETO)\n",
   "predict": [
