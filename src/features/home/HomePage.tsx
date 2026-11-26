@@ -11,6 +11,7 @@ import { tipsOfTheDay } from './tips';
 import { ProgressRing } from './ProgressRing';
 import { useLeaderboard } from '@/features/game/useGame';
 import { CharacterCard } from '@/features/game/CharacterCard';
+import { QuestsCard } from '@/features/game/QuestsCard';
 import './home.css';
 
 export function HomePage() {
@@ -66,6 +67,7 @@ export function HomePage() {
       </section>
 
       {me && <CharacterCard key={`${me.name}${me.color}`} me={me} />}
+      {me && <QuestsCard />}
 
       <section className="home__stats" aria-label="Estadísticas">
         {stats.map((s) => (

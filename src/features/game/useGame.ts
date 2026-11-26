@@ -79,3 +79,20 @@ export function useSetGear() {
     },
   });
 }
+
+export interface Mission { id: string; label: string; goal: number; done: number; xp: number }
+export interface Quests { streak: number; best: number; today: boolean; missions: Mission[] }
+
+/** Racha y misiones de hoy (hora de Guatemala), calculadas en el servidor (RPC my_quests, migración 023). */
+export function useQuests() {
+  const userId = useAuth().session?.user.id;
+  return useQuery({
+    queryKey: ['my-quests', userId],
+    enabled: Boolean(supabase && userId),
+    queryFn: async (): Promise<Quests> => {
+      const { data, error } = await supabase!.rpc('my_quests');
+      if (error) throw error;
+      return data as Quests;
+    },
+  });
+}

@@ -47,3 +47,20 @@
 .piece[aria-checked='true'] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), var(--glow); }
 .piece:disabled { opacity: 0.5; cursor: not-allowed; }
 @media (max-width: 760px) { .workshop__grid { grid-template-columns: minmax(0, 1fr); } }
+
+/* Racha y misiones (portada) */
+.quests { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 16px; }
+.panel.streak { gap: 6px; position: relative; overflow: hidden; }
+.streak__flame { font-size: 30px; line-height: 1; filter: grayscale(1) opacity(0.5); transition: filter 0.4s; }
+.streak--lit .streak__flame { filter: drop-shadow(0 0 10px rgba(255, 146, 87, 0.8)); animation: flame-flicker 2.4s ease-in-out infinite; }
+.streak--lit { border-color: rgba(255, 146, 87, 0.35); }
+.streak__days { margin: 0; display: flex; align-items: baseline; gap: 8px; }
+.streak__prize { display: flex; align-items: center; gap: 8px; margin: 4px 0 0; }
+.missions__list { gap: 12px; }
+.mission { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: 4px 10px; align-items: center; }
+.mission .progress { grid-column: 2 / -1; }
+.mission__xp { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--green); font-size: 13px; }
+.mission--done .mission__label { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--green); }
+@keyframes flame-flicker { 0%, 100% { transform: scale(1) rotate(-2deg); } 50% { transform: scale(1.08) rotate(2deg); } }
+@media (prefers-reduced-motion: reduce) { .streak--lit .streak__flame { animation: none; } }
+@media (max-width: 760px) { .quests { grid-template-columns: minmax(0, 1fr); } }
