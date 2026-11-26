@@ -23,7 +23,7 @@ export function BossBattle({ moduleId, total, passScore, hits, passed }: Props) 
   const { me } = useLeaderboard();
   const index = Number(moduleId.slice(1));
   const island = islandOf(index);
-  // El último módulo de cada isla lo cuida el jefe de la isla; los demás, su mini jefe.
+  // El último módulo de cada isla lo cuida el jefe del sector; los demás, su mini jefe.
   const boss = island.last === index ? island.boss : MINI_BOSSES[index];
   const life = bossLife(total, passScore);
   const [shown, setShown] = useState(() => (hits !== undefined && reduced() ? hits : 0));

@@ -11,12 +11,12 @@ describe('juego', () => {
     expect(levelOf(1240)).toEqual({ level: 3, into: 240 });
   });
 
-  it('pone cada módulo en su isla', () => {
+  it('pone cada módulo en su sector', () => {
     expect(islandOf(0).name).toBe('Bosque de las Ruinas');
     expect(islandOf(3).name).toBe('Bosque de las Ruinas');
     expect(islandOf(4).name).toBe('Archipiélago del Puerto');
     expect(islandOf(9).name).toBe('Fortaleza del Archivo');
-    expect(islandOf(12).name).toBe('Isla de la Tormenta');
+    expect(islandOf(12).name).toBe('Mar de la Tormenta');
   });
 
   it('da un mini jefe a cada módulo, con dibujos rectangulares', () => {

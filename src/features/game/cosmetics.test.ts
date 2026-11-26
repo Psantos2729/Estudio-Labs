@@ -22,7 +22,7 @@ describe('content/cosmeticos.json', () => {
   it('explica cómo se gana', () => {
     expect(howOf(['jefe', 'M03'])).toBe('Vence a Gólem de Musgo');
     expect(howOf(['modulos', 1])).toBe('Domina 1 módulo');
-    expect(howOf(['islas', 4])).toBe('Vence a todos los jefes de isla');
+    expect(howOf(['islas', 4])).toBe('Vence a todos los jefes de sector');
     expect(howOf(['jefe', 'M00'])).toBe('Vence a Piedra Eco');
     for (const p of PIECES) expect(howOf(p.unlock)).not.toBe('');
   });

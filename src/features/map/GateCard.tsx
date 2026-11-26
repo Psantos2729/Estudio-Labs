@@ -15,7 +15,7 @@ export function GateCard({ view, isGuest }: { view: ModuleView; isGuest: boolean
         {islandBoss && (
           <div className="gate__boss">
             <PixelSprite name={isl.boss.sprite} size={64} title={isl.boss.name} />
-            <p className="small">Jefe de la isla: <span className="strong">{isl.boss.name}</span>. Véncelo y ganas piezas para tu robot.</p>
+            <p className="small">Jefe del sector: <span className="strong">{isl.boss.name}</span>. Véncelo y ganas piezas para tu robot.</p>
           </div>
         )}
         <p className="warn strong">examen de dominio {displayId(m.id)}</p>

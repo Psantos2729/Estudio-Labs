@@ -11,14 +11,6 @@
 }
 .map > .gate { grid-column: 2; grid-row: 1 / span 2; }
 
-.panel.expedition { display: block; width: 100%; height: auto; padding: 8px; font-family: var(--sans); }
-.station { cursor: pointer; outline: none; }
-.station:hover circle, .station:focus-visible circle { filter: drop-shadow(0 0 6px var(--accent)); }
-.station--now { animation: hud-pulse-svg 2s ease-in-out infinite; }
-@keyframes hud-pulse-svg { 50% { stroke-opacity: 0.4; } }
-.expedition .me { animation: robot-bob 2.4s ease-in-out infinite; }
-@keyframes robot-bob { 50% { transform: translateY(-3px); } }
-
 .panel.route { display: none; }
 .route__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .route__item {
@@ -96,3 +88,45 @@
 .boss-line svg { flex: none; }
 .gate__boss { display: flex; gap: 12px; align-items: center; }
 .gate__boss svg { flex: none; filter: drop-shadow(0 0 8px rgba(255, 146, 87, 0.45)); }
+
+/* Carta de navegación: mar que se desliza de lado, islas, barco */
+.panel.chart { display: block; padding: 0; height: 620px; overflow-x: auto; overflow-y: hidden; background: linear-gradient(180deg, #0a1a33, #071226); scrollbar-color: var(--line-strong) transparent; }
+.chart__world { position: relative; }
+.chart__sea { position: absolute; inset: 0; }
+.chart__sector { position: absolute; top: 0; height: 100%; background: color-mix(in srgb, currentColor 4%, transparent); pointer-events: none; }
+.chart__sector > span { display: block; padding: 12px 24px; font: 11px var(--mono); letter-spacing: 1.3px; }
+.chart__fog { position: absolute; inset: 40px 0; border-radius: 40%; background: radial-gradient(closest-side, rgba(201, 211, 255, 0.2), transparent); }
+.isle { position: absolute; padding: 0; border: 0; background: none; cursor: pointer; transition: opacity 0.6s, filter 0.6s; }
+.isle img, .chart img { display: block; width: 100%; height: 100%; image-rendering: pixelated; }
+.isle--far { opacity: 0.45; filter: saturate(0.35); }
+.isle:hover, .isle:focus-visible, .isle[aria-current='true'] { opacity: 1; filter: drop-shadow(0 0 8px var(--accent)); outline: none; }
+.isle__label { position: absolute; width: 180px; text-align: center; font: 11px var(--mono); color: var(--locked); pointer-events: none; }
+.isle__label--done { color: var(--green); }
+.isle__label--reopened { color: var(--red); }
+.isle__label--now { color: var(--text); font-weight: 600; }
+.isle__label--next, .isle__next { color: #ffd447; font-weight: 600; }
+.isle__next { position: absolute; width: 100px; text-align: center; font: 600 11px var(--mono); letter-spacing: 1px; pointer-events: none; animation: isle-hop 1.6s ease-in-out infinite; }
+.isle__glow { position: absolute; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 212, 71, 0.35), transparent); pointer-events: none; animation: isle-glow 2.4s ease-in-out infinite; }
+.chart__boss { position: absolute; width: 120px; display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 10px; pointer-events: none; }
+.chart__boss svg { filter: drop-shadow(0 0 6px currentColor); }
+.chart__boss--won { color: var(--locked) !important; }
+.chart__boss--won svg { filter: grayscale(1); opacity: 0.45; }
+.chart__other { position: absolute; width: 26px; height: 24px; opacity: 0.8; }
+.chart__other-robot { position: absolute; left: 7px; top: 5px; }
+.boat { position: absolute; left: 0; top: 0; width: 74px; height: 67px; z-index: 2; pointer-events: none; }
+.boat__in { position: relative; height: 100%; transform-origin: 50% 90%; animation: boat-bob 3.2s ease-in-out infinite; }
+.boat__in--moving { animation-name: boat-sail; }
+.boat__art { transform: scaleX(-1); }
+.boat__robot { position: absolute; left: 47px; top: 22px; }
+.boat__flags { position: absolute; left: 36px; top: -4px; display: flex; flex-direction: column; gap: 2px; }
+.boat__flags > span { width: 12px; height: 6px; clip-path: polygon(0 0, 100% 50%, 0 100%); }
+.boat__wake { position: absolute; left: -22px; top: 50px; width: 40px; height: 10px; border-radius: 50%; border-bottom: 2px solid rgba(169, 194, 255, 0.6); animation: boat-wake 1.6s ease-out infinite; }
+.boat__wake--2 { animation-delay: 0.8s; }
+@keyframes boat-bob { 0%, 100% { transform: translateY(0) rotate(1deg); } 50% { transform: translateY(-3px) rotate(-1deg); } }
+@keyframes boat-sail { 0%, 100% { transform: translateY(0) rotate(2.5deg); } 50% { transform: translateY(-4px) rotate(-2.5deg); } }
+@keyframes boat-wake { from { opacity: 0.8; transform: scaleX(0.6); } to { opacity: 0; transform: translateX(-18px) scaleX(1.5); } }
+@keyframes isle-hop { 50% { transform: translateY(-6px); } }
+@keyframes isle-glow { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .boat__in, .boat__wake, .isle__next, .isle__glow { animation: none; }
+}

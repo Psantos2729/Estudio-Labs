@@ -35,7 +35,7 @@ export function howOf([rule, need]: Piece['unlock']) {
     case 'ejercicios': return `Resuelve ${need} ejercicio${s(need)}`;
     case 'repasos': return `Aprueba ${need} repaso${s(need)}`;
     case 'modulos': return `Domina ${need} módulo${s(need)}`;
-    case 'islas': return Number(need) >= ISLANDS.length ? 'Vence a todos los jefes de isla' : `Vence a ${need} jefe${s(need)} de isla`;
+    case 'islas': return Number(need) >= ISLANDS.length ? 'Vence a todos los jefes de sector' : `Vence a ${need} jefe${s(need)} de sector`;
     case 'jefe': return `Vence a ${bossOf(String(need))}`;
     case 'lecciones': return Number(need) === 1 ? 'Lee tu primera lección' : `Lee ${need} lecciones`;
     case 'curso': return Number(need) >= 100 ? 'Lee todas las lecciones del curso' : `Lee el ${need} % de las lecciones`;
