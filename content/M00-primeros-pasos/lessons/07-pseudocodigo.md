@@ -4,7 +4,7 @@ En cada laboratorio entregas, además del `.py`, el **pseudocódigo**: el progra
 
 ## Begin y End
 
-Todo programa empieza con `Begin` y termina con `End`. Lo que va en medio es el programa, una instrucción por línea:
+Todo programa empieza con `Begin` y termina con `End`, pegados al margen. Lo que va en medio es el programa, una instrucción por línea y **con una sangría** (un Tab o 4 espacios). La sangría es obligatoria: pylab la revisa.
 
 ```pseudo
 Begin

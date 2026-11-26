@@ -504,9 +504,9 @@
     "semantic_hash": ""
   },
   "src/features/lesson/RunnableCode.tsx": {
-    "mtime": 1795653264.003461,
-    "seen": 1795653752.669743,
-    "ast_hash": "37db955a5f4bdfba0122b0f38cf433bf",
+    "mtime": 1795654118.3175435,
+    "seen": 1795654216.4848957,
+    "ast_hash": "0f8187115a8ece5063bc68ff33ec20d8",
     "semantic_hash": ""
   },
   "src/features/lesson/blocks.test.ts": {
@@ -522,9 +522,9 @@
     "semantic_hash": ""
   },
   "src/features/exercise/CodeEditor.tsx": {
-    "mtime": 1795653013.5716739,
-    "seen": 1795653752.6696723,
-    "ast_hash": "0ad393cd6076af50f31c1175dfbdc0b2",
+    "mtime": 1795654118.3181407,
+    "seen": 1795654216.4848452,
+    "ast_hash": "d641b86e26977eb1feab0d286005cfd3",
     "semantic_hash": ""
   },
   "src/features/exercise/CodeStep.tsx": {
@@ -546,9 +546,9 @@
     "semantic_hash": ""
   },
   "src/features/exercise/TextStep.tsx": {
-    "mtime": 1795652661.188764,
-    "seen": 1795653752.6696856,
-    "ast_hash": "93b3369d4dc33a76e6d9181f2ba21a09",
+    "mtime": 1795654118.3178332,
+    "seen": 1795654216.4848554,
+    "ast_hash": "0f0c3494ee27240ff96979e6c9c98ed5",
     "semantic_hash": ""
   },
   "src/features/exercise/UnderstandStep.tsx": {
@@ -2586,21 +2586,21 @@
     "semantic_hash": ""
   },
   "src/features/pseudo/translate.test.ts": {
-    "mtime": 1795652963.9171326,
-    "seen": 1795653752.6697912,
-    "ast_hash": "b8d3236e64d708498a21e384d1c91a45",
+    "mtime": 1795654080.0626392,
+    "seen": 1795654216.484927,
+    "ast_hash": "5d94c476fd5a5a753ae5625aede84893",
     "semantic_hash": ""
   },
   "src/features/pseudo/translate.ts": {
-    "mtime": 1795652927.1611304,
-    "seen": 1795653752.6697931,
-    "ast_hash": "6dda217ac6cdb3ffa9b60c6d58163585",
+    "mtime": 1795654060.6649673,
+    "seen": 1795654216.4849284,
+    "ast_hash": "c955dd8338f4c123a04df7bdf40cc066",
     "semantic_hash": ""
   },
   "content/M00-primeros-pasos/lessons/07-pseudocodigo.md": {
-    "mtime": 1795653264.007913,
-    "seen": 1795653752.6699748,
-    "ast_hash": "e7da6afbcc94040f8312e5f29e34dd81",
+    "mtime": 1795654136.087459,
+    "seen": 1795654216.485054,
+    "ast_hash": "2c9e56434ecb94f866a9ae80eb9f8449",
     "semantic_hash": ""
   },
   "content/M01-decisiones/lessons/05-pseudocodigo.md": {
@@ -2664,9 +2664,15 @@
     "semantic_hash": ""
   },
   "content/pseudocodigo.md": {
-    "mtime": 1795653254.3497283,
-    "seen": 1795653752.670134,
-    "ast_hash": "431a0f4251a3c6fe93614cb96cb822b6",
+    "mtime": 1795654136.087015,
+    "seen": 1795654216.4851491,
+    "ast_hash": "9e84cb0b938d95c3087f1d39d82bace2",
+    "semantic_hash": ""
+  },
+  "src/ui/tabKey.ts": {
+    "mtime": 1795654193.1806836,
+    "seen": 1795654216.4849784,
+    "ast_hash": "183e2cb17ac85debb718d55c2a70d789",
     "semantic_hash": ""
   },
   "package-lock.json": {

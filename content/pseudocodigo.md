@@ -26,7 +26,30 @@ Aquí cada ejemplo **se corre**: pylab lo traduce a Python por detrás y te dice
 | pila | `p ← new Stack()`, `p.push(x)`, `p.pop()`, `p.top()`, `p.empty()` | una lista con `append` y `pop` |
 | comentario | `// esto no se ejecuta` | `# esto no se ejecuta` |
 
-Cosas que pylab acepta porque así se escriben en los labs:
+## La sangría es obligatoria
+
+El pseudocódigo **siempre va bien indentado**: cada nivel es **un Tab** (o 4 espacios) y pylab lo revisa.
+
+- `Begin`, `Function` y su `End` van pegados al margen.
+- Todo lo que está dentro de un bloque va **un nivel más adentro** que el bloque.
+- `else`, `else if` y cada `end` van **a la misma altura** que su `if`, `for` o `while`.
+
+```pseudo
+Begin
+    for i ← 1 to 3
+        if i mod 2 = 0
+            write i, " es par"
+        else
+            write i, " es impar"
+        end if
+    end for
+End
+```
+
+Si una línea está corrida, pylab te dice cuántas sangrías lleva y dentro de qué bloque está.
+
+## Lo que pylab acepta porque así se escribe en los labs
+
 
 - **Mayúsculas no importan**: `End While` = `end while`, y `Largo` es la misma variable que `largo`.
 - `endif`, `endfor`, `endwhile` pegados también valen.
@@ -34,7 +57,7 @@ Cosas que pylab acepta porque así se escriben en los labs:
 - `begin` después de un `while`, `for` o `if` es opcional (no hace nada).
 - `then` después del `if` y `do` después del `while` también son opcionales.
 - La flecha `←` se escribe con `<-`: el editor la convierte sola.
-- La sangría no cuenta, pero úsala: así se ve qué está dentro de cada bloque.
+
 
 ## Begin, read y write
 

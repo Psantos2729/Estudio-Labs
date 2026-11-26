@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react';
 interface Props {
   initial: string;
   onChange: (code: string) => void;
-  pseudo?: boolean; // pseudocódigo: sin colores de Python y `<-` se vuelve ←
+  pseudo?: boolean; // pseudocódigo: `<-` se vuelve ←
 }
 
 /** Editor de Python (CodeMirror 6). Se carga aparte para no pesar en el mapa ni en las lecciones. */
@@ -28,7 +28,7 @@ export function CodeEditor({ initial, onChange, pseudo = false }: Props) {
         parent: host.current,
         extensions: [
           basicSetup,
-          pseudo ? [] : python(),
+          python(), // también en pseudocódigo: colorea if/while/and y hace que Tab indente 4 espacios
           pseudo ? EditorView.inputHandler.of((v, from, to, text) => {
             if (text !== '-' || v.state.sliceDoc(from - 1, from) !== '<') return false;
             v.dispatch({ changes: { from: from - 1, to, insert: '←' }, selection: { anchor: from } });

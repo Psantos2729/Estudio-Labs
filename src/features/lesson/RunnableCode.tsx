@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/ui/primitives/Button';
+import { onTabKey } from '@/ui/tabKey';
 import type { RunResult } from '@/features/runner/runner';
 import { runCode } from '@/features/pseudo/run';
 import { PythonPreview } from '@/features/pseudo/PythonPreview';
@@ -29,6 +30,7 @@ export function RunnableCode({ initial: block, pseudo = false }: { initial: stri
         spellCheck={false}
         rows={code.split('\n').length}
         onChange={(e) => setCode(e.target.value)}
+        onKeyDown={(e) => onTabKey(e, setCode)}
       />
       {pseudo && (
         <input className="input runnable__stdin" aria-label="Entrada para read, separada por espacios" placeholder="entrada para read (separada por espacios)" value={stdin} onChange={(e) => setStdin(e.target.value)} />

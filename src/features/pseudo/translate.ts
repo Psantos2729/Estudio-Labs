@@ -34,9 +34,13 @@ export function toPython(src: string): string {
     const pad = '    '.repeat(open.length);
     const top = open.at(-1);
     const word = text.toLowerCase().replace(/\s+/g, ' ');
+    const got = indent(raw, n);
+    const inside = (want: number) => checkIndent(n, got, want, top);
 
     if (word === 'begin') {
-      if (top) return `${pad}pass`; // `begin` después de while/for/if: opcional
+      // `begin` después de while/for/if es opcional: puede ir a la altura del bloque o adentro.
+      if (top) return (got !== open.length - 1 && inside(open.length)), `${pad}pass`;
+      inside(0);
       if (hasMain) throw new PseudoError(n, 'solo puede haber un `Begin` (el programa principal)');
       hasMain = true;
       open.push({ kind: 'begin', line: n, hasBody: false });
@@ -45,13 +49,14 @@ export function toPython(src: string): string {
     const fn = text.match(/^function\s+([\wáéíóúñ]+)\s*\((.*)\)$/i);
     if (fn) {
       if (top) throw new PseudoError(n, `una Function no puede ir dentro de otro bloque: antes cierra el \`${top.kind}\` de la línea ${top.line}`);
+      inside(0);
       hasFunction = true;
       open.push({ kind: 'function', line: n, hasBody: false });
       return `def ${fn[1].toLowerCase()}(${splitArgs(fn[2]).map((p) => expr(p, n)).join(', ')}):`;
     }
     if (/^function\b/i.test(text)) throw new PseudoError(n, 'una función se escribe `Function nombre(parámetros)`');
     const end = word.match(/^end ?(if|for|while|function|begin)?$/);
-    if (end) return close(open, end[1] as Kind | undefined, n);
+    if (end) return close(open, end[1] as Kind | undefined, n, got);
     if (!top) throw new PseudoError(n, 'esta línea está fuera del programa: todo va entre `Begin` y `End` (o dentro de una Function)');
     for (const [re, msg] of HABITS) if (re.test(text)) throw new PseudoError(n, msg);
 
@@ -60,10 +65,12 @@ export function toPython(src: string): string {
       if (top.kind !== 'if') throw new PseudoError(n, '`else` sin su `if`');
       if (!top.hasBody) throw new PseudoError(n, `el \`if\` de la línea ${top.line} no tiene acciones antes de este \`else\``);
       if (top.hasElse) throw new PseudoError(n, 'después de `else` ya no puede ir otro `else`');
+      sameAs(n, got, open.length - 1, top);
       top.hasElse = !elseIf;
       top.hasBody = false;
       return elseIf ? `${pad.slice(4)}elif ${expr(elseIf[1], n)}:` : `${pad.slice(4)}else:`;
     }
+    inside(open.length);
     top.hasBody = true;
     return pad + statement(text, n, open);
   });
@@ -73,8 +80,30 @@ export function toPython(src: string): string {
   return `${out.join('\n')}\n${PRELUDE}${hasMain ? '\n_main()\n' : ''}`;
 }
 
+/** Niveles de sangría al inicio de la línea: un Tab o 4 espacios por nivel. */
+function indent(raw: string, n: number): number {
+  const lead = raw.match(/^[ \t]*/)![0].replace(/\t/g, '    ').length;
+  if (lead % 4) throw new PseudoError(n, 'la sangría se hace con un Tab o 4 espacios por nivel');
+  return lead / 4;
+}
+
+const levels = (k: number) => (k === 1 ? '1 sangría' : `${k} sangrías`);
+const name = (o: Open) => (o.kind === 'begin' ? 'Begin' : o.kind === 'function' ? 'Function' : o.kind);
+
+/** Lo de adentro de un bloque va un nivel más adentro que el bloque. */
+function checkIndent(n: number, got: number, want: number, top: Open | undefined): void {
+  if (got === want) return;
+  if (!want) throw new PseudoError(n, '`Begin`, `Function` y su `End` van pegados al margen, sin sangría');
+  throw new PseudoError(n, `la sangría no va así: esta línea va con ${levels(want)} (un Tab o 4 espacios cada una), porque está dentro del \`${name(top!)}\` de la línea ${top!.line}`);
+}
+
+/** `else` y los `end` van a la misma altura que el bloque que continúan o cierran. */
+function sameAs(n: number, got: number, want: number, block: Open): void {
+  if (got !== want) throw new PseudoError(n, `la sangría no va así: esta línea va a la misma altura que su \`${name(block)}\` de la línea ${block.line} (${want ? levels(want) : 'sin sangría'})`);
+}
+
 /** `end`, `end if`, `endfor`…: debe cerrar el bloque abierto más reciente. */
-function close(open: Open[], kind: Kind | undefined, n: number): string {
+function close(open: Open[], kind: Kind | undefined, n: number, got: number): string {
   const top = open.at(-1);
   if (!top) throw new PseudoError(n, 'este `end` no cierra nada');
   const ok = kind ? kind === top.kind || (kind === 'begin' && top.kind === 'begin') : top.kind === 'begin' || top.kind === 'function';
@@ -83,6 +112,7 @@ function close(open: Open[], kind: Kind | undefined, n: number): string {
     throw new PseudoError(n, `falta \`${CLOSER[top.kind]}\` para el \`${what}\` de la línea ${top.line} (cierra primero el bloque de adentro)`);
   }
   open.pop();
+  sameAs(n, got, open.length, top);
   return `${'    '.repeat(open.length + 1)}pass`;
 }
 
