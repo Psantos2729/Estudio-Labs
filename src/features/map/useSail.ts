@@ -1,22 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
-import { DOCK, ROUTE } from './seaChart';
+import { DOCK, ROUTE, ROUTE_LEN, pointAt } from './seaChart';
 
 const SEEN = 'mapa-barco';
 const ease = (t: number) => -(Math.cos(Math.PI * t) - 1) / 2;
-
-/** Largo de la curva hasta cada punto de la ruta (se busca avanzando, porque la ruta no retrocede). */
-function lengthsOf(path: SVGPathElement): number[] {
-  const total = path.getTotalLength();
-  let from = 0;
-  return ROUTE.map(([x, y]) => {
-    let best = from, bd = Infinity;
-    for (let l = from; l <= total; l += 3) {
-      const q = path.getPointAtLength(l), d = (q.x - x) ** 2 + (q.y - y) ** 2;
-      if (d < bd) { bd = d; best = l; } else if (d > bd + 40000) break;
-    }
-    return (from = best);
-  });
-}
 
 function readSeen(): number | null {
   try { const v = localStorage.getItem(SEEN); return v === null ? null : Number(v); } catch { return null; }
@@ -28,20 +14,17 @@ function readSeen(): number | null {
  * shortcut: lo visto se guarda por navegador, no por cuenta; pasarlo a la cuenta si alguien usa varios.
  */
 export function useSail(at: number) {
-  const pathRef = useRef<SVGPathElement>(null);
   const viewRef = useRef<HTMLDivElement>(null);
   const [boat, setBoat] = useState({ x: ROUTE[DOCK[at]][0], y: ROUTE[DOCK[at]][1], a: 0, moving: false });
 
   useEffect(() => {
-    const path = pathRef.current;
-    if (!path?.getTotalLength) return;
-    const L = lengthsOf(path);
+    const L = ROUTE_LEN;
     const put = (l: number, moving: boolean) => {
-      const q = path.getPointAtLength(l), r = path.getPointAtLength(l + 3);
-      const a = Math.max(-12, Math.min(12, (Math.atan2(r.y - q.y, r.x - q.x) * 180) / Math.PI * 0.4));
-      setBoat({ x: q.x, y: q.y, a: moving ? a : 0, moving });
+      const [x, y] = pointAt(l), [rx, ry] = pointAt(l + 3);
+      const a = Math.max(-12, Math.min(12, (Math.atan2(ry - y, rx - x) * 180) / Math.PI * 0.4));
+      setBoat({ x, y, a: moving ? a : 0, moving });
       const view = viewRef.current;
-      if (view) view.scrollLeft = q.x - view.clientWidth * 0.3;
+      if (view) view.scrollLeft = x - view.clientWidth * 0.3;
     };
     const seen = readSeen();
     const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -68,5 +51,5 @@ export function useSail(at: number) {
     return () => cancelAnimationFrame(raf);
   }, [at]);
 
-  return { boat, pathRef, viewRef };
+  return { boat, viewRef };
 }

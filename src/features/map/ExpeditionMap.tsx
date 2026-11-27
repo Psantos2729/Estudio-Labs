@@ -3,7 +3,7 @@ import { Robot } from '@/ui/primitives/Robot';
 import { PixelSprite } from '@/ui/primitives/PixelSprite';
 import type { RankRow } from '@/features/game/useGame';
 import type { ModuleView } from './masteryView';
-import { BOAT_ART, DOCK, ROUTE, ROUTE_D, SEA_ISLANDS, SECTORS, WORLD } from './seaChart';
+import { BOAT_ART, DOCK, ROUTE, SEA_ISLANDS, SECTORS, WORLD } from './seaChart';
 import { useSail } from './useSail';
 
 interface Props {
@@ -20,7 +20,7 @@ export function ExpeditionMap({ views, selectedId, currentId, others, me, onSele
   const allDone = views.length > 0 && views.every((v) => v.status === 'mastered');
   const at = allDone ? views.length - 1 : Math.max(0, views.findIndex((v) => v.module.id === currentId));
   const next = allDone ? -1 : at + 1;
-  const { boat, pathRef, viewRef } = useSail(at);
+  const { boat, viewRef } = useSail(at);
   const beaten = SECTORS.filter((s) => views[s.zone.last]?.status === 'mastered');
   const dockOf = (id: string) => ROUTE[DOCK[Math.max(0, views.findIndex((v) => v.module.id === id))]];
 
@@ -40,7 +40,6 @@ export function ExpeditionMap({ views, selectedId, currentId, others, me, onSele
           </defs>
           <rect width="100%" height="100%" fill="url(#sea-a)" />
           <rect width="100%" height="100%" fill="url(#sea-b)" />
-          <path ref={pathRef} d={ROUTE_D} fill="none" />
         </svg>
 
         {SECTORS.map(({ zone, x, w }, z) => (
