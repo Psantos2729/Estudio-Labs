@@ -1,22 +1,32 @@
+import { lazy, type ComponentType } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Providers } from './Providers';
 import { Layout } from './Layout';
-import { MapPage } from '@/features/map/MapPage';
 import { HomePage } from '@/features/home/HomePage';
-import { LoginPage } from '@/features/auth/LoginPage';
-import { PrivacyPage } from '@/features/legal/PrivacyPage';
-import { LessonPage } from '@/features/lesson/LessonPage';
-import { ExercisePage } from '@/features/exercise/ExercisePage';
-import { ExamPage } from '@/features/exam/ExamPage';
-import { ReviewPage } from '@/features/exam/ReviewPage';
-import { ReviewListPage } from '@/features/exam/ReviewListPage';
-import { HistoryPage } from '@/features/history/HistoryPage';
-import { RankingPage } from '@/features/game/RankingPage';
-import { WorkshopPage } from '@/features/game/WorkshopPage';
-import { AchievementsPage } from '@/features/game/AchievementsPage';
-import { ProfilePage } from '@/features/game/ProfilePage';
-import { AttemptReviewPage } from '@/features/history/AttemptReviewPage';
-import { GuidePage } from '@/features/pseudo/GuidePage';
+
+/** Cada página baja en su propio archivo al abrirla: la primera visita solo trae la portada. */
+const page = <K extends string>(load: () => Promise<Record<K, ComponentType>>, name: K) =>
+  lazy(() => load().then((m) => ({ default: m[name] })));
+
+const loadMap = () => import('@/features/map/MapPage');
+const MapPage = page(loadMap, 'MapPage');
+const LoginPage = page(() => import('@/features/auth/LoginPage'), 'LoginPage');
+const PrivacyPage = page(() => import('@/features/legal/PrivacyPage'), 'PrivacyPage');
+const LessonPage = page(() => import('@/features/lesson/LessonPage'), 'LessonPage');
+const ExercisePage = page(() => import('@/features/exercise/ExercisePage'), 'ExercisePage');
+const ExamPage = page(() => import('@/features/exam/ExamPage'), 'ExamPage');
+const ReviewPage = page(() => import('@/features/exam/ReviewPage'), 'ReviewPage');
+const ReviewListPage = page(() => import('@/features/exam/ReviewListPage'), 'ReviewListPage');
+const HistoryPage = page(() => import('@/features/history/HistoryPage'), 'HistoryPage');
+const AttemptReviewPage = page(() => import('@/features/history/AttemptReviewPage'), 'AttemptReviewPage');
+const RankingPage = page(() => import('@/features/game/RankingPage'), 'RankingPage');
+const WorkshopPage = page(() => import('@/features/game/WorkshopPage'), 'WorkshopPage');
+const AchievementsPage = page(() => import('@/features/game/AchievementsPage'), 'AchievementsPage');
+const ProfilePage = page(() => import('@/features/game/ProfilePage'), 'ProfilePage');
+const GuidePage = page(() => import('@/features/pseudo/GuidePage'), 'GuidePage');
+
+// El mapa es la pestaña que más se abre: se descarga en segundo plano apenas carga la portada.
+if (typeof window !== 'undefined') window.addEventListener('load', () => void loadMap(), { once: true });
 
 export function App() {
   return (
