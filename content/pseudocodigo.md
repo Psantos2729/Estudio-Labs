@@ -53,7 +53,6 @@ Si una línea está corrida, pylab te dice cuántas sangrías lleva y dentro de 
 
 - **Mayúsculas no importan**: `End While` = `end while`, y `Largo` es la misma variable que `largo`.
 - `endif`, `endfor`, `endwhile` pegados también valen.
-- En el `for` puedes usar `=` o `←`: `for i = 0 to n-1`.
 - `begin` después de un `while`, `for` o `if` es opcional (no hace nada).
 - `then` después del `if` y `do` después del `while` también son opcionales.
 - La flecha `←` se escribe con `<-`: el editor la convierte sola.
@@ -188,6 +187,6 @@ End
 ## Errores comunes (pylab te los marca)
 
 - Escribir Python: `print(`, `input(`, `def`, `elif`, `range(` o dos puntos al final de la línea.
-- Asignar con `=` (`x = 5`) o comparar con `==`.
+- Asignar con `=` (`x = 5`, o `for i = 0 to n-1`) o comparar con `==`: siempre se asigna con `←`, también en el `for`.
 - Olvidar un `end if`, `end for` o `end while`, o cerrarlos en otro orden: el `end` cierra **el bloque abierto más reciente**.
 - Escribir algo fuera de `Begin` … `End`.

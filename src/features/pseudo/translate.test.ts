@@ -52,7 +52,7 @@ End`;
     const src = `Function mayor_menor(v)
     mayor ← v[0]
     menor ← v[0]
-    for i = 1 to len(v) - 1
+    for i ← 1 to len(v) - 1
         if v[i] > mayor
             mayor ← v[i]
         end if
@@ -94,6 +94,9 @@ End`;
   it('explica en español lo que falta o sobra, con su línea', () => {
     expect(errorOf('Begin\n    if x = 1\n        write x\nEnd')).toBe('4: falta `end if` para el `if` de la línea 2 (cierra primero el bloque de adentro)');
     expect(errorOf('Begin\n    x = 1\nEnd')).toMatch(/^2: para asignar se usa ←/);
+    expect(errorOf('Begin\n    v[0] = 1\nEnd')).toMatch(/^2: para asignar se usa ←/);
+    expect(errorOf('Begin\n    for i = 1 to 3\n        write i\n    end for\nEnd')).toMatch(/^2: en el for también se asigna con ←/);
+    expect(errorOf('Begin\n    for i <- 1 to 3\n        write i\n    end for\nEnd')).toBe('sin error');
     expect(errorOf('Begin\n    print(1)\nEnd')).toMatch(/^2: para mostrar se usa `write`/);
     expect(errorOf('Begin\n    if x == 1\n    end if\nEnd')).toMatch(/^2: .*un solo `=`/);
     expect(errorOf('Begin\n    while x < 3\n        x ← x + 1\nEnd')).toMatch(/^4: falta `end while`/);

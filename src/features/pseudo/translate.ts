@@ -124,7 +124,8 @@ function statement(text: string, n: number, open: Open[]): string {
   m = text.match(/^while\s+(.+?)(\s+do)?$/i);
   if (m) return push('while'), `while ${expr(m[1], n)}:`;
   if (/^for\b/i.test(text)) {
-    m = text.match(/^for\s+([\wáéíóúñ]+)\s*(?:←|<-|=)\s*(.+?)\s+to\s+(.+?)(?:\s+step\s+(.+))?$/i);
+    if (/^for\s+[\wáéíóúñ]+\s*=/i.test(text)) throw new PseudoError(n, 'en el for también se asigna con ←: `for i ← inicio to final` (el `=` es para comparar)');
+    m = text.match(/^for\s+([\wáéíóúñ]+)\s*(?:←|<-)\s*(.+?)\s+to\s+(.+?)(?:\s+step\s+(.+))?$/i);
     if (!m) throw new PseudoError(n, 'el for se escribe `for i ← inicio to final` (y si quieres, `step n`)');
     push('for');
     const step = m[4] ? `, ${expr(m[4], n)}` : '';
