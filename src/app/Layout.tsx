@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { Button } from '@/ui/primitives/Button';
@@ -48,7 +48,9 @@ export function Layout() {
       </header>
       {/* key: cada ruta monta su pantalla de cero (sin estado de la anterior) y entra animada */}
       <div className="page" key={pathname}>
-        <Outlet />
+        <Suspense fallback={<p className="center muted">cargando…</p>}>
+          <Outlet />
+        </Suspense>
       </div>
       {session && <AchievementPopup />}
       <footer className="footer muted small">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { exercisesOf, lessonsOf } from '@/content/lessons';
+import { exerciseInfosOf, lessonInfosOf } from '@/content/catalog';
 import { displayId } from '@/content/types';
 import { useAuth } from '@/features/auth/AuthProvider';
 import { useModuleViews } from '@/features/map/useMastery';
@@ -24,8 +24,8 @@ export function HomePage() {
 
   const current = currentModule(views) ?? views[0];
   const m = current.module;
-  const lessons = lessonsOf(m.id);
-  const exercises = exercisesOf(m.id).filter((e) => !e.challenge);
+  const lessons = lessonInfosOf(m.id);
+  const exercises = exerciseInfosOf(m.id).filter((e) => !e.challenge);
   const solvedHere = exercises.filter((e) => practice.passed.has(e.id)).length;
   const readHere = lessons.filter((l) => lessonsRead.read.has(l.id)).length;
   const steps = lessons.length + exercises.length;

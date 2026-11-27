@@ -1,4 +1,4 @@
-import type { ExerciseDef, LessonDef } from '@/content/types';
+import type { ExerciseInfo, LessonInfo } from '@/content/catalog';
 
 export interface NextStep {
   to: string;
@@ -11,7 +11,7 @@ export interface NextStep {
  * primero la siguiente lección sin leer; luego el primer ejercicio sin resolver;
  * todo listo → el examen de dominio del módulo.
  */
-export function nextStep(lessons: LessonDef[], exercises: ExerciseDef[], read: Set<string>, passed: Set<string>): NextStep {
+export function nextStep(lessons: LessonInfo[], exercises: ExerciseInfo[], read: Set<string>, passed: Set<string>): NextStep {
   const unread = lessons.find((l) => !read.has(l.id));
   if (unread) return { to: `/leccion/${unread.id}`, kind: 'lección', title: unread.title };
   const pending = exercises.find((e) => !passed.has(e.id));

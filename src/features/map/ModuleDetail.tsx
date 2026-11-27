@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { displayId } from '@/content/types';
-import { exercisesOf, lessonsOf } from '@/content/lessons';
+import { exerciseInfosOf, lessonInfosOf } from '@/content/catalog';
 import { useReadLessons } from '@/features/lesson/useLessonProgress';
 import { LockedNotice } from './LockedNotice';
 import { PixelSprite } from '@/ui/primitives/PixelSprite';
@@ -15,9 +15,9 @@ import './detail.css';
 export function ModuleDetail({ view }: { view: ModuleView }) {
   const { module: m } = view;
   const boss = MINI_BOSSES[Number(m.id.slice(1))];
-  const lessons = lessonsOf(m.id);
+  const lessons = lessonInfosOf(m.id);
   const { read } = useReadLessons();
-  const exercises = exercisesOf(m.id);
+  const exercises = exerciseInfosOf(m.id);
   const { passed } = usePracticeSummary();
   const lessonRows = rowStates(lessons.map((l) => l.id), read);
   const exRows = rowStates(exercises.map((e) => e.id), passed, (i) => Boolean(exercises[i].challenge));
