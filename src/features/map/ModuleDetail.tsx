@@ -5,15 +5,12 @@ import { useReadLessons } from '@/features/lesson/useLessonProgress';
 import { LockedNotice } from './LockedNotice';
 import { PixelSprite } from '@/ui/primitives/PixelSprite';
 import { MINI_BOSSES } from '@/features/game/minibosses';
+import { usePracticeSummary } from '@/features/exercise/usePractice';
+import { MasteryPath } from './MasteryPath';
+import { QuestList, type QuestRow } from './QuestList';
+import { pathStates, rowStates } from './questPath';
 import type { ModuleView } from './masteryView';
-
-const STEPS = [
-  { name: 'Lección', detail: 'conceptos y preguntas de predicción' },
-  { name: 'Práctica guiada', detail: 'ejercicios con pistas' },
-  { name: 'Tareas reales', detail: 'tus tareas de Computación y Programación' },
-  { name: 'Labs C5', detail: 'ejercicios del PDF de laboratorios' },
-  { name: 'Examen de dominio', detail: 'casos ocultos, sin pistas' },
-];
+import './detail.css';
 
 export function ModuleDetail({ view }: { view: ModuleView }) {
   const { module: m } = view;
@@ -21,6 +18,11 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
   const lessons = lessonInfosOf(m.id);
   const { read } = useReadLessons();
   const exercises = exerciseInfosOf(m.id);
+  const { passed } = usePracticeSummary();
+  const lessonRows = rowStates(lessons.map((l) => l.id), read);
+  const exRows = rowStates(exercises.map((e) => e.id), passed, (i) => Boolean(exercises[i].challenge));
+  const required = exercises.filter((e) => !e.challenge);
+  const steps = pathStates(view.open, view.status === 'mastered', lessonRows.every((s) => s === 'done'), required.every((e) => passed.has(e.id)));
   const labs = m.pdfExercises.length > 0 ? m.pdfExercises.join(', ') : 'sin labs del PDF';
 
   return (
@@ -33,43 +35,41 @@ export function ModuleDetail({ view }: { view: ModuleView }) {
 
       {!view.open && <LockedNotice moduleId={m.id} />}
 
-      <section className="panel" aria-label="Camino de dominio">
-        <p className="small">camino de dominio</p>
-        <ol className="steps">
-          {STEPS.map((s) => (
-            <li key={s.name} className={`steps__item ${view.open ? '' : 'steps__item--locked'}`}>
-              <span className="steps__name">{s.name}</span>
-              <span className="muted small">{s.detail}</span>
-            </li>
-          ))}
-        </ol>
-      </section>
+      <MasteryPath states={steps} />
 
       {lessons.length > 0 && (
-        <section className="panel" aria-label="Lecciones">
-          <p className="small">lecciones{!view.open && ' · puedes leerlas ya, pero no cuentan para tu avance'}</p>
-          <ol className="plain">
-            {lessons.map((l, i) => (
-              <li key={l.id}>{view.open
-                ? <Link to={`/leccion/${l.id}`}>{read.has(l.id) ? '✓' : `${i + 1}.`} {l.title}</Link>
-                : <>{i + 1}. {l.title} <Link to={`/leccion/${l.id}?libre`} className="small">desbloquear lección</Link></>}</li>
-            ))}
-          </ol>
-        </section>
+        <QuestList
+          label="Lecciones"
+          locked={!view.open}
+          note={view.open ? undefined : 'puedes leerlas ya, pero no cuentan para tu avance'}
+          rows={lessons.map((l, i) => ({
+            id: l.id,
+            title: l.title,
+            state: lessonRows[i],
+            to: view.open ? `/leccion/${l.id}` : undefined,
+            extra: !view.open && <Link to={`/leccion/${l.id}?libre`} className="mission__unlock small">desbloquear lección</Link>,
+          }))}
+        />
       )}
 
       {exercises.length > 0 && (
-        <section className="panel" aria-label="Práctica guiada">
-          <p className="small">práctica guiada{exercises.some((e) => e.challenge) && " · los retos son opcionales: no cuentan para tu avance"}</p>
-          <ol className="plain">
-            {exercises.map((e, i) => (
-              <li key={e.id}>{view.open
-                ? <Link to={`/ejercicio/${e.id}`}>{i + 1}. {e.title}</Link>
-                : <span className="muted">{i + 1}. {e.title}</span>}
-                {e.challenge && <span className="warn small"> · reto</span>}</li>
-            ))}
-          </ol>
-        </section>
+        <QuestList
+          label="Práctica guiada"
+          locked={!view.open}
+          note={exercises.some((e) => e.challenge) ? 'los retos son opcionales: no cuentan para tu avance' : undefined}
+          rows={exercises.map((e, i): QuestRow => {
+            const isBoss = e.title.startsWith('Jefe');
+            return {
+              id: e.id,
+              // la etiqueta ya dice jefe o reto: no repetirlo en el título
+              title: e.title.replace(/^(Jefe|Reto):\s*(.)/, (_, _tag: string, c: string) => c.toUpperCase()),
+              state: exRows[i],
+              to: view.open ? `/ejercicio/${e.id}` : undefined,
+              tag: isBoss ? 'jefe' : e.challenge ? 'reto' : undefined,
+              badge: isBoss ? <PixelSprite name={boss.sprite} size={22} title={boss.name} /> : undefined,
+            };
+          })}
+        />
       )}
 
       <div className="detail__grid">

@@ -1,0 +1,77 @@
+/* Detalle del módulo: camino de dominio y listas de misiones (lecciones, práctica) */
+.trail__steps { --reach: 0; position: relative; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+/* la vía va del centro del primer nodo al centro del último; ::after es el tramo recorrido */
+.trail__steps::before, .trail__steps::after { content: ''; position: absolute; top: 17px; left: 10%; height: 4px; border-radius: 2px; }
+.trail__steps::before { right: 10%; background: repeating-linear-gradient(90deg, var(--line-strong) 0 10px, transparent 10px 16px); }
+.trail__steps::after { width: calc(80% * var(--reach)); background: linear-gradient(90deg, var(--green), var(--accent)); box-shadow: 0 0 10px rgba(69, 227, 173, 0.45); }
+.trail__step { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; cursor: default; }
+.trail__node {
+  width: 38px; height: 38px; display: grid; place-items: center; flex: none;
+  clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0 50%);
+  background: #16203a; color: var(--muted); font: 700 13px var(--mono);
+}
+.trail__text { display: flex; flex-direction: column; gap: 2px; }
+.trail__name { font-weight: 700; font-size: 13px; }
+.trail__note { font: 600 10px var(--mono); letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+.trail__step--done .trail__node { background: var(--green); color: #062218; }
+.trail__step--done .trail__note { color: var(--green); }
+.trail__step--now .trail__node { background: var(--accent); color: #07112a; filter: drop-shadow(0 0 8px var(--accent)); }
+.trail__step--now .trail__note { color: var(--accent-hi); }
+.trail__step--self .trail__node { background: #1a2440; color: var(--purple); }
+.trail__step--self .trail__note { color: var(--purple); }
+.trail__step--locked { opacity: 0.55; }
+.trail__step--locked .trail__node, .trail__step--locked .trail__note { color: var(--locked); }
+
+.missions { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.mission { display: flex; align-items: center; gap: 10px; }
+.mission__card {
+  flex: 1; min-width: 0; min-height: 48px; display: flex; align-items: center; gap: 12px;
+  padding: 8px 14px 8px 10px; border: 1px solid var(--line); border-radius: 12px;
+  background: linear-gradient(90deg, rgba(111, 155, 255, 0.07), rgba(111, 155, 255, 0.02));
+  color: var(--text); text-decoration: none;
+  transition: border-color 0.2s var(--ease-out), background 0.2s var(--ease-out), transform 0.2s var(--ease-out);
+}
+.mission__badge {
+  width: 30px; height: 30px; flex: none; display: grid; place-items: center;
+  clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0 50%);
+  background: #1a2440; color: var(--accent-hi); font: 700 12px var(--mono);
+}
+.mission__title { flex: 1; min-width: 0; }
+.mission__tag, .mission__state { flex: none; padding: 2px 8px; border-radius: 999px; font: 600 10px var(--mono); letter-spacing: 1px; text-transform: uppercase; border: 1px solid currentColor; }
+.mission__tag--reto { color: var(--purple); }
+.mission__tag--jefe { color: var(--amber); }
+.mission__state { border-color: transparent; padding-inline: 0; }
+.mission__go { flex: none; color: var(--muted); font-size: 20px; line-height: 1; transition: transform 0.2s var(--ease-out), color 0.2s; }
+@media (hover: hover) {
+  a.mission__card:hover { border-color: var(--accent); background: rgba(111, 155, 255, 0.12); transform: translateX(3px); }
+  a.mission__card:hover .mission__go { color: var(--accent-hi); transform: translateX(3px); }
+}
+a.mission__card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.mission--done .mission__badge { background: var(--green); color: #062218; }
+.mission--done .mission__title { color: var(--muted); }
+.mission--done .mission__state { color: var(--green); }
+.mission--next .mission__card { border-color: rgba(255, 212, 71, 0.55); box-shadow: inset 3px 0 0 #ffd447, 0 0 18px rgba(255, 212, 71, 0.12); }
+.mission--next .mission__badge { background: #ffd447; color: #2a2003; }
+.mission--next .mission__state { color: #ffd447; }
+.mission--jefe .mission__card { border-color: rgba(255, 146, 87, 0.45); background: linear-gradient(90deg, rgba(255, 146, 87, 0.12), rgba(255, 146, 87, 0.02)); }
+.mission--jefe .mission__badge { background: rgba(255, 146, 87, 0.18); }
+.mission--reto .mission__badge { color: var(--purple); }
+.mission--locked .mission__card { background: transparent; border-style: dashed; color: var(--locked); }
+.mission--locked .mission__badge { background: transparent; color: var(--locked); }
+.mission__unlock { flex: none; color: var(--accent-hi); }
+
+@media (max-width: 760px) {
+  .trail__steps { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .trail__steps::before, .trail__steps::after { top: 19px; left: 17px; width: 4px; }
+  .trail__steps::before { right: auto; bottom: 19px; height: auto; background: repeating-linear-gradient(180deg, var(--line-strong) 0 10px, transparent 10px 16px); }
+  .trail__steps::after { height: calc((100% - 38px) * var(--reach)); background: linear-gradient(180deg, var(--green), var(--accent)); }
+  .trail__step { flex-direction: row; align-items: flex-start; text-align: left; gap: 12px; }
+  .mission { flex-wrap: wrap; }
+  .mission__card { gap: 10px; }
+  .mission__tag, .mission__state { font-size: 9px; }
+  .mission__unlock { padding: 0 0 4px 52px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mission__card, .mission__go { transition: none; }
+}
