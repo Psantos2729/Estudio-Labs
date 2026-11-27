@@ -21,7 +21,10 @@ begin
   assert q -> 'missions' -> 0 ->> 'id' = 'leer' and (q -> 'missions' -> 0 ->> 'done')::int = 1, 'leyó hoy: ' || q::text;
   assert (q -> 'missions' -> 1 ->> 'done')::int = 0, 'no resolvió ejercicios: ' || q::text;
   -- 8 lecciones (80) + misión leer en 8 días (120) + una racha de 7 (70).
-  assert (select xp from public.leaderboard('all') where is_me) = 270, 'XP con misiones y racha';
+  -- De viernes a domingo, 5 de esos 7 días caen en esta semana: suma la misión semanal (+80).
+  assert (select xp from public.leaderboard('all') where is_me)
+    = 270 + case when extract(isodow from (now() at time zone 'America/Guatemala')::date) >= 5 then 80 else 0 end,
+    'XP con misiones y racha';
   assert (select unlocked from public.my_gear()) @> array['fueguito'], 'fueguito a los 7 días';
   assert not (select unlocked from public.my_gear()) && array['corona_llamas'], 'la corona pide 30';
   begin
