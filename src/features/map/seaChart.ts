@@ -53,14 +53,40 @@ for (let i = 1; i < SEA_ISLANDS.length; i++) {
   if (i < SEA_ISLANDS.length - 1) ROUTE.push(...around(i));
 }
 
-/** Curva suave (Catmull-Rom a Bézier) que pasa por todos los puntos de la ruta. */
-export const ROUTE_D = ROUTE.slice(1).reduce((d, c, k) => {
+/** Curva suave (Catmull-Rom a Bézier) que pasa por todos los puntos de la ruta: [inicio, control 1, control 2, fin]. */
+const SEGMENTS = ROUTE.slice(1).map((c, k): [Pt, Pt, Pt, Pt] => {
   const i = k + 1;
   const a = ROUTE[i - 2] ?? ROUTE[i - 1], b = ROUTE[i - 1], e = ROUTE[i + 1] ?? c;
-  const c1 = [b[0] + (c[0] - a[0]) / 6, b[1] + (c[1] - a[1]) / 6];
-  const c2 = [c[0] - (e[0] - b[0]) / 6, c[1] - (e[1] - b[1]) / 6];
-  return `${d} C${c1.join(' ')} ${c2.join(' ')} ${c.join(' ')}`;
-}, `M${ROUTE[0].join(' ')}`);
+  return [b, [b[0] + (c[0] - a[0]) / 6, b[1] + (c[1] - a[1]) / 6], [c[0] - (e[0] - b[0]) / 6, c[1] - (e[1] - b[1]) / 6], c];
+});
+
+/**
+ * La curva se muestrea una sola vez aquí, con su largo acumulado.
+ * Antes se le pedían miles de puntos a un <path> SVG y en teléfonos el mapa se congelaba ~20 s.
+ */
+const STEPS = 24;
+const bez = (a: number, b: number, c: number, d: number, t: number) => {
+  const u = 1 - t;
+  return u * u * u * a + 3 * u * u * t * b + 3 * u * t * t * c + t * t * t * d;
+};
+export const SAMPLES: Pt[] = [ROUTE[0]];
+for (const [p0, p1, p2, p3] of SEGMENTS) {
+  for (let k = 1; k <= STEPS; k++) SAMPLES.push([bez(p0[0], p1[0], p2[0], p3[0], k / STEPS), bez(p0[1], p1[1], p2[1], p3[1], k / STEPS)]);
+}
+const CUM = SAMPLES.map(() => 0);
+for (let k = 1; k < SAMPLES.length; k++) CUM[k] = CUM[k - 1] + Math.hypot(SAMPLES[k][0] - SAMPLES[k - 1][0], SAMPLES[k][1] - SAMPLES[k - 1][1]);
+
+/** Largo de la curva hasta cada punto de la ruta (cada tramo termina en un punto de ROUTE). */
+export const ROUTE_LEN = ROUTE.map((_, i) => CUM[i * STEPS]);
+
+/** Punto de la curva a `l` píxeles del inicio. */
+export function pointAt(l: number): Pt {
+  let lo = 0, hi = CUM.length - 1;
+  if (l >= CUM[hi]) return SAMPLES[hi];
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (CUM[m] <= l) lo = m; else hi = m; }
+  const t = (l - CUM[lo]) / (CUM[hi] - CUM[lo] || 1), [a, b] = [SAMPLES[lo], SAMPLES[hi]];
+  return [a[0] + (b[0] - a[0]) * Math.max(0, t), a[1] + (b[1] - a[1]) * Math.max(0, t)];
+}
 
 /** Sectores = las 4 zonas de siempre. Su jefe cuida el estrecho entre una zona y la siguiente. */
 const edge = (z: number) => (z === 0 ? 0 : (SEA_ISLANDS[ISLANDS[z - 1].last].cx + SEA_ISLANDS[ISLANDS[z].first].cx) / 2 + 20);
