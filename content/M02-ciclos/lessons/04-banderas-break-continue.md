@@ -36,11 +36,17 @@ Si solo necesitas saber si pasó, una bandera es más clara que un contador.
 En el ejemplo del primo, cuando encontramos el 3 ya sabemos la respuesta: no tiene sentido seguir probando 4, 5, 6… `break` sale del ciclo inmediatamente:
 
 ```python
+n = 21
+es_primo = True
 for d in range(2, n):
+    print("pruebo", d)
     if n % d == 0:
         es_primo = False
         break
+print(n, "es primo:", es_primo)
 ```
+
+Imprime `pruebo 2`, `pruebo 3` y se detiene: ya no prueba 4, 5, 6…
 
 Lo que está después del `break` dentro del ciclo ya no se ejecuta, y el programa sigue en la primera línea **después** del ciclo.
 
