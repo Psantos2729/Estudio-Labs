@@ -12,10 +12,11 @@ const files = [join(root, 'pseudocodigo.md'), ...readdirSync(root).filter((d) =>
   .flatMap((d) => readdirSync(join(root, d, 'lessons')).map((f) => join(root, d, 'lessons', f)))];
 const blocks = files.flatMap((f) => [...readFileSync(f, 'utf8').matchAll(/^```pseudo\n([\s\S]*?)^```$/gm)]
   .map((m, i) => ({ name: `${f.split('content/')[1]} #${i + 1}`, code: m[1] })));
-// Los ```python con input() necesitan su `// entrada:`; sin ella, Correr da ValueError con la caja vacía.
-const inputs = files.flatMap((f) => [...readFileSync(f, 'utf8').matchAll(/^```python\n([\s\S]*?)^```$/gm)]
-  .filter((m) => /^[^#\n]*\binput\s*\(/m.test(m[1]))
-  .map((m, i) => ({ name: `${f.split('content/')[1]} #${i + 1}`, code: m[1] })));
+// Todo ```python se puede Correr, así que debe correr solo: sin variables sueltas de un fragmento.
+const pythons = files.flatMap((f) => [...readFileSync(f, 'utf8').matchAll(/^```python\n([\s\S]*?)^```$/gm)]
+  .map((m, i) => ({ name: `${f.split('content/')[1]} #${i + 1}`, code: m[1] }))
+  // shortcut: numpy/pandas (M12) se descargan del CDN en el navegador y aquí no existen; si se instalan local, quitar el filtro.
+  .filter((b) => !/^\s*(import|from)\s+(numpy|pandas)\b/m.test(b.code)));
 
 let py: PyodideAPI;
 beforeAll(async () => {
@@ -30,10 +31,11 @@ describe('bloques de pseudocódigo del contenido', () => {
   });
 });
 
-describe('bloques de Python con input() del contenido', () => {
-  it.each(inputs)('$name trae entrada y corre', async ({ code }) => {
-    const [, sample, body] = code.match(/^\/\/ entrada: (.*)\n([\s\S]*)$/) ?? [];
-    expect(sample, 'falta la línea // entrada:').toBeDefined();
+describe('bloques de Python del contenido', () => {
+  it.each(pythons)('$name corre', async ({ code }) => {
+    const [, sample = '', body = code] = code.match(/^\/\/ entrada: (.*)\n([\s\S]*)$/) ?? [];
+    // Los que usan input() necesitan su `// entrada:`; sin ella, Correr da ValueError con la caja vacía.
+    if (/^[^#\n]*\binput\s*\(/m.test(body)) expect(code, 'falta la línea // entrada:').toMatch(/^\/\/ entrada: /);
     const r = await execute(py, body, sample.split(' ').join('\n') + '\n', true);
     expect(r.error).toBeUndefined();
   });
