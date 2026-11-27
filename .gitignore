@@ -9,3 +9,4 @@ coverage/
 private/
 graphify-out/cache/
 supabase/.temp/
+*.tsbuildinfo
