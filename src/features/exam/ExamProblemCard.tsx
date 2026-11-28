@@ -5,6 +5,7 @@ import { runPython, type RunResult } from '@/features/runner/runner';
 import { CodeEditor } from '@/features/exercise/CodeEditor';
 import { GivenFiles, OutFiles } from '@/features/exercise/FilesPanel';
 import type { ExamProblem } from './types';
+import { ErrorExplain } from '@/features/runner/ErrorExplain';
 
 /** Un problema del examen: enunciado, editor y "Correr" con entrada propia. Sin pistas ni pruebas. */
 export function ExamProblemCard({ problem, n, initial, onChange, note }: {
@@ -47,6 +48,7 @@ export function ExamProblemCard({ problem, n, initial, onChange, note }: {
             {!run.stdout && !run.error && <span className="muted">(no imprimió nada)</span>}
           </pre>
         )}
+        {run && <ErrorExplain error={run.error} withHint={false} />}
         {run && <OutFiles files={run.files} given={files} />}
       </div>
     </section>
