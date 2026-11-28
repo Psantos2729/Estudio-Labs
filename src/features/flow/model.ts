@@ -35,11 +35,18 @@ export function toPseudo(blocks: Block[]): string {
     const pad = '    '.repeat(depth);
     for (const b of list) {
       if (b.kind === 'if') {
-        out.push(`${pad}if ${b.text.trim()}`);
-        walk(b.yes, depth + 1);
-        if (b.no.length) {
+        // Una decisión sola en la rama No se escribe `else if`, como en los labs: un solo `end if`.
+        let d: Branch = b;
+        out.push(`${pad}if ${d.text.trim()}`);
+        walk(d.yes, depth + 1);
+        while (d.no.length === 1 && d.no[0].kind === 'if') {
+          d = d.no[0];
+          out.push(`${pad}else if ${d.text.trim()}`);
+          walk(d.yes, depth + 1);
+        }
+        if (d.no.length) {
           out.push(`${pad}else`);
-          walk(b.no, depth + 1);
+          walk(d.no, depth + 1);
         }
         out.push(`${pad}end if`);
       } else if (b.kind === 'while' || b.kind === 'for') {
@@ -61,4 +68,27 @@ export function parseFlow(raw: string | undefined): Block[] {
   } catch {
     return [];
   }
+}
+
+/** Dónde está una lista de bloques: el camino de (índice, rama) desde la raíz; [] es la raíz. */
+export type Addr = { i: number; key: 'yes' | 'no' | 'body' }[];
+
+function listAt(root: Block[], addr: Addr): Block[] {
+  return addr.reduce<Block[]>((list, { i, key }) => (list[i] as unknown as Record<string, Block[]>)[key], root);
+}
+
+/** Copia el diagrama y aplica `change` a la lista en `addr` (el estado de React no se muta). */
+export function editList(root: Block[], addr: Addr, change: (list: Block[]) => void): Block[] {
+  const copy = structuredClone(root);
+  change(listAt(copy, addr));
+  return copy;
+}
+
+export const blockAt = (root: Block[], addr: Addr, i: number): Block | undefined => listAt(root, addr)[i];
+
+/** ¿Dicen lo mismo? Sin contar mayúsculas, espacios, líneas vacías ni comentarios; `<-` vale como ←. */
+export function samePseudo(a: string, b: string): boolean {
+  const norm = (s: string) => s.replace(/\/\/.*$/gm, '').replace(/<-/g, '←').toLowerCase()
+    .split('\n').map((l) => l.replace(/\s+/g, '')).filter(Boolean).join('\n');
+  return norm(a) === norm(b);
 }

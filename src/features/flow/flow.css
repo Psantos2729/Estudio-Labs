@@ -1,0 +1,29 @@
+/* Editor de diagramas de flujo (paso opcional de cada ejercicio). */
+.flow__canvas { overflow-x: auto; padding: 8px 0; }
+.flow__svg { display: block; margin-inline: auto; max-width: none; height: auto; } /* si no cabe, se desliza de lado */
+@media (min-width: 960px) {
+  .panel.split.flow-split { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .flow__panel { position: sticky; top: calc(var(--topbar-h) + 8px); z-index: 2; } /* a la vista aunque el diagrama sea largo */
+}
+.flow__plus, .flow__block { cursor: pointer; outline: none; }
+.flow__plus circle { transition: transform 0.15s var(--ease-out); transform-box: fill-box; transform-origin: center; }
+.flow__plus:hover circle, .flow__plus:focus-visible circle { transform: scale(1.25); filter: drop-shadow(0 0 6px var(--accent)); }
+.flow__block:hover path, .flow__block:focus-visible path { filter: drop-shadow(0 0 6px var(--accent)); }
+.flow__panel {
+  display: grid; gap: 8px; padding: 12px; margin-bottom: 8px;
+  border: 1px solid var(--accent); border-radius: 14px; background: rgba(13, 18, 38, 0.92);
+  box-shadow: 0 0 24px rgba(111, 155, 255, 0.25);
+}
+.flow__kinds { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; }
+.flow__kind {
+  padding: 8px 10px; border-radius: 10px; background: var(--bg-code); color: var(--text);
+  border: 1px solid var(--line-strong); font: inherit; font-size: 14px; text-align: left; cursor: pointer;
+}
+.flow__kind:hover, .flow__kind:focus-visible { border-color: var(--accent); }
+.flow__kind--read { border-left: 4px solid var(--accent); }
+.flow__kind--process { border-left: 4px solid var(--purple); }
+.flow__kind--write { border-left: 4px solid var(--green); }
+.flow__kind--if, .flow__kind--while, .flow__kind--for { border-left: 4px solid var(--amber); }
+.flow__input { font-family: var(--mono); }
+.flow__statement { margin-bottom: 4px; }
+@media (prefers-reduced-motion: reduce) { .flow__plus circle { transition: none; } }
