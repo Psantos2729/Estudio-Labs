@@ -11,6 +11,7 @@ import { TestResults } from './TestResults';
 import { GivenFiles, OutFiles } from './FilesPanel';
 import { PixelSprite } from '@/ui/primitives/PixelSprite';
 import { islandOf } from '@/features/game/islands';
+import { ErrorExplain } from '@/features/runner/ErrorExplain';
 
 /** Pasos 4 y 5: escribir el código, correrlo con entrada propia y pasar las pruebas públicas. */
 interface Props {
@@ -81,6 +82,7 @@ export function CodeStep({ exercise, initialCode, onTested }: Props) {
             {!run.stdout && !run.error && <span className="muted">(no imprimió nada)</span>}
           </pre>
         )}
+        {run && <ErrorExplain error={run.error} />}
         {run && <OutFiles files={run.files} given={files} />}
         {exercise.language === 'pseudo' && <PythonPreview code={code} />}
         {results && <TestResults results={results} />}

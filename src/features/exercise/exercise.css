@@ -26,8 +26,8 @@
 .tests__case--ok summary { color: var(--green); }
 .tests__case--bad { border-color: var(--red); }
 .tests__case--bad summary { color: var(--red); }
-.tests__grid { display: grid; grid-template-columns: 80px 1fr; gap: 4px 12px; margin-top: 8px; }
-.tests__grid pre { margin: 0; white-space: pre-wrap; background: var(--bg-code); padding: 4px 8px; border-radius: 4px; }
+.tests__grid { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 4px 12px; margin-top: 8px; }
+.tests__grid pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; background: var(--bg-code); padding: 4px 8px; border-radius: 4px; }
 .predict code { background: var(--bg-code); border: 1px solid var(--line); border-radius: 4px; padding: 1px 5px; }
 .lesson .panel > .btn { align-self: flex-start; }
 
