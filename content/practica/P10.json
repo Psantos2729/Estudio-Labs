@@ -1,0 +1,33 @@
+{
+  "id": "P10",
+  "title": "Cifrado César",
+  "level": "medio",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "El cifrado César mueve cada letra `k` lugares en el abecedario inglés (de la `a` a la `z`), dando la vuelta al final: con `k = 3`, la `x` se vuelve `a`.\n\nLee un texto y un entero `k` (puede ser negativo para descifrar), uno por línea. Cifra las letras respetando mayúsculas y minúsculas; todo lo demás (espacios, números, signos, ñ, tildes) queda igual.\n\nEjemplo: con `Hola, Zoe!` y `3` imprime `Krod, Crh!`.",
+  "starter": "texto = input()\nk = int(input())\n",
+  "predict": [],
+  "hints": [
+    "`ord(ch) - ord(\"a\")` da la posición 0–25 de una minúscula.",
+    "La nueva posición es `(pos + k) % 26`; vuelve a letra con `chr(... + ord(\"a\"))`.",
+    "Haz lo mismo con `\"A\"` para mayúsculas. El `%` de Python ya maneja bien los negativos."
+  ],
+  "tests": [
+    {
+      "stdin": "Hola, Zoe!\n3\n",
+      "stdout": "Krod, Crh!\n"
+    },
+    {
+      "stdin": "Krod, Cre!\n-3\n",
+      "stdout": "Hola, Zob!\n"
+    },
+    {
+      "stdin": "xyz ABC\n27\n",
+      "stdout": "yza BCD\n"
+    },
+    {
+      "stdin": "Año 2025\n1\n",
+      "stdout": "Bñp 2025\n"
+    }
+  ]
+}

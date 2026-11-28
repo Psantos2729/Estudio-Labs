@@ -1,0 +1,33 @@
+{
+  "id": "P46",
+  "title": "Conjetura de Goldbach",
+  "level": "muy-dificil",
+  "zone": 1,
+  "topic": "ciclos y primos",
+  "statement": "La conjetura de Goldbach dice que todo par mayor que 2 es la suma de dos primos.\n\nLee un par `n > 2` e imprime **todas** las formas de escribirlo como `p + q` con `p <= q` primos, de menor a mayor `p`, y al final cuántas son:\n\n```\n<n> = <p> + <q>\n...\nFormas: <k>\n```",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Haz una lista de qué números son primos hasta `n` (la criba de Eratóstenes es ideal).",
+    "Recorre `p` desde 2 hasta `n // 2`: si `p` y `n - p` son primos, es una forma.",
+    "La criba: empieza todos como primos y tacha los múltiplos de cada primo."
+  ],
+  "tests": [
+    {
+      "stdin": "28\n",
+      "stdout": "28 = 5 + 23\n28 = 11 + 17\nFormas: 2\n"
+    },
+    {
+      "stdin": "4\n",
+      "stdout": "4 = 2 + 2\nFormas: 1\n"
+    },
+    {
+      "stdin": "100\n",
+      "stdout": "100 = 3 + 97\n100 = 11 + 89\n100 = 17 + 83\n100 = 29 + 71\n100 = 41 + 59\n100 = 47 + 53\nFormas: 6\n"
+    },
+    {
+      "stdin": "98\n",
+      "stdout": "98 = 19 + 79\n98 = 31 + 67\n98 = 37 + 61\nFormas: 3\n"
+    }
+  ]
+}

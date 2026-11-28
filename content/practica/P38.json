@@ -1,0 +1,37 @@
+{
+  "id": "P38",
+  "title": "Evaluar postfija",
+  "level": "dificil",
+  "zone": 4,
+  "topic": "pilas y postfija",
+  "statement": "Lee una expresión **postfija** con enteros y los operadores `+ - * /`, todos separados por un espacio. La `/` es **división entera** (`//`).\n\nEvalúala con una pila e imprime `Resultado: <r>`.\n\nEjemplo: `5 1 2 + 4 * + 3 -` → `Resultado: 14`.",
+  "starter": "tokens = input().split()\n",
+  "predict": [],
+  "hints": [
+    "Si el token es un número, apílalo.",
+    "Si es operador, saca **primero** el de la derecha (`b`) y después el de la izquierda (`a`).",
+    "Apila `a op b`; al terminar, la pila tiene un solo valor."
+  ],
+  "tests": [
+    {
+      "stdin": "5 1 2 + 4 * + 3 -\n",
+      "stdout": "Resultado: 14\n"
+    },
+    {
+      "stdin": "7 2 /\n",
+      "stdout": "Resultado: 3\n"
+    },
+    {
+      "stdin": "2 3 4 * -\n",
+      "stdout": "Resultado: -10\n"
+    },
+    {
+      "stdin": "42\n",
+      "stdout": "Resultado: 42\n"
+    },
+    {
+      "stdin": "10 2 8 * + 3 -\n",
+      "stdout": "Resultado: 23\n"
+    }
+  ]
+}

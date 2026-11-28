@@ -1,0 +1,28 @@
+{
+  "id": "P42",
+  "title": "Inventario de la tienda",
+  "level": "dificil",
+  "topic": "diccionarios",
+  "statement": "Lee `n` y luego `n` operaciones, una por línea:\n\n- `agregar <producto> <cantidad>`\n- `vender <producto> <cantidad>`\n\nSi se intenta vender más de lo que hay (o un producto que no existe), **no** se vende nada y se imprime `Sin existencias: <producto>`. Las pruebas incluyen ese caso.\n\nAl final imprime el inventario en orden alfabético, **sin** los productos que quedaron en 0: `<producto>: <cantidad>`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Usa un diccionario `{producto: cantidad}`.",
+    "Antes de vender revisa `inv.get(producto, 0) >= cantidad`.",
+    "Al imprimir, salta los que tienen 0."
+  ],
+  "tests": [
+    {
+      "stdin": "5\nagregar lapiz 10\nagregar borrador 3\nvender lapiz 4\nvender borrador 5\nagregar regla 1\n",
+      "stdout": "Sin existencias: borrador\nborrador: 3\nlapiz: 6\nregla: 1\n"
+    },
+    {
+      "stdin": "3\nvender cuaderno 1\nagregar cuaderno 2\nvender cuaderno 2\n",
+      "stdout": "Sin existencias: cuaderno\n"
+    },
+    {
+      "stdin": "4\nagregar b 1\nagregar a 2\nagregar b 5\nvender a 1\n",
+      "stdout": "a: 1\nb: 6\n"
+    }
+  ]
+}

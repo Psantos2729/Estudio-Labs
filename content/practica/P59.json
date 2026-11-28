@@ -1,0 +1,32 @@
+{
+  "id": "P59",
+  "title": "Amigos de amigos",
+  "level": "muy-dificil",
+  "topic": "diccionarios y grafos",
+  "statement": "Lee `n` y luego `n` amistades, una por línea, como `persona1 persona2` (la amistad va en los dos sentidos). Al final lee un nombre.\n\nImprime, en orden alfabético y separados por un espacio, los **amigos de sus amigos** que **no** son ya sus amigos ni la persona misma. Si no hay, imprime `Nadie nuevo`.\n\nEjemplo: con `ana beto`, `beto carla`, `ana dani`, `dani carla`, `carla eva` y el nombre `ana` → `carla`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Arma un diccionario `{persona: set(de amigos)}` agregando la amistad en los dos sentidos.",
+    "Junta los amigos de cada amigo en un conjunto.",
+    "Quita con `-` los amigos directos y a la persona."
+  ],
+  "tests": [
+    {
+      "stdin": "5\nana beto\nbeto carla\nana dani\ndani carla\ncarla eva\nana\n",
+      "stdout": "carla\n"
+    },
+    {
+      "stdin": "5\nana beto\nbeto carla\nana dani\ndani carla\ncarla eva\ncarla\n",
+      "stdout": "ana\n"
+    },
+    {
+      "stdin": "1\nx y\nx\n",
+      "stdout": "Nadie nuevo\n"
+    },
+    {
+      "stdin": "2\na b\nc d\nzoe\n",
+      "stdout": "Nadie nuevo\n"
+    }
+  ]
+}

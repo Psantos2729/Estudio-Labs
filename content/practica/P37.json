@@ -1,0 +1,29 @@
+{
+  "id": "P37",
+  "title": "Punto de silla",
+  "level": "dificil",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Un **punto de silla** de una matriz es una casilla que es el **mínimo de su fila** y a la vez el **máximo de su columna**.\n\nLee `m n` y la matriz. Imprime cada punto de silla, recorriendo por filas, como `Fila <i>, columna <j>: <valor>` (desde 0). Si no hay ninguno, imprime `No tiene punto de silla`.",
+  "starter": "m, n = map(int, input().split())\n",
+  "predict": [],
+  "hints": [
+    "Para la casilla `[i][j]`, compárala con `min(a[i])`.",
+    "La columna `j` es `[a[k][j] for k in range(m)]`; compárala con su `max`.",
+    "Recorre todas las casillas con dos ciclos y cuenta las que cumplen."
+  ],
+  "tests": [
+    {
+      "stdin": "3 3\n1 2 3\n4 5 6\n7 8 9\n",
+      "stdout": "Fila 2, columna 0: 7\n"
+    },
+    {
+      "stdin": "2 2\n1 2\n2 1\n",
+      "stdout": "No tiene punto de silla\n"
+    },
+    {
+      "stdin": "2 3\n5 5 5\n1 9 0\n",
+      "stdout": "Fila 0, columna 0: 5\nFila 0, columna 2: 5\n"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "P22",
+  "title": "Día del año",
+  "level": "medio",
+  "topic": "fechas",
+  "statement": "Lee el día, el mes y el año (uno por línea) de una fecha válida e imprime qué **número de día del año** es.\n\nUn año es **bisiesto** si es divisible entre 4, excepto los divisibles entre 100 que no lo son entre 400. En un bisiesto febrero tiene 29 días.\n\nEjemplo: `1`, `3`, `2024` → `Día 61 del año`.",
+  "starter": "d = int(input())\nm = int(input())\na = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Guarda los días de cada mes en una lista: `[31, 28, 31, 30, ...]`.",
+    "Si el año es bisiesto, cambia el 28 por 29.",
+    "Suma los días de los meses anteriores al mes dado y agrega `d`."
+  ],
+  "tests": [
+    {
+      "stdin": "1\n3\n2024\n",
+      "stdout": "Día 61 del año\n"
+    },
+    {
+      "stdin": "1\n3\n2023\n",
+      "stdout": "Día 60 del año\n"
+    },
+    {
+      "stdin": "31\n12\n1900\n",
+      "stdout": "Día 365 del año\n"
+    },
+    {
+      "stdin": "31\n12\n2000\n",
+      "stdout": "Día 366 del año\n"
+    },
+    {
+      "stdin": "15\n1\n2025\n",
+      "stdout": "Día 15 del año\n"
+    }
+  ]
+}

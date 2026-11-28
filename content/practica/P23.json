@@ -1,0 +1,37 @@
+{
+  "id": "P23",
+  "title": "Capicúa sin convertir a texto",
+  "level": "dificil",
+  "zone": 1,
+  "topic": "ciclos y dígitos",
+  "statement": "Lee un entero positivo `n` y construye el número **al revés** usando solo operaciones (`%`, `//`, `*`, `+`), sin convertirlo a texto. Luego decide si es capicúa (se lee igual al revés).\n\n```\nAl revés: <r>\n<n> es capicúa      (o bien: <n> no es capicúa)\n```\n\nEjemplo: con `1230` → `Al revés: 321` y `1230 no es capicúa`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Saca el último dígito con `% 10` y quítalo con `// 10`.",
+    "Para ir armando el número al revés: `r = r * 10 + digito`.",
+    "Guarda una copia del original: el ciclo lo deja en 0."
+  ],
+  "tests": [
+    {
+      "stdin": "1230\n",
+      "stdout": "Al revés: 321\n1230 no es capicúa\n"
+    },
+    {
+      "stdin": "12321\n",
+      "stdout": "Al revés: 12321\n12321 es capicúa\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "Al revés: 7\n7 es capicúa\n"
+    },
+    {
+      "stdin": "1001\n",
+      "stdout": "Al revés: 1001\n1001 es capicúa\n"
+    },
+    {
+      "stdin": "120021\n",
+      "stdout": "Al revés: 120021\n120021 es capicúa\n"
+    }
+  ]
+}

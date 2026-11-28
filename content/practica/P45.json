@@ -1,0 +1,29 @@
+{
+  "id": "P45",
+  "title": "Números amigos",
+  "level": "muy-dificil",
+  "zone": 1,
+  "topic": "ciclos y divisores",
+  "statement": "Dos números distintos `a` y `b` son **amigos** si la suma de los divisores propios de `a` es `b`, y la de `b` es `a` (por ejemplo 220 y 284).\n\nLee `n` e imprime cada pareja de amigos con `a < b <= n`, ordenadas por `a`, como `<a> y <b>`. Al final imprime `Parejas: <k>`. Tu programa debe terminar rápido con `n = 10000`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Escribe una función `sd(x)` que sume los divisores propios recorriendo solo hasta la raíz: si `d` divide a `x`, también `x // d`.",
+    "Para cada `a`, calcula `b = sd(a)` y revisa `a < b <= n` y `sd(b) == a`.",
+    "Mejor aún: calcula `sd` de todos los números una vez y guárdalo en una lista."
+  ],
+  "tests": [
+    {
+      "stdin": "300\n",
+      "stdout": "220 y 284\nParejas: 1\n"
+    },
+    {
+      "stdin": "10000\n",
+      "stdout": "220 y 284\n1184 y 1210\n2620 y 2924\n5020 y 5564\n6232 y 6368\nParejas: 5\n"
+    },
+    {
+      "stdin": "100\n",
+      "stdout": "Parejas: 0\n"
+    }
+  ]
+}

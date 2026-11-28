@@ -1,0 +1,29 @@
+{
+  "id": "P31",
+  "title": "Inserción pasada por pasada",
+  "level": "dificil",
+  "zone": 2,
+  "topic": "ordenar y buscar",
+  "statement": "Lee `n` y luego `n` enteros (uno por línea). Ordénalos de menor a mayor con **ordenamiento por inserción** y muestra el vector después de cada pasada (`i` de 1 a `n - 1`):\n\n```\nPasada <i>: <v0> <v1> ...\n```\n\nEn la pasada `i`, el elemento `v[i]` se mueve hacia la izquierda mientras el de su izquierda sea mayor.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Guarda `clave = v[i]` y usa `j = i - 1`.",
+    "Mientras `j >= 0` y `v[j] > clave`, corre `v[j]` una posición a la derecha y baja `j`.",
+    "Al final pon `clave` en `v[j + 1]` e imprime la pasada."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n5\n2\n4\n6\n1\n",
+      "stdout": "Pasada 1: 2 5 4 6 1\nPasada 2: 2 4 5 6 1\nPasada 3: 2 4 5 6 1\nPasada 4: 1 2 4 5 6\n"
+    },
+    {
+      "stdin": "4\n1\n2\n3\n4\n",
+      "stdout": "Pasada 1: 1 2 3 4\nPasada 2: 1 2 3 4\nPasada 3: 1 2 3 4\n"
+    },
+    {
+      "stdin": "3\n3\n2\n1\n",
+      "stdout": "Pasada 1: 2 3 1\nPasada 2: 1 2 3\n"
+    }
+  ]
+}

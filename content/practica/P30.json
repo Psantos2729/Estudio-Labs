@@ -1,0 +1,33 @@
+{
+  "id": "P30",
+  "title": "Búsqueda binaria paso a paso",
+  "level": "dificil",
+  "zone": 2,
+  "topic": "ordenar y buscar",
+  "statement": "Lee `n`, luego `n` enteros **ordenados de menor a mayor** (uno por línea) y al final el valor `x` a buscar.\n\nHaz búsqueda binaria: mira el elemento del medio `(izq + der) // 2`; si es `x` terminaste; si es menor busca a la derecha; si es mayor, a la izquierda. Imprime cada posición que miras y el resultado:\n\n```\nMiro posición <p>: <valor>\n...\nEncontrado en la posición <p>     (o bien: No está)\n```",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Empieza con `izq = 0` y `der = n - 1`; sigue mientras `izq <= der`.",
+    "Imprime la línea `Miro posición` antes de comparar.",
+    "Si sales del ciclo sin encontrarlo, imprime `No está`."
+  ],
+  "tests": [
+    {
+      "stdin": "7\n2\n5\n8\n12\n16\n23\n38\n23\n",
+      "stdout": "Miro posición 3: 12\nMiro posición 5: 23\nEncontrado en la posición 5\n"
+    },
+    {
+      "stdin": "5\n1\n3\n5\n7\n9\n4\n",
+      "stdout": "Miro posición 2: 5\nMiro posición 0: 1\nMiro posición 1: 3\nNo está\n"
+    },
+    {
+      "stdin": "1\n10\n10\n",
+      "stdout": "Miro posición 0: 10\nEncontrado en la posición 0\n"
+    },
+    {
+      "stdin": "6\n1\n2\n3\n4\n5\n6\n1\n",
+      "stdout": "Miro posición 2: 3\nMiro posición 0: 1\nEncontrado en la posición 0\n"
+    }
+  ]
+}

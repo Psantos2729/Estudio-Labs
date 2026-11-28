@@ -1,0 +1,32 @@
+{
+  "id": "P20",
+  "title": "Letras en común",
+  "level": "medio",
+  "topic": "conjuntos",
+  "statement": "Lee dos palabras, una por línea, en minúsculas. Imprime las letras que aparecen **en las dos**, sin repetir y en orden alfabético, separadas por un espacio. Si no comparten ninguna, imprime `Ninguna`.\n\nEjemplo: `programa` y `ventana` → `a n r`.",
+  "starter": "a = input()\nb = input()\n",
+  "predict": [],
+  "hints": [
+    "`set(\"programa\")` da las letras sin repetir.",
+    "La intersección de dos conjuntos es `a & b`.",
+    "Ordena con `sorted(...)` antes de imprimir."
+  ],
+  "tests": [
+    {
+      "stdin": "programa\nventana\n",
+      "stdout": "a\n"
+    },
+    {
+      "stdin": "sol\nmar\n",
+      "stdout": "Ninguna\n"
+    },
+    {
+      "stdin": "abc\nxyz\n",
+      "stdout": "Ninguna\n"
+    },
+    {
+      "stdin": "casa\ncasa\n",
+      "stdout": "a c s\n"
+    }
+  ]
+}

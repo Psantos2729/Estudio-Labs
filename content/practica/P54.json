@@ -1,0 +1,41 @@
+{
+  "id": "P54",
+  "title": "Infija a postfija",
+  "level": "muy-dificil",
+  "zone": 4,
+  "topic": "infija y postfija",
+  "statement": "Lee una expresión **infija** con operandos de una sola letra, los operadores `+ - * / ^` y paréntesis, sin espacios. Conviértela a **postfija** con una pila e imprímela con los elementos separados por un espacio.\n\nPrecedencia: `^` (la más alta, y se agrupa **de derecha a izquierda**), luego `* /`, luego `+ -` (estos se agrupan de izquierda a derecha).\n\nEjemplos: `a+b*c` → `a b c * +`; `(a+b)*c` → `a b + c *`; `a^b^c` → `a b c ^ ^`.",
+  "starter": "expr = input()\n",
+  "predict": [],
+  "hints": [
+    "Las letras van directo a la salida; `(` se apila; `)` desapila hasta encontrar su `(`.",
+    "Antes de apilar un operador, saca los de la pila con **mayor** precedencia, o **igual** si el nuevo no es `^`.",
+    "Al final, saca todo lo que quede en la pila."
+  ],
+  "tests": [
+    {
+      "stdin": "a+b*c\n",
+      "stdout": "a b c * +\n"
+    },
+    {
+      "stdin": "(a+b)*c\n",
+      "stdout": "a b + c *\n"
+    },
+    {
+      "stdin": "a^b^c\n",
+      "stdout": "a b c ^ ^\n"
+    },
+    {
+      "stdin": "a-b-c\n",
+      "stdout": "a b - c -\n"
+    },
+    {
+      "stdin": "(a+b)*(c-d)/e^f\n",
+      "stdout": "a b + c d - * e f ^ /\n"
+    },
+    {
+      "stdin": "x\n",
+      "stdout": "x\n"
+    }
+  ]
+}

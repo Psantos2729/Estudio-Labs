@@ -1,0 +1,13 @@
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0; }
+.chip {
+  min-height: 36px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px;
+  background: transparent; color: var(--muted); font: 600 12px var(--mono); cursor: pointer;
+  transition: border-color 0.2s var(--ease-out), color 0.2s var(--ease-out), background 0.2s var(--ease-out);
+}
+.chip:hover { color: var(--text); border-color: var(--accent); }
+.chip[aria-pressed='true'] { color: var(--accent-hi); border-color: var(--accent); background: rgba(111, 155, 255, 0.12); }
+.practice .missions { margin-top: 12px; }
+.practice__where { display: block; margin-top: 2px; }
+.practice__level--medio { color: var(--accent-hi); }
+.practice__level--dificil { color: var(--amber); }
+.practice__level--muy-dificil { color: var(--red); }

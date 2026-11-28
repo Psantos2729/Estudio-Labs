@@ -1,0 +1,33 @@
+{
+  "id": "P15",
+  "title": "Traza y diagonal secundaria",
+  "level": "medio",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Lee `n` y después una matriz de `n × n`: cada fila viene en una línea, con sus números separados por un espacio.\n\nImprime la suma de la **diagonal principal** (traza) y la de la **diagonal secundaria** (de arriba a la derecha hacia abajo a la izquierda):\n\n```\nPrincipal: <p>\nSecundaria: <s>\n```\n\nEjemplo con `1 2 3 / 4 5 6 / 7 8 9`: `Principal: 15` y `Secundaria: 15`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Lee cada fila con `list(map(int, input().split()))`.",
+    "La diagonal principal son las casillas `[i][i]`.",
+    "La secundaria son `[i][n - 1 - i]`."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n1 2 3\n4 5 6\n7 8 9\n",
+      "stdout": "Principal: 15\nSecundaria: 15\n"
+    },
+    {
+      "stdin": "2\n1 0\n0 5\n",
+      "stdout": "Principal: 6\nSecundaria: 0\n"
+    },
+    {
+      "stdin": "4\n1 2 3 4\n5 6 7 8\n9 10 11 12\n13 14 15 16\n",
+      "stdout": "Principal: 34\nSecundaria: 34\n"
+    },
+    {
+      "stdin": "1\n-7\n",
+      "stdout": "Principal: -7\nSecundaria: -7\n"
+    }
+  ]
+}

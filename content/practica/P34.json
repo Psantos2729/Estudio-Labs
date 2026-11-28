@@ -1,0 +1,33 @@
+{
+  "id": "P34",
+  "title": "Matriz en espiral",
+  "level": "dificil",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Lee `n` y llena una matriz de `n × n` con los números del 1 al `n²` **en espiral**, empezando arriba a la izquierda y girando en el sentido del reloj. Imprímela con cada número en un ancho de 3 (`f\"{x:3}\"`), sin separador extra.\n\nEjemplo con `3`:\n\n```\n  1  2  3\n  8  9  4\n  7  6  5\n```",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Lleva cuatro límites: fila de arriba, fila de abajo, columna izquierda y columna derecha.",
+    "Llena la fila de arriba, baja por la derecha, vuelve por abajo y sube por la izquierda; luego encoge los límites.",
+    "Repite mientras queden números por poner."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n",
+      "stdout": "  1  2  3\n  8  9  4\n  7  6  5\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "  1\n"
+    },
+    {
+      "stdin": "4\n",
+      "stdout": "  1  2  3  4\n 12 13 14  5\n 11 16 15  6\n 10  9  8  7\n"
+    },
+    {
+      "stdin": "5\n",
+      "stdout": "  1  2  3  4  5\n 16 17 18 19  6\n 15 24 25 20  7\n 14 23 22 21  8\n 13 12 11 10  9\n"
+    }
+  ]
+}

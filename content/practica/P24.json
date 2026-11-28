@@ -1,0 +1,37 @@
+{
+  "id": "P24",
+  "title": "Factores primos",
+  "level": "dificil",
+  "zone": 1,
+  "topic": "ciclos y divisores",
+  "statement": "Lee un entero `n >= 2` y escríbelo como producto de **potencias de primos**, de menor a mayor. Si un primo aparece una sola vez, no lleva exponente.\n\nEjemplos:\n\n- `360` → `360 = 2^3 * 3^2 * 5`\n- `97` → `97 = 97`",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Prueba divisores `d` desde 2: mientras `n % d == 0`, divide y cuenta.",
+    "Si contaste algo, agrega `d` o `d^k` a una lista de partes.",
+    "Lo que quede mayor que 1 al final también es un primo."
+  ],
+  "tests": [
+    {
+      "stdin": "360\n",
+      "stdout": "360 = 2^3 * 3^2 * 5\n"
+    },
+    {
+      "stdin": "97\n",
+      "stdout": "97 = 97\n"
+    },
+    {
+      "stdin": "1024\n",
+      "stdout": "1024 = 2^10\n"
+    },
+    {
+      "stdin": "2310\n",
+      "stdout": "2310 = 2 * 3 * 5 * 7 * 11\n"
+    },
+    {
+      "stdin": "9800\n",
+      "stdout": "9800 = 2^3 * 5^2 * 7^2\n"
+    }
+  ]
+}

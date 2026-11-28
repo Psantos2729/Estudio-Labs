@@ -1,0 +1,38 @@
+{
+  "id": "P53",
+  "title": "Reporte de ventas",
+  "level": "muy-dificil",
+  "zone": 3,
+  "topic": "archivos de texto",
+  "statement": "El archivo `ventas.txt` tiene una venta por línea: `fecha,producto,cantidad,precio` (precio unitario con decimales). Puede tener líneas vacías, que se ignoran.\n\nImprime el total vendido por producto (cantidad × precio, sumado), **ordenado de mayor a menor total** (si empatan, por nombre), con 2 decimales, y al final el total general y el producto estrella:\n\n```\n<producto>: Q<total>\n...\nTotal general: Q<t>\nEstrella: <producto>\n```\n\nAdemás, escribe ese mismo reporte en un archivo `reporte.txt`.",
+  "starter": "with open('ventas.txt') as f:\n    pass\n",
+  "predict": [],
+  "hints": [
+    "Acumula en un diccionario `{producto: total}`.",
+    "Para ordenar: `sorted(totales.items(), key=lambda par: (-par[1], par[0]))`.",
+    "Arma las líneas del reporte en una lista y úsala para imprimir y para escribir el archivo."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "stdout": "café: Q62.00\njugo: Q24.00\npan: Q12.50\nTotal general: Q98.50\nEstrella: café\n",
+      "files": {
+        "ventas.txt": "2025-01-02,café,3,15.50\n2025-01-02,pan,10,1.25\n\n2025-01-03,café,1,15.50\n2025-01-03,jugo,2,12\n"
+      }
+    },
+    {
+      "stdin": "",
+      "stdout": "a: Q10.00\nb: Q10.00\nTotal general: Q20.00\nEstrella: a\n",
+      "files": {
+        "ventas.txt": "2025-02-01,b,1,10\n2025-02-01,a,2,5\n"
+      }
+    },
+    {
+      "stdin": "",
+      "stdout": "único: Q23.33\nTotal general: Q23.33\nEstrella: único\n",
+      "files": {
+        "ventas.txt": "2025-03-01,único,7,3.333\n"
+      }
+    }
+  ]
+}

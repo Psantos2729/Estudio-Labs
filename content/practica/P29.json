@@ -1,0 +1,37 @@
+{
+  "id": "P29",
+  "title": "Validar contraseña",
+  "level": "dificil",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "Lee una contraseña y revísala con estas reglas, **en este orden**. Por cada regla que **no** cumpla imprime su mensaje:\n\n1. `Debe tener al menos 8 caracteres`\n2. `Debe tener una mayúscula`\n3. `Debe tener una minúscula`\n4. `Debe tener un dígito`\n5. `No debe tener espacios`\n\nSi cumple todas, imprime solo `Contraseña válida`. Las pruebas incluyen contraseñas que fallan varias reglas a la vez.",
+  "starter": "c = input()\n",
+  "predict": [],
+  "hints": [
+    "Cada regla es un `if` independiente (no `elif`): pueden fallar varias.",
+    "`any(ch.isupper() for ch in c)` dice si hay alguna mayúscula.",
+    "Lleva una bandera o una lista de errores para saber si imprimir `Contraseña válida`."
+  ],
+  "tests": [
+    {
+      "stdin": "Python2025\n",
+      "stdout": "Contraseña válida\n"
+    },
+    {
+      "stdin": "abc\n",
+      "stdout": "Debe tener al menos 8 caracteres\nDebe tener una mayúscula\nDebe tener un dígito\n"
+    },
+    {
+      "stdin": "CLAVE SEGURA 1\n",
+      "stdout": "Debe tener una minúscula\nNo debe tener espacios\n"
+    },
+    {
+      "stdin": "minuscula123\n",
+      "stdout": "Debe tener una mayúscula\n"
+    },
+    {
+      "stdin": "12345678\n",
+      "stdout": "Debe tener una mayúscula\nDebe tener una minúscula\n"
+    }
+  ]
+}

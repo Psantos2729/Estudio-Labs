@@ -1,0 +1,37 @@
+{
+  "id": "P05",
+  "title": "Descuento por volumen",
+  "level": "medio",
+  "zone": 1,
+  "topic": "decisiones",
+  "statement": "Una tienda vende cuadernos con descuento según la cantidad que compras:\n\n| cantidad | descuento |\n|---|---|\n| menos de 10 | 0 % |\n| de 10 a 49 | 5 % |\n| de 50 a 99 | 10 % |\n| 100 o más | 15 % |\n\nLee la cantidad (entero) y el precio unitario (decimal), uno por línea, e imprime:\n\n```\nSubtotal: Q<s>\nDescuento: <d>%\nTotal: Q<t>\n```\n\ncon `s` y `t` a **2 decimales**. Ejemplo: con `50` y `12.5` → `Subtotal: Q625.00`, `Descuento: 10%`, `Total: Q562.50`.",
+  "starter": "cantidad = int(input())\nprecio = float(input())\n",
+  "predict": [],
+  "hints": [
+    "Los rangos están ordenados: con `if / elif / else` revisa del mayor al menor (o del menor al mayor).",
+    "El total es `subtotal * (100 - d) / 100`.",
+    "Para 2 decimales usa `f\"{x:.2f}\"`."
+  ],
+  "tests": [
+    {
+      "stdin": "50\n12.5\n",
+      "stdout": "Subtotal: Q625.00\nDescuento: 10%\nTotal: Q562.50\n"
+    },
+    {
+      "stdin": "9\n3\n",
+      "stdout": "Subtotal: Q27.00\nDescuento: 0%\nTotal: Q27.00\n"
+    },
+    {
+      "stdin": "10\n2.5\n",
+      "stdout": "Subtotal: Q25.00\nDescuento: 5%\nTotal: Q23.75\n"
+    },
+    {
+      "stdin": "100\n1\n",
+      "stdout": "Subtotal: Q100.00\nDescuento: 15%\nTotal: Q85.00\n"
+    },
+    {
+      "stdin": "49\n10\n",
+      "stdout": "Subtotal: Q490.00\nDescuento: 5%\nTotal: Q465.50\n"
+    }
+  ]
+}

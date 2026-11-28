@@ -1,0 +1,29 @@
+{
+  "id": "P09",
+  "title": "La palabra más larga",
+  "level": "medio",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "Lee una frase (palabras separadas por un espacio) e imprime la **palabra más larga** y su largo. Si hay empate, gana la que aparece **primero**.\n\n```\nMás larga: <palabra> (<n> letras)\n```\n\nEjemplo: con `el perro come mucho` → `Más larga: perro (5 letras)`.",
+  "starter": "frase = input()\n",
+  "predict": [],
+  "hints": [
+    "`frase.split()` te da la lista de palabras.",
+    "Recorre la lista guardando la mejor hasta ahora; cámbiala solo si la nueva es **estrictamente** más larga.",
+    "Así el empate se queda con la primera."
+  ],
+  "tests": [
+    {
+      "stdin": "el perro come mucho\n",
+      "stdout": "Más larga: perro (5 letras)\n"
+    },
+    {
+      "stdin": "sol mar luz\n",
+      "stdout": "Más larga: sol (3 letras)\n"
+    },
+    {
+      "stdin": "programar en python es divertido\n",
+      "stdout": "Más larga: programar (9 letras)\n"
+    }
+  ]
+}

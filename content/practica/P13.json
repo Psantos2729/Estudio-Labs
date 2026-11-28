@@ -1,0 +1,33 @@
+{
+  "id": "P13",
+  "title": "La moda",
+  "level": "medio",
+  "zone": 2,
+  "topic": "vectores",
+  "statement": "La **moda** es el valor que más se repite. Lee `n` y luego `n` enteros (uno por línea).\n\nImprime `Moda: <x> (<veces> veces)`. Si hay empate, la moda es el **valor más pequeño** de los empatados.\n\nEjemplo: con `3, 1, 3, 2, 1` imprime `Moda: 1 (2 veces)`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Para cada valor cuenta cuántas veces aparece (`v.count(x)` o un ciclo anidado).",
+    "Quédate con el que tiene más apariciones.",
+    "En el empate, cambia la moda si el conteo es igual **y** el valor es menor."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n3\n1\n3\n2\n1\n",
+      "stdout": "Moda: 1 (2 veces)\n"
+    },
+    {
+      "stdin": "4\n7\n7\n7\n2\n",
+      "stdout": "Moda: 7 (3 veces)\n"
+    },
+    {
+      "stdin": "5\n9\n8\n8\n9\n1\n",
+      "stdout": "Moda: 8 (2 veces)\n"
+    },
+    {
+      "stdin": "6\n-2\n5\n-2\n5\n0\n5\n",
+      "stdout": "Moda: 5 (3 veces)\n"
+    }
+  ]
+}

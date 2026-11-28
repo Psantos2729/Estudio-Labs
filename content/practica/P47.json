@@ -1,0 +1,45 @@
+{
+  "id": "P47",
+  "title": "Número en palabras",
+  "level": "muy-dificil",
+  "zone": 2,
+  "topic": "funciones y cadenas",
+  "statement": "Lee un entero entre `0` y `999` e imprímelo **en palabras**, en español y en minúsculas.\n\nReglas: del 0 al 29 tienen nombre propio (`dieciséis`, `veintiuno`, `veintidós`, `veintitrés`, `veintiséis` con tilde); de 30 a 99 es `treinta y cinco`; `cien` solo para 100 y `ciento` para 101–199; `quinientos`, `setecientos`, `novecientos`.\n\nEjemplos: `0` → `cero`, `21` → `veintiuno`, `115` → `ciento quince`, `999` → `novecientos noventa y nueve`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Escribe listas con los nombres: del 0 al 29, las decenas (30, 40…) y las centenas.",
+    "Separa con funciones: `menor_100(n)` y luego la parte de las centenas.",
+    "Casos especiales: `100` es `cien`, y las centenas exactas no llevan nada después."
+  ],
+  "tests": [
+    {
+      "stdin": "0\n",
+      "stdout": "cero\n"
+    },
+    {
+      "stdin": "21\n",
+      "stdout": "veintiuno\n"
+    },
+    {
+      "stdin": "115\n",
+      "stdout": "ciento quince\n"
+    },
+    {
+      "stdin": "999\n",
+      "stdout": "novecientos noventa y nueve\n"
+    },
+    {
+      "stdin": "100\n",
+      "stdout": "cien\n"
+    },
+    {
+      "stdin": "570\n",
+      "stdout": "quinientos setenta\n"
+    },
+    {
+      "stdin": "346\n",
+      "stdout": "trescientos cuarenta y seis\n"
+    }
+  ]
+}

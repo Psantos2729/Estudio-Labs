@@ -1,0 +1,33 @@
+{
+  "id": "P11",
+  "title": "El segundo mayor",
+  "level": "medio",
+  "zone": 2,
+  "topic": "vectores",
+  "statement": "Lee `n` (cuántos números vienen) y después `n` enteros, uno por línea. Imprime el **segundo valor más grande distinto** del mayor.\n\nSi todos son iguales, imprime `No existe`.\n\nEjemplo: con `5` y luego `4, 9, 7, 9, 2` imprime `Segundo mayor: 7`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Guarda los números en una lista con un ciclo de `n` vueltas.",
+    "Encuentra el mayor; después busca el mayor entre los que son **distintos** de él.",
+    "Si no quedó ninguno distinto, no hay segundo mayor."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n4\n9\n7\n9\n2\n",
+      "stdout": "Segundo mayor: 7\n"
+    },
+    {
+      "stdin": "3\n5\n5\n5\n",
+      "stdout": "No existe\n"
+    },
+    {
+      "stdin": "2\n-1\n-8\n",
+      "stdout": "Segundo mayor: -8\n"
+    },
+    {
+      "stdin": "1\n10\n",
+      "stdout": "No existe\n"
+    }
+  ]
+}
