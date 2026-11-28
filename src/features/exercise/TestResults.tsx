@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import { ErrorExplain } from '@/features/runner/ErrorExplain';
 import type { TestResult } from '@/features/runner/check';
 
 /** Cada prueba: qué se escribió, qué se esperaba y qué imprimió el programa. */
@@ -22,6 +23,7 @@ export function TestResults({ results }: { results: TestResult[] }) {
             <span className="muted small">obtenido</span>
             <pre>{r.run.stdout}{r.run.error && <span className="runnable__err">{r.run.error}</span>}</pre>
           </div>
+          <ErrorExplain error={r.run.error} />
         </details>
       ))}
     </div>
