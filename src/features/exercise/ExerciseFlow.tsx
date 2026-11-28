@@ -6,12 +6,20 @@ import type { TestResult } from '@/features/runner/check';
 import { UnderstandStep } from './UnderstandStep';
 import { TextStep, type Field } from './TextStep';
 import { CodeStep } from './CodeStep';
+import { FlowStep } from '@/features/flow/FlowStep';
 import { useSavePractice, type Attempt } from './usePractice';
 import { ProgressBar } from '@/ui/primitives/ProgressBar';
 
-const STEPS = ['entender', 'analizar', 'pseudocódigo', 'código y pruebas'];
-// En un ejercicio de pseudocódigo, el pseudocódigo ES el código: se escribe y se prueba en el editor.
-const PSEUDO_STEPS = ['entender', 'analizar', 'pseudocódigo y pruebas'];
+const FLOW = 'diagrama de flujo'; // opcional: se puede saltar
+const LABELS: Record<string, string> = { pseudocódigo: 'Al pseudocódigo', [FLOW]: 'Al diagrama de flujo' };
+const NO_FLOW = ['M08', 'M09', 'M12']; // archivos, registros y pandas no se dibujan en un diagrama
+
+/** Pasos del ejercicio. En uno de pseudocódigo, el pseudocódigo ES el código: se escribe y se prueba en el editor. */
+function stepsOf(exercise: ExerciseDef): string[] {
+  const pseudo = exercise.language === 'pseudo';
+  const flow = NO_FLOW.includes(exercise.id.slice(0, 3)) ? [] : [FLOW];
+  return pseudo ? ['entender', 'analizar', ...flow, 'pseudocódigo y pruebas'] : ['entender', 'analizar', 'pseudocódigo', ...flow, 'código y pruebas'];
+}
 
 const ANALYSIS: Field[] = [
   { key: 'input', label: 'Entrada', hint: '¿Qué datos recibe el programa y de qué tipo son?' },
@@ -29,11 +37,14 @@ interface Props {
 
 /** Los pasos del ejercicio (diseño D1). Al probar, guarda el intento si hay sesión. */
 export function ExerciseFlow({ exercise, saved, canSave }: Props) {
-  const steps = exercise.language === 'pseudo' ? PSEUDO_STEPS : STEPS;
+  const steps = stepsOf(exercise);
   const codeStep = steps.length - 1;
   const [step, setStep] = useState(saved ? codeStep : 0);
   const [notes, setNotes] = useState<Record<string, string>>(saved?.notes ?? {});
-  const note = (k: string, v: string) => setNotes({ ...notes, [k]: v });
+  const note = (k: string, v: string) => setNotes((n) => ({ ...n, [k]: v }));
+  const now = steps[step];
+  const forward = () => setStep(step + 1);
+  const nextLabel = step + 1 === codeStep ? 'Abrir el editor' : LABELS[steps[step + 1]];
   const save = useSavePractice(exercise.id);
   const [passed, setPassed] = useState(false);
   const practice = /^P\d/.test(exercise.id); // problema de la zona de práctica: no tiene hermanos ni Continuar
@@ -64,9 +75,10 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
         ))}
       </ol>
       <div className="step-panel" key={step}>
-        {step === 0 && <UnderstandStep exercise={exercise} onDone={() => setStep(1)} />}
-        {step === 1 && <TextStep fields={ANALYSIS} values={notes} onChange={note} next={codeStep === 2 ? 'Abrir el editor' : 'Al pseudocódigo'} onDone={() => setStep(2)} />}
-        {step === 2 && step !== codeStep && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
+        {now === 'entender' && <UnderstandStep exercise={exercise} onDone={forward} />}
+        {now === 'analizar' && <TextStep fields={ANALYSIS} values={notes} onChange={note} next={nextLabel} onDone={forward} />}
+        {now === 'pseudocódigo' && <TextStep fields={PSEUDO} values={notes} onChange={note} next={nextLabel} onDone={forward} />}
+        {now === FLOW && <FlowStep exercise={exercise} value={notes.flow} onChange={(v) => note('flow', v)} pseudo={notes.pseudo} next={nextLabel} onDone={forward} />}
         {step === codeStep && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
       </div>
       {passed && (practice ? (
