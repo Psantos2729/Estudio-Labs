@@ -1,0 +1,33 @@
+{
+  "id": "P49",
+  "title": "Patrón con comodines",
+  "level": "muy-dificil",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "Lee un texto y un patrón, uno por línea. El patrón puede tener `?`, que coincide con **cualquier carácter** (uno solo).\n\nImprime las posiciones (desde 0) donde empieza una coincidencia del patrón en el texto, separadas por un espacio, y en otra línea `Coincidencias: <k>`. Si no hay, imprime solo `Coincidencias: 0`. Las coincidencias pueden encimarse.\n\nEjemplo: texto `abracadabra`, patrón `a?r` → `0 7` y `Coincidencias: 2`.",
+  "starter": "texto = input()\npatron = input()\n",
+  "predict": [],
+  "hints": [
+    "Prueba cada posición `i` desde 0 hasta `len(texto) - len(patron)`.",
+    "En cada una compara carácter por carácter: coincide si son iguales o si el del patrón es `?`.",
+    "Guarda las posiciones que coinciden completas."
+  ],
+  "tests": [
+    {
+      "stdin": "abracadabra\na?r\n",
+      "stdout": "0 7\nCoincidencias: 2\n"
+    },
+    {
+      "stdin": "aaaa\naa\n",
+      "stdout": "0 1 2\nCoincidencias: 3\n"
+    },
+    {
+      "stdin": "hola\nxyz\n",
+      "stdout": "Coincidencias: 0\n"
+    },
+    {
+      "stdin": "casa cosa cesa\nc?sa\n",
+      "stdout": "0 5 10\nCoincidencias: 3\n"
+    }
+  ]
+}

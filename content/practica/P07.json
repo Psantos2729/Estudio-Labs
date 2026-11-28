@@ -1,0 +1,33 @@
+{
+  "id": "P07",
+  "title": "MCD y MCM",
+  "level": "medio",
+  "zone": 1,
+  "topic": "ciclos",
+  "statement": "Lee dos enteros positivos, uno por línea, y calcula su **máximo común divisor** con el algoritmo de Euclides: mientras `b` no sea 0, cambia `(a, b)` por `(b, a % b)`; al terminar, `a` es el MCD.\n\nLuego usa que `MCM = a·b / MCD` (con los valores originales).\n\n```\nMCD: <x>\nMCM: <y>\n```\n\nEjemplo: con `12` y `18` → `MCD: 6` y `MCM: 36`.",
+  "starter": "a = int(input())\nb = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Guarda los valores originales antes del ciclo: Euclides los va cambiando.",
+    "En Python el cambio es una sola línea: `a, b = b, a % b`.",
+    "El MCM es entero: usa `//` para no imprimir `36.0`."
+  ],
+  "tests": [
+    {
+      "stdin": "12\n18\n",
+      "stdout": "MCD: 6\nMCM: 36\n"
+    },
+    {
+      "stdin": "7\n13\n",
+      "stdout": "MCD: 1\nMCM: 91\n"
+    },
+    {
+      "stdin": "100\n75\n",
+      "stdout": "MCD: 25\nMCM: 300\n"
+    },
+    {
+      "stdin": "21\n7\n",
+      "stdout": "MCD: 7\nMCM: 21\n"
+    }
+  ]
+}

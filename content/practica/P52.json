@@ -1,0 +1,33 @@
+{
+  "id": "P52",
+  "title": "Contar islas",
+  "level": "muy-dificil",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Lee `f c` y luego un mapa de `f` líneas con `c` caracteres: `1` es tierra y `0` es agua. Una **isla** es un grupo de tierras unidas por arriba, abajo, izquierda o derecha (no en diagonal).\n\nImprime cuántas islas hay y el tamaño de la más grande:\n\n```\nIslas: <k>\nMás grande: <t>\n```\n\nSi no hay tierra, `Más grande: 0`.",
+  "starter": "f, c = map(int, input().split())\n",
+  "predict": [],
+  "hints": [
+    "Recorre el mapa; cada vez que encuentres una tierra sin visitar, encontraste una isla nueva.",
+    "Desde ahí \"inunda\" toda la isla marcándola como visitada (con una pila o con recursión) y cuenta su tamaño.",
+    "Una pila evita el límite de recursión en mapas grandes."
+  ],
+  "tests": [
+    {
+      "stdin": "4 5\n11000\n11011\n00010\n10001\n",
+      "stdout": "Islas: 4\nMás grande: 4\n"
+    },
+    {
+      "stdin": "2 2\n00\n00\n",
+      "stdout": "Islas: 0\nMás grande: 0\n"
+    },
+    {
+      "stdin": "3 3\n111\n101\n111\n",
+      "stdout": "Islas: 1\nMás grande: 8\n"
+    },
+    {
+      "stdin": "3 4\n1010\n0101\n1010\n",
+      "stdout": "Islas: 6\nMás grande: 1\n"
+    }
+  ]
+}

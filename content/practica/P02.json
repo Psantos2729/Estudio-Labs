@@ -1,0 +1,37 @@
+{
+  "id": "P02",
+  "title": "Perfecto, abundante o deficiente",
+  "level": "medio",
+  "zone": 1,
+  "topic": "ciclos y divisores",
+  "statement": "Lee un entero `n > 1` y suma sus **divisores propios** (los que dividen a `n`, sin contar al mismo `n`).\n\n- Si la suma es igual a `n`, el número es **perfecto**.\n- Si es mayor, es **abundante**; si es menor, **deficiente**.\n\nImprime:\n\n```\nDivisores: <d1> <d2> ...\nSuma: <s>\n<n> es <perfecto|abundante|deficiente>\n```\n\nEjemplo: con `12` → `Divisores: 1 2 3 4 6`, `Suma: 16`, `12 es abundante`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Recorre `d` desde 1 hasta `n - 1` y quédate con los que cumplen `n % d == 0`.",
+    "Puedes ir armando el texto de los divisores y la suma en el mismo ciclo.",
+    "Al final, tres casos que se excluyen: `if`, `elif`, `else`."
+  ],
+  "tests": [
+    {
+      "stdin": "12\n",
+      "stdout": "Divisores: 1 2 3 4 6\nSuma: 16\n12 es abundante\n"
+    },
+    {
+      "stdin": "28\n",
+      "stdout": "Divisores: 1 2 4 7 14\nSuma: 28\n28 es perfecto\n"
+    },
+    {
+      "stdin": "13\n",
+      "stdout": "Divisores: 1\nSuma: 1\n13 es deficiente\n"
+    },
+    {
+      "stdin": "6\n",
+      "stdout": "Divisores: 1 2 3\nSuma: 6\n6 es perfecto\n"
+    },
+    {
+      "stdin": "945\n",
+      "stdout": "Divisores: 1 3 5 7 9 15 21 27 35 45 63 105 135 189 315\nSuma: 975\n945 es abundante\n"
+    }
+  ]
+}

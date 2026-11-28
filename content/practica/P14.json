@@ -1,0 +1,29 @@
+{
+  "id": "P14",
+  "title": "Mezclar dos listas ordenadas",
+  "level": "medio",
+  "zone": 2,
+  "topic": "ordenar y buscar",
+  "statement": "Lee dos vectores **ya ordenados de menor a mayor**. Para cada uno viene primero su tamaño y después sus valores, uno por línea.\n\nUne los dos en uno solo, también ordenado, **sin usar `sort` ni `sorted`**: avanza con un índice en cada vector y toma siempre el menor de los dos que señalan.\n\nImprime el resultado en una línea, separado por espacios.\n\nEjemplo: `1 4 9` y `2 3 10 12` → `1 2 3 4 9 10 12`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Usa `i` para el primer vector y `j` para el segundo, ambos empiezan en 0.",
+    "Mientras los dos tengan elementos, copia el menor y avanza solo ese índice.",
+    "Cuando uno se acaba, copia lo que quede del otro."
+  ],
+  "tests": [
+    {
+      "stdin": "3\n1\n4\n9\n4\n2\n3\n10\n12\n",
+      "stdout": "1 2 3 4 9 10 12\n"
+    },
+    {
+      "stdin": "2\n5\n5\n2\n1\n5\n",
+      "stdout": "1 5 5 5\n"
+    },
+    {
+      "stdin": "1\n7\n3\n1\n2\n3\n",
+      "stdout": "1 2 3 7\n"
+    }
+  ]
+}

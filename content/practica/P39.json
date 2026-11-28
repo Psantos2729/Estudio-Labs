@@ -1,0 +1,29 @@
+{
+  "id": "P39",
+  "title": "Invertir palabras con una pila",
+  "level": "dificil",
+  "zone": 4,
+  "topic": "pilas",
+  "statement": "Lee una frase. Usando una **pila**, imprime:\n\n1. En la primera línea, las palabras en orden inverso.\n2. En la segunda, cada palabra con sus letras al revés pero en su lugar original.\n\nEjemplo: `hola mundo feliz` →\n\n```\nfeliz mundo hola\naloh odnum zilef\n```",
+  "starter": "frase = input()\n",
+  "predict": [],
+  "hints": [
+    "Para la primera línea, apila las palabras y luego desapílalas.",
+    "Para la segunda, haz lo mismo con las letras de cada palabra.",
+    "Une con `\" \".join(...)` para que queden separadas por un espacio."
+  ],
+  "tests": [
+    {
+      "stdin": "hola mundo feliz\n",
+      "stdout": "feliz mundo hola\naloh odnum zilef\n"
+    },
+    {
+      "stdin": "python\n",
+      "stdout": "python\nnohtyp\n"
+    },
+    {
+      "stdin": "a bc def\n",
+      "stdout": "def bc a\na cb fed\n"
+    }
+  ]
+}

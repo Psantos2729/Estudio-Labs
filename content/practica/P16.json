@@ -1,0 +1,38 @@
+{
+  "id": "P16",
+  "title": "Contar como wc",
+  "level": "medio",
+  "zone": 3,
+  "topic": "archivos de texto",
+  "statement": "En la carpeta hay un archivo `texto.txt`. Ábrelo y muestra cuántas **líneas**, **palabras** (separadas por espacios) y **caracteres** tiene. Los caracteres se cuentan **sin** los saltos de línea.\n\n```\nLíneas: <l>\nPalabras: <p>\nCaracteres: <c>\n```",
+  "starter": "with open('texto.txt') as f:\n    pass\n",
+  "predict": [],
+  "hints": [
+    "Recorre el archivo línea por línea con `for linea in f:`.",
+    "Quita el salto con `linea.rstrip(\"\\n\")` antes de contar los caracteres.",
+    "Las palabras de una línea son `len(linea.split())`."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "stdout": "Líneas: 2\nPalabras: 6\nCaracteres: 28\n",
+      "files": {
+        "texto.txt": "Hola mundo\nesto es una prueba\n"
+      }
+    },
+    {
+      "stdin": "",
+      "stdout": "Líneas: 1\nPalabras: 3\nCaracteres: 14\n",
+      "files": {
+        "texto.txt": "una sola línea"
+      }
+    },
+    {
+      "stdin": "",
+      "stdout": "Líneas: 4\nPalabras: 6\nCaracteres: 13\n",
+      "files": {
+        "texto.txt": "a b c\n\nd   e\nfin\n"
+      }
+    }
+  ]
+}

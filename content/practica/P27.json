@@ -1,0 +1,33 @@
+{
+  "id": "P27",
+  "title": "Anagramas",
+  "level": "dificil",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "Dos frases son **anagramas** si usan exactamente las mismas letras, la misma cantidad de veces. Ignora los espacios y las mayúsculas.\n\nLee dos frases, una por línea, e imprime `Son anagramas` o `No son anagramas`.\n\nEjemplo: `Roma` y `amor` → `Son anagramas`.",
+  "starter": "a = input()\nb = input()\n",
+  "predict": [],
+  "hints": [
+    "Limpia cada frase: minúsculas y sin espacios (`.replace(\" \", \"\")`).",
+    "Si las ordenas letra por letra (`sorted`) los anagramas quedan iguales.",
+    "Otra forma: cuenta cada letra en un diccionario y compara los dos."
+  ],
+  "tests": [
+    {
+      "stdin": "Roma\namor\n",
+      "stdout": "Son anagramas\n"
+    },
+    {
+      "stdin": "La cosa\nsaco la\n",
+      "stdout": "Son anagramas\n"
+    },
+    {
+      "stdin": "hola\nhoja\n",
+      "stdout": "No son anagramas\n"
+    },
+    {
+      "stdin": "aab\nabb\n",
+      "stdout": "No son anagramas\n"
+    }
+  ]
+}

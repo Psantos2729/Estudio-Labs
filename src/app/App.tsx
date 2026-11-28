@@ -23,6 +23,8 @@ const RankingPage = page(() => import('@/features/game/RankingPage'), 'RankingPa
 const WorkshopPage = page(() => import('@/features/game/WorkshopPage'), 'WorkshopPage');
 const AchievementsPage = page(() => import('@/features/game/AchievementsPage'), 'AchievementsPage');
 const ProfilePage = page(() => import('@/features/game/ProfilePage'), 'ProfilePage');
+const PracticePage = page(() => import('@/features/practice/PracticePage'), 'PracticePage');
+const ProblemPage = page(() => import('@/features/practice/ProblemPage'), 'ProblemPage');
 const GuidePage = page(() => import('@/features/pseudo/GuidePage'), 'GuidePage');
 
 // El mapa es la pestaña que más se abre: se descarga en segundo plano apenas carga la portada.
@@ -40,6 +42,8 @@ export function App() {
             <Route path="leccion/:lessonId" element={<LessonPage />} />
             <Route path="ejercicio/:exerciseId" element={<ExercisePage />} />
             <Route path="examen/:moduleId" element={<ExamPage />} />
+            <Route path="practica" element={<PracticePage />} />
+            <Route path="practica/:problemId" element={<ProblemPage />} />
             <Route path="repaso" element={<ReviewListPage />} />
             <Route path="repaso/:moduleId" element={<ReviewPage />} />
             <Route path="historial" element={<HistoryPage />} />

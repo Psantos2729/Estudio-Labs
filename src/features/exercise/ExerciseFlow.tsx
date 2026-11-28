@@ -36,6 +36,7 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
   const note = (k: string, v: string) => setNotes({ ...notes, [k]: v });
   const save = useSavePractice(exercise.id);
   const [passed, setPassed] = useState(false);
+  const practice = /^P\d/.test(exercise.id); // problema de la zona de práctica: no tiene hermanos ni Continuar
   const siblings = exercisesOf(exercise.id.slice(0, 3));
   const after = siblings.slice(siblings.findIndex((e) => e.id === exercise.id) + 1);
   // Desde un ejercicio normal, Continuar salta los retos; el reto que sigue se ofrece aparte.
@@ -68,11 +69,13 @@ export function ExerciseFlow({ exercise, saved, canSave }: Props) {
         {step === 2 && step !== codeStep && <TextStep fields={PSEUDO} values={notes} onChange={note} next="Abrir el editor" onDone={() => setStep(3)} />}
         {step === codeStep && <CodeStep exercise={exercise} initialCode={saved?.code ?? exercise.starter} onTested={onTested} />}
       </div>
-      {passed && (
+      {passed && (practice ? (
+        <Link className="btn btn--primary enter" to="/practica">Otro problema →</Link>
+      ) : (
         <Link className="btn btn--primary enter" to={next ? `/ejercicio/${next.id}` : '/'}>
           {next ? `Continuar: ${next.title} →` : 'Terminé los ejercicios →'}
         </Link>
-      )}
+      ))}
       {passed && reto && <Link className="btn btn--ghost" to={`/ejercicio/${reto.id}`}>o intenta el reto: {reto.title}</Link>}
       <p className="muted small" aria-live="polite">
         {!canSave && 'Modo invitado: tu trabajo no se guarda. Entra para guardarlo.'}

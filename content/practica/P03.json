@@ -1,0 +1,33 @@
+{
+  "id": "P03",
+  "title": "Collatz: el viaje hasta 1",
+  "level": "medio",
+  "zone": 1,
+  "topic": "ciclos",
+  "statement": "Empieza con un entero positivo `n` y repite hasta llegar a 1: si `n` es par, divídelo entre 2; si es impar, cámbialo por `3n + 1`.\n\nImprime cuántos **pasos** tomó llegar a 1 y el **valor más alto** que se alcanzó en el camino (contando el inicial):\n\n```\nPasos: <p>\nMáximo: <m>\n```\n\nEjemplo: con `6` el camino es 6, 3, 10, 5, 16, 8, 4, 2, 1 → `Pasos: 8` y `Máximo: 16`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Usa `while n != 1:` porque no sabes cuántas vueltas dará.",
+    "Lleva un contador de pasos y una variable `maximo` que empieza en el valor inicial.",
+    "Con `n = 1` no hay pasos: tu programa debe imprimir `Pasos: 0` y `Máximo: 1`."
+  ],
+  "tests": [
+    {
+      "stdin": "6\n",
+      "stdout": "Pasos: 8\nMáximo: 16\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "Pasos: 0\nMáximo: 1\n"
+    },
+    {
+      "stdin": "27\n",
+      "stdout": "Pasos: 111\nMáximo: 9232\n"
+    },
+    {
+      "stdin": "16\n",
+      "stdout": "Pasos: 4\nMáximo: 16\n"
+    }
+  ]
+}

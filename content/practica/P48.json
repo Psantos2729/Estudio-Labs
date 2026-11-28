@@ -1,0 +1,29 @@
+{
+  "id": "P48",
+  "title": "Ordenar con varios criterios",
+  "level": "muy-dificil",
+  "zone": 2,
+  "topic": "ordenar y buscar",
+  "statement": "Lee `n` y luego `n` registros, uno por línea, con el formato `nombre edad nota` (el nombre es una sola palabra; edad y nota son enteros).\n\nOrdénalos así: **nota de mayor a menor**; si empatan, **edad de menor a mayor**; si siguen empatados, **nombre en orden alfabético**. Escribe tu propio ordenamiento (burbuja o inserción), sin `sort` ni `sorted`.\n\nImprime cada registro como `<posición>. <nombre> (<edad>) - <nota>`, desde 1.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Escribe una función `va_antes(a, b)` que diga si el registro `a` debe ir antes que `b`.",
+    "Compara primero la nota; si es igual, la edad; si es igual, el nombre.",
+    "Usa esa función dentro de tu burbuja en lugar de `>`."
+  ],
+  "tests": [
+    {
+      "stdin": "5\nAna 20 90\nLuis 19 90\nBeto 22 75\nCarla 19 90\nDiana 30 100\n",
+      "stdout": "1. Diana (30) - 100\n2. Carla (19) - 90\n3. Luis (19) - 90\n4. Ana (20) - 90\n5. Beto (22) - 75\n"
+    },
+    {
+      "stdin": "3\nzeta 18 50\nalfa 18 50\nmedio 17 50\n",
+      "stdout": "1. medio (17) - 50\n2. alfa (18) - 50\n3. zeta (18) - 50\n"
+    },
+    {
+      "stdin": "1\nSolo 25 77\n",
+      "stdout": "1. Solo (25) - 77\n"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "id": "P01",
+  "title": "Número de Armstrong",
+  "level": "medio",
+  "zone": 1,
+  "topic": "ciclos y dígitos",
+  "statement": "Un número es **de Armstrong** si la suma de sus dígitos, cada uno elevado a la cantidad de dígitos, da el mismo número. Por ejemplo `153 = 1³ + 5³ + 3³`.\n\nLee un entero positivo `n` e imprime `<n> es de Armstrong` o `<n> no es de Armstrong`.\n\nEjemplo: con `9474` imprime `9474 es de Armstrong` (9⁴ + 4⁴ + 7⁴ + 4⁴ = 9474).",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Primero cuenta los dígitos con un ciclo que divide entre 10 (o con `len(str(n))`).",
+    "En un segundo ciclo saca cada dígito con `% 10`, elévalo a esa cantidad y acumúlalo.",
+    "Guarda una copia de `n` antes de ir dividiéndolo: al final la necesitas para comparar."
+  ],
+  "tests": [
+    {
+      "stdin": "153\n",
+      "stdout": "153 es de Armstrong\n"
+    },
+    {
+      "stdin": "9474\n",
+      "stdout": "9474 es de Armstrong\n"
+    },
+    {
+      "stdin": "100\n",
+      "stdout": "100 no es de Armstrong\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "7 es de Armstrong\n"
+    },
+    {
+      "stdin": "9475\n",
+      "stdout": "9475 no es de Armstrong\n"
+    }
+  ]
+}

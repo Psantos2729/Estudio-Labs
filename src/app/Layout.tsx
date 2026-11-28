@@ -24,6 +24,7 @@ export function Layout() {
         <nav className="topbar__nav" aria-label="Principal">
           <NavLink to="/" end>inicio</NavLink>
           <NavLink to="/mapa">mapa</NavLink>
+          <NavLink to="/practica">práctica</NavLink>
           <NavLink to="/pseudocodigo">pseudocódigo</NavLink>
           <NavLink to="/repaso">repaso</NavLink>
           <NavLink to="/historial">historial</NavLink>

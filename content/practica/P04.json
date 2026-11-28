@@ -1,0 +1,37 @@
+{
+  "id": "P04",
+  "title": "Primos en un rango",
+  "level": "medio",
+  "zone": 1,
+  "topic": "ciclos anidados",
+  "statement": "Lee dos enteros `a` y `b` (con `a <= b`), uno por línea, e imprime en una sola línea, separados por un espacio, todos los **números primos** entre `a` y `b` (incluidos).\n\nSi no hay ninguno, imprime `Ninguno`.\n\nEjemplo: con `10` y `30` imprime `11 13 17 19 23 29`.",
+  "starter": "a = int(input())\nb = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Escribe primero cómo saber si UN número es primo: mayor que 1 y sin divisores entre 2 y su raíz.",
+    "Después recórrelo para cada número del rango y guarda los primos en una lista.",
+    "Al final: si la lista está vacía imprime `Ninguno`; si no, `print(*primos)`."
+  ],
+  "tests": [
+    {
+      "stdin": "10\n30\n",
+      "stdout": "11 13 17 19 23 29\n"
+    },
+    {
+      "stdin": "0\n2\n",
+      "stdout": "2\n"
+    },
+    {
+      "stdin": "24\n28\n",
+      "stdout": "Ninguno\n"
+    },
+    {
+      "stdin": "1\n1\n",
+      "stdout": "Ninguno\n"
+    },
+    {
+      "stdin": "90\n110\n",
+      "stdout": "97 101 103 107 109\n"
+    }
+  ]
+}

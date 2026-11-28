@@ -1,0 +1,29 @@
+{
+  "id": "P33",
+  "title": "Multiplicar matrices",
+  "level": "dificil",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Lee la matriz `A` (primero `m n`, luego `m` filas) y la matriz `B` (primero `n p`, luego `n` filas). Imprime `A × B`, una fila por línea.\n\nSi las columnas de `A` no coinciden con las filas de `B`, imprime `No se pueden multiplicar`. Las pruebas incluyen ese caso.\n\nRecuerda: `C[i][j]` es la suma de `A[i][k] * B[k][j]` para cada `k`.",
+  "starter": "m, n = map(int, input().split())\n",
+  "predict": [],
+  "hints": [
+    "Lee cada matriz con un ciclo de `input().split()`.",
+    "Revisa las dimensiones **antes** de calcular.",
+    "Son tres ciclos: `i` (filas de A), `j` (columnas de B) y `k` para la suma."
+  ],
+  "tests": [
+    {
+      "stdin": "2 3\n1 2 3\n4 5 6\n3 2\n7 8\n9 10\n11 12\n",
+      "stdout": "58 64\n139 154\n"
+    },
+    {
+      "stdin": "2 2\n1 0\n0 1\n2 2\n5 6\n7 8\n",
+      "stdout": "5 6\n7 8\n"
+    },
+    {
+      "stdin": "2 2\n1 2\n3 4\n3 1\n1\n2\n3\n",
+      "stdout": "No se pueden multiplicar\n"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "P36",
+  "title": "Buscar una palabra en el archivo",
+  "level": "dificil",
+  "zone": 3,
+  "topic": "archivos de texto",
+  "statement": "Lee una palabra. Luego abre `poema.txt` e imprime el número (desde 1) de cada línea donde aparece esa palabra **como palabra completa**, sin importar mayúsculas. Las palabras del archivo pueden venir pegadas a signos como `,` `.` `;` `!` `?`.\n\n```\nLínea <k>: <texto de la línea>\n...\nAparece en <x> líneas\n```\n\nSi no aparece en ninguna, imprime solo `No aparece`.",
+  "starter": "palabra = input()\nwith open('poema.txt') as f:\n    pass\n",
+  "predict": [],
+  "hints": [
+    "Usa `enumerate(f, start=1)` para tener el número de línea.",
+    "Limpia cada palabra de la línea con `.strip(\",.;:!?\")` y pásala a minúsculas.",
+    "Cuenta las líneas que coinciden para el mensaje final."
+  ],
+  "tests": [
+    {
+      "stdin": "mar\n",
+      "stdout": "Línea 1: El mar, el mar.\nLínea 3: Y el MAR se va\nAparece en 2 líneas\n",
+      "files": {
+        "poema.txt": "El mar, el mar.\nMarinero en tierra\nY el MAR se va\n"
+      }
+    },
+    {
+      "stdin": "sol\n",
+      "stdout": "No aparece\n",
+      "files": {
+        "poema.txt": "La luna sale\nde noche\n"
+      }
+    },
+    {
+      "stdin": "casa\n",
+      "stdout": "Línea 1: ¡Casa! dije\nAparece en 1 líneas\n",
+      "files": {
+        "poema.txt": "¡Casa! dije\ncasas no\n"
+      }
+    }
+  ]
+}

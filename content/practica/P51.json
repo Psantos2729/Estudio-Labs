@@ -1,0 +1,33 @@
+{
+  "id": "P51",
+  "title": "Juego de la vida",
+  "level": "muy-dificil",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Lee `f c g` (filas, columnas y generaciones) y luego la cuadrícula: `#` es una célula viva y `.` una muerta.\n\nEn cada generación, todas cambian **a la vez** según sus 8 vecinas (lo de fuera del borde cuenta como muerto):\n\n- Una viva con 2 o 3 vecinas vivas sigue viva; si no, muere.\n- Una muerta con exactamente 3 vecinas vivas nace.\n\nImprime la cuadrícula después de `g` generaciones y luego `Vivas: <k>`.",
+  "starter": "f, c, g = map(int, input().split())\n",
+  "predict": [],
+  "hints": [
+    "Guarda la cuadrícula como lista de listas de caracteres.",
+    "Calcula la nueva generación en una matriz **aparte**; no cambies la actual mientras cuentas vecinas.",
+    "Para contar vecinas recorre `di` y `dj` en `-1, 0, 1`, saltando `(0, 0)` y lo que quede fuera."
+  ],
+  "tests": [
+    {
+      "stdin": "5 5 1\n.....\n..#..\n..#..\n..#..\n.....\n",
+      "stdout": ".....\n.....\n.###.\n.....\n.....\nVivas: 3\n"
+    },
+    {
+      "stdin": "4 4 3\n....\n.##.\n.##.\n....\n",
+      "stdout": "....\n.##.\n.##.\n....\nVivas: 4\n"
+    },
+    {
+      "stdin": "6 6 4\n.#....\n..#...\n###...\n......\n......\n......\n",
+      "stdout": "......\n..#...\n...#..\n.###..\n......\n......\nVivas: 5\n"
+    },
+    {
+      "stdin": "3 3 1\n#..\n...\n..#\n",
+      "stdout": "...\n...\n...\nVivas: 0\n"
+    }
+  ]
+}

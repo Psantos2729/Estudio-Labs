@@ -1,0 +1,33 @@
+{
+  "id": "P12",
+  "title": "Rotar un vector",
+  "level": "medio",
+  "zone": 2,
+  "topic": "vectores",
+  "statement": "Lee `n`, luego `n` enteros (uno por línea) y al final un entero `k >= 0`. Rota el vector `k` posiciones **a la derecha**: el último pasa a ser el primero, `k` veces.\n\nImprime el vector rotado en una línea, separado por espacios.\n\nEjemplo: con `1 2 3 4 5` y `k = 2` imprime `4 5 1 2 3`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Rotar `n` veces deja todo igual: basta con rotar `k % n`.",
+    "El elemento que termina en la posición `(i + k) % n` es el que estaba en `i`.",
+    "También sirve unir dos rebanadas: las últimas `k` y luego las primeras."
+  ],
+  "tests": [
+    {
+      "stdin": "5\n1\n2\n3\n4\n5\n2\n",
+      "stdout": "4 5 1 2 3\n"
+    },
+    {
+      "stdin": "3\n7\n8\n9\n0\n",
+      "stdout": "7 8 9\n"
+    },
+    {
+      "stdin": "4\n1\n2\n3\n4\n10\n",
+      "stdout": "3 4 1 2\n"
+    },
+    {
+      "stdin": "1\n42\n5\n",
+      "stdout": "42\n"
+    }
+  ]
+}

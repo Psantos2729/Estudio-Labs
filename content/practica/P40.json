@@ -1,0 +1,29 @@
+{
+  "id": "P40",
+  "title": "Editor con deshacer",
+  "level": "dificil",
+  "zone": 4,
+  "topic": "pilas",
+  "statement": "Simula un editor de texto que empieza vacío. Lee `n` y luego `n` comandos, uno por línea:\n\n- `escribir <texto>`: agrega el texto al final (tal cual, sin espacio extra).\n- `borrar <k>`: borra los últimos `k` caracteres (o todos, si hay menos).\n- `deshacer`: vuelve al texto de antes del último `escribir` o `borrar` que **no** se haya deshecho. Si no hay nada que deshacer, no pasa nada.\n\nAl final imprime `Texto: <texto>`.",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Guarda en una pila el texto **anterior** cada vez que escribes o borras.",
+    "`deshacer` saca el tope de la pila y lo vuelve el texto actual.",
+    "El texto puede llevar espacios: sepáralo solo en el primer espacio con `split(\" \", 1)`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\nescribir hola\nescribir  mundo\nborrar 3\ndeshacer\n",
+      "stdout": "Texto: hola mundo\n"
+    },
+    {
+      "stdin": "5\nescribir abc\ndeshacer\ndeshacer\nescribir xy\nborrar 10\n",
+      "stdout": "Texto: \n"
+    },
+    {
+      "stdin": "6\nescribir uno\nescribir dos\nescribir tres\ndeshacer\ndeshacer\nescribir !\n",
+      "stdout": "Texto: uno!\n"
+    }
+  ]
+}

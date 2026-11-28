@@ -1,0 +1,37 @@
+{
+  "id": "P55",
+  "title": "Evaluar una expresión infija",
+  "level": "muy-dificil",
+  "zone": 4,
+  "topic": "infija y postfija",
+  "statement": "Lee una expresión infija con **enteros no negativos** (pueden tener varios dígitos), los operadores `+ - *` y paréntesis. Puede tener espacios en cualquier lugar.\n\nCalcula su valor respetando la precedencia (`*` antes que `+ -`, y de izquierda a derecha) e imprime `<expresión sin espacios> = <valor>`. No uses `eval`.\n\nEjemplo: `2 + 3*(10 - 4)` → `2+3*(10-4) = 20`.",
+  "starter": "expr = input()\n",
+  "predict": [],
+  "hints": [
+    "Primero separa en tokens: junta los dígitos seguidos en un solo número y salta los espacios.",
+    "Convierte a postfija (como en el problema anterior) y luego evalúa la postfija con otra pila.",
+    "También puedes usar dos pilas a la vez: una de números y otra de operadores."
+  ],
+  "tests": [
+    {
+      "stdin": "2 + 3*(10 - 4)\n",
+      "stdout": "2+3*(10-4) = 20\n"
+    },
+    {
+      "stdin": "100-20-30\n",
+      "stdout": "100-20-30 = 50\n"
+    },
+    {
+      "stdin": "((7))\n",
+      "stdout": "((7)) = 7\n"
+    },
+    {
+      "stdin": "2*3+4*5\n",
+      "stdout": "2*3+4*5 = 26\n"
+    },
+    {
+      "stdin": "12*(3+4)*(1+1) - 100\n",
+      "stdout": "12*(3+4)*(1+1)-100 = 68\n"
+    }
+  ]
+}

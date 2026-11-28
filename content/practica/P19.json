@@ -1,0 +1,28 @@
+{
+  "id": "P19",
+  "title": "Frecuencia de palabras",
+  "level": "medio",
+  "topic": "diccionarios",
+  "statement": "Lee una frase y cuenta cuántas veces aparece cada palabra, sin importar mayúsculas (todo se compara en minúsculas). Las palabras van separadas por espacios y no traen signos.\n\nImprime cada palabra **en orden alfabético** con su conteo:\n\n```\n<palabra>: <veces>\n```\n\nEjemplo: `El gato y el perro` → `el: 2`, `gato: 1`, `perro: 1`, `y: 1`.",
+  "starter": "frase = input()\n",
+  "predict": [],
+  "hints": [
+    "Un diccionario `{palabra: veces}` es perfecto aquí: empieza vacío.",
+    "Para cada palabra: `cuenta[p] = cuenta.get(p, 0) + 1`.",
+    "Recorre `sorted(cuenta)` para imprimir en orden alfabético."
+  ],
+  "tests": [
+    {
+      "stdin": "El gato y el perro\n",
+      "stdout": "el: 2\ngato: 1\nperro: 1\ny: 1\n"
+    },
+    {
+      "stdin": "uno dos uno tres dos uno\n",
+      "stdout": "dos: 2\ntres: 1\nuno: 3\n"
+    },
+    {
+      "stdin": "Hola\n",
+      "stdout": "hola: 1\n"
+    }
+  ]
+}

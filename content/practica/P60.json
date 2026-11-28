@@ -1,0 +1,28 @@
+{
+  "id": "P60",
+  "title": "La cola del banco",
+  "level": "muy-dificil",
+  "topic": "simulación",
+  "statement": "Un banco tiene **una sola caja**. Lee `n` y luego `n` clientes, uno por línea, como `<llegada> <duración>` en minutos (vienen ordenados por llegada). Cada cliente se atiende apenas llega si la caja está libre; si no, espera su turno.\n\nPara cada cliente imprime `Cliente <i>: espera <e> min, sale en el minuto <s>` (desde 1). Al final:\n\n```\nEspera promedio: <p> min      (con 2 decimales)\nMayor espera: cliente <i>      (el primero si hay empate)\n```",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Lleva una variable con el minuto en que la caja queda libre.",
+    "Un cliente empieza en `max(llegada, libre)`; su espera es `inicio - llegada`.",
+    "Al salir, la caja queda libre en `inicio + duración`."
+  ],
+  "tests": [
+    {
+      "stdin": "4\n0 5\n2 3\n3 4\n20 1\n",
+      "stdout": "Cliente 1: espera 0 min, sale en el minuto 5\nCliente 2: espera 3 min, sale en el minuto 8\nCliente 3: espera 5 min, sale en el minuto 12\nCliente 4: espera 0 min, sale en el minuto 21\nEspera promedio: 2.00 min\nMayor espera: cliente 3\n"
+    },
+    {
+      "stdin": "2\n0 1\n5 1\n",
+      "stdout": "Cliente 1: espera 0 min, sale en el minuto 1\nCliente 2: espera 0 min, sale en el minuto 6\nEspera promedio: 0.00 min\nMayor espera: cliente 1\n"
+    },
+    {
+      "stdin": "3\n0 10\n0 10\n0 10\n",
+      "stdout": "Cliente 1: espera 0 min, sale en el minuto 10\nCliente 2: espera 10 min, sale en el minuto 20\nCliente 3: espera 20 min, sale en el minuto 30\nEspera promedio: 10.00 min\nMayor espera: cliente 3\n"
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "id": "P56",
+  "title": "Laberinto: el camino más corto",
+  "level": "muy-dificil",
+  "zone": 4,
+  "topic": "colas y laberintos",
+  "statement": "Lee `f c` y luego un laberinto de `f` líneas: `#` es pared, `.` es libre, `S` es la salida del robot y `E` la meta. Se mueve arriba, abajo, izquierda o derecha.\n\nImprime el **número mínimo de pasos** de `S` a `E` como `Pasos: <k>`, o `Sin salida` si no se puede llegar.\n\nUna búsqueda con pila (como en M10) encuentra **un** camino; para el más corto usa una **cola**: explora por \"capas\", primero todo lo que está a 1 paso, luego a 2…",
+  "starter": "f, c = map(int, input().split())\n",
+  "predict": [],
+  "hints": [
+    "Guarda en la cola pares `(fila, columna)` y en una matriz la distancia de cada casilla visitada.",
+    "Saca del **frente** de la cola (`collections.deque` y `popleft`), y mete al final los vecinos libres no visitados con distancia + 1.",
+    "Cuando saques la `E`, su distancia es la respuesta."
+  ],
+  "tests": [
+    {
+      "stdin": "5 5\nS...#\n.##.#\n.#...\n.#.#.\n...#E\n",
+      "stdout": "Pasos: 8\n"
+    },
+    {
+      "stdin": "3 3\nS#E\n.#.\n.#.\n",
+      "stdout": "Sin salida\n"
+    },
+    {
+      "stdin": "1 2\nSE\n",
+      "stdout": "Pasos: 1\n"
+    },
+    {
+      "stdin": "4 6\nS.....\n####.#\n......\n.####E\n",
+      "stdout": "Pasos: 8\n"
+    }
+  ]
+}

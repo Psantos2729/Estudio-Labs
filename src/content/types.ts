@@ -59,3 +59,12 @@ export interface LessonDef {
   title: string;
   body: string;
 }
+
+export type PracticeLevel = 'medio' | 'dificil' | 'muy-dificil';
+
+/** Problema suelto de la zona de práctica general (content/practica/PNN.json). */
+export interface PracticeDef extends ExerciseDef {
+  level: PracticeLevel;
+  zone?: number; // 1–4: sector del mapa con el que se relaciona; sin zona, es un tema extra
+  topic: string;
+}

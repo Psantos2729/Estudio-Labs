@@ -1,0 +1,37 @@
+{
+  "id": "P18",
+  "title": "Paréntesis balanceados",
+  "level": "medio",
+  "zone": 4,
+  "topic": "pilas",
+  "statement": "Lee una línea con una expresión y decide si sus signos de agrupación `()`, `[]` y `{}` están **balanceados**: cada uno que abre se cierra con el del mismo tipo y en el orden correcto. Lo demás se ignora.\n\nImprime `Balanceada` o `No balanceada`.\n\nEjemplos: `{a[(b+c)*2]}` está balanceada; `(a[b)c]` no.",
+  "starter": "expr = input()\n",
+  "predict": [],
+  "hints": [
+    "Usa una lista como pila: cuando algo abre, `append`.",
+    "Cuando algo cierra, la pila no puede estar vacía y su tope debe ser la pareja que abre.",
+    "Al final, la pila debe quedar vacía."
+  ],
+  "tests": [
+    {
+      "stdin": "{a[(b+c)*2]}\n",
+      "stdout": "Balanceada\n"
+    },
+    {
+      "stdin": "(a[b)c]\n",
+      "stdout": "No balanceada\n"
+    },
+    {
+      "stdin": "((x)\n",
+      "stdout": "No balanceada\n"
+    },
+    {
+      "stdin": "sin signos\n",
+      "stdout": "Balanceada\n"
+    },
+    {
+      "stdin": ")(\n",
+      "stdout": "No balanceada\n"
+    }
+  ]
+}

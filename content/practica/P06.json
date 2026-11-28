@@ -1,0 +1,33 @@
+{
+  "id": "P06",
+  "title": "Cambio en billetes",
+  "level": "medio",
+  "zone": 1,
+  "topic": "división entera y módulo",
+  "statement": "Un cajero entrega un monto entero en quetzales usando la menor cantidad de billetes de **200, 100, 50, 20, 10, 5 y 1**.\n\nLee el monto e imprime, del billete más grande al más pequeño, **solo los que se usan**:\n\n```\n<billete>: <cantidad>\n```\n\nEjemplo: con `385` imprime `200: 1`, `100: 1`, `50: 1`, `20: 1`, `10: 1`, `5: 1`.",
+  "starter": "monto = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Guarda los billetes en una lista de mayor a menor y recórrela.",
+    "Para cada billete, `monto // b` dice cuántos caben y `monto % b` lo que sobra.",
+    "Solo imprime cuando la cantidad es mayor que 0."
+  ],
+  "tests": [
+    {
+      "stdin": "385\n",
+      "stdout": "200: 1\n100: 1\n50: 1\n20: 1\n10: 1\n5: 1\n"
+    },
+    {
+      "stdin": "1000\n",
+      "stdout": "200: 5\n"
+    },
+    {
+      "stdin": "9\n",
+      "stdout": "5: 1\n1: 4\n"
+    },
+    {
+      "stdin": "276\n",
+      "stdout": "200: 1\n50: 1\n20: 1\n5: 1\n1: 1\n"
+    }
+  ]
+}

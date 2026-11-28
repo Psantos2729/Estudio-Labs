@@ -1,0 +1,37 @@
+{
+  "id": "P25",
+  "title": "Cambio de base",
+  "level": "dificil",
+  "zone": 1,
+  "topic": "ciclos y dígitos",
+  "statement": "Lee un entero `n >= 0` y una base `b` entre 2 y 16 (uno por línea). Escribe `n` en base `b` usando los dígitos `0123456789ABCDEF`, **sin** usar `bin`, `hex`, `format` ni similares.\n\nImprime `<n> en base <b> = <resultado>`.\n\nEjemplo: `255` y `16` → `255 en base 16 = FF`.",
+  "starter": "n = int(input())\nb = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Divide entre la base una y otra vez: cada residuo es un dígito, del último al primero.",
+    "Usa la cadena `\"0123456789ABCDEF\"` para pasar el residuo a su símbolo.",
+    "Cuidado con `n = 0`: debe dar `0`."
+  ],
+  "tests": [
+    {
+      "stdin": "255\n16\n",
+      "stdout": "255 en base 16 = FF\n"
+    },
+    {
+      "stdin": "10\n2\n",
+      "stdout": "10 en base 2 = 1010\n"
+    },
+    {
+      "stdin": "0\n7\n",
+      "stdout": "0 en base 7 = 0\n"
+    },
+    {
+      "stdin": "2025\n8\n",
+      "stdout": "2025 en base 8 = 3751\n"
+    },
+    {
+      "stdin": "123456\n16\n",
+      "stdout": "123456 en base 16 = 1E240\n"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "P35",
+  "title": "Notas desde un archivo",
+  "level": "dificil",
+  "zone": 3,
+  "topic": "archivos de texto",
+  "statement": "El archivo `notas.txt` tiene una línea por estudiante con el formato `nombre,nota1,nota2,nota3`.\n\nPara cada estudiante imprime su promedio con 2 decimales y, al final, quién tuvo el mejor promedio (si hay empate, el primero del archivo):\n\n```\n<nombre>: <promedio>\n...\nMejor: <nombre>\n```",
+  "starter": "with open('notas.txt') as f:\n    pass\n",
+  "predict": [],
+  "hints": [
+    "Para cada línea: `partes = linea.strip().split(\",\")`.",
+    "El nombre es `partes[0]`; las notas son el resto, conviértelas con `float`.",
+    "Guarda el mejor promedio y su nombre; cambia solo si el nuevo es estrictamente mayor."
+  ],
+  "tests": [
+    {
+      "stdin": "",
+      "stdout": "Ana: 91.67\nLuis: 75.00\nSofía: 95.00\nMejor: Sofía\n",
+      "files": {
+        "notas.txt": "Ana,90,85,100\nLuis,70,80,75\nSofía,95,95,95\n"
+      }
+    },
+    {
+      "stdin": "",
+      "stdout": "Pedro: 61.00\nMejor: Pedro\n",
+      "files": {
+        "notas.txt": "Pedro,60,61,62\n"
+      }
+    },
+    {
+      "stdin": "",
+      "stdout": "A: 80.00\nB: 80.00\nC: 79.00\nMejor: A\n",
+      "files": {
+        "notas.txt": "A,80,80,80\nB,90,70,80\nC,79,79,79\n"
+      }
+    }
+  ]
+}

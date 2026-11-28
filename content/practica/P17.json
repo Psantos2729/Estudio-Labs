@@ -1,0 +1,33 @@
+{
+  "id": "P17",
+  "title": "Matriz transpuesta",
+  "level": "medio",
+  "zone": 3,
+  "topic": "matrices",
+  "statement": "Lee `m` y `n` (filas y columnas, en una línea separados por espacio) y después las `m` filas de la matriz.\n\nImprime su **transpuesta** (`n` filas de `m` números): la fila `i` de la transpuesta es la columna `i` de la original.\n\nEjemplo: `1 2 3 / 4 5 6` → `1 4 / 2 5 / 3 6`.",
+  "starter": "m, n = map(int, input().split())\n",
+  "predict": [],
+  "hints": [
+    "Lee la matriz como una lista de filas.",
+    "La transpuesta tiene `t[j][i] = a[i][j]`.",
+    "Para imprimir cada fila: `print(*fila)`."
+  ],
+  "tests": [
+    {
+      "stdin": "2 3\n1 2 3\n4 5 6\n",
+      "stdout": "1 4\n2 5\n3 6\n"
+    },
+    {
+      "stdin": "1 4\n9 8 7 6\n",
+      "stdout": "9\n8\n7\n6\n"
+    },
+    {
+      "stdin": "3 1\n1\n2\n3\n",
+      "stdout": "1 2 3\n"
+    },
+    {
+      "stdin": "2 2\n0 1\n2 3\n",
+      "stdout": "0 2\n1 3\n"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "P44",
+  "title": "Bits encendidos",
+  "level": "dificil",
+  "topic": "binario y bits",
+  "statement": "Lee un entero `n >= 0` e imprime su representación en binario (puedes usar `bin`), cuántos bits valen 1, y si `n` es una **potencia de 2**:\n\n```\nBinario: <b>\nUnos: <k>\n<Es|No es> potencia de 2\n```\n\nEl 0 **no** es potencia de 2; el 1 sí (2⁰).",
+  "starter": "n = int(input())\n",
+  "predict": [],
+  "hints": [
+    "`bin(13)` da `\"0b1101\"`: quítale los dos primeros caracteres.",
+    "Los unos se cuentan con `.count(\"1\")`.",
+    "Una potencia de 2 tiene exactamente **un** bit encendido."
+  ],
+  "tests": [
+    {
+      "stdin": "13\n",
+      "stdout": "Binario: 1101\nUnos: 3\nNo es potencia de 2\n"
+    },
+    {
+      "stdin": "64\n",
+      "stdout": "Binario: 1000000\nUnos: 1\nEs potencia de 2\n"
+    },
+    {
+      "stdin": "0\n",
+      "stdout": "Binario: 0\nUnos: 0\nNo es potencia de 2\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "Binario: 1\nUnos: 1\nEs potencia de 2\n"
+    },
+    {
+      "stdin": "1023\n",
+      "stdout": "Binario: 1111111111\nUnos: 10\nNo es potencia de 2\n"
+    }
+  ]
+}

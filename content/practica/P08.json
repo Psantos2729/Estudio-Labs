@@ -1,0 +1,33 @@
+{
+  "id": "P08",
+  "title": "Vocales y consonantes",
+  "level": "medio",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "Lee una frase y cuenta cuántas **vocales** y cuántas **consonantes** tiene. Las letras con tilde (á, é, í, ó, ú) cuentan como vocales y la `ñ` como consonante; los espacios, números y signos no cuentan. No importan mayúsculas o minúsculas.\n\n```\nVocales: <v>\nConsonantes: <c>\n```\n\nEjemplo: con `Hola Mundo` → `Vocales: 4` y `Consonantes: 5`.",
+  "starter": "frase = input()\n",
+  "predict": [],
+  "hints": [
+    "Pasa la frase a minúsculas con `.lower()` y recórrela letra por letra.",
+    "Una letra es vocal si está en `\"aeiouáéíóúü\"`.",
+    "Si no es vocal pero `.isalpha()` es verdadero, es consonante."
+  ],
+  "tests": [
+    {
+      "stdin": "Hola Mundo\n",
+      "stdout": "Vocales: 4\nConsonantes: 5\n"
+    },
+    {
+      "stdin": "El año 2025 fue rápido!\n",
+      "stdout": "Vocales: 8\nConsonantes: 6\n"
+    },
+    {
+      "stdin": "xyz\n",
+      "stdout": "Vocales: 0\nConsonantes: 3\n"
+    },
+    {
+      "stdin": "AEIOU\n",
+      "stdout": "Vocales: 5\nConsonantes: 0\n"
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 // Genera supabase/seed.sql con el catálogo de módulos (content/*/module.json), sus lecciones y ejercicios,
+// los problemas de la zona de práctica (content/practica/),
 // y los cosméticos (content/cosmeticos.json).
 // Uso: npm run seed
 import { readdirSync, readFileSync } from 'node:fs';
@@ -21,11 +22,18 @@ const rows = modules.map((m) =>
 
 // Lecciones y ejercicios que existen: record_practice y mark_lesson_read rechazan los demás (migración 020).
 const items = readdirSync(root).filter((dir) => /^M\d/.test(dir)).flatMap((dir) => [
-  ...readdirSync(join(root, dir, 'lessons')).map((f) => [`${dir.slice(0, 3)}-L${f.slice(0, 2)}`, 'null', false]),
+  ...readdirSync(join(root, dir, 'lessons')).map((f) => [`${dir.slice(0, 3)}-L${f.slice(0, 2)}`, 'null', false, 25]),
   ...readdirSync(join(root, dir, 'exercises'))
     .map((f) => JSON.parse(readFileSync(join(root, dir, 'exercises', f), 'utf8')))
-    .map((e) => [e.id, e.tests.length, Boolean(e.challenge)]),
+    .map((e) => [e.id, e.tests.length, Boolean(e.challenge), 25]),
 ]);
+// Zona de práctica (migración 027): el XP depende del nivel; igual que LEVELS en src/features/practice/problems.ts.
+const PRACTICE_XP = { medio: 30, dificil: 45, 'muy-dificil': 60 };
+for (const f of readdirSync(join(root, 'practica')).filter((f) => f.endsWith('.json'))) {
+  const p = JSON.parse(readFileSync(join(root, 'practica', f), 'utf8'));
+  if (!PRACTICE_XP[p.level]) throw new Error(`${p.id}: nivel desconocido ${p.level}`);
+  items.push([p.id, p.tests.length, false, PRACTICE_XP[p.level]]);
+}
 
 const cosmetics = JSON.parse(readFileSync(join(root, 'cosmeticos.json'), 'utf8'));
 const pieces = cosmetics.map((p, i) => `  (${q(p.id)}, ${q(p.slot)}, ${q(p.unlock[0])}, ${q(p.unlock[1])}, ${i})`);
@@ -42,11 +50,11 @@ on conflict (id) do update set
 -- Da a las cuentas existentes las filas de los módulos que falten (migración 007).
 select public.fill_missing_mastery();
 
--- Lecciones y ejercicios de content/ (migración 020).
-insert into public.catalog_items (id, tests, challenge)
+-- Lecciones, ejercicios y problemas de práctica de content/ (migraciones 020 y 027).
+insert into public.catalog_items (id, tests, challenge, xp)
 values
-${items.map(([id, tests, challenge]) => `  (${q(id)}, ${tests}, ${challenge})`).join(',\n')}
-on conflict (id) do update set tests = excluded.tests, challenge = excluded.challenge;
+${items.map(([id, tests, challenge, xp]) => `  (${q(id)}, ${tests}, ${challenge}, ${xp})`).join(',\n')}
+on conflict (id) do update set tests = excluded.tests, challenge = excluded.challenge, xp = excluded.xp;
 delete from public.catalog_items where id not in (${items.map(([id]) => q(id)).join(', ')});
 
 -- Cosméticos del taller: qué espacio ocupan y cómo se ganan (migración 019).

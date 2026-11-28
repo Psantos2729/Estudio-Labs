@@ -1,0 +1,32 @@
+{
+  "id": "P21",
+  "title": "Raíz digital recursiva",
+  "level": "medio",
+  "topic": "recursión",
+  "statement": "La **raíz digital** de un número se obtiene sumando sus dígitos y repitiendo hasta que quede uno solo: `9875 → 29 → 11 → 2`.\n\nEscribe una **función recursiva** `raiz(n)` que la calcule: si `n < 10` devuelve `n`; si no, devuelve `raiz(suma de los dígitos de n)`.\n\nLee `n` e imprime `Raíz digital: <r>`.",
+  "starter": "def raiz(n):\n    pass\n\nn = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Primero escribe una función normal `suma_digitos(n)` con `% 10` y `// 10`.",
+    "El caso base de `raiz` es un número de un solo dígito.",
+    "El caso recursivo es `return raiz(suma_digitos(n))`."
+  ],
+  "tests": [
+    {
+      "stdin": "9875\n",
+      "stdout": "Raíz digital: 2\n"
+    },
+    {
+      "stdin": "7\n",
+      "stdout": "Raíz digital: 7\n"
+    },
+    {
+      "stdin": "999999999\n",
+      "stdout": "Raíz digital: 9\n"
+    },
+    {
+      "stdin": "10\n",
+      "stdout": "Raíz digital: 1\n"
+    }
+  ]
+}

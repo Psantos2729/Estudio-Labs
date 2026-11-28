@@ -1,0 +1,32 @@
+{
+  "id": "P41",
+  "title": "Torres de Hanoi",
+  "level": "dificil",
+  "topic": "recursión",
+  "statement": "Hay `n` discos en la torre `A` y hay que pasarlos a la torre `C` usando `B` de apoyo, sin poner nunca un disco grande sobre uno pequeño.\n\nEscribe una función **recursiva** `hanoi(n, origen, destino, apoyo)` e imprime cada movimiento y, al final, el total:\n\n```\nMover disco <d> de <X> a <Y>\n...\nMovimientos: <total>\n```\n\nLos discos van del 1 (el más pequeño) al `n`.",
+  "starter": "def hanoi(n, origen, destino, apoyo):\n    pass\n\nn = int(input())\n",
+  "predict": [],
+  "hints": [
+    "Para mover `n` discos: mueve `n - 1` al apoyo, mueve el disco `n` al destino, y vuelve a poner los `n - 1` encima.",
+    "El caso base es `n == 0`: no hace nada.",
+    "Haz que la función devuelva cuántos movimientos hizo para imprimir el total."
+  ],
+  "tests": [
+    {
+      "stdin": "2\n",
+      "stdout": "Mover disco 1 de A a B\nMover disco 2 de A a C\nMover disco 1 de B a C\nMovimientos: 3\n"
+    },
+    {
+      "stdin": "3\n",
+      "stdout": "Mover disco 1 de A a C\nMover disco 2 de A a B\nMover disco 1 de C a B\nMover disco 3 de A a C\nMover disco 1 de B a A\nMover disco 2 de B a C\nMover disco 1 de A a C\nMovimientos: 7\n"
+    },
+    {
+      "stdin": "1\n",
+      "stdout": "Mover disco 1 de A a C\nMovimientos: 1\n"
+    },
+    {
+      "stdin": "4\n",
+      "stdout": "Mover disco 1 de A a B\nMover disco 2 de A a C\nMover disco 1 de B a C\nMover disco 3 de A a B\nMover disco 1 de C a A\nMover disco 2 de C a B\nMover disco 1 de A a B\nMover disco 4 de A a C\nMover disco 1 de B a C\nMover disco 2 de B a A\nMover disco 1 de C a A\nMover disco 3 de B a C\nMover disco 1 de A a B\nMover disco 2 de A a C\nMover disco 1 de B a C\nMovimientos: 15\n"
+    }
+  ]
+}

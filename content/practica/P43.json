@@ -1,0 +1,32 @@
+{
+  "id": "P43",
+  "title": "Permutaciones de una palabra",
+  "level": "dificil",
+  "topic": "recursión",
+  "statement": "Lee una palabra (de hasta 6 letras, puede tener letras repetidas) e imprime **todas sus permutaciones distintas** en orden alfabético, una por línea. Al final imprime `Total: <k>`.\n\nHazlo con una función **recursiva**: las permutaciones de una palabra son cada letra seguida de las permutaciones de las letras que quedan.\n\nEjemplo: `aba` → `aab`, `aba`, `baa`, `Total: 3`.",
+  "starter": "w = input()\n",
+  "predict": [],
+  "hints": [
+    "Caso base: una palabra de una letra tiene una sola permutación, ella misma.",
+    "Para cada posición `i`, toma `w[i]` y permuta `w[:i] + w[i+1:]`.",
+    "Guarda los resultados en un `set` para quitar repetidos, y ordénalos al final."
+  ],
+  "tests": [
+    {
+      "stdin": "aba\n",
+      "stdout": "aab\naba\nbaa\nTotal: 3\n"
+    },
+    {
+      "stdin": "abc\n",
+      "stdout": "abc\nacb\nbac\nbca\ncab\ncba\nTotal: 6\n"
+    },
+    {
+      "stdin": "z\n",
+      "stdout": "z\nTotal: 1\n"
+    },
+    {
+      "stdin": "ojo\n",
+      "stdout": "joo\nojo\nooj\nTotal: 3\n"
+    }
+  ]
+}

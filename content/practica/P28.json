@@ -1,0 +1,33 @@
+{
+  "id": "P28",
+  "title": "Comprimir con RLE",
+  "level": "dificil",
+  "zone": 2,
+  "topic": "cadenas",
+  "statement": "La compresión **RLE** cambia cada grupo de letras iguales seguidas por la letra y cuántas veces se repite: `aaabccdddd` → `a3b1c2d4`.\n\nLee una palabra (solo letras) e imprime su versión comprimida. Después, en otra línea, imprime `Ahorro: <x> caracteres` (largo original menos largo comprimido; puede ser negativo).",
+  "starter": "w = input()\n",
+  "predict": [],
+  "hints": [
+    "Recorre la palabra comparando cada letra con la anterior.",
+    "Lleva un contador; cuando la letra cambia, agrega `letra + str(contador)` al resultado.",
+    "No olvides agregar el último grupo al terminar el ciclo."
+  ],
+  "tests": [
+    {
+      "stdin": "aaabccdddd\n",
+      "stdout": "a3b1c2d4\nAhorro: 2 caracteres\n"
+    },
+    {
+      "stdin": "abc\n",
+      "stdout": "a1b1c1\nAhorro: -3 caracteres\n"
+    },
+    {
+      "stdin": "zzzzzzzzzzzz\n",
+      "stdout": "z12\nAhorro: 9 caracteres\n"
+    },
+    {
+      "stdin": "aabbaa\n",
+      "stdout": "a2b2a2\nAhorro: 0 caracteres\n"
+    }
+  ]
+}
