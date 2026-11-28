@@ -15,7 +15,7 @@
   background: transparent; color: var(--text); font: 14px/1.6 var(--mono);
 }
 .runnable__bar { display: flex; gap: 8px; padding: 8px 12px; border-top: 1px solid var(--line); }
-.runnable__out { margin: 0; padding: 12px; border-top: 1px solid var(--line); white-space: pre-wrap; color: var(--green); }
+.runnable__out { margin: 0; padding: 12px; border-top: 1px solid var(--line); white-space: pre-wrap; overflow-wrap: anywhere; color: var(--green); }
 .runnable__err { color: var(--red); }
 .prose table { border-collapse: collapse; width: 100%; font-size: 13px; }
 .prose th, .prose td { border: 1px solid var(--line); padding: 6px 10px; text-align: left; }
@@ -74,3 +74,9 @@
 .scene--cheer .scene__text { color: var(--green); }
 @keyframes bubble-pop { from { opacity: 0; transform: scale(0.6) translateY(6px); } }
 @keyframes robot-hop { 40% { transform: translateY(-10px); } }
+
+/* Explicación en español de un error de Python */
+.error-explain { margin-top: 8px; padding: 10px 12px; border-top: 1px solid var(--line); border-left: 3px solid var(--red); background: color-mix(in srgb, var(--red) 8%, transparent); font-size: 14px; }
+.error-explain p { margin: 0 0 4px; }
+.error-explain__title { font-family: var(--mono); color: var(--red); }
+.error-explain__hint { color: var(--amber); margin: 0; }

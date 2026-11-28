@@ -5,6 +5,7 @@ import type { RunResult } from '@/features/runner/runner';
 import { runCode } from '@/features/pseudo/run';
 import { PythonPreview } from '@/features/pseudo/PythonPreview';
 import { OutFiles } from '@/features/exercise/FilesPanel';
+import { ErrorExplain } from '@/features/runner/ErrorExplain';
 
 /** Ejemplo editable de una lección (Python o pseudocódigo): el estudiante lo cambia y lo corre para comprobar su predicción. */
 export function RunnableCode({ initial: block, pseudo = false }: { initial: string; pseudo?: boolean }) {
@@ -54,6 +55,7 @@ export function RunnableCode({ initial: block, pseudo = false }: { initial: stri
           {!result.stdout && !result.error && <span className="muted">(no imprimió nada)</span>}
         </pre>
       )}
+      {result && <ErrorExplain error={result.error} />}
       {result && <OutFiles files={result.files} />}
       {pseudo && <PythonPreview code={code} />}
     </div>
